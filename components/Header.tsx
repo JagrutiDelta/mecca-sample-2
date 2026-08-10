@@ -6,12 +6,12 @@ import { Phone, Mail, Globe2, ChevronDown, Menu, X } from "lucide-react";
 import UtilityBar from "@/components/UtilityBar";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#home" },
+  { label: "Home", href: "/" },
   { label: "Products", href: "#products", mega: true },
   { label: "OEM Services", href: "#oem" },
   { label: "Manufacturing", href: "#manufacturing" },
   { label: "Certifications", href: "#certifications" },
-  { label: "About", href: "#about" },
+  { label: "About", href: "/about-us" },
   { label: "Contact", href: "#contact" },
 ];
 
