@@ -99,14 +99,14 @@ const WHY_PARTNER = [
 ];
 
 const CATALOGUES = [
-  { title: "Product List 2026", desc: "Complete Mecca Healthcare product list", file: "/catalogues/product-list-2026.pdf" },
-  { title: "MHPL Catalogue 2026", desc: "Full product catalogue", file: "/catalogues/mhpl-catalogue-2026.pdf" },
-  { title: "Nephrology Products 2026", desc: "Nephrology product range", file: "/catalogues/nephrology-products-2026.pdf" },
-  { title: "Hemodialysis Catheter Kit", desc: "Product flier", file: "/catalogues/hemodialysis-catheter-kit-flier.pdf" },
-  { title: "LifeGuard Dial Flow Regulators", desc: "Product presentation", file: "/catalogues/lifeguard-dial-flow-regulators.pdf" },
-  { title: "Central Venous Catheter Kit", desc: "Product details", file: "/catalogues/central-venous-catheter-kit-details.pdf" },
-  { title: "Product Category List (CDSCO)", desc: "Complete CDSCO product category list", file: "/catalogues/product-category-list-cdsco.pdf" },
-  { title: "NFC & Drug Delivery Range", desc: "Specialized product range catalogue", file: "/catalogues/catalogue-nfc-drug-delivery-range.pdf" },
+  { title: "Product List 2026", desc: "Complete range of Mecca Healthcare products", file: "/catalogues/product-list-2026.pdf" },
+  { title: "MHPL Catalogue 2026", desc: "Comprehensive product catalogue and specifications", file: "/catalogues/mhpl-catalogue-2026.pdf" },
+  { title: "Nephrology Products 2026", desc: "Complete range of nephrology care solutions", file: "/catalogues/nephrology-products-2026.pdf" },
+  { title: "Hemodialysis Catheter Kit", desc: "Essential solutions for hemodialysis procedures", file: "/catalogues/hemodialysis-catheter-kit-flier.pdf" },
+  { title: "LifeGuard Dial Flow Regulators", desc: "Precision flow control for clinical applications", file: "/catalogues/lifeguard-dial-flow-regulators.pdf" },
+  { title: "Central Venous Catheter Kit", desc: "Reliable access solutions for critical care", file: "/catalogues/central-venous-catheter-kit-details.pdf" },
+  { title: "Product Category List (CDSCO)", desc: "Comprehensive CDSCO product category reference", file: "/catalogues/product-category-list-cdsco.pdf" },
+  { title: "NFC & Drug Delivery Range", desc: "Specialized solutions for drug delivery applications", file: "/catalogues/catalogue-nfc-drug-delivery-range.pdf" },
 ];
 
 /* ------------------------------- Small parts ------------------------------- */
@@ -148,54 +148,39 @@ function JourneyCard({
   const stepNumber = String(step).padStart(2, "0");
 
   return (
-    <div className="group relative w-full max-w-[430px] overflow-hidden rounded-[22px] bg-white shadow-[0_10px_35px_rgba(15,39,64,0.08)]">
+    <div className="group relative w-full max-w-[340px] overflow-hidden rounded-[18px] bg-white shadow-[0_10px_35px_rgba(15,39,64,0.08)]">
 
       {/* LEFT STEP PANEL */}
-      <div className="absolute inset-y-0 left-0 w-[90px] bg-[#F7F7F7]">
+      <div className="absolute inset-y-0 left-0 w-[72px] bg-[#F7F7F7]">
 
         {/* Circle */}
-        <div className="absolute left-[10px] top-1/2 flex h-[70px] w-[70px] -translate-y-1/2 items-center justify-center rounded-full border border-burgundy bg-white">
-
-          <div className="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-burgundy">
-            <span className="text-[25px] font-extrabold text-white">
+        <div className="absolute left-[8px] top-1/2 flex h-[56px] w-[56px] -translate-y-1/2 items-center justify-center rounded-full border border-burgundy bg-white">
+          <div className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-burgundy">
+            <span className="text-[19px] font-extrabold text-white">
               {stepNumber}
             </span>
           </div>
-
         </div>
 
-{/* Vertical Line */}
-<div className="absolute left-[44px] top-[40px] bottom-[40px] w-px bg-burgundy" />
+        {/* Vertical Line */}
+        <div className="absolute left-[36px] top-[32px] bottom-[32px] w-px bg-burgundy" />
 
-{/* Top Dot */}
-<div className="absolute left-[39px] top-[35px] h-[10px] w-[10px] rounded-full bg-burgundy" />
+        {/* Top Dot */}
+        <div className="absolute left-[32px] top-[26px] h-[8px] w-[8px] rounded-full bg-burgundy" />
 
-{/* Circle */}
-<div className="absolute left-[10px] top-1/2 flex h-[70px] w-[70px] -translate-y-1/2 items-center justify-center rounded-full border border-burgundy bg-white">
+        {/* Bottom Dot */}
+        <div className="absolute bottom-[26px] left-[32px] h-[8px] w-[8px] rounded-full bg-burgundy" />
 
-  <div className="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-burgundy">
-    <span className="text-[25px] font-extrabold text-white">
-      {stepNumber}
-    </span>
-  </div>
-
-</div>
-
-{/* Bottom Dot */}
-<div className="absolute bottom-[35px] left-[39px] h-[10px] w-[10px] rounded-full bg-burgundy" />
-    
       </div>
 
 
       {/* MAIN CONTENT */}
-      <div className="relative ml-[90px] min-h-[300px] px-6 pb-12 pt-7">
+      <div className="relative ml-[72px] min-h-[235px] px-5 pb-9 pt-6">
 
         {/* YEAR BADGE */}
-        <div className="absolute right-4 top-4 flex h-[42px] items-center gap-2 rounded-[12px] bg-[#FAF1F2] px-3">
-
-          {/* Calendar */}
+        <div className="absolute right-3 top-3 flex h-[33px] items-center gap-2 rounded-[10px] bg-[#FAF1F2] px-2.5">
           <svg
-            className="h-5 w-5 text-burgundy"
+            className="h-4 w-4 text-burgundy"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -206,29 +191,26 @@ function JourneyCard({
             <line x1="8" y1="2" x2="8" y2="6" />
             <line x1="3" y1="10" x2="21" y2="10" />
           </svg>
-
-          <div className="h-5 w-px bg-burgundy/30" />
-
-          <span className="text-sm font-extrabold text-burgundy">
+          <div className="h-4 w-px bg-burgundy/30" />
+          <span className="text-xs font-extrabold text-burgundy">
             {year}
           </span>
-
         </div>
 
 
         {/* CONTENT */}
-        <div className="pt-[55px]">
+        <div className="pt-[43px]">
 
           {/* Accent */}
-          <div className="mb-5 h-[4px] w-[45px] bg-burgundy" />
+          <div className="mb-4 h-[3px] w-[35px] bg-burgundy" />
 
           {/* YEAR */}
-          <h3 className="font-heading text-[48px] font-extrabold leading-none tracking-[-0.04em] text-navy">
+          <h3 className="font-heading text-[37px] font-extrabold leading-none tracking-[-0.04em] text-navy">
             {year}
           </h3>
 
           {/* Dots */}
-          <div className="mt-4 flex items-center gap-2">
+          <div className="mt-3 flex items-center gap-2">
             <span className="h-[4px] w-[4px] rounded-full bg-gray" />
             <span className="h-[4px] w-[4px] rounded-full bg-gray" />
             <span className="h-[4px] w-[4px] rounded-full bg-gray" />
@@ -237,12 +219,12 @@ function JourneyCard({
           </div>
 
           {/* Description */}
-          <p className="mt-4 max-w-[280px] text-[13px] leading-5 text-gray">
+          <p className="mt-3 max-w-[220px] text-[12px] leading-5 text-gray">
             {description}
           </p>
 
           {/* Dot Grid */}
-          <div className="mt-6 grid w-[100px] grid-cols-8 gap-[6px] opacity-60">
+          <div className="mt-5 grid w-[80px] grid-cols-8 gap-[5px] opacity-60">
             {Array.from({ length: 32 }).map((_, index) => (
               <span
                 key={index}
@@ -255,18 +237,14 @@ function JourneyCard({
 
 
         {/* WATERMARK */}
-        <div className="pointer-events-none absolute bottom-8 right-[-30px] hidden opacity-[0.07] sm:block">
-
-          <div className="relative h-[130px] w-[130px]">
-
-            <div className="absolute inset-0 rounded-full border-[14px] border-burgundy" />
-
-            <div className="absolute inset-[24px] rounded-full border-[9px] border-burgundy" />
-
+        <div className="pointer-events-none absolute bottom-6 right-[-22px] hidden opacity-[0.07] sm:block">
+          <div className="relative h-[100px] w-[100px]">
+            <div className="absolute inset-0 rounded-full border-[11px] border-burgundy" />
+            <div className="absolute inset-[19px] rounded-full border-[7px] border-burgundy" />
             <svg
-              className="absolute left-[38px] top-[38px]"
-              width="50"
-              height="50"
+              className="absolute left-[30px] top-[30px]"
+              width="40"
+              height="40"
               viewBox="0 0 100 100"
               fill="none"
             >
@@ -279,20 +257,16 @@ function JourneyCard({
                 strokeLinejoin="round"
               />
             </svg>
-
-            <div className="absolute bottom-[-30px] left-[32px] h-[45px] w-[18px] rotate-[18deg] bg-burgundy" />
-
-            <div className="absolute bottom-[-30px] right-[32px] h-[45px] w-[18px] -rotate-[18deg] bg-burgundy" />
-
+            <div className="absolute bottom-[-23px] left-[25px] h-[35px] w-[14px] rotate-[18deg] bg-burgundy" />
+            <div className="absolute bottom-[-23px] right-[25px] h-[35px] w-[14px] -rotate-[18deg] bg-burgundy" />
           </div>
-
         </div>
 
       </div>
 
 
       {/* BOTTOM NAVY BAR */}
-      <div className="absolute bottom-0 left-0 h-[18px] w-[75%] bg-[#062B49]" />
+      <div className="absolute bottom-0 left-0 h-[14px] w-[75%] bg-[#062B49]" />
 
       {/* BOTTOM BURGUNDY BAR */}
       <div
@@ -300,7 +274,7 @@ function JourneyCard({
           absolute
           bottom-0
           right-0
-          h-[18px]
+          h-[14px]
           w-[25%]
           bg-burgundy
           [clip-path:polygon(25%_0,100%_0,100%_100%,0_100%)]
@@ -309,7 +283,7 @@ function JourneyCard({
 
     </div>
   );
-}
+} 
 /* ---------------------------------- Page ---------------------------------- */
 
 export default function AboutPage() {
