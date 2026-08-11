@@ -7,21 +7,21 @@ import UtilityBar from "@/components/UtilityBar";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Products", href: "#products", mega: true },
-  { label: "OEM Services", href: "#oem" },
-  { label: "Manufacturing", href: "#manufacturing" },
-  { label: "Certifications", href: "#certifications" },
+  { label: "Products", href: "/products", mega: true },
+  { label: "OEM Services", href: "/#oem" },
+  { label: "Manufacturing", href: "/#manufacturing" },
+  { label: "Certifications", href: "/#certifications" },
   { label: "About", href: "/about-us" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const PRODUCT_CATEGORIES = [
-  { name: "Infusion & Transfusion", desc: "IV sets, transfusion sets, extension lines" },
-  { name: "Catheters", desc: "Foley, IV cannula, urinary catheters" },
-  { name: "Airway & Respiratory", desc: "Endotracheal tubes, oxygen masks, circuits" },
-  { name: "General Surgery", desc: "Disposable surgical consumables" },
-  { name: "Pharma & Specialized", desc: "Specialized delivery & pharma devices" },
-  { name: "OEM Manufacturing", desc: "Contract & private-label production" },
+  { name: "Infusion & Transfusion", desc: "IV sets, transfusion sets, extension lines", href: "/products#catalog" },
+  { name: "IV Cannulas", desc: "FEP radiopaque, winged, & port cannulas", href: "/products#catalog" },
+  { name: "Burette Sets", desc: "Pediatric 110ml/150ml volume chamber sets", href: "/products#catalog" },
+  { name: "Catheters & Drainage", desc: "Foley catheters, urinary drainage & tubes", href: "/products#catalog" },
+  { name: "Airway & Respiratory", desc: "Endotracheal tubes, oxygen masks, circuits", href: "/products#catalog" },
+  { name: "OEM Manufacturing", desc: "Contract & private-label production", href: "/#oem" },
 ];
 
 export default function Header() {
@@ -38,31 +38,6 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <UtilityBar />
-      {/* Utility bar
-      <div
-        className={`hidden md:block bg-navy text-white/80 text-xs transition-all duration-300 overflow-hidden ${
-          scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
-        }`}
-      >
-        <div className="container-px flex items-center justify-between py-2">
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5" /> +91 79 XXXX XXXX
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5" /> export@meccahealthcare.com
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Globe2 className="w-3.5 h-3.5" /> Exporting to 50+ Countries
-            </span>
-          </div>
-          <div className="flex items-center gap-3 tracking-wide">
-            <span className="border border-white/25 rounded-full px-2.5 py-0.5">ISO 13485</span>
-            <span className="border border-white/25 rounded-full px-2.5 py-0.5">ISO 9001</span>
-            <span className="border border-white/25 rounded-full px-2.5 py-0.5">WHO GMP</span>
-          </div>
-        </div>
-      </div> */}
 
       {/* Main nav */}
       <div
@@ -73,7 +48,7 @@ export default function Header() {
         }`}
       >
         <div className="container-px flex items-center justify-between h-20">
-          <a href="#home" className="flex items-center gap-2.5">
+          <a href="/" className="flex items-center gap-2.5">
             <div className="w-10 h-10 rounded-xl bg-burgundy-gradient flex items-center justify-center text-white font-heading font-bold text-lg">
               M
             </div>
@@ -92,10 +67,13 @@ export default function Header() {
                   onMouseEnter={() => setMegaOpen(true)}
                   onMouseLeave={() => setMegaOpen(false)}
                 >
-                  <button className="flex items-center gap-1 text-sm font-medium text-ink hover:text-burgundy transition-colors">
+                  <a
+                    href={link.href}
+                    className="flex items-center gap-1 text-sm font-medium text-ink hover:text-burgundy transition-colors"
+                  >
                     {link.label}
                     <ChevronDown className="w-3.5 h-3.5" />
-                  </button>
+                  </a>
                   <AnimatePresence>
                     {megaOpen && (
                       <motion.div
@@ -109,7 +87,7 @@ export default function Header() {
                           {PRODUCT_CATEGORIES.map((cat) => (
                             <a
                               key={cat.name}
-                              href="#products"
+                              href={cat.href}
                               className="group p-3 rounded-xl hover:bg-bg transition-colors"
                             >
                               <div className="text-sm font-semibold text-navy group-hover:text-burgundy transition-colors">
@@ -137,7 +115,7 @@ export default function Header() {
 
           <div className="flex items-center gap-4">
             <a
-              href="#contact"
+              href="/#contact"
               className="hidden md:inline-flex items-center rounded-full bg-burgundy-gradient text-white text-sm font-semibold px-6 py-2.5 shadow-card hover:shadow-soft hover:-translate-y-0.5 transition-all"
             >
               Request Quote
@@ -174,7 +152,7 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="/#contact"
                 className="inline-flex justify-center rounded-full bg-burgundy-gradient text-white text-sm font-semibold px-6 py-3"
               >
                 Request Quote
