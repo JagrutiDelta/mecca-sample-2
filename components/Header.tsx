@@ -49,7 +49,7 @@ export default function Header() {
         }`}
       >
         <div className="container-px flex items-center justify-between h-20">
-<<<<<<< Updated upstream
+
           <a href="/" className="flex items-center gap-2.5">
             <div className="w-10 h-10 rounded-xl bg-burgundy-gradient flex items-center justify-center text-white font-heading font-bold text-lg">
               M
@@ -59,12 +59,11 @@ export default function Header() {
               <div className="text-[10px] tracking-[0.2em] text-gray uppercase -mt-0.5">Healthcare</div>
             </div>
           </a>
-=======
           <a
-  href="#"
-  className="flex items-center shrink-0"
-  aria-label="Company Logo"
->
+            href="#"
+            className="flex items-center shrink-0"
+            aria-label="Company Logo"
+            >
   <Image
     src="/MeccaLogo.jpg"
     alt="Company Logo"
@@ -74,7 +73,6 @@ export default function Header() {
     priority
   />
 </a>
->>>>>>> Stashed changes
 
           <nav className="hidden lg:flex items-center gap-8">
             {NAV_LINKS.map((link) =>
