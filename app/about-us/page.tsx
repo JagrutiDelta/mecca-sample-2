@@ -21,6 +21,8 @@ import {
   BadgeCheck,
   Globe2,
   ImageIcon,
+  FileText,   
+  Download,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -61,22 +63,22 @@ const CAPABILITIES = [
 const CERTS = [
   {
     title: "ISO 9001:2015",
-    description: "Quality Management System",
+    description: "Ensuring Consistent Quality & Excellence",
     icon: Award,
   },
   {
     title: "ISO 13485:2016",
-    description: "Medical Devices – Quality Management System",
+    description: "Quality Standards for Medical Devices",
     icon: Globe2,
   },
   {
     title: "WHO–GMP",
-    description: "World Health Organization – Good Manufacturing Practices",
+    description: "Compliant Manufacturing for Global Standards",
     icon: HeartPulse,
   },
   {
     title: "CE Mark",
-    description: "Conformité Européenne Certification",
+    description: "Meeting European Safety & Quality Standards",
     icon: BadgeCheck,
   },
 ];
@@ -94,6 +96,17 @@ const WHY_PARTNER = [
   { icon: Workflow, title: "End-to-End Manufacturing", desc: "In-house capabilities from material processing through final packaging." },
   { icon: BadgeCheck, title: "Certified Quality", desc: "ISO, WHO-GMP and CE-related compliance credentials." },
   { icon: Handshake, title: "OEM Partnership", desc: "Contract manufacturing and OEM supply capabilities for business partners." },
+];
+
+const CATALOGUES = [
+  { title: "Product List 2026", desc: "Complete Mecca Healthcare product list", file: "/catalogues/product-list-2026.pdf" },
+  { title: "MHPL Catalogue 2026", desc: "Full product catalogue", file: "/catalogues/mhpl-catalogue-2026.pdf" },
+  { title: "Nephrology Products 2026", desc: "Nephrology product range", file: "/catalogues/nephrology-products-2026.pdf" },
+  { title: "Hemodialysis Catheter Kit", desc: "Product flier", file: "/catalogues/hemodialysis-catheter-kit-flier.pdf" },
+  { title: "LifeGuard Dial Flow Regulators", desc: "Product presentation", file: "/catalogues/lifeguard-dial-flow-regulators.pdf" },
+  { title: "Central Venous Catheter Kit", desc: "Product details", file: "/catalogues/central-venous-catheter-kit-details.pdf" },
+  { title: "Product Category List (CDSCO)", desc: "Complete CDSCO product category list", file: "/catalogues/product-category-list-cdsco.pdf" },
+  { title: "NFC & Drug Delivery Range", desc: "Specialized product range catalogue", file: "/catalogues/catalogue-nfc-drug-delivery-range.pdf" },
 ];
 
 /* ------------------------------- Small parts ------------------------------- */
@@ -1378,6 +1391,50 @@ export default function AboutPage() {
 
   </div>
 </section>  
+
+{/* 06B — Catalogues & Resources */}
+<section className="section-py bg-bg">
+  <div className="container-px">
+    <div className="max-w-2xl mx-auto text-center mb-16">
+      <Eyebrow>Resources</Eyebrow>
+      <h2 className="font-heading font-bold text-navy text-3xl md:text-4xl">
+        Catalogues &amp; Product Literature
+      </h2>
+      <p className="mt-4 text-gray leading-relaxed">
+        Download our latest catalogues and product literature for detailed specifications.
+      </p>
+    </div>
+
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {CATALOGUES.map((c, i) => (
+        <motion.a
+          key={c.title}
+          href={c.file}
+          target="_blank"
+          rel="noopener noreferrer"
+          download
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: i * 0.06 }}
+          className="group rounded-xl2 bg-white border border-border p-6 text-center hover:shadow-soft hover:border-burgundy/30 transition-all duration-300"
+        >
+          <div className="w-12 h-12 mx-auto rounded-full bg-navy/5 group-hover:bg-burgundy-gradient flex items-center justify-center transition-colors duration-300">
+            <FileText className="w-5 h-5 text-navy group-hover:text-white transition-colors duration-300" />
+          </div>
+          <div className="font-heading font-semibold text-navy mt-4 text-sm">
+            {c.title}
+          </div>
+          <p className="text-xs text-gray mt-2 leading-relaxed">{c.desc}</p>
+          <div className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-burgundy">
+            <Download className="w-3.5 h-3.5" />
+            Download PDF
+          </div>
+        </motion.a>
+      ))}
+    </div>
+  </div>
+</section>
 
 {/* 07 — Manufacturing Footprint */}
 <section className="section-py bg-bg">

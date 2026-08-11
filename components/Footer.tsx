@@ -1,5 +1,7 @@
 "use client";
+import Image from "next/image";
 import { Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
+
 
 
 const COLUMNS = [
@@ -29,15 +31,21 @@ export default function Footer() {
       <div className="container-px">
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 pb-14 border-b border-white/10">
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-burgundy-gradient flex items-center justify-center text-white font-heading font-bold text-lg">
-                M
-              </div>
-              <div className="leading-tight">
-                <div className="font-heading font-bold text-white text-lg tracking-tight">MECCA</div>
-                <div className="text-[10px] tracking-[0.2em] text-white/50 uppercase -mt-0.5">Healthcare</div>
-              </div>
-            </div>
+            <a
+  href="#"
+  className="flex items-center shrink-0"
+  aria-label="Company Logo"
+>
+  <Image
+    src="/MeccaLogo.jpg"
+    alt="Company Logo"
+    width={160}
+    height={48}
+    className="h-12 w-auto object-contain"
+    priority
+  />
+</a>
+
             <p className="text-sm leading-relaxed max-w-xs">
               Global medical device manufacturer since 1977. ISO 13485 and WHO GMP
               certified, exporting to 50+ countries.
