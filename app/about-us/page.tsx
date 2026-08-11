@@ -22,9 +22,14 @@ import {
   BadgeCheck,
   Globe2,
   ImageIcon,
+<<<<<<< Updated upstream
   FileText,
   Download,
   X,
+=======
+  FileText,   
+  Download,
+>>>>>>> Stashed changes
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -110,6 +115,7 @@ const WHY_PARTNER = [
 ];
 
 const CATALOGUES = [
+<<<<<<< Updated upstream
   { title: "Product List 2026", desc: "Complete range of Mecca Healthcare products", file: "/catalogues/product-list-2026.pdf" },
   { title: "MHPL Catalogue 2026", desc: "Comprehensive product catalogue and specifications", file: "/catalogues/mhpl-catalogue-2026.pdf" },
   { title: "Nephrology Products 2026", desc: "Complete range of nephrology care solutions", file: "/catalogues/nephrology-products-2026.pdf" },
@@ -118,6 +124,16 @@ const CATALOGUES = [
   { title: "Central Venous Catheter Kit", desc: "Reliable access solutions for critical care", file: "/catalogues/central-venous-catheter-kit-details.pdf" },
   { title: "Product Category List (CDSCO)", desc: "Comprehensive CDSCO product category reference", file: "/catalogues/product-category-list-cdsco.pdf" },
   { title: "NFC & Drug Delivery Range", desc: "Specialized solutions for drug delivery applications", file: "/catalogues/catalogue-nfc-drug-delivery-range.pdf" },
+=======
+  { title: "Product List 2026", desc: "Complete Mecca Healthcare product list", file: "/catalogues/product-list-2026.pdf" },
+  { title: "MHPL Catalogue 2026", desc: "Full product catalogue", file: "/catalogues/mhpl-catalogue-2026.pdf" },
+  { title: "Nephrology Products 2026", desc: "Nephrology product range", file: "/catalogues/nephrology-products-2026.pdf" },
+  { title: "Hemodialysis Catheter Kit", desc: "Product flier", file: "/catalogues/hemodialysis-catheter-kit-flier.pdf" },
+  { title: "LifeGuard Dial Flow Regulators", desc: "Product presentation", file: "/catalogues/lifeguard-dial-flow-regulators.pdf" },
+  { title: "Central Venous Catheter Kit", desc: "Product details", file: "/catalogues/central-venous-catheter-kit-details.pdf" },
+  { title: "Product Category List (CDSCO)", desc: "Complete CDSCO product category list", file: "/catalogues/product-category-list-cdsco.pdf" },
+  { title: "NFC & Drug Delivery Range", desc: "Specialized product range catalogue", file: "/catalogues/catalogue-nfc-drug-delivery-range.pdf" },
+>>>>>>> Stashed changes
 ];
 
 /* ------------------------------- Small parts ------------------------------- */
