@@ -56,8 +56,7 @@ export default function Header() {
             href="#"
             className="flex items-center shrink-0"
             aria-label="Company Logo"
-            >
-=======
+            />
           <a
   href="#"
   className="flex items-center shrink-0"
