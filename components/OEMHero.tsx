@@ -1,0 +1,124 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowRight, Handshake, ShieldCheck, Award } from "lucide-react";
+
+export default function OEMHero() {
+  return (
+    <section className="relative overflow-hidden bg-[#F8FAFC] pt-36 pb-16 lg:pt-48 lg:pb-24 border-b border-border">
+      {/* Background Grid Pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-60 z-0"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M 40 0 L 0 0 0 40' fill='none' stroke='%23102B46' stroke-width='0.5' stroke-opacity='0.15'/%3E%3C/svg%3E")`,
+          backgroundSize: "40px 40px",
+        }}
+      />
+
+      <div className="container-px relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* LEFT CONTENT */}
+          <div className="lg:col-span-6 flex flex-col items-start">
+            {/* Eyebrow badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex items-center gap-2.5 mb-4 sm:mb-5"
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-burgundy animate-pulse" />
+              <span className="font-semibold text-burgundy tracking-[2px] text-[11px] uppercase">
+                Global OEM Partnerships
+              </span>
+            </motion.div>
+
+            {/* Main Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-heading font-black text-navy text-4xl sm:text-5xl lg:text-[58px] leading-[1.05] tracking-tight mb-4"
+            >
+              Your Product Vision.
+              <br />
+              <span className="text-medblue">Our Manufacturing</span>
+              <br />
+              Expertise.
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-gray text-sm sm:text-base leading-relaxed max-w-lg mb-8"
+            >
+              Partner with Meca Care for full OEM manufacturing services — from custom product development through to private label production and global export.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-wrap items-center gap-4 w-full sm:w-auto"
+            >
+              <a
+                href="#oem-contact"
+                className="inline-flex items-center justify-center gap-2 bg-burgundy text-white font-semibold text-sm px-7 py-3.5 rounded-full shadow-[0_4px_16px_rgba(148,28,43,0.28)] hover:bg-burgundy-dark hover:shadow-xl transition-all group"
+              >
+                <span>Start an OEM Conversation</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+
+              <a
+                href="#oem-models"
+                className="inline-flex items-center justify-center gap-2 bg-white text-navy border border-border font-semibold text-sm px-7 py-3.5 rounded-full shadow-[0_2px_8px_rgba(16,43,70,0.08)] hover:bg-slate-50 transition-all group"
+              >
+                <span>Explore Capabilities</span>
+                <ArrowRight className="w-4 h-4 text-gray group-hover:translate-x-1 transition-transform" />
+              </a>
+            </motion.div>
+          </div>
+
+          {/* RIGHT HERO IMAGE & FLOATING GLASS CARD */}
+          <div className="lg:col-span-6 relative">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative rounded-2xl overflow-hidden shadow-[0_20px_56px_rgba(16,43,70,0.16)] border border-white/80 bg-white"
+            >
+              <img
+                src="/oem/hero_engineers.png"
+                alt="Medical manufacturing engineers reviewing product designs"
+                className="w-full aspect-[4/3] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/30 via-transparent to-transparent pointer-events-none" />
+            </motion.div>
+
+            {/* Floating Glassmorphism Partner Badge */}
+            <motion.div
+              initial={{ opacity: 0, x: -20, y: 10 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className="absolute -bottom-5 -left-3 sm:-left-6 bg-white/95 backdrop-blur-md border border-border rounded-xl p-4 shadow-[0_8px_24px_rgba(16,43,70,0.12)] flex items-center gap-3 max-w-[280px]"
+            >
+              <div className="w-10 h-10 rounded-lg bg-[#F8EDEF] flex items-center justify-center shrink-0">
+                <Handshake className="w-5 h-5 text-burgundy" />
+              </div>
+              <div>
+                <div className="font-heading font-bold text-navy text-xs leading-snug">
+                  OEM Partner of Choice
+                </div>
+                <div className="text-[11px] text-gray mt-0.5">
+                  50+ countries trust Meca Care
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

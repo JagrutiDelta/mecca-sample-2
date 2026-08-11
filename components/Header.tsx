@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Mail, Globe2, ChevronDown, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import UtilityBar from "@/components/UtilityBar";
 import Image from "next/image";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Products", href: "/products", mega: true },
-  { label: "OEM Services", href: "/#oem" },
+  { label: "OEM Services", href: "/oem-services" },
   { label: "Manufacturing", href: "/#manufacturing" },
   { label: "Certifications", href: "/#certifications" },
   { label: "About", href: "/about-us" },
@@ -22,10 +23,11 @@ const PRODUCT_CATEGORIES = [
   { name: "Burette Sets", desc: "Pediatric 110ml/150ml volume chamber sets", href: "/products#catalog" },
   { name: "Catheters & Drainage", desc: "Foley catheters, urinary drainage & tubes", href: "/products#catalog" },
   { name: "Airway & Respiratory", desc: "Endotracheal tubes, oxygen masks, circuits", href: "/products#catalog" },
-  { name: "OEM Manufacturing", desc: "Contract & private-label production", href: "/#oem" },
+  { name: "OEM Manufacturing", desc: "Contract & private-label production", href: "/oem-services" },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -66,8 +68,13 @@ export default function Header() {
 </a>
 
           <nav className="hidden lg:flex items-center gap-8">
-            {NAV_LINKS.map((link) =>
-              link.mega ? (
+            {NAV_LINKS.map((link) => {
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname?.startsWith(link.href);
+
+              return link.mega ? (
                 <div
                   key={link.label}
                   className="relative"
@@ -76,7 +83,9 @@ export default function Header() {
                 >
                   <a
                     href={link.href}
-                    className="flex items-center gap-1 text-sm font-medium text-ink hover:text-burgundy transition-colors"
+                    className={`flex items-center gap-1 text-sm font-medium transition-colors ${
+                      isActive ? "text-burgundy font-semibold" : "text-ink hover:text-burgundy"
+                    }`}
                   >
                     {link.label}
                     <ChevronDown className="w-3.5 h-3.5" />
@@ -112,12 +121,14 @@ export default function Header() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm font-medium text-ink hover:text-burgundy transition-colors"
+                  className={`text-sm font-medium transition-colors ${
+                    isActive ? "text-burgundy font-semibold" : "text-ink hover:text-burgundy"
+                  }`}
                 >
                   {link.label}
                 </a>
-              )
-            )}
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-4">
