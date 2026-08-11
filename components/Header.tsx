@@ -18,11 +18,11 @@ const NAV_LINKS = [
 ];
 
 const PRODUCT_CATEGORIES = [
-  { name: "Infusion & Transfusion", desc: "IV sets, transfusion sets, extension lines", href: "/products#catalog" },
-  { name: "IV Cannulas", desc: "FEP radiopaque, winged, & port cannulas", href: "/products#catalog" },
-  { name: "Burette Sets", desc: "Pediatric 110ml/150ml volume chamber sets", href: "/products#catalog" },
-  { name: "Catheters & Drainage", desc: "Foley catheters, urinary drainage & tubes", href: "/products#catalog" },
-  { name: "Airway & Respiratory", desc: "Endotracheal tubes, oxygen masks, circuits", href: "/products#catalog" },
+  { name: "Infusion & Transfusion", desc: "IV sets, transfusion sets, extension lines", href: "/products/infusion" },
+  { name: "IV Cannulas", desc: "FEP radiopaque, winged, & port cannulas", href: "/products/cannulas" },
+  { name: "Burette Sets", desc: "Pediatric 110ml/150ml volume chamber sets", href: "/products/burette" },
+  { name: "Catheters & Drainage", desc: "Foley catheters, urinary drainage & tubes", href: "/products/catheters" },
+  { name: "Airway & Respiratory", desc: "Endotracheal tubes, oxygen masks, circuits", href: "/products/respiratory" },
   { name: "OEM Manufacturing", desc: "Contract & private-label production", href: "/oem-services" },
 ];
 

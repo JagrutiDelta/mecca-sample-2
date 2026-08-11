@@ -10,6 +10,7 @@ const CATEGORIES = [
     icon: Factory,
     img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop",
     span: "lg:col-span-2 lg:row-span-2",
+    href: "/oem-services",
   },
   {
     name: "Infusion & Transfusion",
@@ -17,13 +18,15 @@ const CATEGORIES = [
     icon: Droplets,
     img: "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&w=800&auto=format&fit=crop",
     span: "",
+    href: "/products/infusion",
   },
   {
-    name: "Catheters",
+    name: "Catheters & Drainage",
     desc: "Foley, IV cannula, and specialized urinary catheters.",
     icon: Syringe,
     img: "https://plus.unsplash.com/premium_photo-1702598680450-21409d22358f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     span: "",
+    href: "/products/catheters",
   },
   {
     name: "Airway & Respiratory",
@@ -31,20 +34,23 @@ const CATEGORIES = [
     icon: Wind,
     img: "https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=800&auto=format&fit=crop",
     span: "",
+    href: "/products/respiratory",
   },
   {
-    name: "General Surgery",
-    desc: "Sterile, single-use surgical consumables at scale.",
+    name: "IV Cannulas",
+    desc: "Precision FEP radiopaque winged catheters & injection ports.",
     icon: Scissors,
     img: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=800&auto=format&fit=crop",
     span: "",
+    href: "/products/cannulas",
   },
   {
-    name: "Pharma & Specialized",
-    desc: "Specialized delivery devices for pharmaceutical partners.",
+    name: "Burette Sets",
+    desc: "Pediatric 110ml & 150ml micro drip volume chamber sets.",
     icon: FlaskConical,
     img: "https://images.unsplash.com/photo-1563213126-a4273aed2016?q=80&w=800&auto=format&fit=crop",
     span: "",
+    href: "/products/burette",
   },
 ];
 
@@ -64,7 +70,7 @@ export default function ProductCategories() {
             const Icon = cat.icon;
             return (
               <motion.a
-                href="#"
+                href={cat.href}
                 key={cat.name}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}

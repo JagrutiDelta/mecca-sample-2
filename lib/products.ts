@@ -164,6 +164,15 @@ export function getProductById(id: string): ProductItem | undefined {
   return PRODUCTS.find((p) => p.id === id);
 }
 
+export function getCategoryById(categoryId: string) {
+  return CATEGORIES.find((c) => c.id === categoryId);
+}
+
+export function getProductsByCategoryId(categoryId: string): ProductItem[] {
+  if (categoryId === "all") return PRODUCTS;
+  return PRODUCTS.filter((p) => p.categoryId === categoryId);
+}
+
 export function getRelatedProducts(currentId: string, limit = 3): ProductItem[] {
   return PRODUCTS.filter((p) => p.id !== currentId).slice(0, limit);
 }
