@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "Products", href: "/products", mega: true },
   { label: "OEM Services", href: "/oem-services" },
   { label: "Manufacturing", href: "/#manufacturing" },
-  { label: "Certifications", href: "/#certifications" },
+  { label: "Certifications", href: "/certifications" },
   { label: "About", href: "/about-us" },
   { label: "Contact", href: "/#contact" },
 ];
