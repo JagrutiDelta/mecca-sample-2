@@ -51,7 +51,6 @@ export default function Header() {
         }`}
       >
         <div className="container-px flex items-center justify-between h-20">
-<<<<<<< Updated upstream
 
           <a
             href="#"
@@ -64,7 +63,6 @@ export default function Header() {
   className="flex items-center shrink-0"
   aria-label="Company Logo"
 >
->>>>>>> Stashed changes
   <Image
     src="/MeccaLogo.jpg"
     alt="Company Logo"
