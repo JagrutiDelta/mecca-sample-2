@@ -36,6 +36,7 @@ export default function Footer() {
   className="flex items-center shrink-0"
   aria-label="Company Logo"
 >
+
   <Image
     src="/MeccaLogo.jpg"
     alt="Company Logo"
@@ -45,12 +46,11 @@ export default function Footer() {
     priority
   />
 </a>
-
-            <p className="text-sm leading-relaxed max-w-xs">
+            <p className="mt-5 text-sm leading-relaxed max-w-xs">
               Global medical device manufacturer since 1977. ISO 13485 and WHO GMP
               certified, exporting to 50+ countries.
             </p>
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-8 mt-10">
               {[Linkedin, Twitter, Facebook, Youtube].map((Icon, i) => (
                 <a
                   key={i}

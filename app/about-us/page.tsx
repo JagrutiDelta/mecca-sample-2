@@ -364,12 +364,13 @@ export default function AboutPage() {
       <Eyebrow>About Mecca Healthcare</Eyebrow>
 
       <h1 className="font-heading font-extrabold text-navy text-5xl md:text-6xl lg:text-[50px] leading-[0.95] tracking-[-0.03em]">
-        Decades of Experience.  Quality &amp; Trust.
+        Decades of Experience. 
         <br />
         <span className="text-burgundy">
           Built Around Care,
           <br />
-           Quality &amp; Trust.
+          <span className="text-medblue"> Quality &amp; Trust.</span>
+        
         </span>
       </h1>
 

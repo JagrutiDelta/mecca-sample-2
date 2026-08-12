@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { label: "Certifications", href: "/certifications" },
   { label: "About", href: "/about-us" },
   { label: "Contact", href: "/#contact" },
+  { label: "Careers", href: "/careers" }
 ];
 
 const PRODUCT_CATEGORIES = [
