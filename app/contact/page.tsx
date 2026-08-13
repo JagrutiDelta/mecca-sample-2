@@ -25,7 +25,7 @@ import { useState, type ChangeEvent, type FormEvent, type ReactNode } from "reac
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FinalCTA from "@/components/FinalCTA";
+import FinalCTA from "./finalCTA";
 
 /* -------------------------------------------------------------------------- */
 /* Data                                                                       */
@@ -1288,9 +1288,6 @@ function ManufacturingUnitsSection() {
 
         </motion.div>
       </div>
-      <FinalCTA />
-      <Footer />
-      
     </section>
   );
 }
