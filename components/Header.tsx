@@ -14,10 +14,10 @@ const NAV_LINKS = [
   { label: "Manufacturing", href: "/#manufacturing" },
   { label: "Certifications", href: "/certifications" },
   { label: "About", href: "/about-us" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
   { label: "Careers", href: "/careers" }
 ];
-
+  
 const PRODUCT_CATEGORIES = [
   { name: "Infusion & Transfusion", desc: "IV sets, transfusion sets, extension lines", href: "/products/infusion" },
   { name: "IV Cannulas", desc: "FEP radiopaque, winged, & port cannulas", href: "/products/cannulas" },
