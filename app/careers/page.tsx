@@ -907,24 +907,33 @@
 
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence , useReducedMotion  } from "framer-motion";
 import {
+  ArrowRight,
+  Award,
+  BadgeCheck,
+  Building2,
+  CheckCircle2,
+  ChevronDown,
+  Clock,
   Factory,
-  ShieldCheck,
+  FileSearch,
   Globe2,
   GraduationCap,
   HeartHandshake,
-  BadgeCheck,
+  Headset,
+  Mail,
   MapPin,
-  Clock,
-  Briefcase,
-  ArrowRight,
-  ChevronDown,
+  MessageCircle,
+  Phone,
+  PhoneCall,
   Search,
-  FileSearch,
+  Share2,
+  ShieldCheck,
   MessagesSquare,
   Handshake,
   PartyPopper,
+  Briefcase,
   X,
 } from "lucide-react";
 import Header from "@/components/Header";
@@ -1175,6 +1184,45 @@ function Eyebrow({ children }: { children: ReactNode }) {
   );
 }
 
+/* -------------------------------------------------------------------------- */
+/* Floating statistic                                                        */
+/* -------------------------------------------------------------------------- */
+
+function FloatingStat({
+  value,
+  label,
+  className,
+  animation,
+  duration,
+}: {
+  value: string;
+  label: string;
+  className: string;
+  animation: number[];
+  duration: number;
+}) {
+  return (
+    <motion.div
+      animate={{
+        y: animation,
+      }}
+      transition={{
+        duration,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      className={`absolute z-20 rounded-2xl border border-white/60 bg-white/85 px-5 py-4 shadow-glass backdrop-blur-xl ${className}`}
+    >
+      <div className="font-heading text-2xl font-extrabold text-navy">
+        {value}
+      </div>
+
+      <div className="mt-0.5 whitespace-nowrap text-xs text-gray">
+        {label}
+      </div>
+    </motion.div>
+  );
+}
 
 /* ---------------------------------- Page ---------------------------------- */
 
@@ -1231,84 +1279,175 @@ export default function CareersPage() {
   return (
     <main className="overflow-x-hidden">
       <Header />
-{/* Background layers */}
-      <div className="absolute inset-0 bg-bg" />
-      <div className="absolute inset-0 bg-medical-grid bg-grid [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,black,transparent)]" />
-      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-medblue/10 blur-3xl" />
-      <div className="absolute top-1/3 -left-32 w-[400px] h-[400px] rounded-full bg-burgundy/10 blur-3xl" />
+{/* ================================================================== */}
+{/* HERO / CAREER SECTION                                              */}
+{/* ================================================================== */}
 
-      <div className="container-px relative grid lg:grid-cols-2 gap-16 items-center"></div>
+<section className="relative overflow-hidden bg-bg">
+  {/* Background layers */}
 
-      {/* 01 — Hero */}
-      <section className="pt-40 pb-24 bg-white">
-        <div className="container-px grid lg:grid-cols-2 gap-14 items-center">
-          <div>
-            <Eyebrow>Careers at Mecca Healthcare</Eyebrow>
+  <div className="absolute inset-0 bg-bg" />
 
+  <div className="absolute inset-0 bg-medical-grid bg-grid [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,black,transparent)]" />
 
-            <h1 className="font-heading font-extrabold text-navy text-5xl md:text-6xl lg:text-[50px] leading-[0.95] tracking-[-0.03em]">
-              Build the Devices
-              <br />
-              <span className="text-burgundy">Clinicians Trust Since 1977.</span>
-            </h1>
+  <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-medblue/10 blur-3xl" />
 
+  <div className="absolute -left-32 top-1/3 h-[400px] w-[400px] rounded-full bg-burgundy/10 blur-3xl" />
 
-            <p className="mt-7 text-gray leading-relaxed max-w-lg">
-              We&apos;re a 48-year-old Indian medical device manufacturer with three plants,
-              ISO 13485 and WHO-GMP certified processes, and products that reach hospitals
-              across five global regions. Come build them with us.
-            </p>
+  {/* Hero content */}
 
+  <div className="container-px relative grid items-center gap-16 py-28 lg:grid-cols-2 ">
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a
-                href="#open-roles"
-                className="inline-flex items-center rounded-full bg-burgundy-gradient text-white text-sm font-semibold px-6 py-3 shadow-card hover:shadow-soft hover:-translate-y-0.5 transition-all"
-              >
-                View Open Positions →
-              </a>
+    {/* LEFT CONTENT */}
 
+    <div>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="eyebrow mb-6 inline-flex items-center gap-2 rounded-full border border-[#ff91a0]/15 bg-[#9e3744]/10 px-5 py-2 text-sm font-semibold text-[#8B1E2D] backdrop-blur-md"
+      >
+        <Briefcase className="h-4 w-4" />
+        We're Hiring — Join Our Team
+      </motion.div>
 
-              <button
-                type="button"
-                onClick={() => openApplyModal()}
-                className="text-sm font-semibold text-navy hover:text-burgundy transition-colors"
-              >
-                Send Your Resume
-              </button>
-            </div>
-          </div>
+      <motion.h1
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className="font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-navy sm:text-5xl md:text-6xl"
+      >
+        Let's Build Your{" "}
 
+        <span className="relative inline-block text-burgundy">
+          Career
 
-          <div className="relative h-full min-h-[420px] overflow-hidden rounded-xl2">
-            <img
-              src="/Cleanrrom.jpg"
-              alt="Team working inside a Mecca Healthcare cleanroom"
-              className="h-full w-full object-cover"
+          <svg
+            className="absolute -bottom-1 left-0 w-full"
+            height="10"
+            viewBox="0 0 300 10"
+            preserveAspectRatio="none"
+          >
+            <motion.path
+              d="M2 6 Q 75 -2 150 6 T 298 6"
+              stroke="#C8D8F5"
+              strokeWidth="6"
+              fill="none"
+              strokeLinecap="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{
+                duration: 1,
+                delay: 0.8,
+              }}
             />
-          </div>
-        </div>
+          </svg>
+        </span>{" "}
 
+        With Us
+      </motion.h1>
 
-        {/* Quick stats */}
-        <div className="container-px mt-16">
-          <div className="rounded-xl2 border border-border bg-white grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-border shadow-sm">
-            {[
-              { value: "48+", label: "Years of Manufacturing" },
-              { value: "30M+", label: "Pieces Made Annually" },
-              { value: "3", label: "Manufacturing Units" },
-              { value: "5+", label: "Export Regions" },
-            ].map((stat) => (
-              <div key={stat.label} className="px-6 py-7 text-center">
-                <p className="font-heading text-3xl font-extrabold text-burgundy">{stat.value}</p>
-                <p className="mt-1 text-sm text-gray">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          delay: 0.3,
+        }}
+        className="mt-6 max-w-xl text-base leading-relaxed text-gray md:text-lg"
+      >
+        Whether you're an engineer, a quality specialist, or just
+        starting out, join a team driving innovation in nephrology,
+        hemodialysis, and critical care devices across our three
+        manufacturing plants.
+      </motion.p>
 
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          delay: 0.4,
+        }}
+        className="mt-10 flex flex-wrap items-center gap-4"
+      >
+        <a
+          href="#openings"
+          className="group inline-flex items-center gap-2 rounded-full bg-burgundy-gradient px-8 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5"
+        >
+          View Open Positions
 
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </a>
+
+        <a
+          href="mailto:careers@mhplindia.in"
+          className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white/70 px-8 py-4 text-sm font-semibold text-navy backdrop-blur transition-colors hover:bg-white"
+        >
+          <Mail className="h-4 w-4" />
+          Email Your Resume
+        </a>
+      </motion.div>
+    </div>
+
+    {/* RIGHT IMAGE */}
+
+    <div className="relative h-[420px] sm:h-[520px] lg:h-[600px]">
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          scale: 0.94,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+        }}
+        transition={{
+          duration: 0.8,
+          delay: 0.2,
+        }}
+        className="absolute inset-0 overflow-hidden rounded-xl2 shadow-soft"
+      >
+        <img
+          src="https://plus.unsplash.com/premium_photo-1681966874224-60e9576e6643?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Team members at a Mecca Healthcare manufacturing facility"
+          className="h-full w-full object-cover"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />
+      </motion.div>
+
+      {/* FLOATING STATS */}
+
+      <FloatingStat
+        value="3"
+        label="Manufacturing Plants"
+        className="-right-2 top-1/3 md:-right-8"
+        animation={[0, 14, 0]}
+        duration={7}
+      />
+
+      <FloatingStat
+        value="50+"
+        label="Export Countries"
+        className="bottom-10 left-2 md:-left-6"
+        animation={[0, -10, 0]}
+        duration={6.5}
+      />
+
+      <FloatingStat
+        value="Global"
+        label="Career Exposure"
+        className="bottom-0 right-4 md:right-0"
+        animation={[0, 12, 0]}
+        duration={7.5}
+      />
+
+    </div>
+  </div>
+</section>
+  
       {/* 02 — Why Work With Us */}
       <section className="section-py bg-bg">
         <div className="container-px">
@@ -1863,3 +2002,4 @@ function JobCard({ job, index, onApply }: { job: Job; index: number; onApply: ()
     </motion.div>
   );
 }
+

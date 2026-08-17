@@ -136,8 +136,8 @@ const labelClasses =
 
 const CONTACT_INFO = {
   email: "contact@mhplindia.com",
-  phone: "+91 2764 221020",
-  whatsapp: "+91 7990 571693",
+  phone: "+91 XXXXX XXXXX",
+  whatsapp: "+91 XXXXX XXXXX",
   hours: "Mon–Sat, 9:30 AM–6:30 PM IST",
 
   social: [
@@ -307,7 +307,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="tel:+912764221020"
+                href="tel:+91XXXXXXXXXX"
                 className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white/70 px-8 py-4 text-sm font-semibold text-navy backdrop-blur transition-colors hover:bg-white"
               >
                 <Phone className="h-4 w-4" />

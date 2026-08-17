@@ -17,6 +17,9 @@ import {
   Wind,
   Package,
   Factory,
+  Building2,
+  Phone,
+  MapPin,
   Clock,
   Workflow,
   BadgeCheck,
@@ -149,6 +152,42 @@ const CATALOGUES = [
     title: "NFC & Drug Delivery Range",
     desc: "Specialized solutions for drug delivery applications",
     file: "/catalogues/catalogue-nfc-drug-delivery-range.pdf",
+  },
+];
+
+interface Unit {
+  id: string;
+  label: string;
+  city: string;
+  address: string;
+  phone: string;
+  phoneHref: string;
+}
+
+const UNITS: Unit[] = [
+  {
+    id: "unit-1",
+    label: "Unit 1",
+    city: "Kalol, Gandhinagar",
+    address: "99-102, G.I.D.C., Kalol, Gandhinagar, Gujarat 382725, India",
+    phone: "+91 2764 221020",
+    phoneHref: "+912764221020",
+  },
+  {
+    id: "unit-2",
+    label: "Unit 2",
+    city: "Chattral, Mehsana",
+    address: "L-1202, GIDC, Chattral, Mehsana, Gujarat 382729, India",
+    phone: "+91 7990 571693",
+    phoneHref: "+917990571693",
+  },
+  {
+    id: "unit-3",
+    label: "Unit 3",
+    city: "Boranada, Jodhpur",
+    address: "F-252, Phase 3, RIICO, Boranada, Rajasthan 342012, India",
+    phone: "+91 7665 761999",
+    phoneHref: "+917665761999",
   },
 ];
 
