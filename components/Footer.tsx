@@ -7,19 +7,41 @@ import { Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
 const COLUMNS = [
   {
     title: "Products",
-    links: ["Infusion & Transfusion", "Catheters", "Airway & Respiratory", "General Surgery", "Pharma & Specialized"],
+    links: [
+      { name: "Infusion & Transfusion", href: "/products/infusion" },
+      { name: "Catheters", href: "/products/catheters" },
+      { name: "Airway & Respiratory", href: "/products/respiratory" },
+      { name: "General Surgery", href: "/products" },
+      { name: "Pharma & Specialized", href: "/products" },
+    ],
   },
   {
     title: "OEM",
-    links: ["Contract Manufacturing", "Private Label", "Loan License", "Custom Packaging"],
+    links: [
+      { name: "Contract Manufacturing", href: "/oem-services" },
+      { name: "Private Label", href: "/oem-services" },
+      { name: "Loan License", href: "/oem-services" },
+      { name: "Custom Packaging", href: "/oem-services" },
+    ],
   },
   {
     title: "Company",
-    links: ["About Us", "Certifications", "Manufacturing", "Careers", "News"],
+    links: [
+      { name: "About Us", href: "/about-us" },
+      { name: "Certifications", href: "/certifications" },
+      { name: "Manufacturing", href: "/manufacturing" },
+      { name: "Careers", href: "/#contact" },
+      { name: "News", href: "/#news" },
+    ],
   },
   {
     title: "Support",
-    links: ["Contact Us", "Request a Quote", "Distributor Enquiry", "Downloads"],
+    links: [
+      { name: "Contact Us", href: "/#contact" },
+      { name: "Request a Quote", href: "/#contact" },
+      { name: "Distributor Enquiry", href: "/#contact" },
+      { name: "Downloads", href: "/#downloads" },
+    ],
   },
 ];
 
@@ -68,9 +90,9 @@ export default function Footer() {
               <h4 className="font-heading font-semibold text-white text-sm mb-4">{col.title}</h4>
               <ul className="space-y-2.5 text-sm">
                 {col.links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="hover:text-white transition-colors">
-                      {l}
+                  <li key={l.name}>
+                    <a href={l.href} className="hover:text-white transition-colors">
+                      {l.name}
                     </a>
                   </li>
                 ))}
