@@ -1,18 +1,18 @@
 "use client";
 import Image from "next/image";
 import { Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
-
-
+import { useQuoteModal } from "@/context/QuoteContext";
+import LanguageTranslator from "@/components/LanguageTranslator";
 
 const COLUMNS = [
   {
     title: "Products",
     links: [
-      { name: "Infusion & Transfusion", href: "/products/infusion" },
-      { name: "Catheters", href: "/products/catheters" },
-      { name: "Airway & Respiratory", href: "/products/respiratory" },
-      { name: "General Surgery", href: "/products" },
-      { name: "Pharma & Specialized", href: "/products" },
+      { name: "Infusion / Perfusion", href: "/products/infusion" },
+      { name: "Anesthesia", href: "/products/anesthesia" },
+      { name: "Urology", href: "/products/urology" },
+      { name: "General Surgical", href: "/products/surgical" },
+      { name: "Mecca Labs", href: "/products/mecca-labs" },
     ],
   },
   {
@@ -38,7 +38,7 @@ const COLUMNS = [
     title: "Support",
     links: [
       { name: "Contact Us", href: "/#contact" },
-      { name: "Request a Quote", href: "/#contact" },
+      { name: "Request a Quote", href: "#quote" },
       { name: "Distributor Enquiry", href: "/#contact" },
       { name: "Downloads", href: "/#downloads" },
     ],
@@ -48,6 +48,7 @@ const COLUMNS = [
 const PLANTS = ["Kalol", "Chhatral", "Jodhpur"];
 
 export default function Footer() {
+  const { openQuoteModal } = useQuoteModal();
   return (
     <footer className="bg-navy-gradient text-white/70 pt-20 pb-8">
       <div className="container-px">
@@ -91,9 +92,19 @@ export default function Footer() {
               <ul className="space-y-2.5 text-sm">
                 {col.links.map((l) => (
                   <li key={l.name}>
-                    <a href={l.href} className="hover:text-white transition-colors">
-                      {l.name}
-                    </a>
+                    {l.name === "Request a Quote" ? (
+                      <button
+                        type="button"
+                        onClick={() => openQuoteModal()}
+                        className="hover:text-white transition-colors cursor-pointer text-left"
+                      >
+                        {l.name}
+                      </button>
+                    ) : (
+                      <a href={l.href} className="hover:text-white transition-colors">
+                        {l.name}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -136,7 +147,9 @@ export default function Footer() {
             <span className="border border-white/15 rounded-full px-3 py-1">ISO 9001</span>
             <span className="border border-white/15 rounded-full px-3 py-1">WHO GMP</span>
           </div>
-          <div className="flex items-center gap-6">
+
+          <div className="flex flex-wrap items-center gap-5">
+            <LanguageTranslator variant="utility" direction="up" />
             <span>&copy; {new Date().getFullYear()} Mecca Healthcare Pvt. Ltd. All rights reserved.</span>
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms</a>

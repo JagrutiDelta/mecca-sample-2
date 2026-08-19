@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, CheckCircle } from "lucide-react";
+import { useQuoteModal } from "@/context/QuoteContext";
 
 export default function ProductsHero() {
+  const { openQuoteModal } = useQuoteModal();
   return (
     <section className="relative overflow-hidden bg-bg pt-36 pb-16 lg:pt-48 lg:pb-24 border-b border-border">
       {/* Background Grid Pattern */}
@@ -24,24 +26,20 @@ export default function ProductsHero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-2 mb-4 sm:mb-5"
+              className="inline-flex items-center gap-2 bg-[#F8EDEF] border border-[#F1D2D6] px-3.5 py-1.5 rounded-full text-burgundy text-xs font-semibold uppercase tracking-wider mb-5"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-burgundy animate-pulse" />
-              <span className="font-semibold text-burgundy tracking-[2px] text-[11px] uppercase">
-                Medical Device Portfolio
-              </span>
+              <ShieldCheck className="w-4 h-4 text-burgundy" />
+              <span>WHO-GMP &amp; ISO 13485 Certified Medical Line</span>
             </motion.div>
 
-            {/* Main Headline */}
+            {/* Title */}
             <motion.h1
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-heading font-black text-navy text-4xl sm:text-5xl lg:text-[58px] leading-[1.05] tracking-tight mb-4"
+              className="font-heading font-bold text-navy text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-5xl leading-tight mb-5"
             >
-              Precision <span className="text-burgundy">Medical Devices</span>
-              <br />
-              Built for <span className="text-medblue">Better Care</span>
+              Precision Medical Disposables &amp; Advanced Infusion Tech
             </motion.h1>
 
             {/* Description */}
@@ -70,13 +68,14 @@ export default function ProductsHero() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
 
-              <a
-                href="/#contact"
-                className="inline-flex items-center justify-center gap-2 bg-white text-navy border border-border font-semibold text-sm px-7 py-3.5 rounded-full shadow-[0_2px_8px_rgba(16,43,70,0.08)] hover:bg-slate-50 transition-all group"
+              <button
+                type="button"
+                onClick={() => openQuoteModal()}
+                className="inline-flex items-center justify-center gap-2 bg-white text-navy border border-border font-semibold text-sm px-7 py-3.5 rounded-full shadow-[0_2px_8px_rgba(16,43,70,0.08)] hover:bg-slate-50 transition-all group cursor-pointer"
               >
                 <span>Request a Quote</span>
                 <ArrowRight className="w-4 h-4 text-gray group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
             </motion.div>
           </div>
 

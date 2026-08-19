@@ -127,7 +127,7 @@ export default function CertificatesPage() {
       <Header />
 
       {/* 01 — Hero */}
-      <section className="pt-40 pb-20 bg-white relative overflow-hidden">
+      <section id="qms" className="pt-40 pb-20 bg-white relative overflow-hidden scroll-mt-24">
         <div className="absolute inset-0 bg-medical-grid bg-grid opacity-[0.03] pointer-events-none" />
 
         <div className="container-px relative text-center max-w-3xl mx-auto">
@@ -141,16 +141,16 @@ export default function CertificatesPage() {
             </span>
           </h1>
 
-          <p className="mt-6 text-gray leading-relaxed max-w-xl mx-auto">
-            Our quality management systems and regulatory certifications
-            reflect our ongoing commitment to safe, compliant and reliable
-            medical-device manufacturing.
+          <p className="mt-6 text-gray text-base md:text-lg leading-relaxed">
+            Our manufacturing processes, cleanroom environments, and medical
+            devices comply with international standards including ISO 13485:2016,
+            WHO–GMP, and CE certification.
           </p>
         </div>
       </section>
 
-      {/* 02 — Filter + Certificate Grid */}
-      <section className="section-py bg-bg">
+      {/* 02 — Certificate Grid */}
+      <section id="certificates" className="section-py bg-bg border-t border-border scroll-mt-24">
         <div className="container-px">
 
           {/* Filter Tabs */}

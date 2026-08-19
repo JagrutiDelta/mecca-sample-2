@@ -67,3 +67,37 @@ textarea:focus-visible {
     color: #8B1E2D;
   }
 }
+
+/* ── Google Translate Clean Overrides ── */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.skiptranslate {
+  display: none !important;
+}
+
+.skiptranslate.notranslate,
+#google_translate_element {
+  display: none !important;
+}

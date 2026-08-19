@@ -17,12 +17,14 @@ import {
 } from "lucide-react";
 import { ProductItem, CATEGORIES, getProductsByCategoryId } from "@/lib/products";
 import ProductDetailModal from "@/components/ProductDetailModal";
+import { useQuoteModal } from "@/context/QuoteContext";
 
 interface CategoryPageClientProps {
   category: { id: string; label: string };
 }
 
 export default function CategoryPageClient({ category }: CategoryPageClientProps) {
+  const { openQuoteModal } = useQuoteModal();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
 
@@ -197,8 +199,9 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
                 </Link>
 
                 <button
-                  onClick={() => setSelectedProduct(product)}
-                  className="py-2.5 px-4 rounded-full bg-burgundy text-white font-semibold text-xs hover:bg-burgundy-dark transition-colors shadow-sm flex items-center gap-1"
+                  type="button"
+                  onClick={() => openQuoteModal(product.name)}
+                  className="py-2.5 px-4 rounded-full bg-burgundy text-white font-semibold text-xs hover:bg-burgundy-dark transition-colors shadow-sm flex items-center gap-1 cursor-pointer"
                 >
                   <FileText className="w-3.5 h-3.5" />
                   <span>Quote</span>

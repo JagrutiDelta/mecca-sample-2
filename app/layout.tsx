@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+import { QuoteProvider } from "@/context/QuoteContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -41,7 +42,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
-      <body className="font-body antialiased">{children}</body>
+      <body className="font-body antialiased">
+        <QuoteProvider>{children}</QuoteProvider>
+      </body>
     </html>
   );
 }
+

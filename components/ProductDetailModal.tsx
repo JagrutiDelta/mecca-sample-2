@@ -1,9 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { X, CheckCircle2, ShieldCheck, Send, FileText } from "lucide-react";
-
+import {
+  X,
+  CheckCircle2,
+  ShieldCheck,
+  Send,
+  FileText,
+  Building2,
+  Clock,
+  Sparkles,
+  Download,
+  Share2,
+} from "lucide-react";
 import { ProductItem } from "@/lib/products";
+import { useQuoteModal } from "@/context/QuoteContext";
 
 interface ProductDetailModalProps {
   product: ProductItem | null;
@@ -14,8 +25,8 @@ export default function ProductDetailModal({
   product,
   onClose,
 }: ProductDetailModalProps) {
-  const [submitted, setSubmitted] = useState(false);
-  const [quantity, setQuantity] = useState("10000");
+  const { openQuoteModal } = useQuoteModal();
+  const [activeTab, setActiveTab] = useState<"specs" | "features">("specs");
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -33,150 +44,157 @@ export default function ProductDetailModal({
 
   if (!product) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      onClose();
-    }, 2500);
-  };
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy/60 backdrop-blur-sm animate-fade-in">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-navy/70 backdrop-blur-md animate-fade-in overflow-y-auto"
+      onClick={onClose}
+    >
       <div
-        className="bg-white rounded-2xl border border-border shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative animate-scale-up"
+        className="bg-white rounded-3xl border border-slate-200/90 shadow-[0_25px_80px_rgba(13,34,64,0.35)] max-w-3xl w-full max-h-[90vh] overflow-y-auto relative animate-scale-up my-auto overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Top Accent Gradient */}
+        <div className="h-2 bg-burgundy-gradient w-full" />
+
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-slate-100 text-gray hover:bg-burgundy hover:text-white transition-colors flex items-center justify-center"
+          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-burgundy/10 hover:text-burgundy transition-colors flex items-center justify-center cursor-pointer"
           aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
 
         <div className="p-6 sm:p-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Left Image & Specs */}
-            <div>
-              <div className="rounded-xl overflow-hidden bg-slate-50 border border-border aspect-[4/3] mb-4 flex items-center justify-center p-4">
+          <div className="grid md:grid-cols-12 gap-8 items-start">
+            {/* LEFT IMAGE & COMPLIANCE BADGES */}
+            <div className="md:col-span-5 flex flex-col">
+              <div className="rounded-2xl overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100/80 border border-slate-200 aspect-[4/3] mb-4 flex items-center justify-center p-6 relative">
                 <img
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-contain"
                 />
-              </div>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#F8EDEF] text-burgundy">
+                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200 text-[10px] font-bold text-burgundy shadow-xs">
                   {product.badge}
-                </span>
-                <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[#EEF4FA] text-navy flex items-center gap-1">
-                  <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                  ISO 13485 &amp; CE
-                </span>
+                </div>
               </div>
 
-              <h4 className="font-heading font-semibold text-navy text-xs uppercase tracking-wider mb-2">
-                Technical Specifications
-              </h4>
-              <div className="space-y-1.5 bg-bg p-3 rounded-lg border border-border text-xs">
-                {product.specs.map((spec) => (
-                  <div key={spec.label} className="flex justify-between py-1 border-b border-border/60 last:border-0">
-                    <span className="text-gray">{spec.label}:</span>
-                    <span className="font-semibold text-navy">{spec.value}</span>
-                  </div>
-                ))}
+              {/* Verified Trust Tags */}
+              <div className="bg-[#F8FAFC] rounded-2xl p-3.5 border border-slate-200/80 space-y-2 text-xs">
+                <div className="flex items-center gap-2 text-slate-700">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>ISO 13485 &amp; WHO-GMP Compliant</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <Building2 className="w-4 h-4 text-medblue shrink-0" />
+                  <span>Class 100,000 Cleanroom Manufactured</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-700">
+                  <Clock className="w-4 h-4 text-burgundy shrink-0" />
+                  <span>100% Inline Pressure &amp; Leak Tested</span>
+                </div>
               </div>
             </div>
 
-            {/* Right Details & Inquiry Form */}
-            <div className="flex flex-col justify-between">
+            {/* RIGHT DETAILS & SPECS */}
+            <div className="md:col-span-7 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-semibold text-burgundy uppercase tracking-widest">
-                  {product.category}
-                </span>
-                <h3 className="font-heading font-bold text-navy text-2xl mt-1 mb-2">
+                {/* Category Pill */}
+                <div className="inline-flex items-center gap-1 text-[11px] font-bold text-burgundy uppercase tracking-wider mb-1.5">
+                  <span>{product.category}</span>
+                </div>
+
+                {/* Product Name */}
+                <h3 className="font-heading font-black text-navy text-xl sm:text-2xl leading-snug mb-2">
                   {product.name}
                 </h3>
-                <p className="text-gray text-xs leading-relaxed mb-4">
+
+                {/* Description */}
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
                   {product.desc}
                 </p>
 
-                <h4 className="font-heading font-semibold text-navy text-xs uppercase tracking-wider mb-2">
-                  Key Features
-                </h4>
-                <ul className="space-y-1.5 text-xs text-navy mb-6">
-                  {product.features.map((feat) => (
-                    <li key={feat} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Tab Switcher: Specs vs Features */}
+                <div className="flex items-center gap-2 p-1 bg-slate-100 rounded-full border border-slate-200 mb-4 max-w-xs">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab("specs")}
+                    className={`flex-1 py-1.5 px-3 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                      activeTab === "specs"
+                        ? "bg-white text-burgundy shadow-xs"
+                        : "text-slate-600 hover:text-navy"
+                    }`}
+                  >
+                    Specifications
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab("features")}
+                    className={`flex-1 py-1.5 px-3 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                      activeTab === "features"
+                        ? "bg-white text-burgundy shadow-xs"
+                        : "text-slate-600 hover:text-navy"
+                    }`}
+                  >
+                    Clinical Features
+                  </button>
+                </div>
+
+                {/* Tab 1: Specs Table */}
+                {activeTab === "specs" && (
+                  <div className="space-y-1.5 bg-[#F8FAFC] p-3.5 rounded-2xl border border-slate-200/80 text-xs mb-6 max-h-48 overflow-y-auto">
+                    {product.specs.map((spec) => (
+                      <div
+                        key={spec.label}
+                        className="flex justify-between py-1.5 border-b border-slate-200/60 last:border-0"
+                      >
+                        <span className="text-slate-500 font-medium">{spec.label}:</span>
+                        <span className="font-bold text-navy text-right ml-2">
+                          {spec.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Tab 2: Features List */}
+                {activeTab === "features" && (
+                  <ul className="space-y-2 bg-[#F8FAFC] p-3.5 rounded-2xl border border-slate-200/80 text-xs text-navy mb-6 max-h-48 overflow-y-auto">
+                    {product.features.map((feat) => (
+                      <li key={feat} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <span className="leading-relaxed">{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
 
-              {/* Inquiry Form */}
-              <div className="bg-[#EEF4FA] p-4 rounded-xl border border-[#D5E3F5]">
-                {submitted ? (
-                  <div className="text-center py-4 text-emerald-600 font-semibold text-xs flex flex-col items-center gap-2">
-                    <CheckCircle2 className="w-8 h-8 text-emerald-600 animate-bounce" />
-                    <span>Inquiry Sent Successfully! Our team will contact you shortly.</span>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-3">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="font-heading font-bold text-navy text-xs flex items-center gap-1.5">
-                        <FileText className="w-4 h-4 text-burgundy" />
-                        Request Bulk Quote
-                      </span>
-                      <span className="text-[10px] text-gray">Fast Response &lt; 24h</span>
-                    </div>
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    openQuoteModal(product.name);
+                  }}
+                  className="w-full sm:flex-1 py-3 px-5 rounded-full bg-burgundy-gradient text-white text-xs font-bold shadow-card hover:shadow-soft transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>Request Unit Price &amp; RFQ</span>
+                </button>
 
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <input
-                        type="text"
-                        required
-                        placeholder="Your Name"
-                        className="w-full px-3 py-2 rounded-md bg-white border border-border text-navy placeholder:text-slate-400 focus:outline-none focus:border-burgundy"
-                      />
-                      <input
-                        type="email"
-                        required
-                        placeholder="Work Email"
-                        className="w-full px-3 py-2 rounded-md bg-white border border-border text-navy placeholder:text-slate-400 focus:outline-none focus:border-burgundy"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <input
-                        type="text"
-                        placeholder="Company / Hospital"
-                        className="w-full px-3 py-2 rounded-md bg-white border border-border text-navy placeholder:text-slate-400 focus:outline-none focus:border-burgundy"
-                      />
-                      <select
-                        value={quantity}
-                        onChange={(e) => setQuantity(e.target.value)}
-                        className="w-full px-3 py-2 rounded-md bg-white border border-border text-navy focus:outline-none focus:border-burgundy"
-                      >
-                        <option value="5000">5,000 units</option>
-                        <option value="10000">10,000 units</option>
-                        <option value="50000">50,000+ units</option>
-                        <option value="oem">Custom OEM order</option>
-                      </select>
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="w-full py-2.5 rounded-full bg-burgundy text-white font-semibold text-xs flex items-center justify-center gap-2 hover:bg-burgundy-dark transition-colors shadow-md"
-                    >
-                      <Send className="w-3.5 h-3.5" />
-                      Submit Quote Inquiry
-                    </button>
-                  </form>
-                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    openQuoteModal(`OEM Custom Specs - ${product.name}`);
+                  }}
+                  className="w-full sm:w-auto py-3 px-5 rounded-full bg-slate-100 hover:bg-slate-200 text-navy text-xs font-bold transition-colors cursor-pointer"
+                >
+                  Custom OEM Specs
+                </button>
               </div>
             </div>
           </div>
