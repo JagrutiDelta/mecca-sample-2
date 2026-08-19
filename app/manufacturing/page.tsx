@@ -50,7 +50,7 @@ const PROCESS_STEPS = [
       "Automated gravimetric batch dosing",
       "Strict raw material pyrogen & bioburden screening",
     ],
-    image: "/Cleanrrom.jpg",
+    image: "/Plastic.png",
   },
   {
     id: "extrusion",
@@ -65,7 +65,7 @@ const PROCESS_STEPS = [
       "Multi-lumen & co-extrusion capabilities",
       "Zero-surge melt pumps for uniform diameter",
     ],
-    image: "/Cleanrrom.jpg",
+    image: "/Medical_PVC.png  ",
   },
   {
     id: "moulding",
@@ -80,7 +80,7 @@ const PROCESS_STEPS = [
       "Multi-cavity high precision hot runner molds",
       "Zero flash & flash-free micro-molding",
     ],
-    image: "/Cleanrrom.jpg",
+    image: "/Pricision.png",
   },
   {
     id: "cleanroom",
@@ -95,7 +95,7 @@ const PROCESS_STEPS = [
       "Laminar flow workstation assembly points",
       "Continuous particle, temperature & humidity monitoring",
     ],
-    image: "/Cleanrrom.jpg",
+    image: "/Class.png",
   },
   {
     id: "sterilization",
@@ -110,7 +110,7 @@ const PROCESS_STEPS = [
       "Enclosed heated aeration cells for rapid degassing",
       "Zero residual gas tolerance compliant with ISO 11135",
     ],
-    image: "/Cleanrrom.jpg",
+    image: "/ETO.png",
   },
   {
     id: "packaging",
@@ -125,7 +125,7 @@ const PROCESS_STEPS = [
       "Complete lot traceability & serialization",
       "Final QC lot release with COA documentation",
     ],
-    image: "/Cleanrrom.jpg",
+    image: "/Packaging.png",
   },
 ];
 
@@ -610,7 +610,7 @@ export default function ManufacturingPage() {
             <div className="lg:col-span-6 relative">
               <div className="relative rounded-3xl overflow-hidden border border-slate-200 aspect-[4/3] shadow-xl">
                 <Image
-                  src="/Cleanrrom.jpg"
+                  src="/Environment.png"
                   alt="Class 10000 Medical Cleanroom Facility"
                   fill
                   className="object-cover"

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import SinceBadge from "./SinceBadge";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -101,7 +102,7 @@ export default function Hero() {
             className="absolute inset-0 rounded-xl2 overflow-hidden shadow-soft"
           >
             <img
-              src="https://images.unsplash.com/photo-1669216369564-bdac8b823cb8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D"
+              src="/Homepage_Hero.png"
               alt="Cleanroom medical device manufacturing floor"
               className="w-full h-full object-cover"
             />

@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Droplets, Syringe, Wind, Scissors, FlaskConical, Factory } from "lucide-react";
+import Image from "next/image";
 
 const CATEGORIES = [
   {
     name: "OEM Manufacturing",
     desc: "End-to-end contract manufacturing tailored to your brand specifications.",
     icon: Factory,
-    img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop",
+    img: "/oem/hero_engineers.png",
     span: "lg:col-span-2 lg:row-span-2",
     href: "/oem-services",
   },
@@ -16,7 +17,7 @@ const CATEGORIES = [
     name: "Infusion & Transfusion",
     desc: "IV sets, transfusion sets, and precision extension lines.",
     icon: Droplets,
-    img: "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?q=80&w=800&auto=format&fit=crop",
+    img: "/Infusion.png",
     span: "",
     href: "/products/infusion",
   },
@@ -24,7 +25,7 @@ const CATEGORIES = [
     name: "Catheters & Drainage",
     desc: "Foley, IV cannula, and specialized urinary catheters.",
     icon: Syringe,
-    img: "https://plus.unsplash.com/premium_photo-1702598680450-21409d22358f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    img: "/Catheters.png",
     span: "",
     href: "/products/catheters",
   },
@@ -32,7 +33,7 @@ const CATEGORIES = [
     name: "Airway & Respiratory",
     desc: "Endotracheal tubes, oxygen masks, and breathing circuits.",
     icon: Wind,
-    img: "https://images.unsplash.com/photo-1584362917165-526a968579e8?q=80&w=800&auto=format&fit=crop",
+    img: "/Airway.png",
     span: "",
     href: "/products/respiratory",
   },
@@ -40,7 +41,7 @@ const CATEGORIES = [
     name: "IV Cannulas",
     desc: "Precision FEP radiopaque winged catheters & injection ports.",
     icon: Scissors,
-    img: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=800&auto=format&fit=crop",
+    img: "/IV.png",
     span: "",
     href: "/products/cannulas",
   },
@@ -48,7 +49,7 @@ const CATEGORIES = [
     name: "Burette Sets",
     desc: "Pediatric 110ml & 150ml micro drip volume chamber sets.",
     icon: FlaskConical,
-    img: "https://images.unsplash.com/photo-1563213126-a4273aed2016?q=80&w=800&auto=format&fit=crop",
+    img: "/Burette_Sets.png",
     span: "",
     href: "/products/burette",
   },

@@ -24,7 +24,7 @@ export default function About() {
         >
           <div className="rounded-xl2 overflow-hidden shadow-soft">
             <img
-              src = "/images/About.png"
+              src = "/About_Section.png"
               alt="Mecca Healthcare manufacturing facility"
               className="w-full h-[420px] object-cover"
             />

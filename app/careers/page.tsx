@@ -1283,7 +1283,8 @@ export default function CareersPage() {
 {/* HERO / CAREER SECTION                                              */}
 {/* ================================================================== */}
 
-<section className="relative overflow-hidden bg-bg">
+<section id="contact-hero"
+        className="relative overflow-hidden md:pt-10 md:pb-28">
   {/* Background layers */}
 
   <div className="absolute inset-0 bg-bg" />
@@ -1956,7 +1957,7 @@ function JobCard({ job, index, onApply }: { job: Job; index: number; onApply: ()
         onClick={() => setOpen((o) => !o)}
         className="w-full flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-left px-6 py-6"
       >
-        <span className="hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-burgundy/10 text-burgundy">
+        <span className="hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-burgundy/10 text-burgundy">  
           <Briefcase className="h-5 w-5" />
         </span>
 

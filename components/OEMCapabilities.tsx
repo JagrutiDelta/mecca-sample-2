@@ -53,7 +53,7 @@ export default function OEMCapabilities() {
               Facilities &amp; Quality
             </div>
             <h2 className="font-heading font-bold text-navy text-3xl sm:text-4xl lg:text-[42px] leading-tight mb-4">
-              World-Class Cleanroom Infrastructure
+              World-Class Cleanroom Infrastructure  
             </h2>
             <p className="text-gray text-base leading-relaxed mb-8">
               Meca Care operates modern ISO 13485 cleanrooms equipped with high-speed automated extrusion lines, micro-injection molding machines, and in-house EO sterilization facilities.
