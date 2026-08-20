@@ -96,28 +96,34 @@ const COMPANY_LINKS = [
   {
     name: "Organization Profile",
     desc: "48+ years manufacturing legacy, 3 cleanroom plants & global footprint",
-    href: "/about-us#profile",
+    href: "/about-us/profile",
     icon: Building2,
     color: "#8B1E2D",
   },
   {
     name: "Management & Leadership",
     desc: "Executive leadership, promoters, board governance & engineering heads",
-    href: "/about-us#management",
+    href: "/about-us/management",
     icon: Users,
     color: "#0F2740",
+    subLinks: [
+      { name: "Management Profile", href: "/about-us/management" },
+      { name: "Management Responsibility", href: "/about-us/management/responsibility" },
+      { name: "Management Commitment", href: "/about-us/management/commitment" },
+      { name: "Management Organization Chart", href: "/about-us/management/organization-chart" },
+    ],
   },
   {
     name: "Vision & Mission Statement",
     desc: "Our core principles, clinical excellence & healthcare vision",
-    href: "/about-us#vision-mission",
+    href: "/about-us/vision-mission",
     icon: Compass,
     color: "#2563EB",
   },
   {
     name: "QMS & Quality Policy",
     desc: "ISO 13485 & WHO-GMP Quality Management System & testing protocols",
-    href: "/certifications#qms",
+    href: "/about-us/qms",
     icon: ShieldCheck,
     color: "#059669",
   },
@@ -131,7 +137,7 @@ const COMPANY_LINKS = [
   {
     name: "Manufacturing Facilities",
     desc: "Class 10,000 cleanroom units in Kalol, Chhatral & Jodhpur",
-    href: "/manufacturing",
+    href: "/about-us/facilities",
     icon: Sparkles,
     color: "#8B5CF6",
   },
@@ -363,12 +369,10 @@ export default function Header() {
                                 <div className="col-span-8 grid grid-cols-2 gap-x-6 gap-y-5">
                                   {COMPANY_LINKS.map((item) => {
                                     const Icon = item.icon;
-                                    return (
-                                      <Link
-                                        key={item.name}
-                                        href={item.href}
-                                        className="group flex items-start gap-3.5 p-3.5 rounded-2xl hover:bg-[#F8FAFC] transition-all duration-150 border border-transparent hover:border-slate-200/70"
-                                      >
+                                    const hasSubLinks = "subLinks" in item;
+
+                                    const linkContent = (
+                                      <>
                                         {/* Icon */}
                                         <div
                                           className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-200 group-hover:scale-105"
@@ -393,6 +397,40 @@ export default function Header() {
                                             {item.desc}
                                           </p>
                                         </div>
+                                      </>
+                                    );
+
+                                    if (hasSubLinks && "subLinks" in item && item.subLinks) {
+                                      return (
+                                        <div
+                                          key={item.name}
+                                          className="group flex flex-col p-3.5 rounded-2xl hover:bg-[#F8FAFC] transition-all duration-150 border border-transparent hover:border-slate-200/70"
+                                        >
+                                          <Link href={item.href} className="flex items-start gap-3.5">
+                                            {linkContent}
+                                          </Link>
+                                          <div className="mt-3 ml-[54px] flex flex-col gap-1.5 border-l-2 border-slate-100 pl-3">
+                                            {item.subLinks.map((sub) => (
+                                              <Link
+                                                key={sub.name}
+                                                href={sub.href}
+                                                className="text-[11px] text-slate-500 hover:text-burgundy font-medium transition-colors py-0.5"
+                                              >
+                                                {sub.name}
+                                              </Link>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      );
+                                    }
+
+                                    return (
+                                      <Link
+                                        key={item.name}
+                                        href={item.href}
+                                        className="group flex items-start gap-3.5 p-3.5 rounded-2xl hover:bg-[#F8FAFC] transition-all duration-150 border border-transparent hover:border-slate-200/70"
+                                      >
+                                        {linkContent}
                                       </Link>
                                     );
                                   })}
@@ -627,19 +665,36 @@ export default function Header() {
                             <div className="pl-3 pr-1 py-2 flex flex-col gap-1 bg-slate-50/70 rounded-xl mb-2">
                               {COMPANY_LINKS.map((item) => {
                                 const Icon = item.icon;
+                                const hasSubLinks = "subLinks" in item;
+
                                 return (
-                                  <Link
-                                    key={item.name}
-                                    href={item.href}
-                                    onClick={() => setMobileOpen(false)}
-                                    className="flex items-center gap-3 py-2 px-3 rounded-lg text-xs sm:text-sm text-ink hover:bg-white hover:text-burgundy transition-colors"
-                                  >
-                                    <Icon
-                                      className="w-4 h-4 shrink-0"
-                                      style={{ color: item.color }}
-                                    />
-                                    <span>{item.name}</span>
-                                  </Link>
+                                  <div key={item.name} className="flex flex-col">
+                                    <Link
+                                      href={item.href}
+                                      onClick={() => !hasSubLinks && setMobileOpen(false)}
+                                      className="flex items-center gap-3 py-2 px-3 rounded-lg text-xs sm:text-sm text-ink hover:bg-white hover:text-burgundy transition-colors"
+                                    >
+                                      <Icon
+                                        className="w-4 h-4 shrink-0"
+                                        style={{ color: item.color }}
+                                      />
+                                      <span>{item.name}</span>
+                                    </Link>
+                                    {hasSubLinks && "subLinks" in item && item.subLinks && (
+                                      <div className="ml-9 pl-3 flex flex-col gap-1 border-l border-slate-200 pb-2">
+                                        {item.subLinks.map((sub) => (
+                                          <Link
+                                            key={sub.name}
+                                            href={sub.href}
+                                            onClick={() => setMobileOpen(false)}
+                                            className="text-[11px] text-slate-500 hover:text-burgundy py-1.5 px-2 rounded-md hover:bg-white transition-colors"
+                                          >
+                                            {sub.name}
+                                          </Link>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
                                 );
                               })}
                             </div>
