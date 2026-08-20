@@ -40,7 +40,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Sterile non-vented intravenous infusion set designed for gravity feed infusion from collapsible fluid bags and non-rigid IV containers.",
-    image: "/Infusion&Perfusion/image14.jpg",
+    image: "/Infusion/image1.png",
     badge: "ISO 13485 Certified",
     features: [
       "Sharp non-vented piercing spike for collapsible IV containers",
@@ -64,7 +64,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Premium vented IV administration set with built-in air vent and hydrophobic antibacterial filter, engineered for glass bottles and rigid containers.",
-    image: "/Infusion&Perfusion/image13.jpg",
+    image: "/Infusion/image2.png",
     badge: "Medical Grade PVC",
     features: [
       "Vented spike with 1.2 micron hydrophobic bacterial air filter and snap cap",
@@ -88,7 +88,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Heavy-duty sterile blood administration set equipped with a 200 micron blood filter mesh to trap clots and cellular aggregates during transfusion.",
-    image: "/Infusion&Perfusion/image3.jpg",
+    image: "/Infusion/image3.png",
     badge: "200 Micron Mesh",
     features: [
       "Extra-large cylindrical drip chamber with integrated 200µm filter",
@@ -112,7 +112,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Precision pediatric micro infusion set with 60 drops/ml calibrated metal cannula dropper for delicate fluid management and critical medication dosing.",
-    image: "/Infusion&Perfusion/image4.jpg",
+    image: "/Infusion/image4.png",
     badge: "Micro Drip 60 Drops/ml",
     features: [
       "Calibrated stainless steel micro-dropper (60 drops = 1 ml ± 0.1ml)",
@@ -136,7 +136,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Measured volume burette set featuring a 100ml / 110ml / 150ml graduated cylinder chamber with automatic shut-off floating valve for controlled medication delivery.",
-    image: "/Infusion&Perfusion/image5.jpg",
+    image: "/Infusion/image5.png",
     badge: "Calibrated Burette",
     features: [
       "100ml / 110ml / 150ml clear calibrated chamber with bold graduation markings",
@@ -160,7 +160,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Butterfly scalp vein infusion needle with flexible textured wings for short-term venipuncture and peripheral vascular access.",
-    image: "/Infusion&Perfusion/image6.jpg",
+    image: "/Infusion/image6.png",
     badge: "Color Coded Wings",
     features: [
       "Color-coded butterfly wings conform to international gauge standards",
@@ -184,7 +184,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Clinical grade scalp vein set manufactured with medical-grade AISI 304 stainless steel needle and siliconized coating for painless pediatric and geriatric infusions.",
-    image: "/Infusion&Perfusion/image7.jpg",
+    image: "/Infusion/image7.png",
     badge: "AISI 304 Steel",
     features: [
       "Siliconized needle surface ensures smooth, drag-free vein penetration",
@@ -208,7 +208,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Premium high-flow scalp vein infusion set optimized for stable venous anchoring, blood sampling, and prolonged infusion sessions.",
-    image: "/Infusion&Perfusion/image8.jpg",
+    image: "/Infusion/image8.png",
     badge: "Japanese Bevel",
     features: [
       "Ergonomic wing curvature conforms naturally to patient skin contour",
@@ -231,7 +231,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "High-precision intravenous cannula with injection port and wings, manufactured with radiopaque FEP/PTFE catheter for atraumatic vein cannulation.",
-    image: "/Infusion&Perfusion/image9.jpg",
+    image: "/Infusion/image9.png",
     badge: "FEP Radiopaque",
     features: [
       "Siliconized stainless steel needle with ultra-sharp 3-facet back cut",
@@ -255,7 +255,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Sterile 3-piece disposable medical syringe with mounted ultra-fine hypodermic needle, high-transparency barrel, and smooth plunger gasket.",
-    image: "/Infusion&Perfusion/image12.jpg",
+    image: "/Infusion/image10.png",
     badge: "3-Piece Precision",
     features: [
       "Crystal-clear medical polypropylene barrel for unobstructed fluid inspection",
@@ -279,7 +279,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Specialized pediatric intravenous giving set engineered with micro-drip chamber, low prime volume, and integrated safety clamp.",
-    image: "/Infusion&Perfusion/image10.jpg",
+    image: "/Infusion/image11.png",
     badge: "Neonatal Safe",
     features: [
       "Engineered specifically for neonatal and pediatric clinical care",
@@ -303,7 +303,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Infusion / Perfusion Range",
     categoryId: "infusion",
     desc: "Clinical standard blood transfusion apparatus for gravity transfusion of whole blood, red cells, and fresh frozen plasma.",
-    image: "/Infusion&Perfusion/image11.jpg",
+    image: "/Infusion/image12.png",
     badge: "Transfusion Grade",
     features: [
       "Cylindrical drip chamber with large surface area 200 micron filter",
@@ -331,7 +331,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Anesthesia",
     categoryId: "anesthesia",
     desc: "Uncuffed endotracheal tube made of thermosensitive medical-grade PVC, featuring Murphy eye, radiopaque line, and accurate depth markings.",
-    image: "/Anesthesia/image1.jpg",
+    image: "/Anesthesia/image1.png",
     badge: "Thermosensitive PVC",
     features: [
       "Thermosensitive PVC softens at body temperature for patient comfort",
@@ -355,7 +355,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Anesthesia",
     categoryId: "anesthesia",
     desc: "Cuffed endotracheal tube with high-volume low-pressure (HVLP) cuff for secure tracheal sealing during mechanical ventilation and anesthesia.",
-    image: "/Anesthesia/image2.jpg",
+    image: "/Anesthesia/image2.png",
     badge: "HVLP Soft Cuff",
     features: [
       "Soft thin-walled cuff creates gentle uniform seal with minimal tracheal pressure",
@@ -379,7 +379,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Anesthesia",
     categoryId: "anesthesia",
     desc: "Ergonomic adult and pediatric oxygen delivery mask with adjustable nose clip, elastic headband, and 2-meter star-lumen crush-resistant tubing.",
-    image: "/Anesthesia/image3.jpg",
+    image: "/Anesthesia/image3.png",
     badge: "Crush-Resistant",
     features: [
       "Anatomically contoured shape for comfortable, leak-free facial fit",
@@ -403,7 +403,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Anesthesia",
     categoryId: "anesthesia",
     desc: "Complete aerosol therapy kit including high-efficiency 6ml / 8ml nebulizer medication chamber, aerosol mask, and connecting tube.",
-    image: "/Anesthesia/image4.jpg",
+    image: "/Anesthesia/image4.png",
     badge: "Aerosol Therapy",
     features: [
       "High-output nebulization produces optimal respirable aerosol particles (MMAD < 5µm)",
@@ -427,7 +427,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Anesthesia",
     categoryId: "anesthesia",
     desc: "Soft curved-prong nasal oxygen cannula designed for gentle low-to-medium flow oxygen delivery with over-the-ear comfort harness.",
-    image: "/Anesthesia/image5.jpg",
+    image: "/Anesthesia/image5.png",
     badge: "Ultra-Soft Prongs",
     features: [
       "Curved flexible nasal tips deliver smooth airflow directly into nostrils",
@@ -450,7 +450,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Anesthesia",
     categoryId: "anesthesia",
     desc: "Single-use nasal catheter with multiple lateral eye perforations for deep pharyngeal and direct nasal oxygen supplementation.",
-    image: "/Anesthesia/image6.jpg",
+    image: "/Anesthesia/image6.png",
     badge: "Multi-Hole Pharyngeal",
     features: [
       "Multiple micro-drilled lateral eyes distribute oxygen evenly without mucosal irritation",
@@ -473,7 +473,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Anesthesia",
     categoryId: "anesthesia",
     desc: "Color-coded Guedel oropharyngeal airway with rigid bite block to prevent airway occlusion and protect against patient bite during recovery.",
-    image: "/Anesthesia/image7.jpg",
+    image: "/Anesthesia/image7.png",
     badge: "ISO 5364 Standard",
     features: [
       "Color-coded bite blocks conform to international standard sizes",
@@ -496,7 +496,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Anesthesia",
     categoryId: "anesthesia",
     desc: "Sterile bronchial and tracheobronchial suction catheter with thumb control valve and lateral eyes for clearing airway secretions.",
-    image: "/Anesthesia/image8.jpg",
+    image: "/Anesthesia/image8.png",
     badge: "Vacuum Control Vent",
     features: [
       "Soft rounded tip with two offset lateral eyes maximizes suction efficiency",
@@ -519,7 +519,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Anesthesia",
     categoryId: "anesthesia",
     desc: "High-pressure 3-way stopcock with 360-degree rotating lever, two female luer locks, and one male luer slip/lock for multi-line IV infusion.",
-    image: "/Anesthesia/image9.jpg",
+    image: "/Anesthesia/image9.png",
     badge: "360° Flow Control",
     features: [
       "360-degree smooth handle rotation indicates active flow channels with clear arrows",
@@ -542,7 +542,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Anesthesia",
     categoryId: "anesthesia",
     desc: "Non-compliant rigid extension line designed for invasive arterial and central venous pressure monitoring without waveform distortion.",
-    image: "/Anesthesia/image10.jpg",
+    image: "/Anesthesia/image10.png",
     badge: "500 PSI Rated",
     features: [
       "Thick-walled rigid tubing transmits hydraulic pulse pressure waves accurately without damping",
@@ -570,7 +570,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "Closed urinary drainage system with universal hanger, reinforced eyelets, non-return flutter valve, and bottom push-pull outlet.",
-    image: "/Urology/image1.jpg",
+    image: "/Urology/image1.png",
     badge: "Anti-Reflux Valve",
     features: [
       "Sturdy double hanger and strap for secure bed rail mounting",
@@ -594,7 +594,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "Standard 2000ml urine collection bag with universal tapered connector, anti-reflux valve, and top hanging punch holes.",
-    image: "/Urology/image2.jpg",
+    image: "/Urology/image2.png",
     badge: "2000ml Graduated",
     features: [
       "Economical, reliable urine collection for short-term and post-operative catheterization",
@@ -617,7 +617,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "Sterile pediatric urine specimen bag with hypoallergenic medical adhesive foam for infant and toddler urine collection.",
-    image: "/Urology/image3.jpg",
+    image: "/Urology/image3.png",
     badge: "Hypoallergenic Foam",
     features: [
       "Skin-friendly adhesive foam pad conforms comfortably to infant perineal anatomy",
@@ -640,7 +640,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "Precision hourly urine volume meter with multi-chamber burette and 2000ml drainage bag for critical care and ICU output monitoring.",
-    image: "/Urology/image4.jpg",
+    image: "/Urology/image4.png",
     badge: "ICU Hourly Meter",
     features: [
       "Multi-chamber measured volume meter with 1ml increments up to 50ml and 5ml up to 400ml",
@@ -664,7 +664,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "100% natural latex penile sheath external catheter with adhesive foam strip for non-invasive male urinary incontinence management.",
-    image: "/Urology/image5.jpg",
+    image: "/Urology/image5.png ",
     badge: "Anti-Twist Funnel",
     features: [
       "Soft, elastic latex sheath rolls on smoothly without skin constriction",
@@ -687,7 +687,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "Single-use intermittent urinary catheter with soft rounded closed tip and two lateral eyelets for rapid bladder drainage.",
-    image: "/Urology/image6.jpg",
+    image: "/Urology/image6.png",
     badge: "Atraumatic Tip",
     features: [
       "Satin-smooth frosted PVC surface minimizes friction during urethral passage",
@@ -710,7 +710,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "Heavy-duty Transurethral Resection (TUR) irrigation set with dual/quad piercing spikes for continuous endoscopic bladder irrigation.",
-    image: "/Urology/image7.jpg",
+    image: "/Urology/image7.png",
     badge: "High-Flow Irrigation",
     features: [
       "Dual large-bore spikes enable seamless switching between irrigation fluid bags without flow interruption",
@@ -733,7 +733,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "Leak-proof sterile urine specimen container with leak-tight screw cap, frosted writing label, and graduated volume markings.",
-    image: "/Urology/image8.jpg",
+    image: "/Urology/image8.png",
     badge: "100% Leak-Proof",
     features: [
       "Precision-molded threaded screw cap provides 100% leak-proof airtight seal during transport",
@@ -756,7 +756,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "2-way and 3-way silicone-coated latex Foley balloon catheter with symmetrical inflation balloon and color-coded inflation valve.",
-    image: "/Urology/image9.jpg",
+    image: "/Urology/image9.png",
     badge: "Symmetrical Balloon",
     features: [
       "Symmetrical balloon expands evenly in all directions to prevent bladder neck trauma",
@@ -875,7 +875,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Gynecology",
     categoryId: "gynecology",
     desc: "Sterile single-use umbilical cord clamp with dual-grip interlocking teeth, security lock mechanism, and finger guard.",
-    image: "/products/hero_medical_products.png",
+    image: "/Gynecology/image1.png",
     badge: "Interlocking Teeth",
     features: [
       "Precision interlocking serrations apply uniform compression across the umbilical cord to prevent bleeding",
@@ -898,7 +898,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Gynecology",
     categoryId: "gynecology",
     desc: "Heavy-duty autoclavable umbilical cord clamp manufactured from medical-grade surgical polymer with secure spring-hinge retention.",
-    image: "/products/hero_medical_products.png",
+    image: "/Gynecology/image2.png",
     badge: "Autoclavable Polymer",
     features: [
       "Engineered for repeated autoclaving cycles without loss of clamping tension",
@@ -921,7 +921,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Gynecology",
     categoryId: "gynecology",
     desc: "Radiopaque polyurethane/PVC neonatal umbilical vessel catheter (UVC/UAC) for arterial and venous access in critically ill newborns.",
-    image: "/products/hero_medical_products.png",
+    image: "/Gynecology/image3.png",
     badge: "Neonatal ICU Access",
     features: [
       "Essential for neonatal ICU arterial blood pressure monitoring, blood sampling, and parenteral infusion",
@@ -948,7 +948,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Gastroenterology",
     categoryId: "gastroenterology",
     desc: "Nasogastric feeding and stomach aspiration tube with radio-opaque line, 4 lateral eyes, and lead/tungsten weighted tip.",
-    image: "/products/hero_medical_products.png",
+    image: "/Gastroenterology/image1.png",
     badge: "Weighted Distal Tip",
     features: [
       "Built-in metal weights facilitate smooth peristaltic passage into the stomach",
@@ -972,7 +972,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Gastroenterology",
     categoryId: "gastroenterology",
     desc: "Ultra-soft neonatal and pediatric enteral feeding tube with graduated depth markings, atraumatic tip, and luer mount cap.",
-    image: "/products/hero_medical_products.png",
+    image: "/Gastroenterology/image2.png",
     badge: "Ultra-Soft Neonatal",
     features: [
       "Specially formulated ultra-soft medical PVC prevents esophageal mucosal irritation in infants",
@@ -996,7 +996,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Gastroenterology",
     categoryId: "gastroenterology",
     desc: "Sterile infant mucus aspirator equipped with 25ml transparent specimen container, suction catheter, and bacterial barrier filter.",
-    image: "/products/hero_medical_products.png",
+    image: "/Gastroenterology/image3.png",
     badge: "Bacterial Barrier Filter",
     features: [
       "Designed for immediate aspiration of mucus and amniotic fluid from newborn airways",
@@ -1023,7 +1023,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Cardiology",
     categoryId: "cardiology",
     desc: "High-pressure braided / rigid angiography line capable of withstanding up to 1200 psi for contrast media injection in cardiac catheterization labs.",
-    image: "/products/iv_infusion_set.png",
+    image: "/Cardiology/image1.png",
     badge: "1200 PSI Rated",
     features: [
       "Heavy-duty pressure rating (1200 psi) handles power injector pulsatile pressures safely",
@@ -1046,7 +1046,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Cardiology",
     categoryId: "cardiology",
     desc: "Comprehensive cardiovascular surgical disposable kit including thoracic drainage catheters, vascular loops, and cardiopulmonary bypass accessories.",
-    image: "/products/hero_medical_products.png",
+    image: "/Cardiology/image2.png",
     badge: "Open-Heart Kit",
     features: [
       "Premium clinical grade components packaged for open-heart and vascular procedures",
@@ -1073,7 +1073,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "General Surgical Disposables",
     categoryId: "surgical",
     desc: "Ergonomic rigid transparent Yankauer suction handle complete with 2.5m / 3m ribbed suction connecting tube for intraoperative fluid evacuation.",
-    image: "/products/hero_medical_products.png",
+    image: "/Surgical/image1.png",
     badge: "Crown Tip Handle",
     features: [
       "Shatterproof transparent handle provides clear visualization of evacuated fluids",
@@ -1096,7 +1096,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "General Surgical Disposables",
     categoryId: "surgical",
     desc: "Flexible corrugated surgical drainage sheet for capillary wound exudate evacuation and post-operative hematoma prevention.",
-    image: "/products/hero_medical_products.png",
+    image: "/Surgical/image2.png",
     badge: "Capillary Drainage",
     features: [
       "Corrugated ribs create continuous capillary pathways for reliable passive fluid drainage",
@@ -1118,7 +1118,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "General Surgical Disposables",
     categoryId: "surgical",
     desc: "High-vacuum closed wound drainage unit with 400ml spring bellows / bellows bottle, trocar needle, and perforated silicone/PVC drain.",
-    image: "/products/hero_medical_products.png",
+    image: "/Surgical/image3.png",
     badge: "Constant Negative Pressure",
     features: [
       "Negative pressure bellows maintains constant gentle suction to promote rapid wound healing",
@@ -1141,7 +1141,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "General Surgical Disposables",
     categoryId: "surgical",
     desc: "Compact 30ml / 50ml low-vacuum wound drainage system with mini bellows and fine needle for plastic, dental, and minor surgical procedures.",
-    image: "/products/hero_medical_products.png",
+    image: "/Surgical/image4.png",
     badge: "Ambulatory Mini Bellows",
     features: [
       "Compact lightweight design attaches comfortably to patient clothing for ambulatory recovery",
@@ -1164,7 +1164,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "General Surgical Disposables",
     categoryId: "surgical",
     desc: "Surgical disposable PPE kit including SMS sterile surgical gowns, surgeon caps, fluid-repellent face masks, and shoe covers.",
-    image: "/products/hero_medical_products.png",
+    image: "/Surgical/image5.png",
     badge: "AAMI Level 3 Barrier",
     features: [
       "High-barrier SSMMS non-woven fabric provides superior liquid repellency and microbial resistance",
@@ -1187,7 +1187,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "General Surgical Disposables",
     categoryId: "surgical",
     desc: "Sterile closed abdominal paracentesis and drainage kit featuring soft radio-opaque catheter, collection bag, and scalpel/trocar.",
-    image: "/products/hero_medical_products.png",
+    image: "/Surgical/image6.png",
     badge: "Ascites Drainage",
     features: [
       "Engineered for rapid relief of ascites and post-operative abdominal fluid collection",
@@ -1214,7 +1214,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Mecca Labs",
     categoryId: "mecca-labs",
     desc: "Certified pharmaceutical formulations, sterile injectable solutions, intravenous infusions, and finished dosage forms manufactured under WHO-GMP compliance.",
-    image: "/products/hero_medical_products.png",
+    image: "/MeccaLabs/hero_medical_products.png",
     badge: "WHO-GMP Formulations",
     features: [
       "Comprehensive WHO-GMP certified pharmaceutical formulation portfolio",
