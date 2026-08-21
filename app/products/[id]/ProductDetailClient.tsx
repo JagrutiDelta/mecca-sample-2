@@ -56,9 +56,18 @@ export default function ProductDetailClient({
           </li>
           <ChevronRight className="w-3.5 h-3.5 text-gray/50" />
           <li>
-            <span className="text-gray/80 truncate max-w-[150px] sm:max-w-none">
-              {product.category}
-            </span>
+            {product.categoryId === "mecca-labs" ? (
+              <Link
+                href="/products/mecca-labs"
+                className="text-gray/80 truncate max-w-[150px] sm:max-w-none hover:text-burgundy transition-colors"
+              >
+                {product.category}
+              </Link>
+            ) : (
+              <span className="text-gray/80 truncate max-w-[150px] sm:max-w-none">
+                {product.category}
+              </span>
+            )}
           </li>
           <ChevronRight className="w-3.5 h-3.5 text-gray/50" />
           <li>
@@ -79,11 +88,19 @@ export default function ProductDetailClient({
             transition={{ duration: 0.5 }}
             className="relative rounded-2xl overflow-hidden bg-white border border-border shadow-card aspect-[4/3] p-8 flex items-center justify-center group"
           >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-            />
+            {product.categoryId === "mecca-labs" && product.pdf ? (
+              <iframe
+                src={`${product.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
+                title={`${product.name} PDF preview`}
+                className="h-full w-full rounded-lg border-0 bg-white"
+              />
+            ) : (
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+              />
+            )}
             {/* Top Badge */}
             <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-border text-xs font-semibold text-burgundy shadow-sm">
               {product.badge}
@@ -95,6 +112,20 @@ export default function ProductDetailClient({
               <span>ISO 13485 &amp; CE Certified</span>
             </div>
           </motion.div>
+
+          {product.categoryId === "mecca-labs" && product.pdf && (
+            <div className="flex justify-end border-b border-border/60 pb-4">
+              <a
+                href={product.pdf}
+                download
+                className="inline-flex items-center gap-2 rounded-full bg-burgundy px-4 py-2 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-burgundy-dark"
+                aria-label={`Download PDF for ${product.name}`}
+              >
+                <Download className="w-3.5 h-3.5" />
+                Download PDF
+              </a>
+            </div>
+          )}
 
           {/* Compliance & Manufacturing Specs Badges */}
           <div className="grid grid-cols-3 gap-4">

@@ -8,6 +8,7 @@ export interface ProductItem {
   badge: string;
   features: string[];
   specs: { label: string; value: string }[];
+  pdf?: string;
 }
 
 export interface CategoryItem {
@@ -780,7 +781,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "Premium reinforced clinical urine collection bag with enhanced welding seams, dog-bone sample port, and push-pull bottom valve.",
-    image: "/Urology/image.jpg",
+    image: "/Urology/image10.png",
     badge: "Double-Sealed Seams",
     features: [
       "Double-sealed heavy duty seams prevent leakage under high fluid volume",
@@ -803,7 +804,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "General clinical urine collection bag designed for bedside drainage, post-operative monitoring, and home healthcare.",
-    image: "/products/hero_medical_products.png",
+    image: "/Urology/image11.png",
     badge: "Clinical Standard",
     features: [
       "Integrated one-way non-return valve protects against urinary tract infections",
@@ -826,7 +827,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "Urological high-pressure monitoring line for urodynamic testing, intravesical pressure recording, and cystometry.",
-    image: "/products/iv_infusion_set.png",
+    image: "/Urology/image12.png",
     badge: "Urodynamic Testing",
     features: [
       "Non-distensible rigid wall provides faithful transmission of intravesical and urethral pressures",
@@ -849,7 +850,7 @@ export const PRODUCTS: ProductItem[] = [
     category: "Urology",
     categoryId: "urology",
     desc: "Flexible medical-grade PVC/rubber corrugated wound drainage sheet for passive capillary drainage in pelvic and urological surgeries.",
-    image: "/products/hero_medical_products.png",
+    image: "/Urology/image13.png",
     badge: "Radiopaque Drainage",
     features: [
       "Parallel corrugated channels promote rapid capillary drainage of surgical exudates and blood",
@@ -1214,7 +1215,8 @@ export const PRODUCTS: ProductItem[] = [
     category: "Mecca Labs",
     categoryId: "mecca-labs",
     desc: "Certified pharmaceutical formulations, sterile injectable solutions, intravenous infusions, and finished dosage forms manufactured under WHO-GMP compliance.",
-    image: "/MeccaLabs/hero_medical_products.png",
+    image: "/MeccaLabs/Pharmaceutical-product-list.png",
+    pdf: "/MeccaLabs/Pharmaceutical-product-list.pdf",
     badge: "WHO-GMP Formulations",
     features: [
       "Comprehensive WHO-GMP certified pharmaceutical formulation portfolio",
@@ -1237,7 +1239,8 @@ export const PRODUCTS: ProductItem[] = [
     category: "Mecca Labs",
     categoryId: "mecca-labs",
     desc: "Premium domestic nutritional supplements, dietary formulations, vitamin blends, and wellness solutions registered with FSSAI.",
-    image: "/products/hero_medical_products.png",
+    image: "/MeccaLabs/Nutraceutical-product-list-domestic.png",
+    pdf: "/MeccaLabs/Nutraceutical-product-list-domestic.pdf",
     badge: "FSSAI & ISO 22000",
     features: [
       "Scientifically validated domestic nutritional supplements targeting immunity, joint health, and vitality",
@@ -1260,7 +1263,8 @@ export const PRODUCTS: ProductItem[] = [
     category: "Mecca Labs",
     categoryId: "mecca-labs",
     desc: "High-potency global export grade nutraceutical formulations adhering to international dietary supplement standards and regulatory documentation.",
-    image: "/products/hero_medical_products.png",
+    image: "/MeccaLabs/Nutraceuticals-product-list-export.png",
+    pdf: "/MeccaLabs/Nutraceuticals-product-list-export.pdf",
     badge: "Export cGMP Compliant",
     features: [
       "Formulated specifically for international regulatory compliance and climatic stability",
@@ -1283,7 +1287,8 @@ export const PRODUCTS: ProductItem[] = [
     category: "Mecca Labs",
     categoryId: "mecca-labs",
     desc: "High-grade dairy derivatives, specialized milk protein concentrates, whey isolates, and nutritional dairy ingredients for clinical and dietary food industries.",
-    image: "/products/hero_medical_products.png",
+    image: "/MeccaLabs/Milk-product-list.png",
+    pdf: "/MeccaLabs/Milk-product-list.pdf",
     badge: "HACCP & Clinical Grade",
     features: [
       "Superior microbiological purity suitable for clinical nutrition and enteral feed formulations",
@@ -1306,7 +1311,8 @@ export const PRODUCTS: ProductItem[] = [
     category: "Mecca Labs",
     categoryId: "mecca-labs",
     desc: "Dermatologically formulated cosmeceutical skincare and therapeutic personal care products manufactured in certified cleanroom cosmetic facilities.",
-    image: "/products/hero_medical_products.png",
+    image: "/MeccaLabs/Cosmeceutical-product-list.png",
+    pdf: "/MeccaLabs/Cosmeceutical-product-list.pdf",
     badge: "ISO 22716 Cosmetic GMP",
     features: [
       "Advanced clinical formulations combining active dermatological ingredients with natural botanicals",

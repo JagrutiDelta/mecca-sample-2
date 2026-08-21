@@ -25,6 +25,7 @@ import {
   SlidersHorizontal,
   ChevronRight,
   Download,
+  Eye,
   Building2,
   Check,
   Plus,
@@ -458,6 +459,24 @@ export default function ProductsGrid() {
                           <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-200/80 text-[10px] font-bold text-burgundy shadow-xs">
                             {product.badge}
                           </div>
+
+                          {product.categoryId === "mecca-labs" && product.pdf && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-navy/0 transition-colors duration-300 group-hover:bg-navy/40">
+                              <button
+                                type="button"
+                                onClick={(event) => {
+                                  event.preventDefault();
+                                  event.stopPropagation();
+                                  window.open(product.pdf, "_blank", "noopener,noreferrer");
+                                }}
+                                className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-navy opacity-0 shadow-md transition-all duration-300 hover:bg-slate-50 group-hover:translate-y-0 group-hover:opacity-100"
+                                aria-label={`View PDF for ${product.name}`}
+                              >
+                                <Eye className="h-3.5 w-3.5" />
+                                View PDF
+                              </button>
+                            </div>
+                          )}
                         </div>
 
                         {/* Category Label */}
@@ -486,6 +505,23 @@ export default function ProductsGrid() {
                             </div>
                           ))}
                         </div>
+
+                        {product.categoryId === "mecca-labs" && product.pdf && (
+                          <div className="mb-4 flex items-center justify-end border-t border-slate-100 pt-3">
+                            <a
+                              href={product.pdf}
+                              download
+                              onClick={(event) => {
+                                event.stopPropagation();
+                              }}
+                              className="inline-flex items-center gap-1 text-xs font-semibold text-navy transition-colors hover:text-burgundy"
+                              aria-label={`Download PDF for ${product.name}`}
+                            >
+                              <Download className="h-3.5 w-3.5" />
+                              PDF
+                            </a>
+                          </div>
+                        )}
                       </div>
 
                       {/* Card Bottom CTA Actions */}

@@ -14,6 +14,8 @@ import {
   Building2,
   Award,
   Sparkles,
+  Eye,
+  Download,
 } from "lucide-react";
 import { ProductItem, CATEGORIES, getProductsByCategoryId } from "@/lib/products";
 import ProductDetailModal from "@/components/ProductDetailModal";
@@ -147,19 +149,44 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
             >
               <div>
                 {/* Product Image Container */}
-                <Link
-                  href={`/products/${product.id}`}
-                  className="relative block rounded-xl overflow-hidden bg-slate-50 border border-border/60 aspect-[4/3] mb-5 p-4"
-                >
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                  />
+                <div className="relative rounded-xl overflow-hidden bg-slate-50 border border-border/60 aspect-[4/3] mb-5 p-4">
+                  {product.categoryId === "mecca-labs" && product.pdf ? (
+                    <iframe
+                      src={`${product.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
+                      title={`${product.name} PDF preview`}
+                      className="h-full w-full rounded-lg border-0 bg-white"
+                    />
+                  ) : (
+                    <Link href={`/products/${product.id}`} className="block h-full w-full">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </Link>
+                  )}
                   <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-border text-[10px] font-semibold text-burgundy shadow-sm">
                     {product.badge}
                   </div>
-                </Link>
+
+                  {product.categoryId === "mecca-labs" && product.pdf && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-navy/0 transition-colors duration-300 group-hover:bg-navy/40">
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          window.open(product.pdf, "_blank", "noopener,noreferrer");
+                        }}
+                        className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-navy opacity-0 shadow-md transition-all duration-300 hover:bg-slate-50 group-hover:translate-y-0 group-hover:opacity-100"
+                        aria-label={`View PDF for ${product.name}`}
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        View PDF
+                      </button>
+                    </div>
+                  )}
+                </div>
 
                 {/* Category Pill */}
                 <div className="text-[11px] font-semibold text-burgundy uppercase tracking-wider mb-1">
@@ -206,6 +233,7 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
                   <FileText className="w-3.5 h-3.5" />
                   <span>Quote</span>
                 </button>
+
               </div>
             </motion.div>
           ))}
