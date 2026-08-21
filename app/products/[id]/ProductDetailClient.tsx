@@ -12,6 +12,7 @@ import {
   ArrowRight,
   Sparkles,
   Download,
+  Eye,
   Building2,
   Award,
   Globe2,
@@ -353,14 +354,39 @@ export default function ProductDetailClient({
               >
                 <div>
                   <div className="relative rounded-xl overflow-hidden bg-slate-50 border border-border/60 aspect-[4/3] mb-5 p-4 flex items-center justify-center">
-                    <img
-                      src={rel.image}
-                      alt={rel.name}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                    />
+                    {rel.categoryId === "mecca-labs" && rel.pdf ? (
+                      <iframe
+                        src={`${rel.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
+                        title={`${rel.name} PDF preview`}
+                        className="h-full w-full rounded-lg border-0 bg-white"
+                      />
+                    ) : (
+                      <img
+                        src={rel.image}
+                        alt={rel.name}
+                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                      />
+                    )}
                     <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-border text-[10px] font-semibold text-burgundy shadow-sm">
                       {rel.badge}
                     </div>
+                    {rel.categoryId === "mecca-labs" && rel.pdf && (
+                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-navy/0 transition-colors duration-300 group-hover:bg-navy/40">
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            window.open(rel.pdf, "_blank", "noopener,noreferrer");
+                          }}
+                          className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-navy opacity-0 shadow-md transition-all duration-300 hover:bg-slate-50 group-hover:translate-y-0 group-hover:opacity-100"
+                          aria-label={`View PDF for ${rel.name}`}
+                        >
+                          <Eye className="h-3.5 w-3.5" />
+                          View PDF
+                        </button>
+                      </div>
+                    )}
                   </div>
 
                   <div className="text-[11px] font-semibold text-burgundy uppercase tracking-wider mb-1">

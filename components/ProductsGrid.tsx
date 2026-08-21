@@ -470,7 +470,7 @@ export default function ProductsGrid() {
                           </div>
 
                           {product.categoryId === "mecca-labs" && product.pdf && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-navy/0 transition-colors duration-300 group-hover:bg-navy/40">
+                            <div className="absolute inset-0 z-10 flex items-center justify-center bg-navy/0 transition-colors duration-300 group-hover:bg-navy/40">
                               <button
                                 type="button"
                                 onClick={(event) => {
