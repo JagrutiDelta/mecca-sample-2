@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -450,11 +451,19 @@ export default function ProductsGrid() {
                       <div>
                         {/* Device Image Box with Zoom Effect */}
                         <div className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100/70 border border-slate-200/70 aspect-[4/3] mb-4 p-4 flex items-center justify-center">
-                          <img
-                            src={product.image}
-                            alt={product.name}
-                            className="w-full h-full object-contain group-hover:scale-108 transition-transform duration-500"
-                          />
+                          {product.categoryId === "mecca-labs" && product.pdf ? (
+                            <iframe
+                              src={`${product.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
+                              title={`${product.name} PDF preview`}
+                              className="h-full w-full rounded-lg border-0 bg-white"
+                            />
+                          ) : (
+                            <img
+                              src={product.image}
+                              alt={product.name}
+                              className="w-full h-full object-contain group-hover:scale-108 transition-transform duration-500"
+                            />
+                          )}
                           {/* Clinical Badge */}
                           <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-200/80 text-[10px] font-bold text-burgundy shadow-xs">
                             {product.badge}
@@ -485,9 +494,17 @@ export default function ProductsGrid() {
                         </div>
 
                         {/* Title */}
-                        <h3 className="font-heading font-bold text-navy text-base leading-snug mb-2 group-hover:text-burgundy transition-colors line-clamp-2">
-                          {product.name}
-                        </h3>
+                        {product.id === "pharmaceutical-product-list" ? (
+                          <Link href="/products/mecca-labs/pharmaceutical-product-list">
+                            <h3 className="font-heading font-bold text-navy text-base leading-snug mb-2 group-hover:text-burgundy transition-colors line-clamp-2">
+                              {product.name}
+                            </h3>
+                          </Link>
+                        ) : (
+                          <h3 className="font-heading font-bold text-navy text-base leading-snug mb-2 group-hover:text-burgundy transition-colors line-clamp-2">
+                            {product.name}
+                          </h3>
+                        )}
 
                         {/* Description */}
                         <p className="text-slate-500 text-xs line-clamp-2 leading-relaxed mb-4">
@@ -506,22 +523,6 @@ export default function ProductsGrid() {
                           ))}
                         </div>
 
-                        {product.categoryId === "mecca-labs" && product.pdf && (
-                          <div className="mb-4 flex items-center justify-end border-t border-slate-100 pt-3">
-                            <a
-                              href={product.pdf}
-                              download
-                              onClick={(event) => {
-                                event.stopPropagation();
-                              }}
-                              className="inline-flex items-center gap-1 text-xs font-semibold text-navy transition-colors hover:text-burgundy"
-                              aria-label={`Download PDF for ${product.name}`}
-                            >
-                              <Download className="h-3.5 w-3.5" />
-                              PDF
-                            </a>
-                          </div>
-                        )}
                       </div>
 
                       {/* Card Bottom CTA Actions */}

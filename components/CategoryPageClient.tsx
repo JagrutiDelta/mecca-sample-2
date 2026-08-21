@@ -194,7 +194,13 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
                 </div>
 
                 {/* Title */}
-                <Link href={`/products/${product.id}`}>
+                <Link
+                  href={
+                    product.id === "pharmaceutical-product-list"
+                      ? "/products/mecca-labs/pharmaceutical-product-list"
+                      : `/products/${product.id}`
+                  }
+                >
                   <h3 className="font-heading font-bold text-navy text-lg leading-snug mb-2 group-hover:text-burgundy transition-colors">
                     {product.name}
                   </h3>
