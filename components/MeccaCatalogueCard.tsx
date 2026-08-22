@@ -16,6 +16,10 @@ export default function MeccaCatalogueCard({
   const detailsHref =
     product.id === "pharmaceutical-product-list"
       ? "/products/mecca-labs/pharmaceutical-product-list"
+      : product.id === "nutraceuticals-product-list-export"
+        ? "/products/mecca-labs/nutraceuticals-product-list-export"
+        : product.id === "nutraceutical-product-list-domestic"
+          ? "/products/mecca-labs/nutraceutical-product-list-domestic"
       : `/products/${product.id}`;
 
   const openPdf = () => {

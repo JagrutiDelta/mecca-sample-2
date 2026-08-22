@@ -18,6 +18,8 @@ import {
   Globe2,
 } from "lucide-react";
 import { ProductItem } from "@/lib/products";
+import MeccaCatalogueCard from "@/components/MeccaCatalogueCard";
+import { useQuoteModal } from "@/context/QuoteContext";
 
 interface ProductDetailClientProps {
   product: ProductItem;
@@ -30,6 +32,7 @@ export default function ProductDetailClient({
 }: ProductDetailClientProps) {
   const [submitted, setSubmitted] = useState(false);
   const [quantity, setQuantity] = useState("10000");
+  const { openQuoteModal } = useQuoteModal();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -82,12 +85,18 @@ export default function ProductDetailClient({
       {/* Main Product Hero Grid */}
       <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
         {/* LEFT COLUMN: Product Image Gallery & Certifications */}
-        <div className="lg:col-span-6 space-y-6">
+        <div
+          className={`lg:col-span-6 space-y-6 ${
+            product.categoryId === "mecca-labs" ? "order-1 lg:order-2" : ""
+          }`}
+        >
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="relative rounded-2xl overflow-hidden bg-white border border-border shadow-card aspect-[4/3] p-8 flex items-center justify-center group"
+            className={`relative rounded-2xl overflow-hidden bg-white border border-border shadow-card p-8 flex items-center justify-center group ${
+              product.categoryId === "mecca-labs" ? "aspect-[4/5]" : "aspect-[4/3]"
+            }`}
           >
             {product.categoryId === "mecca-labs" && product.pdf ? (
               <iframe
@@ -149,7 +158,11 @@ export default function ProductDetailClient({
         </div>
 
         {/* RIGHT COLUMN: Product Details & Specs */}
-        <div className="lg:col-span-6 flex flex-col justify-between">
+        <div
+          className={`lg:col-span-6 flex flex-col justify-between ${
+            product.categoryId === "mecca-labs" ? "order-2 lg:order-1" : ""
+          }`}
+        >
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -345,8 +358,21 @@ export default function ProductDetailClient({
             </Link>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div
+            className={
+              relatedProducts[0]?.categoryId === "mecca-labs"
+                ? "grid gap-6 lg:gap-8"
+                : "grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+            }
+          >
             {relatedProducts.map((rel) => (
+              rel.categoryId === "mecca-labs" ? (
+                <MeccaCatalogueCard
+                  key={rel.id}
+                  product={rel}
+                  onQuote={() => openQuoteModal(rel.name)}
+                />
+              ) : (
               <Link
                 key={rel.id}
                 href={`/products/${rel.id}`}
@@ -405,6 +431,7 @@ export default function ProductDetailClient({
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </Link>
+              )
             ))}
           </div>
         </div>
