@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { ProductItem, CATEGORIES, getProductsByCategoryId } from "@/lib/products";
 import ProductDetailModal from "@/components/ProductDetailModal";
+import MeccaCatalogueCard from "@/components/MeccaCatalogueCard";
 import { useQuoteModal } from "@/context/QuoteContext";
 
 interface CategoryPageClientProps {
@@ -145,8 +146,19 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.3 }}
-              className="bg-white rounded-2xl border border-border p-6 shadow-card hover:shadow-soft hover:-translate-y-1 transition-all flex flex-col justify-between group"
+              className={`flex flex-col justify-between transition-all ${
+                product.categoryId === "mecca-labs"
+                  ? "sm:col-span-2 lg:col-span-3"
+                  : "bg-white rounded-2xl border border-border p-6 shadow-card hover:shadow-soft hover:-translate-y-1 group"
+              }`}
             >
+              {product.categoryId === "mecca-labs" ? (
+                <MeccaCatalogueCard
+                  product={product}
+                  onQuote={() => openQuoteModal(product.name)}
+                />
+              ) : (
+              <>
               <div>
                 {/* Product Image Container */}
                 <div className="relative rounded-xl overflow-hidden bg-slate-50 border border-border/60 aspect-[4/3] mb-5 p-4">
@@ -241,6 +253,8 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
                 </button>
 
               </div>
+              </>
+              )}
             </motion.div>
           ))}
         </AnimatePresence>

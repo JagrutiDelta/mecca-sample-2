@@ -32,6 +32,7 @@ import {
   Plus,
 } from "lucide-react";
 import ProductDetailModal from "./ProductDetailModal";
+import MeccaCatalogueCard from "./MeccaCatalogueCard";
 import { CATEGORIES, PRODUCTS, ProductItem } from "@/lib/products";
 import { useQuoteModal } from "@/context/QuoteContext";
 
@@ -445,8 +446,23 @@ export default function ProductsGrid() {
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.96 }}
                       transition={{ duration: 0.22 }}
-                      className="bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 shadow-[0_8px_30px_rgba(13,34,64,0.05)] hover:shadow-[0_20px_50px_rgba(13,34,64,0.12)] hover:-translate-y-1 transition-all flex flex-col justify-between group relative overflow-hidden"
+                      className={`relative flex flex-col justify-between overflow-hidden transition-all ${
+                        product.categoryId === "mecca-labs"
+                          ? "sm:col-span-2 xl:col-span-3"
+                          : "bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 shadow-[0_8px_30px_rgba(13,34,64,0.05)] hover:shadow-[0_20px_50px_rgba(13,34,64,0.12)] hover:-translate-y-1"
+                      }`}
                     >
+                      {product.categoryId === "mecca-labs" && (
+                        <MeccaCatalogueCard
+                          product={product}
+                          onQuote={() => {
+                            addToQuote(product.name);
+                            openQuoteModal(product.name);
+                          }}
+                        />
+                      )}
+                      {product.categoryId !== "mecca-labs" && (
+                      <>
                       {/* Card Content */}
                       <div>
                         {/* Device Image Box with Zoom Effect */}
@@ -577,6 +593,8 @@ export default function ProductsGrid() {
                           <span>Quote</span>
                         </button>
                       </div>
+                      </>
+                      )}
                     </motion.div>
                   ))}
                 </AnimatePresence>
