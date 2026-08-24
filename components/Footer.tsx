@@ -4,6 +4,7 @@ import { Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
 import { useQuoteModal } from "@/context/QuoteContext";
 import LanguageTranslator from "@/components/LanguageTranslator";
 
+
 const COLUMNS = [
   {
     title: "Products",
@@ -11,6 +12,9 @@ const COLUMNS = [
       { name: "Infusion / Perfusion", href: "/products/infusion" },
       { name: "Anesthesia", href: "/products/anesthesia" },
       { name: "Urology", href: "/products/urology" },
+      { name: "Gynocology", href: "/products/gynocology" },
+      { name: "Gastroenterology", href: "/products/gastroenterology" },
+      { name: "Cardiology", href: "/products/cardiology" },
       { name: "General Surgical", href: "/products/surgical" },
       { name: "Mecca Labs", href: "/products/mecca-labs" },
     ],
@@ -28,19 +32,18 @@ const COLUMNS = [
     title: "Company",
     links: [
       { name: "About Us", href: "/about-us" },
-      { name: "Certifications", href: "/certifications" },
       { name: "Manufacturing", href: "/manufacturing" },
-      { name: "Careers", href: "/#contact" },
-      { name: "News", href: "/#news" },
+      { name: "Careers", href: "/careers" },
+      { name: "Contact", href: "/contact" },
     ],
   },
   {
-    title: "Support",
+    title: "Resources",
     links: [
-      { name: "Contact Us", href: "/#contact" },
+      { name: "Product Catalogue", href: "/#contact" },
       { name: "Request a Quote", href: "#quote" },
-      { name: "Distributor Enquiry", href: "/#contact" },
-      { name: "Downloads", href: "/#downloads" },
+      { name: "Certifications", href: "/certifications" },
+      { name: "Downloads", href: "/downloads#resources" },
     ],
   },
 ];

@@ -1,16 +1,14 @@
 "use client";
 
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
-import { motion, AnimatePresence , useReducedMotion  } from "framer-motion";
+import { useEffect, useState, type ReactNode } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Award,
   BadgeCheck,
   Building2,
   CheckCircle2,
-  ChevronDown,
-  Clock,
   Factory,
   FileSearch,
   Globe2,
@@ -22,13 +20,13 @@ import {
   MessageCircle,
   Phone,
   PhoneCall,
-  Search,
   Share2,
   ShieldCheck,
   MessagesSquare,
   Handshake,
   PartyPopper,
   Briefcase,
+  Upload,
   X,
 } from "lucide-react";
 import Header from "@/components/Header";
@@ -38,170 +36,19 @@ import Footer from "@/components/Footer";
 /* ---------------------------------- Data ---------------------------------- */
 
 
-type Department =
-  | "Production & Manufacturing"
-  | "Quality & Regulatory Affairs"
-  | "R&D / Product Development"
-  | "Sales, OEM & Exports"
-  | "Mecca Labs (Pharma)"
-  | "Corporate & Support";
-
-
-type LocationName =
-  | "Kalol, Gujarat"
-  | "Chattral, Gujarat"
-  | "Boranada, Rajasthan"
-  | "Corporate Office";
-
-
-interface Job {
-  id: string;
-  title: string;
-  department: Department;
-  location: LocationName;
-  type: "Full-time" | "Contract";
-  experience: string;
-  blurb: string;
-}
-
-
-const DEPARTMENTS: Department[] = [
-  "Production & Manufacturing",
-  "Quality & Regulatory Affairs",
-  "R&D / Product Development",
-  "Sales, OEM & Exports",
-  "Mecca Labs (Pharma)",
-  "Corporate & Support",
+const RESUME_DEPARTMENTS = [
+  "Production",
+  "Quality Assurance",
+  "Quality Control",
+  "Research & Development",
+  "Sales & Marketing",
+  "Accounts",
+  "HR & Administration",
+  "Regulatory Affairs",
+  "General Application",
 ];
 
-
-const LOCATION_FILTERS: LocationName[] = [
-  "Kalol, Gujarat",
-  "Chattral, Gujarat",
-  "Boranada, Rajasthan",
-  "Corporate Office",
-];
-
-
-const JOBS: Job[] = [
-  {
-    id: "prod-supervisor-kalol",
-    title: "Production Supervisor – Extrusion",
-    department: "Production & Manufacturing",
-    location: "Kalol, Gujarat",
-    type: "Full-time",
-    experience: "4–6 years",
-    blurb:
-      "Oversee PVC tube extrusion lines, shift output targets and machine changeovers on our flagship infusion-set line.",
-  },
-  {
-    id: "molding-tech-chattral",
-    title: "Injection Molding Technician",
-    department: "Production & Manufacturing",
-    location: "Chattral, Gujarat",
-    type: "Full-time",
-    experience: "2–4 years",
-    blurb:
-      "Set up and run injection molding machines for connectors, drip chambers and cannula components to tight tolerances.",
-  },
-  {
-    id: "cleanroom-operator-boranada",
-    title: "Cleanroom Assembly Operator",
-    department: "Production & Manufacturing",
-    location: "Boranada, Rajasthan",
-    type: "Full-time",
-    experience: "0–2 years",
-    blurb:
-      "Assemble sterile disposables inside our Class 10,000 cleanroom, following strict gowning and hygiene protocol.",
-  },
-  {
-    id: "qa-executive-kalol",
-    title: "QA Executive – ISO 13485",
-    department: "Quality & Regulatory Affairs",
-    location: "Kalol, Gujarat",
-    type: "Full-time",
-    experience: "3–5 years",
-    blurb:
-      "Own in-process and final inspection records, CAPA tracking and internal audits against ISO 13485:2016.",
-  },
-  {
-    id: "eto-officer-chattral",
-    title: "ETO Sterilization Officer",
-    department: "Quality & Regulatory Affairs",
-    location: "Chattral, Gujarat",
-    type: "Full-time",
-    experience: "3–6 years",
-    blurb: "Run and validate the in-house ETO gas sterilization cycle and maintain biological indicator records.",
-  },
-  {
-    id: "regulatory-affairs-corp",
-    title: "Regulatory Affairs Officer",
-    department: "Quality & Regulatory Affairs",
-    location: "Corporate Office",
-    type: "Full-time",
-    experience: "4–7 years",
-    blurb:
-      "Manage CE, WHO-GMP and state drug licensing renewals, and prepare technical files for new product registrations.",
-  },
-  {
-    id: "rd-engineer-kalol",
-    title: "R&D Engineer – Infusion Devices",
-    department: "R&D / Product Development",
-    location: "Kalol, Gujarat",
-    type: "Full-time",
-    experience: "3–5 years",
-    blurb:
-      "Develop and trial new variants across the Meca Care infusion range, from DFMEA through pilot-batch validation.",
-  },
-  {
-    id: "oem-bd-manager-corp",
-    title: "OEM Business Development Manager",
-    department: "Sales, OEM & Exports",
-    location: "Corporate Office",
-    type: "Full-time",
-    experience: "5–8 years",
-    blurb:
-      "Build relationships with global medical device brands seeking loan-license contract manufacturing partners.",
-  },
-  {
-    id: "export-sales-corp",
-    title: "Export Sales Executive",
-    department: "Sales, OEM & Exports",
-    location: "Corporate Office",
-    type: "Full-time",
-    experience: "2–4 years",
-    blurb:
-      "Manage distributor accounts across CIS, the Middle East, South East Asia and Africa, from RFQ to shipment.",
-  },
-  {
-    id: "pharma-chemist-kalol",
-    title: "Production Chemist – Mecca Labs",
-    department: "Mecca Labs (Pharma)",
-    location: "Kalol, Gujarat",
-    type: "Full-time",
-    experience: "2–5 years",
-    blurb: "Run batch manufacturing for tablets and dry syrups in line with WHO-GMP documentation standards.",
-  },
-  {
-    id: "qc-analyst-kalol",
-    title: "QC Analyst – Pharmaceuticals",
-    department: "Mecca Labs (Pharma)",
-    location: "Kalol, Gujarat",
-    type: "Full-time",
-    experience: "1–3 years",
-    blurb: "Test raw materials and finished pharma products against pharmacopoeial specifications ahead of batch release.",
-  },
-  {
-    id: "hr-executive-corp",
-    title: "HR Executive",
-    department: "Corporate & Support",
-    location: "Corporate Office",
-    type: "Full-time",
-    experience: "2–4 years",
-    blurb: "Handle plant-floor recruitment, onboarding and employee welfare programmes across our three units.",
-  },
-];
-
+const RESUME_EXPERIENCE = ["Fresher", "1–2 Years", "3–5 Years", "5–8 Years", "8+ Years"];
 
 const WHY_MECCA = [
   {
@@ -326,24 +173,7 @@ export default function CareersPage() {
   const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [prefillRole, setPrefillRole] = useState<string>("");
-
-
-  const [activeDept, setActiveDept] = useState<Department | "All">("All");
-  const [activeLocation, setActiveLocation] = useState<LocationName | "All">("All");
-  const [query, setQuery] = useState("");
-
-
-  const filteredJobs = useMemo(() => {
-    return JOBS.filter((job) => {
-      const matchesDept = activeDept === "All" || job.department === activeDept;
-      const matchesLocation = activeLocation === "All" || job.location === activeLocation;
-      const matchesQuery =
-        query.trim() === "" ||
-        job.title.toLowerCase().includes(query.trim().toLowerCase()) ||
-        job.department.toLowerCase().includes(query.trim().toLowerCase());
-      return matchesDept && matchesLocation && matchesQuery;
-    });
-  }, [activeDept, activeLocation, query]);
+  const [isResumeSubmitted, setIsResumeSubmitted] = useState(false);
 
 
   const openApplyModal = (roleTitle?: string) => {
@@ -625,62 +455,110 @@ export default function CareersPage() {
       </section>
 
 
-      {/* 04 — Open Positions */}
-      <section id="open-roles" className="section-py bg-white scroll-mt-24">
+      {/* 04 — Submit Your Resume */}
+      <section id="openings" className="section-py bg-white scroll-mt-24">
         <div className="container-px">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
-            <div className="max-w-2xl">
-              <Eyebrow>Open Positions</Eyebrow>
-              <h2 className="font-heading font-bold text-navy text-3xl md:text-4xl">
-                {filteredJobs.length} role{filteredJobs.length === 1 ? "" : "s"} open across our plants
-              </h2>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 max-w-3xl"
+          >
+            <Eyebrow>Careers</Eyebrow>
+            <h2 className="font-heading text-3xl font-bold text-navy md:text-4xl">Submit Your Resume</h2>
+            <p className="mt-4 leading-relaxed text-gray">
+              We&apos;re always looking for talented professionals across Production, Quality, R&amp;D, Sales,
+              Marketing, Accounts, HR and Administration. Share your resume and our HR team will contact you
+              when a suitable opportunity becomes available.
+            </p>
+          </motion.div>
 
-
-            <div className="relative w-full lg:w-80">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray" />
-              <input
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search roles..."
-                className="w-full rounded-full border border-border bg-bg pl-11 pr-4 py-3 text-sm text-navy outline-none focus:border-burgundy/50 focus:ring-2 focus:ring-burgundy/10"
-              />
-            </div>
-          </div>
-
-
-          {/* Filters */}
-          <div className="flex flex-col gap-4">
-            <FilterRow
-              label="Department"
-              options={["All", ...DEPARTMENTS]}
-              active={activeDept}
-              onChange={(v) => setActiveDept(v as Department | "All")}
-            />
-            <FilterRow
-              label="Location"
-              options={["All", ...LOCATION_FILTERS]}
-              active={activeLocation}
-              onChange={(v) => setActiveLocation(v as LocationName | "All")}
-            />
-          </div>
-
-
-          {/* Job list */}
-          <div className="mt-10 grid gap-4">
-            {filteredJobs.length === 0 && (
-              <div className="rounded-xl2 border border-dashed border-border bg-bg py-16 text-center">
-                <p className="text-gray">
-                  No roles match those filters right now — try clearing a filter, or send us your resume below.
-                </p>
+          {isResumeSubmitted ? (
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="rounded-xl2 border border-border bg-white px-6 py-16 text-center shadow-sm"
+            >
+              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-burgundy/10">
+                <Handshake className="h-6 w-6 text-burgundy" />
               </div>
-            )}
+              <h3 className="font-heading text-2xl font-bold text-navy">Resume Submitted Successfully</h3>
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-gray">
+                Thank you for your interest in Mecca Healthcare. Our HR team will review your profile and contact
+                you if your skills match an upcoming opportunity.
+              </p>
+              <button
+                type="button"
+                onClick={() => setIsResumeSubmitted(false)}
+                className="mt-7 inline-flex items-center justify-center rounded-full bg-burgundy-gradient px-6 py-2.5 text-sm font-semibold text-white shadow-card transition-all hover:-translate-y-0.5 hover:shadow-soft"
+              >
+                Close
+              </button>
+            </motion.div>
+          ) : (
+            <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="rounded-xl2 border border-border bg-white p-6 shadow-sm sm:p-8"
+              >
+                <h3 className="font-heading text-xl font-bold text-navy">Build Your Future With Us</h3>
+                <div className="mt-8 space-y-6">
+                  {[
+                    { icon: Briefcase, text: "Multiple Departments Hiring" },
+                    { icon: MapPin, text: "Kalol • Chhatral • Boranada" },
+                    { icon: Mail, text: "hr@mhplindia.in", href: "mailto:hr@mhplindia.in" },
+                    { icon: Phone, text: "+91 98250 XXXXX" },
+                  ].map((item) => (
+                    <div key={item.text} className="flex items-center gap-4 text-sm text-gray">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-burgundy/10 text-burgundy">
+                        <item.icon className="h-4 w-4" />
+                      </div>
+                      {item.href ? <a className="hover:text-burgundy" href={item.href}>{item.text}</a> : <span>{item.text}</span>}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-10 rounded-lg bg-burgundy/5 p-4 text-sm text-navy">
+                  <p className="font-semibold">Accepted Resume Formats</p>
+                  <p className="mt-1 text-gray">PDF • DOC • DOCX (Max 5 MB)</p>
+                </div>
+              </motion.div>
 
-
-            {filteredJobs.map((job, i) => (
-              <JobCard key={job.id} job={job} index={i} onApply={() => openApplyModal(job.title)} />
-            ))}
-          </div>
+              <motion.form
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.08 }}
+                onSubmit={(e) => { e.preventDefault(); setIsResumeSubmitted(true); }}
+                className="rounded-xl2 border border-border bg-white p-6 shadow-sm sm:p-8"
+              >
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <ResumeInput label="Full Name" required placeholder="Your name" />
+                  <ResumeInput label="Email Address" required type="email" placeholder="you@example.com" />
+                  <ResumeInput label="Mobile Number" required type="tel" placeholder="+91" />
+                  <ResumeSelect label="Department Applying For" required options={RESUME_DEPARTMENTS} />
+                  <ResumeSelect label="Experience" required options={RESUME_EXPERIENCE} />
+                  <ResumeInput label="Current Location" placeholder="City, State" />
+                </div>
+                <label className="mt-4 block text-xs font-semibold text-navy">Upload Resume <span className="text-burgundy">*</span></label>
+                <label className="mt-1.5 flex cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-burgundy/30 bg-bg px-4 py-7 text-center transition-colors hover:border-burgundy hover:bg-burgundy/5">
+                  <Upload className="h-6 w-6 text-burgundy" />
+                  <span className="mt-2 text-sm font-semibold text-navy">Drag &amp; Drop Resume</span>
+                  <span className="mt-1 text-xs text-gray">or Browse Files</span>
+                  <span className="mt-2 text-[11px] text-gray">PDF, DOC, DOCX • Max 5 MB</span>
+                  <input required type="file" accept=".pdf,.doc,.docx" className="sr-only" />
+                </label>
+                <label className="mt-4 block text-xs font-semibold text-navy">Cover Message</label>
+                <textarea rows={4} placeholder="Tell us a little about yourself" className="mt-1.5 w-full resize-none rounded-lg border border-border bg-white px-3.5 py-2.5 text-sm text-navy placeholder:text-gray/60 focus:border-burgundy focus:outline-none focus:ring-2 focus:ring-burgundy/10" />
+                <button type="submit" className="mt-5 inline-flex w-full items-center justify-center rounded-xl bg-burgundy-gradient px-6 py-3 text-sm font-semibold text-white shadow-card transition-all hover:-translate-y-0.5 hover:shadow-soft">
+                  Submit Resume
+                </button>
+              </motion.form>
+            </div>
+          )}
         </div>
       </section>
 
@@ -931,9 +809,9 @@ export default function CareersPage() {
                             className="w-full rounded-lg border border-border bg-white px-3.5 py-2.5 text-sm text-navy focus:border-burgundy focus:outline-none focus:ring-2 focus:ring-burgundy/10"
                           >
                             <option value="">General Application</option>
-                            {JOBS.map((job) => (
-                              <option key={job.id} value={job.title}>
-                                {job.title} — {job.location}
+                            {RESUME_DEPARTMENTS.map((department) => (
+                              <option key={department} value={department}>
+                                {department}
                               </option>
                             ))}
                           </select>
@@ -991,111 +869,34 @@ export default function CareersPage() {
   );
 }
 
-
-/* ------------------------------- Job Card ------------------------------- */
-
-
-function FilterRow({
+function ResumeInput({
   label,
-  options,
-  active,
-  onChange,
+  required = false,
+  type = "text",
+  placeholder,
 }: {
   label: string;
-  options: string[];
-  active: string;
-  onChange: (v: string) => void;
+  required?: boolean;
+  type?: string;
+  placeholder?: string;
 }) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-      <span className="text-xs font-bold tracking-[0.1em] text-gray w-24 shrink-0">
-        {label.toUpperCase()}
-      </span>
-      <div className="flex flex-wrap gap-2">
-        {options.map((option) => {
-          const isActive = option === active;
-          return (
-            <button
-              key={option}
-              type="button"
-              onClick={() => onChange(option)}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-colors border ${
-                isActive
-                  ? "bg-burgundy-gradient border-transparent text-white"
-                  : "bg-white border-border text-navy/70 hover:border-burgundy/40"
-              }`}
-            >
-              {option}
-            </button>
-          );
-        })}
-      </div>
-    </div>
+    <label className="block text-xs font-semibold text-navy">
+      {label} {required && <span className="text-burgundy">*</span>}
+      <input required={required} type={type} placeholder={placeholder} className="mt-1.5 w-full rounded-lg border border-border bg-white px-3.5 py-2.5 text-sm font-normal text-navy placeholder:text-gray/60 focus:border-burgundy focus:outline-none focus:ring-2 focus:ring-burgundy/10" />
+    </label>
   );
 }
 
-
-function JobCard({ job, index, onApply }: { job: Job; index: number; onApply: () => void }) {
-  const [open, setOpen] = useState(false);
-
-
+function ResumeSelect({ label, required = false, options }: { label: string; required?: boolean; options: string[] }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: Math.min(index, 6) * 0.05 }}
-      className="rounded-xl2 border border-border bg-white shadow-sm overflow-hidden"
-    >
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        className="w-full flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-left px-6 py-6"
-      >
-        <span className="hidden sm:flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-burgundy/10 text-burgundy">  
-          <Briefcase className="h-5 w-5" />
-        </span>
-
-
-        <div className="flex-1 min-w-0">
-          <p className="font-heading font-semibold text-navy text-lg">{job.title}</p>
-          <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray">
-            <span className="inline-flex items-center gap-1.5">
-              <MapPin className="h-3.5 w-3.5" /> {job.location}
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Clock className="h-3.5 w-3.5" /> {job.type}
-            </span>
-            <span>{job.experience}</span>
-          </div>
-        </div>
-
-
-        <span className="hidden sm:inline-block rounded-full bg-bg text-navy/60 text-xs font-semibold px-3 py-1.5">
-          {job.department}
-        </span>
-
-
-        <ChevronDown
-          className={`h-5 w-5 text-gray shrink-0 transition-transform ${open ? "rotate-180" : ""}`}
-        />
-      </button>
-
-
-      {open && (
-        <div className="px-6 pb-6 sm:pl-[92px]">
-          <p className="text-sm leading-relaxed text-gray max-w-2xl">{job.blurb}</p>
-          <button
-            type="button"
-            onClick={onApply}
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-burgundy-gradient text-white text-sm font-semibold px-6 py-3 shadow-card hover:shadow-soft hover:-translate-y-0.5 transition-all"
-          >
-            Apply for this role
-            <ArrowRight className="h-4 w-4" />
-          </button>
-        </div>
-      )}
-    </motion.div>
+    <label className="block text-xs font-semibold text-navy">
+      {label} {required && <span className="text-burgundy">*</span>}
+      <select required={required} defaultValue="" className="mt-1.5 w-full rounded-lg border border-border bg-white px-3.5 py-2.5 text-sm font-normal text-navy focus:border-burgundy focus:outline-none focus:ring-2 focus:ring-burgundy/10">
+        <option value="" disabled>Select an option</option>
+        {options.map((option) => <option key={option} value={option}>{option}</option>)}
+      </select>
+    </label>
   );
 }
 
