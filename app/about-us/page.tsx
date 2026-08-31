@@ -7,6 +7,7 @@ import { useQuoteModal } from "@/context/QuoteContext";
 import {
   Lightbulb,
   Award,
+  ArrowRight,
   Scale,
   Handshake,
   HeartPulse,
@@ -379,54 +380,224 @@ export default function AboutPage() {
       <Header />
 
       {/* 01 — Hero */}
-<section className="pt-40 pb-24 bg-white">
-  <div className="container-px grid lg:grid-cols-2 gap-14 items-center">
+<section
+  id="about-hero"
+  className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28"
+>
+  {/* Background */}
+  <div className="absolute inset-0 bg-white" />
 
+  <div className="absolute inset-0 bg-medical-grid bg-grid opacity-40 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,black,transparent)]" />
+
+  <div className="absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-medblue/10 blur-3xl" />
+
+  <div className="absolute -left-32 top-1/3 h-[400px] w-[400px] rounded-full bg-burgundy/10 blur-3xl" />
+
+  <div className="container-px relative grid items-center gap-16 lg:grid-cols-2">
+
+    {/* LEFT — About Content */}
     <div>
-      <Eyebrow>About Mecca Healthcare</Eyebrow>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="eyebrow mb-6 inline-flex items-center gap-2 rounded-full border border-[#ff91a0]/15 bg-[#9e3744]/10 px-5 py-2 text-sm font-semibold text-[#8B1E2D] backdrop-blur-md"
+      >
+        <ShieldCheck className="h-4 w-4" />
+        About Mecca Healthcare
+      </motion.div>
 
-      <h1 className="font-heading font-extrabold text-navy text-5xl md:text-6xl lg:text-[50px] leading-[0.95] tracking-[-0.03em]">
-        Decades of Experience. 
+      <motion.h1
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className="font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-navy sm:text-5xl md:text-6xl"
+      >
+        Decades of Experience.
         <br />
-        <span className="text-burgundy">
-          Built Around Care,
-          <br />
-          <span className="text-medblue"> Quality &amp; Trust.</span>
-        
-        </span>
-      </h1>
 
-      <p className="mt-7 text-gray leading-relaxed max-w-lg">
+        <span className="relative inline-block text-burgundy">
+          Built Around Care,
+
+          {/* Animated underline */}
+          <svg
+            className="absolute -bottom-1 left-0 w-full"
+            height="10"
+            viewBox="0 0 300 10"
+            preserveAspectRatio="none"
+          >
+            <motion.path
+              d="M2 6 Q 75 -2 150 6 T 298 6"
+              stroke="#C8D8F5"
+              strokeWidth="6"
+              fill="none"
+              strokeLinecap="round"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{
+                duration: 1,
+                delay: 0.8,
+              }}
+            />
+          </svg>
+        </span>
+
+        <br />
+
+        <span className="text-medblue">
+          Quality &amp; Trust.
+        </span>
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          delay: 0.3,
+        }}
+        className="mt-6 max-w-xl text-base leading-relaxed text-gray md:text-lg"
+      >
         Mecca Healthcare is an Indian medical-device manufacturer delivering
         reliable healthcare solutions through advanced manufacturing, OEM
         partnerships and a commitment to quality and patient safety.
-      </p>
+      </motion.p>
 
-      <div className="mt-8 flex flex-wrap items-center gap-4">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          delay: 0.4,
+        }}
+        className="mt-10 flex flex-wrap items-center gap-4"
+      >
         <a
           href="#manufacturing-excellence"
-          className="inline-flex items-center rounded-full bg-burgundy-gradient text-white text-sm font-semibold px-6 py-3 shadow-card hover:shadow-soft hover:-translate-y-0.5 transition-all"
+          className="group inline-flex items-center gap-2 rounded-full bg-burgundy-gradient px-8 py-4 text-sm font-semibold text-white shadow-soft transition-transform hover:-translate-y-0.5"
         >
-          Explore Our Capabilities →
+          Explore Our Capabilities
+
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </a>
 
         <a
           href="/#contact"
-          className="text-sm font-semibold text-navy hover:text-burgundy transition-colors"
+          className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white/70 px-8 py-4 text-sm font-semibold text-navy backdrop-blur transition-colors hover:bg-white"
         >
           Talk to Our Team
         </a>
-      </div>
+      </motion.div>
     </div>
 
-   <div className="relative h-full min-h-[420px] overflow-hidden rounded-xl2">
-  <img
-    src="/Cleanrrom.jpg"
-    alt="Mecca Healthcare manufacturing facility"
-    className="h-full w-full object-cover"
-  />
-</div>
+    {/* RIGHT — Manufacturing Image */}
+    <div className="relative h-[420px] sm:h-[520px] lg:h-[600px]">
 
+      {/* Main Image */}
+      <motion.div
+        initial={{
+          opacity: 0,
+          scale: 0.94,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+        }}
+        transition={{
+          duration: 0.8,
+          delay: 0.2,
+        }}
+        className="absolute inset-0 overflow-hidden rounded-xl2 shadow-soft"
+      >
+        <img
+          src="/Cleanrrom.jpg"
+          alt="Mecca Healthcare manufacturing facility"
+          className="h-full w-full object-cover"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />
+      </motion.div>
+
+      {/* Floating Card 1 */}
+      <motion.div
+        animate={{ y: [0, -14, 0] }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute -left-4 top-8 rounded-2xl border border-white/60 bg-white/85 px-5 py-4 shadow-soft backdrop-blur-xl md:-left-10"
+      >
+        <div className="font-heading text-2xl font-extrabold text-navy">
+          Legacy
+        </div>
+
+        <div className="text-xs text-gray">
+          Built on Experience & Care
+        </div>
+      </motion.div>
+
+      {/* Floating Card 2 */}
+      <motion.div
+        animate={{ y: [0, 14, 0] }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.5,
+        }}
+        className="absolute -right-2 top-1/3 rounded-2xl border border-white/60 bg-white/85 px-5 py-4 shadow-soft backdrop-blur-xl md:-right-8"
+      >
+        <div className="font-heading text-2xl font-extrabold text-navy">
+          3 
+        </div>
+
+        <div className="text-xs text-gray">
+          Advanced Manufacturing
+        </div>
+      </motion.div>
+
+      {/* Floating Card 3 */}
+      <motion.div
+        animate={{ y: [0, -10, 0] }}
+        transition={{
+          duration: 6.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1,
+        }}
+        className="absolute bottom-10 left-2 rounded-2xl border border-white/60 bg-white/85 px-5 py-4 shadow-soft backdrop-blur-xl md:-left-6"
+      >
+        <div className="font-heading text-2xl font-extrabold text-burgundy">
+          Quality
+        </div>
+
+        <div className="text-xs text-gray">
+          In Every Step We Take
+        </div>
+      </motion.div>
+
+      {/* Floating Card 4 */}
+      <motion.div
+        animate={{ y: [0, 12, 0] }}
+        transition={{
+          duration: 7.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1.5,
+        }}
+        className="absolute bottom-0 right-4 rounded-2xl border border-white/60 bg-white/85 px-5 py-4 shadow-soft backdrop-blur-xl md:right-0"
+      >
+        <div className="font-heading text-2xl font-extrabold text-medblue">
+          Trusted
+        </div>
+
+        <div className="text-xs text-gray">
+          Built for Better Healthcare
+        </div>
+      </motion.div>
+
+    </div>
   </div>
 </section>
 

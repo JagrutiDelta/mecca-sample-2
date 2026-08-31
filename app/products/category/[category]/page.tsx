@@ -38,7 +38,7 @@ export default async function CategorySubpage({ params }: PageProps) {
   return (
     <main className="min-h-screen flex flex-col bg-bg font-body text-navy selection:bg-burgundy selection:text-white">
       <UtilityBar />
-      <Header />
+      <Header />  
 
       <div className="pt-32 pb-20 lg:pt-40 lg:pb-28">
         <CategoryPageClient category={category} />
