@@ -154,8 +154,8 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-5">
             <LanguageTranslator variant="utility" direction="up" />
             <span>&copy; {new Date().getFullYear()} Mecca Healthcare Pvt. Ltd. All rights reserved.</span>
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
+            <a href="/privacy_policy" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="/terms" className="hover:text-white transition-colors">Terms</a>
           </div>
         </div>
       </div>
