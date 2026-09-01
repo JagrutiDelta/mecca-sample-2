@@ -146,7 +146,7 @@ export default function Footer() {
                   className="rounded-full bg-burgundy-gradient px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
                 >
                   Subscribe
-                </button>
+                </button> 
               </form>
             </div>
           </div>

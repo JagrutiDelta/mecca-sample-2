@@ -1,105 +1,7 @@
-// "use client";
-
-// import { motion } from "framer-motion";
-
-// const PROCESS = [
-//   "Plastic Compounding",
-//   "Extrusion",
-//   "Injection Moulding",
-//   "Cleanroom Assembly",
-//   "ETO Sterilization",
-//   "Packaging",
-// ];
-
-// const METHODOLOGY = [
-//   { name: "5S", desc: "Sort, set in order, shine, standardize, sustain — on every line." },
-//   { name: "Kaizen", desc: "Continuous, incremental improvement built into daily operations." },
-//   { name: "Total Quality Control", desc: "In-line inspection at every stage of production." },
-// ];
-
-// const CLIENTS = ["B Braun", "Cipla", "Intas", "Torrent", "Fresenius", "Wockhardt"];
-
-// export default function Manufacturing() {
-//   return (
-//     <section id="manufacturing" className="section-py bg-navy-gradient text-white relative overflow-hidden">
-//       <div className="absolute inset-0 bg-medical-grid bg-grid opacity-[0.04]" />
-//       <div className="container-px relative">
-//         <div className="max-w-2xl mb-16">
-//           <div className="eyebrow mb-4 !text-accent inline-flex items-center gap-1 rounded-full border border-[#f3f4ff]/15 bg-[#dde6ff]/10 px-5 py-2 text-sm font-semibold text- [#f7f7f7] backdrop-blur-md">Manufacturing Capabilities</div>
-//           <h2 className="font-heading font-bold text-3xl md:text-4xl">
-//             From raw polymer to sterile, packaged device
-//           </h2>
-//           <p className="mt-4 text-white/60 leading-relaxed">
-//             Every stage of production runs under strict process control — engineered
-//             for repeatability at millions of units of scale.
-//           </p>
-//         </div>
-
-//         {/* Process line */}
-//         <div className="relative mb-20">
-//           <div className="hidden md:block absolute top-6 left-0 right-0 h-px bg-white/15" />
-//           <div className="grid grid-cols-2 md:grid-cols-6 gap-8 md:gap-4">
-//             {PROCESS.map((step, i) => (
-//               <motion.div
-//                 key={step}
-//                 initial={{ opacity: 0, y: 16 }}
-//                 whileInView={{ opacity: 1, y: 0 }}
-//                 viewport={{ once: true }}
-//                 transition={{ duration: 0.5, delay: i * 0.08 }}
-//                 className="relative flex flex-col items-center text-center"
-//               >
-//                 <div className="w-12 h-12 rounded-full bg-burgundy-gradient flex items-center justify-center font-heading font-bold relative z-10 mb-4">
-//                   {i + 1}
-//                 </div>
-//                 <div className="text-sm font-medium text-white/90">{step}</div>
-//               </motion.div>
-//             ))}
-//           </div>
-//         </div>
-
-//         {/* Methodology */}
-//         <div className="grid md:grid-cols-3 gap-6 mb-20">
-//           {METHODOLOGY.map((m, i) => (
-//             <motion.div
-//               key={m.name}
-//               initial={{ opacity: 0, y: 16 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               viewport={{ once: true }}
-//               transition={{ duration: 0.5, delay: i * 0.1 }}
-//               className="rounded-xl2 bg-white/5 border border-white/10 backdrop-blur p-6"
-//             >
-//               <div className="font-heading font-bold text-accent text-lg">{m.name}</div>
-//               <p className="text-sm text-white/60 mt-2 leading-relaxed">{m.desc}</p>
-//             </motion.div>
-//           ))}
-//         </div>
-
-//         {/* Client logo marquee */}
-//         <div>
-//           <div className="text-xs uppercase tracking-[0.18em] text-white/40 mb-6 text-center">
-//             Trusted by leading pharmaceutical & healthcare brands
-//           </div>
-//           <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-//             <div className="flex gap-16 animate-marquee w-max">
-//               {[...CLIENTS, ...CLIENTS].map((c, i) => (
-//                 <span
-//                   key={c + i}
-//                   className="text-xl font-heading font-semibold text-white/40 whitespace-nowrap"
-//                 >
-//                   {c}
-//                 </span>
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 "use client";
  
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Blend,
   ArrowRightFromLine,
@@ -124,7 +26,14 @@ const METHODOLOGY = [
   { name: "Total Quality Control", desc: "In-line inspection at every stage of production." },
 ];
  
-const CLIENTS = ["B Braun", "Cipla", "Intas", "Torrent", "Fresenius", "Wockhardt"];
+const CLIENTS = 
+[ "/clients/1.png",
+  "/clients/2.jpg", 
+  "/clients/3.png", 
+  "/clients/4.jpg",
+  "/clients/5.jpg",
+  "/clients/6.png",
+];
  
 export default function Manufacturing() {
   return (
