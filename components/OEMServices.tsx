@@ -38,7 +38,7 @@ export default function OEMServices() {
           </div>
 
           <a
-            href="#contact"
+            href="/contact"
             className="mt-10 inline-flex items-center gap-2 rounded-full bg-burgundy-gradient text-white text-sm font-semibold px-8 py-4 shadow-soft hover:-translate-y-0.5 transition-transform"
           >
             Become an OEM Partner
