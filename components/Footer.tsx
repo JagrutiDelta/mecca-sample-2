@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
 import { useQuoteModal } from "@/context/QuoteContext";
 import LanguageTranslator from "@/components/LanguageTranslator";
-
 
 const COLUMNS = [
   {
@@ -12,7 +12,7 @@ const COLUMNS = [
       { name: "Infusion / Perfusion", href: "/products/infusion" },
       { name: "Anesthesia", href: "/products/anesthesia" },
       { name: "Urology", href: "/products/urology" },
-      { name: "Gynocology", href: "/products/gynocology" },
+      { name: "Gynecology", href: "/products/gynecology" },
       { name: "Gastroenterology", href: "/products/gastroenterology" },
       { name: "Cardiology", href: "/products/cardiology" },
       { name: "General Surgical", href: "/products/surgical" },
@@ -22,10 +22,10 @@ const COLUMNS = [
   {
     title: "OEM",
     links: [
-      { name: "Contract Manufacturing", href: "/oem-services" },
-      { name: "Private Label", href: "/oem-services" },
-      { name: "Loan License", href: "/oem-services" },
-      { name: "Custom Packaging", href: "/oem-services" },
+      { name: "Contract Manufacturing", href: "/oem-services#contract-manufacturing" },
+      { name: "Private Label", href: "/oem-services#private-label" },
+      { name: "Loan License", href: "/oem-services#loan-license" },
+      { name: "Custom Packaging", href: "/oem-services#custom-packaging" },
     ],
   },
   {
@@ -40,7 +40,7 @@ const COLUMNS = [
   {
     title: "Resources",
     links: [
-      { name: "Product Catalogue", href: "/#contact" },
+      { name: "Product Catalogue", href: "/downloads" },
       { name: "Request a Quote", href: "#quote" },
       { name: "Certifications", href: "/certifications" },
       { name: "Downloads", href: "/downloads#resources" },
@@ -57,31 +57,38 @@ export default function Footer() {
       <div className="container-px">
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 pb-14 border-b border-white/10">
           <div className="lg:col-span-2">
-            <a
-  href="#"
-  className="flex items-center shrink-0"
-  aria-label="Company Logo"
->
-
-  <Image
-    src="/MeccaLogo.jpg"
-    alt="Company Logo"
-    width={160}
-    height={48}
-    className="h-12 w-auto object-contain"
-    priority
-  />
-</a>
+            <Link
+              href="/"
+              className="flex items-center shrink-0"
+              aria-label="Mecca Healthcare Home"
+            >
+              <Image
+                src="/MeccaLogo.jpg"
+                alt="Mecca Healthcare Logo"
+                width={160}
+                height={48}
+                className="h-12 w-auto object-contain"
+                priority
+              />
+            </Link>
             <p className="mt-5 text-sm leading-relaxed max-w-xs">
               Global medical device manufacturer since 1977. ISO 13485 and WHO GMP
               certified, exporting to 50+ countries.
             </p>
-            <div className="flex gap-8 mt-10">
-              {[Linkedin, Twitter, Facebook, Youtube].map((Icon, i) => (
+            <div className="flex gap-4 mt-8">
+              {[
+                { Icon: Linkedin, href: "https://www.linkedin.com", label: "LinkedIn" },
+                { Icon: Twitter, href: "https://twitter.com/@mhpl_india", label: "Twitter" },
+                { Icon: Facebook, href: "https://www.facebook.com/meccahealthcare/?fref=ts", label: "Facebook" },
+                { Icon: Youtube, href: "https://www.youtube.com", label: "YouTube" },
+              ].map(({ Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 flex items-center justify-center transition-colors"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 flex items-center justify-center transition-colors text-white/80 hover:text-white"
                 >
                   <Icon className="w-4 h-4" />
                 </a>
@@ -104,9 +111,9 @@ export default function Footer() {
                         {l.name}
                       </button>
                     ) : (
-                      <a href={l.href} className="hover:text-white transition-colors">
+                      <Link href={l.href} className="hover:text-white transition-colors">
                         {l.name}
-                      </a>
+                      </Link>
                     )}
                   </li>
                 ))}
@@ -154,8 +161,12 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-5">
             <LanguageTranslator variant="utility" direction="up" />
             <span>&copy; {new Date().getFullYear()} Mecca Healthcare Pvt. Ltd. All rights reserved.</span>
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms
+            </Link>
           </div>
         </div>
       </div>

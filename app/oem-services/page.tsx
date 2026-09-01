@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UtilityBar from "@/components/UtilityBar";
 import OEMHero from "@/components/OEMHero";
+import OEMDetailedServices from "@/components/OEMDetailedServices";
 import OEMModels from "@/components/OEMModels";
 import OEMProcess from "@/components/OEMProcess";
 import OEMCapabilities from "@/components/OEMCapabilities";
@@ -19,6 +20,7 @@ export default function OEMServicesPage() {
       <UtilityBar />
       <Header />
       <OEMHero />
+      <OEMDetailedServices />
       <OEMModels />
       <OEMProcess />
       <OEMCapabilities />

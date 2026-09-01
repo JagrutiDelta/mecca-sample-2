@@ -143,12 +143,12 @@ const CONTACT_INFO = {
   social: [
     {
       label: "MHPL on Twitter / X",
-      href: "https://twitter.com/mhpl_india",
+      href: "https://twitter.com/@mhpl_india",
       icon: Share2,
     },
     {
       label: "MHPL on Facebook",
-      href: "https://www.facebook.com/meccahealthcare/",
+      href: "https://www.facebook.com/meccahealthcare/?fref=ts",
       icon: Link2,
     },
   ],
