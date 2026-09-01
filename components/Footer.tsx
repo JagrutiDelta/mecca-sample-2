@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
+import { ArrowUpRight, Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
 import { useQuoteModal } from "@/context/QuoteContext";
 import LanguageTranslator from "@/components/LanguageTranslator";
 
@@ -52,121 +52,133 @@ const PLANTS = ["Kalol", "Chhatral", "Jodhpur"];
 
 export default function Footer() {
   const { openQuoteModal } = useQuoteModal();
+
   return (
-    <footer className="bg-navy-gradient text-white/70 pt-20 pb-8">
-      <div className="container-px">
-        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 pb-14 border-b border-white/10">
-          <div className="lg:col-span-2">
-            <Link
-              href="/"
-              className="flex items-center shrink-0"
-              aria-label="Mecca Healthcare Home"
-            >
-              <Image
-                src="/MeccaLogo.jpg"
-                alt="Mecca Healthcare Logo"
-                width={160}
-                height={48}
-                className="h-12 w-auto object-contain"
-                priority
-              />
-            </Link>
-            <p className="mt-5 text-sm leading-relaxed max-w-xs">
-              Global medical device manufacturer since 1977. ISO 13485 and WHO GMP
-              certified, exporting to 50+ countries.
-            </p>
-            <div className="flex gap-4 mt-8">
-              {[
-                { Icon: Linkedin, href: "https://www.linkedin.com", label: "LinkedIn" },
-                { Icon: Twitter, href: "https://twitter.com/@mhpl_india", label: "Twitter" },
-                { Icon: Facebook, href: "https://www.facebook.com/meccahealthcare/?fref=ts", label: "Facebook" },
-                { Icon: Youtube, href: "https://www.youtube.com", label: "YouTube" },
-              ].map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 flex items-center justify-center transition-colors text-white/80 hover:text-white"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
-            </div>
-          </div>
+    <footer className="bg-navy-gradient pt-20 pb-0 text-white/70" style={{ fontFamily: "Inter, sans-serif" }}>
+      <div className="px-4 sm:px-5 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 pb-14 md:grid-cols-2 lg:grid-cols-[1.7fr_repeat(4,minmax(0,1fr))] lg:gap-12 lg:items-start">
+            <div className="lg:col-span-1">
+              <Link href="/" className="inline-flex items-center shrink-0" aria-label="Mecca Healthcare Home">
+                <Image
+                  src="/MeccaLogo.jpg"
+                  alt="Mecca Healthcare Logo"
+                  width={160}
+                  height={48}
+                  className="h-12 w-auto object-contain"
+                  priority
+                />
+              </Link>
 
-          {COLUMNS.map((col) => (
-            <div key={col.title}>
-              <h4 className="font-heading font-semibold text-white text-sm mb-4">{col.title}</h4>
-              <ul className="space-y-2.5 text-sm">
-                {col.links.map((l) => (
-                  <li key={l.name}>
-                    {l.name === "Request a Quote" ? (
-                      <button
-                        type="button"
-                        onClick={() => openQuoteModal()}
-                        className="hover:text-white transition-colors cursor-pointer text-left"
-                      >
-                        {l.name}
-                      </button>
-                    ) : (
-                      <Link href={l.href} className="hover:text-white transition-colors">
-                        {l.name}
-                      </Link>
-                    )}
-                  </li>
+              <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/70">
+                Global medical device manufacturer since 1977. ISO 13485 and WHO GMP
+                certified, exporting to 50+ countries.
+              </p>
+
+              <div className="mt-8 flex items-center gap-3 sm:gap-4">
+                {[
+                  { Icon: Linkedin, href: "https://www.linkedin.com", label: "LinkedIn" },
+                  { Icon: Twitter, href: "https://twitter.com/@mhpl_india", label: "Twitter" },
+                  { Icon: Facebook, href: "https://www.facebook.com/meccahealthcare/?fref=ts", label: "Facebook" },
+                  { Icon: Youtube, href: "https://www.youtube.com", label: "YouTube" },
+                ].map(({ Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-white/20 hover:bg-white/10 hover:text-white"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
                 ))}
-              </ul>
+              </div>
             </div>
-          ))}
-        </div>
 
-        <div className="grid md:grid-cols-2 gap-8 py-10 border-b border-white/10">
-          <div>
-            <h4 className="font-heading font-semibold text-white text-sm mb-3">Manufacturing Units</h4>
-            <div className="flex flex-wrap gap-3 text-sm">
-              {PLANTS.map((p) => (
-                <span key={p} className="rounded-full border border-white/15 px-4 py-1.5">
-                  {p}
-                </span>
-              ))}
+            {COLUMNS.map((col) => (
+              <div key={col.title} className="lg:pt-1">
+                <h4 className="mb-4 text-sm font-semibold text-white">{col.title}</h4>
+                <ul className="space-y-2.5 text-sm">
+                  {col.links.map((l) => (
+                    <li key={l.name}>
+                      {l.name === "Request a Quote" ? (
+                        <button
+                          type="button"
+                          onClick={() => openQuoteModal()}
+                          className="cursor-pointer text-left text-white/70 transition-colors hover:text-white"
+                        >
+                          {l.name}
+                        </button>
+                      ) : (
+                        <Link href={l.href} className="transition-colors hover:text-white">
+                          {l.name}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid gap-8 border-t border-white/10 py-10 md:grid-cols-2">
+            <div>
+              <h4 className="mb-3 text-sm font-semibold text-white">Manufacturing Units</h4>
+              <div className="flex flex-wrap gap-3 text-sm">
+                {PLANTS.map((p) => (
+                  <span key={p} className="rounded-full border border-white/15 px-4 py-1.5 text-white/70">
+                    {p}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="mb-3 text-sm font-semibold text-white">Newsletter</h4>
+              <form className="flex flex-col gap-2 sm:flex-row" onSubmit={(e) => e.preventDefault()}>
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="w-full rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none transition-colors focus:border-white/25 focus:ring-2 focus:ring-white/10"
+                />
+                <button
+                  type="submit"
+                  className="rounded-full bg-burgundy-gradient px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+                >
+                  Subscribe
+                </button>
+              </form>
             </div>
           </div>
-          <div>
-            <h4 className="font-heading font-semibold text-white text-sm mb-3">Newsletter</h4>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 rounded-full bg-white/5 border border-white/15 px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-              />
-              <button
-                type="submit"
-                className="rounded-full bg-burgundy-gradient text-white text-sm font-semibold px-5 py-2.5"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 text-xs">
-          <div className="flex items-center gap-3 tracking-wide">
-            <span className="border border-white/15 rounded-full px-3 py-1">ISO 13485</span>
-            <span className="border border-white/15 rounded-full px-3 py-1">ISO 9001</span>
-            <span className="border border-white/15 rounded-full px-3 py-1">WHO GMP</span>
+          <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 pb-6 text-xs md:flex-row">
+            <div className="flex flex-wrap items-center justify-center gap-3 tracking-wide md:justify-start">
+              <span className="rounded-full border border-white/15 px-3 py-1">ISO 13485</span>
+              <span className="rounded-full border border-white/15 px-3 py-1">ISO 9001</span>
+              <span className="rounded-full border border-white/15 px-3 py-1">WHO GMP</span>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 md:justify-end">
+              <LanguageTranslator variant="utility" direction="up" />
+              <Link href="/privacy_policy" className="transition-colors hover:text-white">Privacy Policy</Link>
+              <Link href="/terms" className="transition-colors hover:text-white">Terms</Link>
+            </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-5">
-            <LanguageTranslator variant="utility" direction="up" />
-            <span>&copy; {new Date().getFullYear()} Mecca Healthcare Pvt. Ltd. All rights reserved.</span>
-            <Link href="/privacy-policy" className="hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-white transition-colors">
-              Terms
-            </Link>
+          <div className="border-t border-white/10 px-4 sm:px-6 lg:px-0">
+            <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 py-5 text-sm text-white/70 md:flex-row">
+              <p className="text-center md:text-left">
+                © 2026 Mecca Healthcare Pvt. Ltd. All Rights Reserved.
+              </p>
+
+              <div className="flex items-center justify-center gap-1.5 text-center md:justify-end">
+                <span>Designed &amp; Developed by</span>
+                <a href="https://www.deltainfosoft.com/" className="font-medium text-[#8B1E2D]">
+                  Delta Infosoft Pvt. Ltd.
+                </a>
+                <ArrowUpRight className="h-3.5 w-3.5 text-[#8B1E2D]/80" aria-hidden="true" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

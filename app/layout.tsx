@@ -41,8 +41,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
-      <body className="font-body antialiased">
+    <html lang="en" className={`${poppins.variable} ${inter.variable}`} suppressHydrationWarning>
+      <body className="font-body antialiased" suppressHydrationWarning>
         <QuoteProvider>{children}</QuoteProvider>
       </body>
     </html>

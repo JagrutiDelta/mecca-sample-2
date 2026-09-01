@@ -286,7 +286,7 @@ function renderHeading(tagline: string, highlight?: string) {
 /* ------------------------------------------------------------------ */
 
 interface ProductHeroProps {
-  product: ProductHeroData;
+  product?: ProductHeroData;
   /**
    * Wire this to your existing quote modal/context, e.g.:
    *   const { openQuoteModal } = useQuoteModal();
@@ -349,6 +349,9 @@ export default function ProductHero({
 
   const visibleStats: ProductStat[] = stats.slice(0, 4);
   const { openQuoteModal } = useQuoteModal();
+
+  const headingText = typeof safeTagline === "string" ? safeTagline : name;
+
   return (
     
     <section
@@ -380,7 +383,7 @@ export default function ProductHero({
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-navy sm:text-5xl md:text-6xl"
           >
-            {renderHeading(tagline, highlightedText)}
+            {renderHeading(headingText, highlightedText)}
           </motion.h1>
 
           <motion.p
@@ -440,10 +443,14 @@ export default function ProductHero({
                 : ""
             }`}
           >
-           <img
-  src="/products.png"
-  className="h-full w-full object-cover"
-/>
+           <Image
+            src={image || "/products.png"}
+            alt={safeImageAlt}
+            fill
+            className={imageFit === "contain" ? "object-contain" : "object-cover"}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
 
             {imageFit === "cover" && (
               <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />

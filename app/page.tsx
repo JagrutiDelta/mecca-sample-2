@@ -12,6 +12,7 @@ import Testimonials from "@/components/Testimonials";
 import News from "@/components/News";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import Flagship from "@/components/Flagshipproducts";
 
 
 export default function Home() {
@@ -22,6 +23,7 @@ export default function Home() {
       <TrustBar />
       <About />
       <ProductCategories />
+      <Flagship />
       <WhyChoose />
       <Manufacturing />
       <OEMServices />

@@ -11,6 +11,11 @@ body {
   color: #243B53;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 ::selection {
   background: #C8D8F5;
   color: #0F2740;
@@ -100,4 +105,4 @@ body {
 .skiptranslate.notranslate,
 #google_translate_element {
   display: none !important;
-}
+}
