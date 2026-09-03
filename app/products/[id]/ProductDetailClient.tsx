@@ -94,16 +94,44 @@ export default function ProductDetailClient({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className={`relative rounded-2xl overflow-hidden bg-white border border-border shadow-card p-8 flex items-center justify-center group ${
-              product.categoryId === "mecca-labs" ? "aspect-[4/5]" : "aspect-[4/3]"
+            className={`relative rounded-2xl overflow-hidden bg-white border border-border shadow-card flex items-center justify-center group ${
+              product.categoryId === "mecca-labs" ? "aspect-[4/5]" : "aspect-[4/3] p-8"
             }`}
           >
             {product.categoryId === "mecca-labs" && product.pdf ? (
-              <iframe
-                src={`${product.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
-                title={`${product.name} PDF preview`}
-                className="h-full w-full rounded-lg border-0 bg-white"
-              />
+              <div className="relative flex h-full w-full flex-col justify-between bg-gradient-to-br from-[#0F2740] via-[#163659] to-[#0A1A2D] p-8 text-white text-center">
+                <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] opacity-10 [background-size:12px_12px]" />
+                <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-3">
+                  <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#E6B055]">
+                    <FileText className="h-3.5 w-3.5 text-[#E6B055]" />
+                    <span>Mecca Labs Official Catalogue</span>
+                  </div>
+                  <span className="rounded bg-white/10 px-2.5 py-0.5 text-[10px] font-bold text-white/80">PDF</span>
+                </div>
+
+                <div className="relative z-10 my-auto flex flex-col items-center justify-center py-6">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-white shadow-inner backdrop-blur-md">
+                    <FileText className="h-8 w-8 text-white" />
+                  </div>
+                  <h4 className="text-lg font-bold uppercase leading-snug tracking-wide text-white">
+                    {product.name}
+                  </h4>
+                  <p className="mt-2 text-xs text-white/70 max-w-sm">{product.desc}</p>
+                  <button
+                    type="button"
+                    onClick={() => window.open(product.pdf, "_blank", "noopener,noreferrer")}
+                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-xs font-bold text-[#0F2740] shadow-xl hover:bg-slate-100 transition-transform active:scale-95"
+                  >
+                    <Eye className="h-4 w-4 text-[#800020]" />
+                    <span>Open &amp; Read Full PDF</span>
+                  </button>
+                </div>
+
+                <div className="relative z-10 border-t border-white/10 pt-3 flex items-center justify-between text-[11px] font-medium text-white/70">
+                  <span>WHO-GMP &amp; ISO Certified</span>
+                  <span className="text-[#E6B055] font-semibold">Official 2026 Edition</span>
+                </div>
+              </div>
             ) : (
               <img
                 src={product.image}

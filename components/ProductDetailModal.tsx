@@ -12,6 +12,7 @@ import {
   Sparkles,
   Download,
   Share2,
+  Eye,
 } from "lucide-react";
 import { ProductItem } from "@/lib/products";
 import { useQuoteModal } from "@/context/QuoteContext";
@@ -71,11 +72,39 @@ export default function ProductDetailModal({
             <div className="md:col-span-5 flex flex-col">
               <div className="relative mb-4 flex w-full aspect-[8.5/11] items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
                 {product.categoryId === "mecca-labs" && product.pdf ? (
-                  <iframe
-                    src={`${product.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
-                    title={`${product.name} PDF preview`}
-                    className="h-full w-full border-0 bg-white"
-                  />
+                  <div className="relative flex h-full w-full flex-col justify-between bg-gradient-to-br from-[#0F2740] via-[#163659] to-[#0A1A2D] p-6 text-white text-center">
+                    <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] opacity-10 [background-size:12px_12px]" />
+                    <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-3">
+                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#E6B055]">
+                        <FileText className="h-3.5 w-3.5 text-[#E6B055]" />
+                        <span>Mecca Labs Official Catalogue</span>
+                      </div>
+                      <span className="rounded bg-white/10 px-2 py-0.5 text-[10px] font-bold text-white/80">PDF</span>
+                    </div>
+
+                    <div className="relative z-10 my-auto flex flex-col items-center justify-center py-6">
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-white shadow-inner backdrop-blur-md">
+                        <FileText className="h-8 w-8 text-white" />
+                      </div>
+                      <h4 className="text-base font-bold uppercase leading-snug tracking-wide text-white">
+                        {product.name}
+                      </h4>
+                      <p className="mt-2 text-xs text-white/70 max-w-xs">{product.desc}</p>
+                      <button
+                        type="button"
+                        onClick={() => window.open(product.pdf, "_blank", "noopener,noreferrer")}
+                        className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-bold text-[#0F2740] shadow-xl hover:bg-slate-100 transition-transform active:scale-95"
+                      >
+                        <Eye className="h-4 w-4 text-[#800020]" />
+                        <span>Open &amp; Read Full PDF</span>
+                      </button>
+                    </div>
+
+                    <div className="relative z-10 border-t border-white/10 pt-3 flex items-center justify-between text-[11px] font-medium text-white/70">
+                      <span>WHO-GMP &amp; ISO Certified</span>
+                      <span className="text-[#E6B055] font-semibold">Official 2026 Edition</span>
+                    </div>
+                  </div>
                 ) : (
                   <img
                     src={product.image}

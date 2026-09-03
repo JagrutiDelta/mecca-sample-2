@@ -41,33 +41,51 @@ export default function MeccaCatalogueCard({
               openPdf();
             }
           }}
-          className="group relative h-[250px] w-full shrink-0 cursor-pointer overflow-hidden rounded-xl bg-slate-100 text-left shadow-sm md:h-[270px] md:w-[200px] lg:h-[290px] lg:w-[220px]"
+          className="group relative h-[250px] w-full shrink-0 cursor-pointer overflow-hidden rounded-xl border border-slate-200/80 bg-gradient-to-br from-[#0F2740] via-[#163659] to-[#0A1A2D] p-5 text-left shadow-md transition-all duration-300 hover:shadow-xl md:h-[270px] md:w-[200px] lg:h-[290px] lg:w-[220px]"
           aria-label={`View PDF for ${product.name}`}
         >
-          {product.pdf ? (
-            <iframe
-              src={`${product.pdf}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-              title={`${product.name} PDF preview`}
-              className="pointer-events-none h-full w-full border-0 bg-white transition-transform duration-250 ease-out group-hover:scale-[1.03]"
-            />
-          ) : (
-            <img
-              src={product.image}
-              alt={`${product.name} catalogue cover`}
-              className="h-full w-full object-cover transition-transform duration-250 ease-out group-hover:scale-[1.03]"
-            />
-          )}
-          <div className="pointer-events-none absolute inset-0 bg-navy/65 opacity-0 transition-opacity duration-250 ease-out group-hover:opacity-100 md:group-focus-visible:opacity-100" />
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-100 transition-all duration-250 ease-out md:translate-y-1 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-visible:translate-y-0 md:group-focus-visible:opacity-100">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3.5 py-2 text-[11px] font-semibold text-navy shadow-lg">
-              <Eye className="h-3.5 w-3.5 text-burgundy" />
-              <span>View PDF</span>
+          {/* Subtle medical grid texture */}
+          <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] opacity-10 [background-size:12px_12px]" />
+
+          {/* Top Brand Tag */}
+          <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-2.5">
+            <div className="flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-widest text-[#E6B055]">
+              <FileText className="h-3 w-3 text-[#E6B055]" />
+              <span>Mecca Labs</span>
+            </div>
+            <span className="rounded bg-white/10 px-1.5 py-0.5 text-[8px] font-bold text-white/80">
+              PDF
             </span>
           </div>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-navy/80 to-transparent" />
-          <div className="pointer-events-none absolute bottom-3 left-3 flex items-center gap-1.5 text-[10px] font-semibold text-white">
-            <FileText className="h-3.5 w-3.5" />
-            <span>PDF Catalogue</span>
+
+          {/* Middle Content */}
+          <div className="relative z-10 my-auto flex flex-col items-center justify-center py-4 text-center">
+            <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-white backdrop-blur-md transition-transform duration-300 group-hover:scale-110 group-hover:bg-[#800020]">
+              <FileText className="h-6 w-6 text-white" />
+            </div>
+            <h4 className="line-clamp-2 text-xs font-bold uppercase leading-snug tracking-wide text-white">
+              {product.name}
+            </h4>
+            <span className="mt-2 inline-block rounded-full bg-white/15 px-2.5 py-0.5 text-[9px] font-semibold text-white/90">
+              {product.badge}
+            </span>
+          </div>
+
+          {/* Bottom Footer Bar */}
+          <div className="relative z-10 border-t border-white/10 pt-2 flex items-center justify-between text-[9px] font-medium text-white/70">
+            <span>Official Catalogue</span>
+            <span className="text-[#E6B055] font-semibold flex items-center gap-0.5">
+              Read <ArrowUpRight className="h-2.5 w-2.5" />
+            </span>
+          </div>
+
+          {/* Hover Overlay */}
+          <div className="pointer-events-none absolute inset-0 bg-[#0F2740]/85 opacity-0 transition-opacity duration-250 ease-out group-hover:opacity-100 md:group-focus-visible:opacity-100" />
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-100 transition-all duration-250 ease-out md:translate-y-1 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:group-focus-visible:translate-y-0 md:group-focus-visible:opacity-100">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-bold text-[#0F2740] shadow-xl">
+              <Eye className="h-3.5 w-3.5 text-[#800020]" />
+              <span>Open PDF</span>
+            </span>
           </div>
         </div>
 
