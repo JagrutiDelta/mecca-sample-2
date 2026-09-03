@@ -61,7 +61,7 @@ export default function Footer() {
             <div className="lg:col-span-1">
               <Link href="/" className="inline-flex items-center shrink-0" aria-label="Mecca Healthcare Home">
                 <Image
-                  src="/MeccaLogo.jpg"
+                  src="/MeccaLogoWhite.png"
                   alt="Mecca Healthcare Logo"
                   width={160}
                   height={48}

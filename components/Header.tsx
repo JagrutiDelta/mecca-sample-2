@@ -206,7 +206,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0" aria-label="Mecca Healthcare Home">
             <Image
-              src="/MeccaLogo.jpg"
+              src="/MeccaLogoTransparent.png"
               alt="Mecca Healthcare Logo"
               width={175}
               height={48}
