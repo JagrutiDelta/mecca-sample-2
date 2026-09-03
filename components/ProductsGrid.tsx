@@ -45,6 +45,7 @@ const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>
   gynecology: HeartPulse,
   gastroenterology: FlaskConical,
   cardiology: Activity,
+  nephrology: Droplets,
   surgical: Scissors,
   "mecca-labs": Microscope,
 };
@@ -71,6 +72,9 @@ export default function ProductsGrid() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+
+  const totalProducts = PRODUCTS.length;
+  const categoryCount = CATEGORIES.filter((cat) => cat.id !== "all").length;
 
   // Filter products by category, search text, and standard tags
   const filteredProducts = useMemo(() => {
@@ -111,7 +115,7 @@ export default function ProductsGrid() {
             <div>
               <div className="inline-flex items-center gap-2 text-xs font-bold text-burgundy uppercase tracking-wider mb-1">
                 <ShieldCheck className="w-4 h-4 text-burgundy" />
-                <span>54 Clinical Grade Medical Disposables</span>
+                <span>{totalProducts} Clinical Grade Medical Disposables</span>
               </div>
               <h2 className="font-heading font-black text-navy text-2xl sm:text-3xl tracking-tight flex items-center gap-2">
                 <span>{currentCategoryMeta?.label || "Medical Catalog"}</span>
@@ -221,7 +225,7 @@ export default function ProductsGrid() {
                   Medical Departments
                 </span>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
-                  8 Categories
+                  {categoryCount} Categories
                 </span>
               </div>
 

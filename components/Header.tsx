@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Portfolio from "@/components/Portfolio";
 import {
   ChevronDown,
   Menu,
@@ -30,6 +31,7 @@ import UtilityBar from "@/components/UtilityBar";
 import Image from "next/image";
 import { useQuoteModal } from "@/context/QuoteContext";
 import LanguageTranslator from "@/components/LanguageTranslator";
+
 
 /* ─── Product Mega Menu Data (8 Medical Specialties) ─── */
 const PRODUCT_CATEGORIES = [
@@ -352,7 +354,7 @@ export default function Header() {
                                     {/* Bottom CTA link */}
                                     <div className="mt-5 pt-3 border-t border-slate-200/80 text-center">
                                       <Link
-                                        href="/products"
+                                        href="/portfolio"
                                         className="inline-flex items-center gap-1.5 text-xs font-bold text-burgundy hover:text-burgundy-dark transition-colors group"
                                       >
                                         <span>Explore Full 2026 Portfolio</span>

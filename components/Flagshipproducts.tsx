@@ -7,9 +7,9 @@
  * and render <FlagshipProducts /> on the page.
  *
  * Setup notes:
- * 1. Images — each product's `image` points to /images/products/<slug>.jpg.
- *    Add matching files under public/images/products/, or swap in your
- *    own URLs.
+ * 1. Images — each product's `image` should point to a valid asset in
+ *    the public directory. This project keeps product visuals under
+ *    public/products or the category folders under public/<category>/.
  * 2. Font — assumes Inter is already the site's default sans font (e.g.
  *    via next/font/google in your root layout).
  * 3. Links — `href` / `pdfHref` are placeholders; point them at your real
@@ -70,7 +70,7 @@ const flagshipProducts: FlagshipProduct[] = [
     category: "Infusion",
     description:
       "Sterile, single-use infusion set designed for safe fluid delivery, air-stop performance, and reliable blood or drug administration.",
-    image: "/images/products/iv-infusion-set.jpg",
+    image: "/Infusion/image1.png",
     certifications: ["CE Marked", "ISO 13485", "Sterile"],
     href: "/products/iv-infusion-set",
     pdfHref: "/catalogues/product-list-2026.pdf",
@@ -84,7 +84,7 @@ const flagshipProducts: FlagshipProduct[] = [
     category: "Infusion",
     description:
       "Precision administration device offering consistent flow control and dependable fluid delivery in clinical and critical care settings.",
-    image: "/images/products/dial-flow-regulator.jpg",
+    image: "/Infusion/image1.png",
     certifications: ["CE Marked", "ISO 13485", "Latex Free"],
     href: "/products/dial-flow-regulator",
     pdfHref: "/catalogues/product-list-2026.pdf",
@@ -95,7 +95,7 @@ const flagshipProducts: FlagshipProduct[] = [
     category: "Critical Care",
     description:
       "Multi-lumen central venous catheter intended for CVP monitoring, blood sampling, and simultaneous infusion of multiple IV solutions.",
-    image: "/images/products/central-venous-catheter.jpg",
+    image: "/Cardiology/image1.png",
     certifications: ["CE Marked", "ISO 13485", "Sterile"],
     href: "/products/central-venous-catheter",
     pdfHref: "/catalogues/central-venous-catheter-kit-details.pdf",
@@ -106,7 +106,7 @@ const flagshipProducts: FlagshipProduct[] = [
     category: "Critical Care",
     description:
       "Airway management device inserted with a laryngoscope to secure the upper trachea and support safe ventilation.",
-    image: "/images/products/endotracheal-tube.jpg",
+    image: "/Anesthesia/image1.png",
     certifications: ["CE Marked", "ISO 13485", "Sterile"],
     href: "/products/endotracheal-tube",
     pdfHref: "/catalogues/product-list-2026.pdf",
@@ -117,7 +117,7 @@ const flagshipProducts: FlagshipProduct[] = [
     category: "Nephrology",
     description:
       "Used for exchanging blood to and from the haemodialysis machine, enabling safe and efficient dialysis therapy.",
-    image: "/images/products/hemodialysis-catheter-kit.jpg",
+    image: "/products/hero_medical_products.png",
     certifications: ["CE Marked", "ISO 13485", "Sterile"],
     href: "/products/hemodialysis-catheter-kit",
     pdfHref: "/catalogues/hemodialysis-catheter-kit-flier.pdf",
@@ -128,7 +128,7 @@ const flagshipProducts: FlagshipProduct[] = [
     category: "Nephrology",
     description:
       "Securely connects blood lines with blood vessels during dialysis and is designed for smooth, reliable access in vascular therapy.",
-    image: "/images/products/av-fistula-needle.jpg",
+    image: "/Cardiology/image1.png",
     certifications: ["CE Marked", "ISO 13485", "Latex Free"],
     href: "/products/av-fistula-needle",
     pdfHref: "/catalogues/product-list-2026.pdf",
@@ -139,7 +139,7 @@ const flagshipProducts: FlagshipProduct[] = [
     category: "OEM Manufacturing",
     description:
       "Routine drainage catheter designed for urinary bladder access, ensuring direct drainage with a closed, sterile system.",
-    image: "/images/products/foley-catheter.jpg",
+    image: "/Urology/image1.png",
     certifications: ["CE Marked", "ISO 13485", "Sterile"],
     href: "/products/foley-catheter",
     pdfHref: "/catalogues/product-list-2026.pdf",
@@ -150,7 +150,7 @@ const flagshipProducts: FlagshipProduct[] = [
     category: "OEM Manufacturing",
     description:
       "Accessory for perfusion systems used for fluid directional control, withdrawal, and pressure monitoring in OEM and custom clinical applications.",
-    image: "/images/products/extension-line-stopcock.jpg",
+    image: "/Infusion/image1.png",
     certifications: ["CE Marked", "ISO 13485", "Sterile"],
     href: "/products/extension-line-3-way-stopcock",
     pdfHref: "/catalogues/product-list-2026.pdf",
@@ -349,10 +349,10 @@ export function FlagshipProducts() {
     <section className="bg-[#F8FAFC] py-16 md:py-24">
       <div className="mx-auto max-w-[1280px] px-6 sm:px-8">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-4 text-center">
-          <span className="rounded-full bg-[#EAF4FF] px-4 py-1.5 text-xs font-semibold tracking-wide text-[#8B1E2D]">
+          <span className="eyebrow justify-center mb-4 inline-flex items-center gap-1 rounded-full border border-[#ff91a0]/15 bg-[#9e3744]/10 px-5 py-2 text-sm font-semibold text-[#8B1E2D] backdrop-blur-md">
             PRODUCT PORTFOLIO
           </span>
-          <h2 className="text-4xl font-semibold text-[#0F2744] md:text-5xl">
+          <h2 className="font-heading font-bold text-navy text-3xl md:text-4xl">
             Our Flagship Products
           </h2>
           <p className="text-base leading-relaxed text-slate-600 md:text-lg">

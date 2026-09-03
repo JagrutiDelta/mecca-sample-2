@@ -307,7 +307,7 @@ export default function ProductHero({
     highlightedText: "Healthcare Solutions",
     description:
       "Explore our range of quality medical products designed for safety, reliability, and professional healthcare applications.",
-    image: "/images/products/product-hero.jpg",
+    image: "/products/hero_medical_products.png",
     imageAlt: "Medical healthcare products",
     imageFit: "contain",
     badge: "Medical & Healthcare Products",
