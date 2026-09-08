@@ -20,6 +20,7 @@ import {
 import { ProductItem } from "@/lib/products";
 import MeccaCatalogueCard from "@/components/MeccaCatalogueCard";
 import { useQuoteModal } from "@/context/QuoteContext";
+import ProductPDFPreview from "@/components/pdf/ProductPDFPreview";
 
 interface ProductDetailClientProps {
   product: ProductItem;
@@ -86,69 +87,41 @@ export default function ProductDetailClient({
       <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-20">
         {/* LEFT COLUMN: Product Image Gallery & Certifications */}
         <div
-          className={`lg:col-span-6 space-y-6 ${
-            product.categoryId === "mecca-labs" ? "order-1 lg:order-2" : ""
-          }`}
+          className={`lg:col-span-6 space-y-6 ${product.categoryId === "mecca-labs" ? "order-1 lg:order-2" : ""
+            }`}
         >
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className={`relative rounded-2xl overflow-hidden bg-white border border-border shadow-card flex items-center justify-center group ${
-              product.categoryId === "mecca-labs" ? "aspect-[4/5]" : "aspect-[4/3] p-8"
-            }`}
+            className={`relative rounded-2xl overflow-hidden bg-white border border-border shadow-card flex items-center justify-center group ${product.categoryId === "mecca-labs" ? "aspect-[4/5] min-h-[580px] w-full" : "aspect-[4/3] p-8"
+              }`}
           >
             {product.categoryId === "mecca-labs" && product.pdf ? (
-              <div className="relative flex h-full w-full flex-col justify-between bg-gradient-to-br from-[#0F2740] via-[#163659] to-[#0A1A2D] p-8 text-white text-center">
-                <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] opacity-10 [background-size:12px_12px]" />
-                <div className="relative z-10 flex items-center justify-between border-b border-white/10 pb-3">
-                  <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-[#E6B055]">
-                    <FileText className="h-3.5 w-3.5 text-[#E6B055]" />
-                    <span>Mecca Labs Official Catalogue</span>
-                  </div>
-                  <span className="rounded bg-white/10 px-2.5 py-0.5 text-[10px] font-bold text-white/80">PDF</span>
-                </div>
-
-                <div className="relative z-10 my-auto flex flex-col items-center justify-center py-6">
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-white shadow-inner backdrop-blur-md">
-                    <FileText className="h-8 w-8 text-white" />
-                  </div>
-                  <h4 className="text-lg font-bold uppercase leading-snug tracking-wide text-white">
-                    {product.name}
-                  </h4>
-                  <p className="mt-2 text-xs text-white/70 max-w-sm">{product.desc}</p>
-                  <button
-                    type="button"
-                    onClick={() => window.open(product.pdf, "_blank", "noopener,noreferrer")}
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-xs font-bold text-[#0F2740] shadow-xl hover:bg-slate-100 transition-transform active:scale-95"
-                  >
-                    <Eye className="h-4 w-4 text-[#800020]" />
-                    <span>Open &amp; Read Full PDF</span>
-                  </button>
-                </div>
-
-                <div className="relative z-10 border-t border-white/10 pt-3 flex items-center justify-between text-[11px] font-medium text-white/70">
-                  <span>WHO-GMP &amp; ISO Certified</span>
-                  <span className="text-[#E6B055] font-semibold">Official 2026 Edition</span>
-                </div>
-              </div>
-            ) : (
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+              <ProductPDFPreview
+                file={product.pdf}
+                title={product.name}
+                badge={product.badge}
               />
-            )}
-            {/* Top Badge */}
-            <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-border text-xs font-semibold text-burgundy shadow-sm">
-              {product.badge}
-            </div>
+            ) : (
+              <>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                />
+                {/* Top Badge */}
+                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-border text-xs font-semibold text-burgundy shadow-sm">
+                  {product.badge}
+                </div>
 
-            {/* Quality Seal */}
-            <div className="absolute bottom-4 right-4 bg-navy/90 text-white backdrop-blur-md px-3 py-1.5 rounded-lg text-[11px] font-medium flex items-center gap-1.5 shadow-md">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>ISO 13485 &amp; CE Certified</span>
-            </div>
+                {/* Quality Seal */}
+                <div className="absolute bottom-4 right-4 bg-navy/90 text-white backdrop-blur-md px-3 py-1.5 rounded-lg text-[11px] font-medium flex items-center gap-1.5 shadow-md">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span>ISO 13485 &amp; CE Certified</span>
+                </div>
+              </>
+            )}
           </motion.div>
 
           {product.categoryId === "mecca-labs" && product.pdf && (
@@ -187,9 +160,8 @@ export default function ProductDetailClient({
 
         {/* RIGHT COLUMN: Product Details & Specs */}
         <div
-          className={`lg:col-span-6 flex flex-col justify-between ${
-            product.categoryId === "mecca-labs" ? "order-2 lg:order-1" : ""
-          }`}
+          className={`lg:col-span-6 flex flex-col justify-between ${product.categoryId === "mecca-labs" ? "order-2 lg:order-1" : ""
+            }`}
         >
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -304,6 +276,7 @@ export default function ProductDetailClient({
                       type="text"
                       required
                       placeholder="Dr. / Mr. / Ms. John Doe"
+                      suppressHydrationWarning
                       className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-border text-navy placeholder:text-gray/50 focus:outline-none focus:border-burgundy"
                     />
                   </div>
@@ -313,6 +286,7 @@ export default function ProductDetailClient({
                       type="email"
                       required
                       placeholder="john@hospital.com"
+                      suppressHydrationWarning
                       className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-border text-navy placeholder:text-gray/50 focus:outline-none focus:border-burgundy"
                     />
                   </div>
@@ -325,6 +299,7 @@ export default function ProductDetailClient({
                       type="text"
                       required
                       placeholder="Global Healthcare Ltd."
+                      suppressHydrationWarning
                       className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-border text-navy placeholder:text-gray/50 focus:outline-none focus:border-burgundy"
                     />
                   </div>
@@ -333,6 +308,7 @@ export default function ProductDetailClient({
                     <select
                       value={quantity}
                       onChange={(e) => setQuantity(e.target.value)}
+                      suppressHydrationWarning
                       className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-border text-navy focus:outline-none focus:border-burgundy"
                     >
                       <option value="5000">5,000 units</option>
@@ -348,13 +324,15 @@ export default function ProductDetailClient({
                   <textarea
                     rows={2}
                     placeholder="Specify gauge sizes, packaging preferences, or target delivery country..."
+                    suppressHydrationWarning
                     className="w-full px-3.5 py-2 rounded-lg bg-white border border-border text-navy text-xs placeholder:text-gray/50 focus:outline-none focus:border-burgundy"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3 rounded-full bg-burgundy text-white font-semibold text-xs flex items-center justify-center gap-2 hover:bg-burgundy-dark transition-colors shadow-md"
+                  suppressHydrationWarning
+                  className="w-full py-3 rounded-full bg-burgundy text-white font-semibold text-xs flex items-center justify-center gap-2 hover:bg-burgundy-dark transition-colors shadow-md cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                   Submit Request for {product.name}
@@ -401,64 +379,64 @@ export default function ProductDetailClient({
                   onQuote={() => openQuoteModal(rel.name)}
                 />
               ) : (
-              <Link
-                key={rel.id}
-                href={`/products/${rel.id}`}
-                className="bg-white rounded-2xl border border-border p-6 shadow-card hover:shadow-soft hover:-translate-y-1 transition-all flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="relative rounded-xl overflow-hidden bg-slate-50 border border-border/60 aspect-[4/3] mb-5 p-4 flex items-center justify-center">
-                    {rel.categoryId === "mecca-labs" && rel.pdf ? (
-                      <iframe
-                        src={`${rel.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
-                        title={`${rel.name} PDF preview`}
-                        className="h-full w-full rounded-lg border-0 bg-white"
-                      />
-                    ) : (
-                      <img
-                        src={rel.image}
-                        alt={rel.name}
-                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                      />
-                    )}
-                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-border text-[10px] font-semibold text-burgundy shadow-sm">
-                      {rel.badge}
-                    </div>
-                    {rel.categoryId === "mecca-labs" && rel.pdf && (
-                      <div className="absolute inset-0 z-10 flex items-center justify-center bg-navy/0 transition-colors duration-300 group-hover:bg-navy/40">
-                        <button
-                          type="button"
-                          onClick={(event) => {
-                            event.preventDefault();
-                            event.stopPropagation();
-                            window.open(rel.pdf, "_blank", "noopener,noreferrer");
-                          }}
-                          className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-navy opacity-0 shadow-md transition-all duration-300 hover:bg-slate-50 group-hover:translate-y-0 group-hover:opacity-100"
-                          aria-label={`View PDF for ${rel.name}`}
-                        >
-                          <Eye className="h-3.5 w-3.5" />
-                          View PDF
-                        </button>
+                <Link
+                  key={rel.id}
+                  href={`/products/${rel.id}`}
+                  className="bg-white rounded-2xl border border-border p-6 shadow-card hover:shadow-soft hover:-translate-y-1 transition-all flex flex-col justify-between group"
+                >
+                  <div>
+                    <div className="relative rounded-xl overflow-hidden bg-slate-50 border border-border/60 aspect-[4/3] mb-5 p-4 flex items-center justify-center">
+                      {rel.categoryId === "mecca-labs" && rel.pdf ? (
+                        <iframe
+                          src={`${rel.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
+                          title={`${rel.name} PDF preview`}
+                          className="h-full w-full rounded-lg border-0 bg-white"
+                        />
+                      ) : (
+                        <img
+                          src={rel.image}
+                          alt={rel.name}
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                        />
+                      )}
+                      <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-border text-[10px] font-semibold text-burgundy shadow-sm">
+                        {rel.badge}
                       </div>
-                    )}
+                      {rel.categoryId === "mecca-labs" && rel.pdf && (
+                        <div className="absolute inset-0 z-10 flex items-center justify-center bg-navy/0 transition-colors duration-300 group-hover:bg-navy/40">
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              event.preventDefault();
+                              event.stopPropagation();
+                              window.open(rel.pdf, "_blank", "noopener,noreferrer");
+                            }}
+                            className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-navy opacity-0 shadow-md transition-all duration-300 hover:bg-slate-50 group-hover:translate-y-0 group-hover:opacity-100"
+                            aria-label={`View PDF for ${rel.name}`}
+                          >
+                            <Eye className="h-3.5 w-3.5" />
+                            View PDF
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="text-[11px] font-semibold text-burgundy uppercase tracking-wider mb-1">
+                      {rel.category}
+                    </div>
+                    <h3 className="font-heading font-bold text-navy text-lg leading-snug mb-2 group-hover:text-burgundy transition-colors">
+                      {rel.name}
+                    </h3>
+                    <p className="text-gray text-xs line-clamp-2 leading-relaxed mb-4">
+                      {rel.desc}
+                    </p>
                   </div>
 
-                  <div className="text-[11px] font-semibold text-burgundy uppercase tracking-wider mb-1">
-                    {rel.category}
+                  <div className="pt-4 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-navy group-hover:text-burgundy transition-colors">
+                    <span>View Product Details</span>
+                    <ArrowRight className="w-4 h-4" />
                   </div>
-                  <h3 className="font-heading font-bold text-navy text-lg leading-snug mb-2 group-hover:text-burgundy transition-colors">
-                    {rel.name}
-                  </h3>
-                  <p className="text-gray text-xs line-clamp-2 leading-relaxed mb-4">
-                    {rel.desc}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-border/60 flex items-center justify-between text-xs font-semibold text-navy group-hover:text-burgundy transition-colors">
-                  <span>View Product Details</span>
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </Link>
+                </Link>
               )
             ))}
           </div>

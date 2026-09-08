@@ -20,7 +20,7 @@ export default function MeccaCatalogueCard({
         ? "/products/mecca-labs/nutraceuticals-product-list-export"
         : product.id === "nutraceutical-product-list-domestic"
           ? "/products/mecca-labs/nutraceutical-product-list-domestic"
-      : `/products/${product.id}`;
+          : `/products/${product.id}`;
 
   const openPdf = () => {
     if (product.pdf) {
@@ -41,6 +41,7 @@ export default function MeccaCatalogueCard({
               openPdf();
             }
           }}
+          suppressHydrationWarning
           className="group relative h-[250px] w-full shrink-0 cursor-pointer overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100 text-left shadow-md transition-all duration-300 hover:shadow-xl md:h-[270px] md:w-[200px] lg:h-[290px] lg:w-[220px]"
           aria-label={`View PDF for ${product.name}`}
         >
@@ -132,6 +133,7 @@ export default function MeccaCatalogueCard({
               <button
                 type="button"
                 onClick={onQuote}
+                suppressHydrationWarning
                 className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full bg-burgundy px-4 py-2 text-xs font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-burgundy-dark sm:flex-none"
               >
                 <FileText className="h-3.5 w-3.5" />

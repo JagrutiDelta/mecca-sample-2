@@ -107,6 +107,7 @@ export default function Footer() {
                           type="button"
                           onClick={() => openQuoteModal()}
                           className="cursor-pointer text-left text-white/70 transition-colors hover:text-white"
+                          suppressHydrationWarning
                         >
                           {l.name}
                         </button>
@@ -140,10 +141,12 @@ export default function Footer() {
                   type="email"
                   placeholder="Your email address"
                   className="w-full rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none transition-colors focus:border-white/25 focus:ring-2 focus:ring-white/10"
+                  suppressHydrationWarning
                 />
                 <button
                   type="submit"
-                  className="rounded-full bg-burgundy-gradient px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+                  className="rounded-full bg-burgundy-gradient px-5 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-soft hover:-translate-y-0.5 cursor-pointer"
+                  suppressHydrationWarning
                 >
                   Subscribe
                 </button> 

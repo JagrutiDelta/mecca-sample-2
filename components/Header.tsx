@@ -533,6 +533,7 @@ export default function Header() {
               type="button"
               onClick={() => openQuoteModal()}
               className="hidden md:inline-flex items-center gap-2 rounded-full bg-burgundy-gradient text-white text-xs sm:text-sm font-semibold px-5 xl:px-6 py-2.5 shadow-card hover:shadow-soft hover:-translate-y-0.5 transition-all cursor-pointer relative"
+              suppressHydrationWarning
             >
               <span>Request Quote</span>
               {selectedProducts && selectedProducts.length > 0 && (
@@ -546,6 +547,7 @@ export default function Header() {
               className="lg:hidden text-navy p-1"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
+              suppressHydrationWarning
             >
               {mobileOpen ? (
                 <X className="w-6 h-6" />

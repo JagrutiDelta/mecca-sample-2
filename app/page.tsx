@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
+import VideoShowcase from "@/components/VideoShowcase";
 import About from "@/components/About";
 import ProductCategories from "@/components/ProductCategories";
 import WhyChoose from "@/components/WhyChoose";
@@ -30,6 +31,7 @@ export default function Home() {
       <Certifications />
       <GlobalPresence />
       <Testimonials />
+      <VideoShowcase />
       <News />
       <FinalCTA />
       <Footer />

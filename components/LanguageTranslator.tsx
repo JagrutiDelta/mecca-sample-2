@@ -158,6 +158,7 @@ export default function LanguageTranslator({
           onClick={() => setIsOpen((prev) => !prev)}
           className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-colors border border-white/15 cursor-pointer"
           aria-label="Change Website Language"
+          suppressHydrationWarning
         >
           <span className="text-sm">{currentLang.flag}</span>
           <span className="font-semibold text-[11px] sm:text-xs">{currentLang.nativeName}</span>
@@ -168,6 +169,7 @@ export default function LanguageTranslator({
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white/90 text-xs font-medium transition-colors border border-white/15 cursor-pointer w-full justify-between"
+          suppressHydrationWarning
         >
           <div className="flex items-center gap-2">
             <span className="text-base">{currentLang.flag}</span>
@@ -182,6 +184,7 @@ export default function LanguageTranslator({
           onClick={() => setIsOpen((prev) => !prev)}
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-50 hover:bg-slate-100 text-navy text-xs font-medium transition-colors border border-border cursor-pointer shadow-xs"
           aria-label="Change Language"
+          suppressHydrationWarning
         >
           <Globe className="w-3.5 h-3.5 text-burgundy" />
           <span className="text-sm">{currentLang.flag}</span>

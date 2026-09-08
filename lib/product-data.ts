@@ -33,8 +33,8 @@ export interface ProductHeroData {
   highlightedText?: string;
   /** Short, concise product description (what/purpose/benefit/use/why reliable) */
   description: string;
-  /** Path to the existing product image already in the project — never a stock photo */
-  image: string;
+  /** Path to the existing product image already in the project — defaults to /products.png */
+  image?: string;
   /** Alt text for the product image. Falls back to a generated description. */
   imageAlt?: string;
   /**
