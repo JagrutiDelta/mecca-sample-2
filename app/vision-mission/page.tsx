@@ -1075,18 +1075,17 @@ function SectionHeading({
   centered?: boolean;
 }) {
   return (
-    <div className={`max-w-3xl ${centered ? "mx-auto text-center" : ""} mb-14`}>
+    <div className={`max-w-2xl ${centered ? "mx-auto text-center" : ""} mb-16`}>
       {eyebrow && (
-        <span className="eyebrow mb-4 inline-flex items-center gap-2 rounded-full border border-[#8B1E2D]/20 bg-[#8B1E2D]/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#8B1E2D]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#8B1E2D]" />
+        <div className="eyebrow justify-center mb-4 inline-flex items-center gap-1 rounded-full border border-[#ff91a0]/15 bg-[#9e3744]/10 px-5 py-2 text-sm font-semibold text-[#8B1E2D] backdrop-blur-md">
           {eyebrow}
-        </span>
+        </div>
       )}
-      <h2 className="font-heading text-3xl font-bold tracking-tight text-[#002240] sm:text-4xl lg:text-5xl leading-tight">
+      <h2 className="font-heading font-bold text-navy text-3xl md:text-4xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-base leading-relaxed text-[#6B7280] sm:text-lg">
+        <p className="mt-4 text-gray leading-relaxed text-base sm:text-lg">
           {subtitle}
         </p>
       )}
@@ -1145,13 +1144,13 @@ function ProductCategoryCard({
 
         {/* Category Title & Description */}
         <div className="mt-5">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-[#8B1E2D]">
+          <span className="font-heading text-[10px] font-bold uppercase tracking-widest text-burgundy">
             Category 0{index + 1}
           </span>
-          <h3 className="font-heading text-xl font-bold text-[#002240] mt-1 group-hover:text-[#3D5A80] transition-colors">
+          <h3 className="font-heading font-bold text-navy text-xl mt-1 group-hover:text-medblue transition-colors">
             {category.title}
           </h3>
-          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#6B7280]">
+          <p className="mt-2 text-xs sm:text-sm leading-relaxed text-gray">
             {category.description}
           </p>
         </div>
@@ -1162,7 +1161,7 @@ function ProductCategoryCard({
             {(category.features || category.applications)?.slice(0, 4).map((f, i) => (
               <span
                 key={i}
-                className="rounded-md bg-slate-50 border border-slate-200 px-2 py-0.5 text-[10px] font-medium text-slate-700"
+                className="font-heading rounded-md bg-slate-50 border border-slate-200 px-2 py-0.5 text-[10px] font-medium text-slate-700"
               >
                 {f}
               </span>
@@ -1172,10 +1171,10 @@ function ProductCategoryCard({
 
         {/* Product List Preview */}
         <div className="mt-5 rounded-xl bg-[#F8FAFC] border border-slate-100 p-3.5">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-2">
+          <span className="font-heading text-[10px] font-bold uppercase tracking-wider text-gray block mb-2">
             Included Formulations &amp; Sizes:
           </span>
-          <ul className="space-y-1.5 text-xs text-[#002240]">
+          <ul className="space-y-1.5 text-xs text-navy">
             {category.products.slice(0, expanded ? undefined : 3).map((prod, idx) => (
               <li
                 key={idx}
@@ -1183,12 +1182,12 @@ function ProductCategoryCard({
                 className="flex items-center justify-between gap-2 p-1.5 rounded-lg hover:bg-white transition-colors cursor-pointer group/item"
               >
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#3D5A80]" />
-                  <span className="font-medium line-clamp-1 group-hover/item:text-[#8B1E2D] transition-colors">
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-medblue" />
+                  <span className="font-heading font-medium line-clamp-1 group-hover/item:text-burgundy transition-colors">
                     {prod.name}
                   </span>
                 </div>
-                <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover/item:text-[#8B1E2D] shrink-0" />
+                <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover/item:text-burgundy shrink-0" />
               </li>
             ))}
           </ul>
@@ -1206,26 +1205,26 @@ function ProductCategoryCard({
                 {category.products.map((prod, pIdx) => (
                   <div
                     key={pIdx}
-                    className="rounded-xl bg-white border border-slate-200 p-3.5 text-xs space-y-2.5 shadow-2xs transition-all hover:border-[#3D5A80]/40"
+                    className="rounded-xl bg-white border border-slate-200 p-3.5 text-xs space-y-2.5 shadow-2xs transition-all hover:border-medblue/40"
                   >
                     {/* Header: Product Name & Badges */}
                     <div className="flex flex-wrap items-start justify-between gap-2">
-                      <h4 className="font-bold text-[#002240] text-xs leading-snug">
+                      <h4 className="font-heading font-bold text-navy text-xs leading-snug">
                         {prod.name}
                       </h4>
                       <div className="flex items-center gap-1.5 shrink-0 flex-wrap">
                         {prod.brand && (
-                          <span className="text-[10px] text-indigo-700 font-bold bg-indigo-50 border border-indigo-100 px-1.5 py-0.5 rounded">
+                          <span className="font-heading text-[10px] text-indigo-700 font-bold bg-indigo-50 border border-indigo-100 px-1.5 py-0.5 rounded">
                             {prod.brand}
                           </span>
                         )}
                         {prod.sterilized && (
-                          <span className="text-[10px] text-emerald-700 font-bold bg-emerald-50 border border-emerald-100 px-1.5 py-0.5 rounded">
+                          <span className="font-heading text-[10px] text-emerald-700 font-bold bg-emerald-50 border border-emerald-100 px-1.5 py-0.5 rounded">
                             Sterile
                           </span>
                         )}
                         {prod.priceRange && (
-                          <span className="text-[10px] text-[#8B1E2D] font-bold bg-rose-50 border border-rose-100 px-1.5 py-0.5 rounded">
+                          <span className="font-heading text-[10px] text-burgundy font-bold bg-rose-50 border border-rose-100 px-1.5 py-0.5 rounded">
                             {prod.priceRange}
                           </span>
                         )}
@@ -1382,7 +1381,7 @@ function ClinicalTableView({
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
-            <tr className="border-b border-slate-200 bg-[#F8FAFC] text-slate-500 uppercase tracking-wider text-[10px] font-bold">
+            <tr className="border-b border-border bg-[#F8FAFC] text-gray uppercase tracking-wider text-[10px] font-heading font-bold">
               <th className="py-4 px-5">Medical Device</th>
               <th className="py-4 px-4">Category</th>
               <th className="py-4 px-4 hidden md:table-cell">Material &amp; Build</th>
@@ -1400,7 +1399,7 @@ function ClinicalTableView({
                 onClick={() => onQuickView(prod, prod.categoryTitle)}
               >
                 <td className="py-3.5 px-5">
-                  <div className="font-bold text-[#002240] group-hover:text-[#3D5A80] transition-colors text-xs sm:text-sm">
+                  <div className="font-heading font-semibold text-navy group-hover:text-medblue transition-colors text-xs sm:text-sm">
                     {prod.name}
                   </div>
                   <div className="flex items-center gap-1.5 mt-1">
@@ -1534,10 +1533,10 @@ function ProductQuickViewModal({
 
         {/* Category & Title */}
         <div>
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#8B1E2D] bg-rose-50 px-2.5 py-0.5 rounded-md border border-rose-100 mb-2">
+          <span className="font-heading inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-burgundy bg-rose-50 px-2.5 py-0.5 rounded-md border border-rose-100 mb-2">
             {categoryTitle}
           </span>
-          <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#002240] leading-snug">
+          <h3 className="font-heading text-xl sm:text-2xl font-bold text-navy leading-snug">
             {prod.name}
           </h3>
         </div>
@@ -1826,10 +1825,10 @@ export default function MeccaCataloguePage() {
 
         <div className="container-px relative z-10">
           <div className="max-w-3xl">
-            <span className="eyebrow mb-6 inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-rose-300">
+            <div className="eyebrow mb-6 inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur-md">
               Company Ideals
-            </span>
-            <h1 className="font-heading text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-tight">
+            </div>
+            <h1 className="font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl leading-tight">
               Vision &amp; Mission Statement
             </h1>
             <p className="mt-6 text-lg text-slate-300 leading-relaxed max-w-2xl">
@@ -1840,7 +1839,7 @@ export default function MeccaCataloguePage() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="#portfolio"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#8B1E2D] px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#a82437] hover:shadow-xl cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-burgundy px-7 py-3.5 text-sm font-semibold text-white shadow-card transition-all duration-300 hover:bg-burgundy-dark hover:shadow-soft active:scale-95 cursor-pointer"
               >
                 <span>Explore Product Portfolio</span>
                 <ArrowRight className="h-4 w-4" />
@@ -1848,7 +1847,7 @@ export default function MeccaCataloguePage() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-white/40 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-navy active:scale-95 cursor-pointer"
               >
                 <span>Contact Our Team</span>
               </Link>
@@ -1860,7 +1859,7 @@ export default function MeccaCataloguePage() {
       {/* ================================================================
           2. VISION & MISSION SECTION (Exact Company Ideals)
           ================================================================ */}
-      <section className="py-20 lg:py-28 bg-white border-b border-slate-200">
+      <section className="section-py bg-white border-b border-border">
         <div className="container-px">
           <SectionHeading
             eyebrow="Company Ideals"
@@ -1888,18 +1887,18 @@ export default function MeccaCataloguePage() {
                   </span>
                 </div>
 
-                <span className="text-xs font-bold uppercase tracking-wider text-[#3D5A80]">
+                <span className="font-heading text-xs font-bold uppercase tracking-wider text-medblue">
                   VISION
                 </span>
-                <h3 className="font-heading text-2xl font-bold text-[#002240] mt-1">
+                <h3 className="font-heading text-2xl font-bold text-navy mt-1">
                   Our Corporate Vision
                 </h3>
 
                 {/* Exact Vision Statement */}
-                <div className="mt-6 border-l-4 border-[#3D5A80] bg-white p-5 rounded-r-2xl shadow-2xs">
+                <div className="mt-6 border-l-4 border-medblue bg-white p-5 rounded-r-2xl shadow-2xs">
                   <p className="text-base sm:text-lg font-medium italic leading-relaxed text-slate-800">
                     &ldquo;Our VISION is To be an organisation whose people &amp; products exude{" "}
-                    <strong className="text-[#002240] not-italic">
+                    <strong className="font-heading font-bold text-navy not-italic">
                       CARE, COMPASSION &amp; TRUST
                     </strong>{" "}
                     towards its customers, business partners and the society at large.&rdquo;
@@ -1908,8 +1907,8 @@ export default function MeccaCataloguePage() {
               </div>
 
               <div className="mt-8 pt-5 border-t border-slate-200/70 flex items-center gap-2 text-xs font-semibold text-slate-500">
-                <CheckCircle className="h-4 w-4 text-[#3D5A80]" />
-                <span>Exuding Care &amp; Trust Since 1977</span>
+                <CheckCircle className="h-4 w-4 text-medblue" />
+                <span className="font-heading">Exuding Care &amp; Trust Since 1977</span>
               </div>
             </motion.div>
 
@@ -1919,31 +1918,31 @@ export default function MeccaCataloguePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="relative flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-slate-100 bg-[#F8FAFC] p-8 sm:p-10 shadow-soft transition-all duration-300 hover:border-[#8B1E2D]/30 hover:shadow-md"
+              className="relative flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-slate-100 bg-[#F8FAFC] p-8 sm:p-10 shadow-soft transition-all duration-300 hover:border-burgundy/30 hover:shadow-md"
             >
               <GeoSquares className="absolute -right-6 -top-6 opacity-30" />
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 text-[#8B1E2D] border border-rose-100">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-rose-50 text-burgundy border border-rose-100">
                     <Compass className="h-6 w-6" />
                   </div>
-                  <span className="rounded-full bg-rose-50 border border-rose-100 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#8B1E2D]">
+                  <span className="font-heading rounded-full bg-rose-50 border border-rose-100 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-burgundy">
                     Five-Year Action Statement
                   </span>
                 </div>
 
-                <span className="text-xs font-bold uppercase tracking-wider text-[#8B1E2D]">
+                <span className="font-heading text-xs font-bold uppercase tracking-wider text-burgundy">
                   MISSION
                 </span>
-                <h3 className="font-heading text-2xl font-bold text-[#002240] mt-1">
+                <h3 className="font-heading text-2xl font-bold text-navy mt-1">
                   Our Mission Statement
                 </h3>
 
                 {/* Exact Mission Statement */}
-                <div className="mt-6 border-l-4 border-[#8B1E2D] bg-white p-5 rounded-r-2xl shadow-2xs">
+                <div className="mt-6 border-l-4 border-burgundy bg-white p-5 rounded-r-2xl shadow-2xs">
                   <p className="text-base sm:text-lg font-medium italic leading-relaxed text-slate-800">
                     &ldquo;Our MISSION for coming five years is To be an organisation whose employees strive for growth and values the contribution made by its founding members, through always keeping in mind the{" "}
-                    <strong className="text-[#002240] not-italic">
+                    <strong className="font-heading font-bold text-navy not-italic">
                       health and safety of the users
                     </strong>{" "}
                     of its products and thus satisfying the growing needs of the healthcare industry and its customers.&rdquo;
@@ -1952,8 +1951,8 @@ export default function MeccaCataloguePage() {
               </div>
 
               <div className="mt-8 pt-5 border-t border-slate-200/70 flex items-center gap-2 text-xs font-semibold text-slate-500">
-                <CheckCircle className="h-4 w-4 text-[#8B1E2D]" />
-                <span>Upholding Safety &amp; Growth First</span>
+                <CheckCircle className="h-4 w-4 text-burgundy" />
+                <span className="font-heading">Upholding Safety &amp; Growth First</span>
               </div>
             </motion.div>
           </div>
@@ -1963,16 +1962,16 @@ export default function MeccaCataloguePage() {
       {/* ================================================================
           3. ABOUT MECCA HEALTHCARE (Editorial Split Layout)
           ================================================================ */}
-      <section className="py-20 lg:py-24 bg-[#F8FAFC]">
+      <section className="section-py bg-bg">
         <div className="container-px">
           <div className="grid gap-12 lg:grid-cols-12 items-center">
             {/* Left Narrative Column */}
             <div className="lg:col-span-7 space-y-6">
-              <span className="eyebrow inline-flex items-center gap-1 rounded-full border border-[#8B1E2D]/20 bg-[#8B1E2D]/5 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-[#8B1E2D]">
+              <div className="eyebrow mb-4 inline-flex items-center gap-1 rounded-full border border-[#ff91a0]/15 bg-[#9e3744]/10 px-5 py-2 text-sm font-semibold text-[#8B1E2D] backdrop-blur-md">
                 Corporate Profile
-              </span>
+              </div>
 
-              <h2 className="font-heading text-3xl font-bold text-[#002240] sm:text-4xl leading-tight">
+              <h2 className="font-heading font-bold text-navy text-3xl md:text-4xl">
                 Pioneering Medical Device Manufacturing Since 1977
               </h2>
 
@@ -2105,7 +2104,7 @@ export default function MeccaCataloguePage() {
       {/* ================================================================
           5. OUR MEDICAL PRODUCT PORTFOLIO
           ================================================================ */}
-      <section id="portfolio" className="py-20 lg:py-28 bg-[#F8FAFC]">
+      <section id="portfolio" className="section-py bg-bg">
         <div className="container-px">
           <SectionHeading
             eyebrow="Clinical Excellence"
@@ -2145,10 +2144,10 @@ export default function MeccaCataloguePage() {
                 <button
                   type="button"
                   onClick={() => setViewMode("grid")}
-                  className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
+                  className={`font-heading inline-flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
                     viewMode === "grid"
-                      ? "bg-[#002240] text-white shadow-2xs"
-                      : "text-slate-600 hover:text-[#002240]"
+                      ? "bg-navy text-white shadow-2xs"
+                      : "text-gray hover:text-navy"
                   }`}
                 >
                   <LayoutGrid className="h-3.5 w-3.5" />
@@ -2157,10 +2156,10 @@ export default function MeccaCataloguePage() {
                 <button
                   type="button"
                   onClick={() => setViewMode("table")}
-                  className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
+                  className={`font-heading inline-flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all cursor-pointer ${
                     viewMode === "table"
-                      ? "bg-[#002240] text-white shadow-2xs"
-                      : "text-slate-600 hover:text-[#002240]"
+                      ? "bg-navy text-white shadow-2xs"
+                      : "text-gray hover:text-navy"
                   }`}
                 >
                   <List className="h-3.5 w-3.5" />
@@ -2254,10 +2253,10 @@ export default function MeccaCataloguePage() {
               <button
                 type="button"
                 onClick={() => setActiveTab("All")}
-                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
+                className={`font-heading inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
                   activeTab === "All"
-                    ? "bg-[#002240] text-white shadow-xs"
-                    : "bg-white text-slate-700 border border-slate-200 hover:border-[#3D5A80]"
+                    ? "bg-navy text-white shadow-xs"
+                    : "bg-white text-navy border border-border hover:border-burgundy/40"
                 }`}
               >
                 <span>All Categories</span>
@@ -2265,27 +2264,30 @@ export default function MeccaCataloguePage() {
                   className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
                     activeTab === "All"
                       ? "bg-white/20 text-white"
-                      : "bg-slate-100 text-slate-700"
+                      : "bg-slate-100 text-slate-600"
                   }`}
                 >
                   {allProducts.length}
                 </span>
               </button>
+
               {CATEGORIES.map((cat) => {
-                const CatIcon = cat.icon;
-                const isActive = activeTab === cat.navLabel;
+                const Icon = cat.icon;
+                const count = cat.products.length;
+                const isActive = activeTab === cat.id;
+
                 return (
                   <button
                     key={cat.id}
                     type="button"
-                    onClick={() => setActiveTab(cat.navLabel)}
-                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
+                    onClick={() => setActiveTab(cat.id)}
+                    className={`font-heading inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
                       isActive
-                        ? "bg-[#002240] text-white shadow-xs"
-                        : "bg-white text-slate-700 border border-slate-200 hover:border-[#3D5A80]"
+                        ? "bg-burgundy text-white shadow-xs"
+                        : "bg-white text-navy border border-border hover:border-burgundy/40"
                     }`}
                   >
-                    <CatIcon className="h-3.5 w-3.5" />
+                    <Icon className="h-3.5 w-3.5" />
                     <span>{cat.navLabel}</span>
                     <span
                       className={`px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
@@ -2405,7 +2407,7 @@ export default function MeccaCataloguePage() {
       {/* ================================================================
           6. QUALITY & CERTIFICATIONS ("Quality You Can Trust")
           ================================================================ */}
-      <section className="py-20 lg:py-24 bg-white border-y border-slate-200">
+      <section className="section-py bg-white border-y border-border">
         <div className="container-px">
           <SectionHeading
             eyebrow="Audited Compliance"
@@ -2415,53 +2417,53 @@ export default function MeccaCataloguePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Card 1 */}
-            <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6 shadow-2xs transition-all duration-300 hover:border-[#3D5A80] hover:shadow-md">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#3D5A80] border border-slate-200 mb-4">
+            <div className="rounded-2xl border border-border bg-[#F8FAFC] p-6 shadow-2xs transition-all duration-300 hover:border-burgundy/40 hover:shadow-md">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-burgundy border border-border mb-4">
                 <CheckCircle className="h-6 w-6" />
               </div>
-              <h3 className="font-heading text-lg font-bold text-[#002240]">
+              <h3 className="font-heading text-lg font-bold text-navy">
                 ISO 13485:2016
               </h3>
-              <p className="mt-2 text-xs leading-relaxed text-slate-600">
+              <p className="mt-2 text-xs leading-relaxed text-gray">
                 Quality Management System audited by TÜV SÜD for sterile medical device manufacturing.
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6 shadow-2xs transition-all duration-300 hover:border-[#3D5A80] hover:shadow-md">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#3D5A80] border border-slate-200 mb-4">
+            <div className="rounded-2xl border border-border bg-[#F8FAFC] p-6 shadow-2xs transition-all duration-300 hover:border-burgundy/40 hover:shadow-md">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-burgundy border border-border mb-4">
                 <CheckCircle className="h-6 w-6" />
               </div>
-              <h3 className="font-heading text-lg font-bold text-[#002240]">
+              <h3 className="font-heading text-lg font-bold text-navy">
                 ISO 9001:2015
               </h3>
-              <p className="mt-2 text-xs leading-relaxed text-slate-600">
+              <p className="mt-2 text-xs leading-relaxed text-gray">
                 Standardized enterprise processes, risk management, and client feedback integration.
               </p>
             </div>
 
             {/* Card 3 */}
-            <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6 shadow-2xs transition-all duration-300 hover:border-[#3D5A80] hover:shadow-md">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#3D5A80] border border-slate-200 mb-4">
+            <div className="rounded-2xl border border-border bg-[#F8FAFC] p-6 shadow-2xs transition-all duration-300 hover:border-burgundy/40 hover:shadow-md">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-burgundy border border-border mb-4">
                 <CheckCircle className="h-6 w-6" />
               </div>
-              <h3 className="font-heading text-lg font-bold text-[#002240]">
+              <h3 className="font-heading text-lg font-bold text-navy">
                 CE Certified
               </h3>
-              <p className="mt-2 text-xs leading-relaxed text-slate-600">
+              <p className="mt-2 text-xs leading-relaxed text-gray">
                 European Medical Device Directive (MDD 93/42/EEC Annex V) conformity certification.
               </p>
             </div>
 
             {/* Card 4 */}
-            <div className="rounded-2xl border border-slate-200 bg-[#F8FAFC] p-6 shadow-2xs transition-all duration-300 hover:border-[#3D5A80] hover:shadow-md">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-[#3D5A80] border border-slate-200 mb-4">
+            <div className="rounded-2xl border border-border bg-[#F8FAFC] p-6 shadow-2xs transition-all duration-300 hover:border-burgundy/40 hover:shadow-md">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-burgundy border border-border mb-4">
                 <CheckCircle className="h-6 w-6" />
               </div>
-              <h3 className="font-heading text-lg font-bold text-[#002240]">
+              <h3 className="font-heading text-lg font-bold text-navy">
                 WHO-GMP
               </h3>
-              <p className="mt-2 text-xs leading-relaxed text-slate-600">
+              <p className="mt-2 text-xs leading-relaxed text-gray">
                 Compliant Class 10,000 cleanroom environments with continuous air and bioburden monitoring.
               </p>
             </div>
@@ -2472,7 +2474,7 @@ export default function MeccaCataloguePage() {
       {/* ================================================================
           7. TARGET INDUSTRIES
           ================================================================ */}
-      <section className="py-20 lg:py-24 bg-[#F8FAFC]">
+      <section className="section-py bg-bg">
         <div className="container-px">
           <SectionHeading
             eyebrow="Market Footprint"
@@ -2482,69 +2484,69 @@ export default function MeccaCataloguePage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
             {/* Card 1 */}
-            <div className="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-[#3D5A80] hover:shadow-md">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#3D5A80] group-hover:bg-[#002240] group-hover:text-white transition-colors">
+            <div className="group rounded-2xl border border-border bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-burgundy/40 hover:shadow-md">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-burgundy/10 text-burgundy group-hover:bg-navy group-hover:text-white transition-colors">
                 <Building2 className="h-6 w-6" />
               </div>
-              <h3 className="mt-3 font-heading text-sm font-bold text-[#002240]">
+              <h3 className="mt-3 font-heading text-sm font-bold text-navy">
                 Hospitals
               </h3>
-              <p className="mt-1 text-[11px] text-slate-500">Surgical &amp; general wards</p>
+              <p className="mt-1 text-[11px] text-gray">Surgical &amp; general wards</p>
             </div>
 
             {/* Card 2 */}
-            <div className="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-[#3D5A80] hover:shadow-md">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#3D5A80] group-hover:bg-[#002240] group-hover:text-white transition-colors">
+            <div className="group rounded-2xl border border-border bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-burgundy/40 hover:shadow-md">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-burgundy/10 text-burgundy group-hover:bg-navy group-hover:text-white transition-colors">
                 <Stethoscope className="h-6 w-6" />
               </div>
-              <h3 className="mt-3 font-heading text-sm font-bold text-[#002240]">
+              <h3 className="mt-3 font-heading text-sm font-bold text-navy">
                 Clinics
               </h3>
-              <p className="mt-1 text-[11px] text-slate-500">Outpatient care units</p>
+              <p className="mt-1 text-[11px] text-gray">Outpatient care units</p>
             </div>
 
             {/* Card 3 */}
-            <div className="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-[#3D5A80] hover:shadow-md">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#3D5A80] group-hover:bg-[#002240] group-hover:text-white transition-colors">
+            <div className="group rounded-2xl border border-border bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-burgundy/40 hover:shadow-md">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-burgundy/10 text-burgundy group-hover:bg-navy group-hover:text-white transition-colors">
                 <Activity className="h-6 w-6" />
               </div>
-              <h3 className="mt-3 font-heading text-sm font-bold text-[#002240]">
+              <h3 className="mt-3 font-heading text-sm font-bold text-navy">
                 ICU &amp; Critical Care
               </h3>
-              <p className="mt-1 text-[11px] text-slate-500">Intensive therapy lines</p>
+              <p className="mt-1 text-[11px] text-gray">Intensive therapy lines</p>
             </div>
 
             {/* Card 4 */}
-            <div className="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-[#3D5A80] hover:shadow-md">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#3D5A80] group-hover:bg-[#002240] group-hover:text-white transition-colors">
+            <div className="group rounded-2xl border border-border bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-burgundy/40 hover:shadow-md">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-burgundy/10 text-burgundy group-hover:bg-navy group-hover:text-white transition-colors">
                 <Package className="h-6 w-6" />
               </div>
-              <h3 className="mt-3 font-heading text-sm font-bold text-[#002240]">
+              <h3 className="mt-3 font-heading text-sm font-bold text-navy">
                 Distributors
               </h3>
-              <p className="mt-1 text-[11px] text-slate-500">Global supply chains</p>
+              <p className="mt-1 text-[11px] text-gray">Global supply chains</p>
             </div>
 
             {/* Card 5 */}
-            <div className="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-[#3D5A80] hover:shadow-md">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#3D5A80] group-hover:bg-[#002240] group-hover:text-white transition-colors">
+            <div className="group rounded-2xl border border-border bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-burgundy/40 hover:shadow-md">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-burgundy/10 text-burgundy group-hover:bg-navy group-hover:text-white transition-colors">
                 <Landmark className="h-6 w-6" />
               </div>
-              <h3 className="mt-3 font-heading text-sm font-bold text-[#002240]">
+              <h3 className="mt-3 font-heading text-sm font-bold text-navy">
                 Government Health
               </h3>
-              <p className="mt-1 text-[11px] text-slate-500">Annual rate contracts</p>
+              <p className="mt-1 text-[11px] text-gray">Annual rate contracts</p>
             </div>
 
             {/* Card 6 */}
-            <div className="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-[#3D5A80] hover:shadow-md">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-[#3D5A80] group-hover:bg-[#002240] group-hover:text-white transition-colors">
+            <div className="group rounded-2xl border border-border bg-white p-5 text-center shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-burgundy/40 hover:shadow-md">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-burgundy/10 text-burgundy group-hover:bg-navy group-hover:text-white transition-colors">
                 <Globe className="h-6 w-6" />
               </div>
-              <h3 className="mt-3 font-heading text-sm font-bold text-[#002240]">
+              <h3 className="mt-3 font-heading text-sm font-bold text-navy">
                 OEM Partners
               </h3>
-              <p className="mt-1 text-[11px] text-slate-500">Loan-license manufacturing</p>
+              <p className="mt-1 text-[11px] text-gray">Loan-license manufacturing</p>
             </div>
           </div>
         </div>
@@ -2553,7 +2555,7 @@ export default function MeccaCataloguePage() {
       {/* ================================================================
           8. FINAL CTA (Aligned with Global Website FinalCTA Design)
           ================================================================ */}
-      <section className="section-py bg-bg">
+      <section className="section-py bg-white">
         <div className="container-px">
           <div className="relative overflow-hidden rounded-[32px] bg-burgundy-gradient px-8 py-14 text-white md:px-14 lg:px-16 shadow-xl">
             {/* Decorative background */}
@@ -2566,15 +2568,15 @@ export default function MeccaCataloguePage() {
             <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[1fr_auto]">
               {/* Content */}
               <div className="max-w-3xl">
-                <div className="mb-5 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/90">
+                <div className="eyebrow mb-5 inline-flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur-md">
                   Start Your Project
                 </div>
 
-                <h2 className="font-heading text-3xl font-bold leading-tight md:text-4xl lg:text-5xl">
+                <h2 className="font-heading font-bold text-white text-3xl leading-tight md:text-4xl lg:text-5xl">
                   Together, We Care Beyond Products
                 </h2>
 
-                <p className="mt-5 max-w-2xl leading-relaxed text-white/75 text-sm sm:text-base">
+                <p className="mt-5 max-w-2xl leading-relaxed text-white/80 text-sm sm:text-base">
                   Mecca Healthcare manufactures world-class sterile medical devices with innovation, quality, integrity, and compassion. Submit your requirements or connect with our team for contract manufacturing and institutional supply.
                 </p>
               </div>
@@ -2583,7 +2585,7 @@ export default function MeccaCataloguePage() {
               <div className="relative z-10 flex flex-col gap-3 lg:min-w-[210px]">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-[#8B1E2D] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl cursor-pointer"
+                  className="font-heading inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-burgundy shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl cursor-pointer"
                 >
                   Contact Our Team →
                 </Link>
@@ -2592,7 +2594,7 @@ export default function MeccaCataloguePage() {
                   type="button"
                   suppressHydrationWarning
                   onClick={() => openQuoteModal()}
-                  className="inline-flex items-center justify-center rounded-xl border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 cursor-pointer"
+                  className="font-heading inline-flex items-center justify-center rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 cursor-pointer"
                 >
                   Request a Quote →
                 </button>

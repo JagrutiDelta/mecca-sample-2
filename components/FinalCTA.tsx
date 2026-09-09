@@ -45,6 +45,7 @@ export default function FinalCTA() {
               <button
                 type="button"
                 onClick={() => openQuoteModal()}
+                suppressHydrationWarning
                 className="inline-flex items-center justify-center rounded-xl border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 cursor-pointer"
               >
                 Request a Quote →

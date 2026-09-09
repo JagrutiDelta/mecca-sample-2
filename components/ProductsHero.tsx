@@ -185,7 +185,7 @@ export default function ProductHero({
       "Explore our range of quality medical products designed for safety, reliability, and professional healthcare applications.",
     image: "/products.png",
     imageAlt: "Medical healthcare products",
-    imageFit: "contain",
+    imageFit: "cover",
     badge: "Medical & Healthcare Products",
     quoteHref: "#request-quote",
     specsHref: "#specifications",
@@ -220,7 +220,7 @@ export default function ProductHero({
     description,
     image = "/products.png",
     imageAlt,
-    imageFit = "contain",
+    imageFit = "cover",
     badge = "Advanced Medical Solution",
     quoteHref = "#request-quote",
     specsHref = "#specifications",
@@ -315,27 +315,28 @@ export default function ProductHero({
         </div>
 
         {/* RIGHT — Product visual */}
-        <div className="relative h-[320px] sm:h-[440px] lg:h-[600px]">
+        <div className="relative h-[360px] sm:h-[480px] lg:h-[580px] xl:h-[620px] w-full">
           <motion.div
-            initial={{ opacity: 0, scale: 0.94 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className={`absolute inset-0 overflow-hidden rounded-xl2 shadow-soft ${imageFit === "contain"
-              ? "bg-gradient-to-br from-white via-white to-medblue/10"
-              : ""
-              }`}
+            className={`absolute inset-0 overflow-hidden rounded-2xl md:rounded-xl2 shadow-2xl border border-slate-200/60 ${
+              imageFit === "contain"
+                ? "bg-gradient-to-br from-white via-white to-medblue/10"
+                : "bg-navy"
+            }`}
           >
             <Image
               src={image || "/products.png"}
               alt={safeImageAlt}
               fill
-              className={imageFit === "contain" ? "object-contain" : "object-cover"}
+              className={imageFit === "contain" ? "object-contain" : "object-cover object-center w-full h-full"}
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
 
             {imageFit === "cover" && (
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/50 via-transparent to-transparent pointer-events-none" />
             )}
           </motion.div>
 
@@ -343,28 +344,28 @@ export default function ProductHero({
           <motion.div
             animate={{ y: [0, -14, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -left-4 md:-left-10 top-8 bg-white/80 backdrop-blur-xl rounded-2xl shadow-glass border border-white/60 px-5 py-4"
+            className="absolute -left-4 md:-left-8 top-8 z-10 bg-white/90 backdrop-blur-xl rounded-2xl shadow-glass border border-white/60 px-5 py-3.5"
           >
-            <div className="font-heading font-extrabold text-2xl text-navy">Quality</div>
-            <div className="text-xs text-gray">Assured Products</div>
+            <div className="font-heading font-extrabold text-xl sm:text-2xl text-navy">Quality</div>
+            <div className="text-xs font-medium text-gray">Assured Products</div>
           </motion.div>
 
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-            className="absolute left-2 md:-left-6 bottom-10 bg-white/80 backdrop-blur-xl rounded-2xl shadow-glass border border-white/60 px-5 py-4"
+            className="absolute left-2 md:-left-6 bottom-10 z-10 bg-white/90 backdrop-blur-xl rounded-2xl shadow-glass border border-white/60 px-5 py-3.5"
           >
-            <div className="font-heading font-extrabold text-2xl text-navy">ISO</div>
-            <div className="text-xs text-gray">Quality Standards</div>
+            <div className="font-heading font-extrabold text-xl sm:text-2xl text-navy">ISO</div>
+            <div className="text-xs font-medium text-gray">Quality Standards</div>
           </motion.div>
 
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            className="absolute right-4 md:right-0 bottom-0 bg-white/80 backdrop-blur-xl rounded-2xl shadow-glass border border-white/60 px-5 py-4"
+            className="absolute right-4 md:right-0 bottom-4 z-10 bg-white/90 backdrop-blur-xl rounded-2xl shadow-glass border border-white/60 px-5 py-3.5"
           >
-            <div className="font-heading font-extrabold text-2xl text-navy">Trusted</div>
-            <div className="text-xs text-gray">Healthcare Solutions</div>
+            <div className="font-heading font-extrabold text-xl sm:text-2xl text-navy">Trusted</div>
+            <div className="text-xs font-medium text-gray">Healthcare Solutions</div>
           </motion.div>
         </div>
 

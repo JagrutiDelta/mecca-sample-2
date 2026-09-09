@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   CheckCircle2,
   ExternalLink,
-  Film,
 } from "lucide-react";
 import { meccaVideos } from "@/lib/meccavideo";
 import type { VideoItem } from "@/lib/Videos";
@@ -58,9 +57,9 @@ interface VideoShowcaseProps {
 
 export default function VideoShowcase({
   videos = meccaVideos,
-  eyebrow = "MECCA MEDIA",
+  eyebrow = "Video Showcase",
   heading = "See Healthcare in Action",
-  description = "Step inside our clinics, meet our specialists, and explore the clinical precision, sterile manufacturing standards, and patient safety innovations behind every Mecca medical device.",
+  description = "Explore the clinical precision, sterile manufacturing standards, and patient safety innovations behind every Mecca medical device.",
 }: VideoShowcaseProps) {
   const [[index, direction], setState] = useState<[number, Direction]>([0, 1]);
   const total = videos?.length ?? 0;
@@ -95,83 +94,93 @@ export default function VideoShowcase({
   if (!activeVideo || total === 0) return null;
 
   return (
-    <section
-      id="video-showcase"
-      className="section-py relative overflow-hidden bg-gradient-to-b from-white via-bg/70 to-white"
-    >
-      {/* Medical Grid Backdrop */}
-      <div className="pointer-events-none absolute inset-0 bg-medical-grid bg-grid opacity-50 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_35%,black,transparent)]" />
+    <section id="video-showcase" className="section-py bg-white relative overflow-hidden">
+      {/* Background medical grid decorative pattern */}
+      <div className="pointer-events-none absolute inset-0 bg-medical-grid bg-grid opacity-30 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_35%,black,transparent)]" />
 
-      {/* Ambient luxury glow orbs */}
-      <div className="pointer-events-none absolute -top-40 -right-40 h-[520px] w-[520px] rounded-full bg-burgundy/5 blur-3xl" />
-      <div className="pointer-events-none absolute -bottom-40 -left-40 h-[480px] w-[480px] rounded-full bg-medblue/8 blur-3xl" />
-
-      <div className="container-px relative mx-auto max-w-7xl">
-        {/* Main 2-column showcase grid */}
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-14">
-          
-          {/* LEFT COLUMN — Brand copy & controls (5 cols) */}
-          <div className="order-2 flex flex-col justify-center lg:order-1 lg:col-span-5">
-            {/* Eyebrow badge */}
-            <div className="eyebrow mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-burgundy/20 bg-burgundy/10 px-4 py-1.5 text-xs font-semibold text-burgundy backdrop-blur-md">
-              <Film className="h-3.5 w-3.5" />
-              <span>{eyebrow}</span>
-            </div>
-
-            {/* Title */}
-            <h2 className="font-heading text-3xl font-extrabold tracking-tight text-navy sm:text-4xl lg:text-[42px] lg:leading-[1.15]">
-              See Healthcare in{" "}
-              <span className="text-burgundy">Action</span>
-            </h2>
-
-            {/* Description */}
-            <p className="mt-4 text-base leading-relaxed text-gray sm:text-lg">
+      <div className="container-px relative">
+        {/* Section Heading - Matches other home page sections */}
+        <div className="max-w-2xl mx-auto text-center mb-16">
+          <div className="eyebrow justify-center mb-4 inline-flex items-center gap-1 rounded-full border border-[#ff91a0]/15 bg-[#9e3744]/10 px-5 py-2 text-sm font-semibold text-[#8B1E2D] backdrop-blur-md">
+            {eyebrow}
+          </div>
+          <h2 className="font-heading font-bold text-navy text-3xl md:text-4xl">
+            {heading}
+          </h2>
+          {description && (
+            <p className="mt-4 text-gray leading-relaxed text-base sm:text-lg">
               {description}
             </p>
+          )}
+        </div>
 
-            {/* Value checklist bullets */}
-            <div className="mt-7 space-y-3">
-              <div className="flex items-center gap-3 text-sm font-medium text-navy">
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-                  <CheckCircle2 className="h-4 w-4" />
-                </div>
-                <span>ISO 13485 & CE certified device demonstrations</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm font-medium text-navy">
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-                  <CheckCircle2 className="h-4 w-4" />
-                </div>
-                <span>Step-by-step clinical priming & safety mechanisms</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm font-medium text-navy">
-                <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
-                  <CheckCircle2 className="h-4 w-4" />
-                </div>
-                <span>Engineered for zero-air entry & precision flow delivery</span>
-              </div>
-            </div>
-
-            {/* Controls: Counter + Prev / Next */}
-            <div className="mt-9 flex flex-wrap items-center gap-5">
-              <div
-                className="flex items-center gap-2.5 rounded-full border border-border bg-white px-4 py-2 shadow-card"
-                aria-live="polite"
-              >
-                <span className="h-2 w-2 rounded-full bg-burgundy animate-pulse" />
-                <span className="font-heading text-xs font-bold uppercase tracking-wider text-gray">
-                  Video
+        {/* Featured Showcase Area */}
+        <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-12 lg:gap-8">
+          {/* Active Video Info & Controls (5 cols) */}
+          <div className="order-2 flex flex-col justify-between rounded-xl2 border border-border bg-bg/50 p-6 sm:p-8 shadow-card lg:order-1 lg:col-span-5">
+            <div>
+              {/* Top row with Clinical badge & counter */}
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-burgundy/10 border border-burgundy/20 px-3 py-1 text-xs font-semibold text-burgundy">
+                  <ShieldCheck className="h-3.5 w-3.5" />
+                  Clinical Demonstration
                 </span>
-                <span className="font-heading text-sm font-extrabold text-navy tabular-nums">
+                <span className="font-heading text-xs font-bold text-gray uppercase tracking-wider">
                   {counter}
                 </span>
               </div>
 
-              <div className="flex items-center gap-2.5">
+              {/* Title */}
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={activeVideo.id}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <h3 className="font-heading text-2xl font-bold text-navy sm:text-3xl leading-snug">
+                    {activeVideo.title || "Clinical Demonstration"}
+                  </h3>
+                  <p className="mt-3 text-sm sm:text-base text-gray leading-relaxed">
+                    {activeVideo.description ||
+                      "Explore how Mecca Healthcare devices are manufactured, sterilized, and applied in real-world clinical settings."}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Value checklist bullets */}
+              <div className="mt-6 space-y-3 pt-6 border-t border-border">
+                <div className="flex items-center gap-3 text-sm font-medium text-navy">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                    <CheckCircle2 className="h-4 w-4" />
+                  </div>
+                  <span>ISO 13485 &amp; CE certified device demonstrations</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm font-medium text-navy">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                    <CheckCircle2 className="h-4 w-4" />
+                  </div>
+                  <span>Step-by-step clinical priming &amp; safety mechanisms</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm font-medium text-navy">
+                  <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                    <CheckCircle2 className="h-4 w-4" />
+                  </div>
+                  <span>Engineered for zero-air entry &amp; precision flow delivery</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Controls */}
+            <div className="mt-8 pt-6 border-t border-border flex flex-wrap items-center justify-between gap-4">
+              <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={handlePrev}
                   aria-label="Previous video"
-                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white text-navy shadow-card transition-all duration-300 hover:border-burgundy hover:bg-burgundy hover:text-white hover:shadow-soft active:scale-95"
+                  suppressHydrationWarning
+                  className="group flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-navy shadow-card transition-all duration-200 hover:border-burgundy hover:bg-burgundy hover:text-white active:scale-95"
                 >
                   <ChevronLeft className="h-5 w-5 transition-transform group-hover:-translate-x-0.5" />
                 </button>
@@ -179,22 +188,31 @@ export default function VideoShowcase({
                   type="button"
                   onClick={handleNext}
                   aria-label="Next video"
-                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white text-navy shadow-card transition-all duration-300 hover:border-burgundy hover:bg-burgundy hover:text-white hover:shadow-soft active:scale-95"
+                  suppressHydrationWarning
+                  className="group flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white text-navy shadow-card transition-all duration-200 hover:border-burgundy hover:bg-burgundy hover:text-white active:scale-95"
                 >
                   <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
                 </button>
               </div>
+
+              {activeVideo.youtubeId && (
+                <a
+                  href={`https://www.youtube.com/watch?v=${activeVideo.youtubeId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-burgundy transition-colors hover:text-burgundy-dark"
+                >
+                  <span>Watch on YouTube</span>
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              )}
             </div>
           </div>
 
-          {/* RIGHT COLUMN — Featured Cinematic Player (7 cols) */}
-          <div className="order-1 lg:order-2 lg:col-span-7">
-            <div className="relative rounded-xl2 border border-border/80 bg-white/90 p-3 shadow-soft backdrop-blur-xl sm:p-4">
-              {/* Ambient backdrop glow */}
-              <div className="pointer-events-none absolute -inset-1 -z-10 rounded-xl2 bg-gradient-to-r from-burgundy/10 to-medblue/10 blur-xl opacity-70" />
-
-              {/* Video container */}
-              <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-[#0A1B2E] shadow-inner">
+          {/* Featured Player (7 cols) */}
+          <div className="order-1 lg:order-2 lg:col-span-7 flex flex-col">
+            <div className="relative rounded-xl2 border border-border bg-white p-3 sm:p-4 shadow-card hover:shadow-soft transition-shadow duration-300 h-full flex flex-col justify-center">
+              <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-navy shadow-inner">
                 <AnimatePresence mode="wait" initial={false} custom={direction}>
                   <motion.div
                     key={activeVideo.id}
@@ -221,63 +239,33 @@ export default function VideoShowcase({
                   </motion.div>
                 </AnimatePresence>
 
-                {/* Floating clinical badge on top of player */}
-                <div className="pointer-events-none absolute top-3 right-3 flex items-center gap-1.5 rounded-full bg-navy/85 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-md border border-white/15">
+                <div className="pointer-events-none absolute top-3 right-3 flex items-center gap-1.5 rounded-full bg-navy/90 px-3 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-md border border-white/15">
                   <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
-                  <span>Clinical Demo</span>
+                  <span>Clinical Demonstration</span>
                 </div>
-              </div>
-
-              {/* Title & description below player */}
-              <div className="px-2 pt-4 pb-2 sm:px-3">
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={activeVideo.id}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.25 }}
-                  >
-                    <div className="flex flex-wrap items-start justify-between gap-2">
-                      <h3 className="font-heading text-lg font-bold text-navy sm:text-xl md:text-2xl">
-                        {activeVideo.title || "Video title coming soon"}
-                      </h3>
-                      {activeVideo.youtubeId && (
-                        <a
-                          href={`https://www.youtube.com/watch?v=${activeVideo.youtubeId}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs font-semibold text-burgundy transition-colors hover:text-burgundy-dark"
-                        >
-                          <span>Watch on YouTube</span>
-                          <ExternalLink className="h-3.5 w-3.5" />
-                        </a>
-                      )}
-                    </div>
-                    <p className="mt-2 text-sm leading-relaxed text-gray sm:text-base">
-                      {activeVideo.description ||
-                        "A description will appear here once this video is added."}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
               </div>
             </div>
           </div>
         </div>
 
-        {/* BOTTOM AREA — Interactive Video Playlist Cards */}
+        {/* Interactive Video Playlist Cards */}
         <div className="mt-14">
-          <div className="mb-5 flex items-center justify-between">
-            <span className="font-heading text-xs font-bold uppercase tracking-wider text-gray">
-              Featured Clinical Demonstrations ({total})
-            </span>
-            <span className="text-xs text-gray hidden sm:inline">
-              Click any video to load into the player
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h3 className="font-heading text-lg font-bold text-navy">
+                Featured Clinical Demonstrations
+              </h3>
+              <p className="text-xs text-gray mt-0.5">
+                Select a video to stream clinical procedures and product usage
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-gray bg-bg px-3 py-1 rounded-full border border-border hidden sm:inline">
+              {total} Videos Available
             </span>
           </div>
 
           <div
-            className={`grid gap-5 ${
+            className={`grid gap-6 ${
               total <= 3
                 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
                 : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
@@ -292,10 +280,11 @@ export default function VideoShowcase({
                   onClick={() => handleThumbnailClick(i)}
                   aria-label={video.title || `Play video ${i + 1}`}
                   aria-current={isActive}
-                  className={`group relative flex flex-col rounded-2xl border p-3.5 text-left transition-all duration-300 ${
+                  suppressHydrationWarning
+                  className={`group relative flex flex-col rounded-xl2 border p-3.5 text-left transition-all duration-300 ${
                     isActive
-                      ? "border-burgundy bg-white shadow-[0_12px_32px_rgba(139,30,45,0.18)] ring-2 ring-burgundy/30 -translate-y-1"
-                      : "border-border bg-white hover:border-navy/25 hover:bg-slate-50/70 hover:shadow-card hover:-translate-y-0.5"
+                      ? "border-burgundy bg-white shadow-soft ring-2 ring-burgundy/20 -translate-y-1"
+                      : "border-border bg-white hover:border-burgundy/40 hover:shadow-card hover:-translate-y-1"
                   }`}
                 >
                   {/* Thumbnail Container */}
@@ -364,7 +353,7 @@ export default function VideoShowcase({
                         "A description will appear here once this video is added."}
                     </p>
 
-                    <div className="mt-3.5 pt-2.5 border-t border-border/70 flex items-center justify-between text-xs font-semibold">
+                    <div className="mt-3.5 pt-2.5 border-t border-border flex items-center justify-between text-xs font-semibold">
                       <span
                         className={
                           isActive

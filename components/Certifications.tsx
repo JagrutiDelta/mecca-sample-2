@@ -36,7 +36,11 @@ export default function Certifications() {
               </div>
               <div className="font-heading font-bold text-navy mt-4">{c.code}</div>
               <p className="text-xs text-gray mt-2 leading-relaxed">{c.desc}</p>
-              <button className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-burgundy">
+              <button
+                type="button"
+                suppressHydrationWarning
+                className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-burgundy"
+              >
                 <Download className="w-3.5 h-3.5" />
                 Download
               </button>
