@@ -60,14 +60,22 @@ export default function OEMContactForm() {
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-border flex flex-col gap-2 text-xs text-gray">
+              <div className="pt-6 border-t border-border flex flex-col gap-2.5 text-xs text-gray">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-burgundy" />
-                  <span>+91 98765 43210</span>
+                  <Phone className="w-4 h-4 text-burgundy shrink-0" />
+                  <a href="tel:+919998699090" className="font-medium text-navy hover:text-burgundy transition-colors">
+                    +91 999 869 9090
+                  </a>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-burgundy" />
-                  <span>oem@mecacare.com</span>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Mail className="w-4 h-4 text-burgundy shrink-0" />
+                  <a href="mailto:info@mhplindia.com" className="font-medium text-navy hover:text-burgundy transition-colors">
+                    info@mhplindia.com
+                  </a>
+                  <span className="text-gray/40">/</span>
+                  <a href="mailto:mhpljd@gmail.com" className="font-medium text-navy hover:text-burgundy transition-colors">
+                    mhpljd@gmail.com
+                  </a>
                 </div>
               </div>
             </div>

@@ -481,6 +481,9 @@ export default function ProductsGrid() {
                             <img
                               src={product.image}
                               alt={product.name}
+                              onError={(e) => {
+                                e.currentTarget.src = "/products/hero_medical_products.png";
+                              }}
                               className="w-full h-full object-contain group-hover:scale-108 transition-transform duration-500"
                             />
                           )}
@@ -633,6 +636,9 @@ export default function ProductsGrid() {
                                 <img
                                   src={product.image}
                                   alt={product.name}
+                                  onError={(e) => {
+                                    e.currentTarget.src = "/products/hero_medical_products.png";
+                                  }}
                                   className="w-full h-full object-contain"
                                 />
                               </div>

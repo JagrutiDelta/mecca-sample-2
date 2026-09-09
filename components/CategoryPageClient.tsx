@@ -173,6 +173,9 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
                       <img
                         src={product.image}
                         alt={product.name}
+                        onError={(e) => {
+                          e.currentTarget.src = "/products/hero_medical_products.png";
+                        }}
                         className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                       />
                     </Link>

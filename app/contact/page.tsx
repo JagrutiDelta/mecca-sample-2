@@ -135,9 +135,10 @@ const labelClasses =
 /* -------------------------------------------------------------------------- */
 
 const CONTACT_INFO = {
-  email: "contact@mhplindia.com",
-  phone: "+91 XXXXX XXXXX",
-  whatsapp: "+91 XXXXX XXXXX",
+  email: "info@mhplindia.com",
+  secondaryEmail: "mhpljd@gmail.com",
+  phone: "+91 999 869 9090",
+  whatsapp: "+91 999 869 9090",
   hours: "Mon–Sat, 9:30 AM–6:30 PM IST",
 
   social: [
@@ -307,7 +308,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="tel:+91XXXXXXXXXX"
+                href={`tel:${CONTACT_INFO.phone.replace(/\s+/g, "")}`}
                 className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white/70 px-8 py-4 text-sm font-semibold text-navy backdrop-blur transition-colors hover:bg-white"
               >
                 <Phone className="h-4 w-4" />
@@ -891,8 +892,15 @@ function ContactSidebarCard() {
             <ContactRow
               href={`mailto:${CONTACT_INFO.email}`}
               icon={Mail}
-              label="Email"
+              label="Email (Primary)"
               value={CONTACT_INFO.email}
+            />
+
+            <ContactRow
+              href={`mailto:${CONTACT_INFO.secondaryEmail}`}
+              icon={Mail}
+              label="Email (Alternative)"
+              value={CONTACT_INFO.secondaryEmail}
             />
 
           </div>

@@ -83,6 +83,9 @@ export default function ProductDetailModal({
                     <img
                       src={product.image}
                       alt={product.name}
+                      onError={(e) => {
+                        e.currentTarget.src = "/products/hero_medical_products.png";
+                      }}
                       className="h-full w-full object-contain p-6"
                     />
                     <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200 text-[10px] font-bold text-burgundy shadow-xs">

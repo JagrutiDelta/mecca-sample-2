@@ -347,17 +347,24 @@ export default function PrivacyPolicyPage() {
                       <Mail className="w-4 h-4 text-burgundy" />
                       <div>
                         <span className="text-xs text-gray block">Email Compliance</span>
-                        <a href="mailto:info@meccacare.com" className="text-navy font-semibold hover:text-burgundy transition-colors">
-                          info@meccacare.com
-                        </a>
+                        <div className="flex flex-col gap-1">
+                          <a href="mailto:info@mhplindia.com" className="text-navy font-semibold hover:text-burgundy transition-colors">
+                            info@mhplindia.com
+                          </a>
+                          <a href="mailto:mhpljd@gmail.com" className="text-navy font-semibold hover:text-burgundy transition-colors">
+                            mhpljd@gmail.com
+                          </a>
+                        </div>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <Phone className="w-4 h-4 text-burgundy" />
+                      <Phone className="w-4 h-4 text-burgundy shrink-0" />
                       <div>
                         <span className="text-xs text-gray block">Telephone</span>
-                        <span className="text-navy font-semibold">+91 (0) 2764 225 000</span>
+                        <a href="tel:+919998699090" className="text-navy font-semibold hover:text-burgundy transition-colors">
+                          +91 999 869 9090
+                        </a>
                       </div>
                     </div>
                   </div>

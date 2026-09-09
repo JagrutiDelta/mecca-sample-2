@@ -108,6 +108,9 @@ export default function ProductDetailClient({
                 <img
                   src={product.image}
                   alt={product.name}
+                  onError={(e) => {
+                    e.currentTarget.src = "/products/hero_medical_products.png";
+                  }}
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                 />
                 {/* Top Badge */}
@@ -118,7 +121,7 @@ export default function ProductDetailClient({
                 {/* Quality Seal */}
                 <div className="absolute bottom-4 right-4 bg-navy/90 text-white backdrop-blur-md px-3 py-1.5 rounded-lg text-[11px] font-medium flex items-center gap-1.5 shadow-md">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>ISO 13485 &amp; CE Certified</span>
+                  <span>ISO 13485 & CE Certified</span>
                 </div>
               </>
             )}

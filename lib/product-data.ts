@@ -69,7 +69,7 @@ export const sampleProduct: ProductHeroData = {
   highlightedText: "IV Infusion Sets",
   description:
     "Designed for safe, reliable and efficient clinical use, our LifeGuard IV Infusion Set delivers consistent fluid flow while meeting the demanding requirements of modern healthcare environments.",
-  image: "/products/lifeguard-iv-infusion-set.png",
+  image: "/products/iv_infusion_set.png",
   imageAlt: "LifeGuard IV Infusion Set product photo",
   imageFit: "contain",
   badge: "Advanced Medical Solution",

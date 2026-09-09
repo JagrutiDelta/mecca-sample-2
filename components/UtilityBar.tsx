@@ -1,6 +1,6 @@
 "use client";
 
-import { Globe2, ShieldCheck, BadgeCheck } from "lucide-react";
+import { Globe2, Mail, Phone, ShieldCheck, BadgeCheck } from "lucide-react";
 import LanguageTranslator from "@/components/LanguageTranslator";
 
 const ITEMS = [
@@ -45,8 +45,22 @@ export default function UtilityBar() {
           <span>Mecca Global Healthcare</span>
         </div>
 
-        {/* Right Language Translator Dropdown */}
-        <div className="flex items-center gap-3">
+        {/* Right Language Translator Dropdown & Contact Info */}
+        <div className="flex items-center gap-4">
+          <a
+            href="tel:+919998699090"
+            className="hidden lg:inline-flex items-center gap-1.5 text-[11px] text-white/85 hover:text-white transition-colors"
+          >
+            <Phone className="w-3.5 h-3.5 text-[#8B1E2D]" />
+            <span>+91 999 869 9090</span>
+          </a>
+          <a
+            href="mailto:info@mhplindia.com"
+            className="hidden md:inline-flex items-center gap-1.5 text-[11px] text-white/85 hover:text-white transition-colors"
+          >
+            <Mail className="w-3.5 h-3.5 text-[#8B1E2D]" />
+            <span>info@mhplindia.com</span>
+          </a>
           <LanguageTranslator variant="utility" />
         </div>
       </div>

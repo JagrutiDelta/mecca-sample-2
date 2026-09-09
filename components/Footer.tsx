@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Facebook, Linkedin, Twitter, Youtube } from "lucide-react";
+import { ArrowUpRight, Facebook, Linkedin, Mail, Phone, Twitter, Youtube } from "lucide-react";
 import { useQuoteModal } from "@/context/QuoteContext";
 import LanguageTranslator from "@/components/LanguageTranslator";
 
@@ -74,6 +74,30 @@ export default function Footer() {
                 Global medical device manufacturer since 1977. ISO 13485 and WHO GMP
                 certified, exporting to 50+ countries.
               </p>
+
+              <div className="mt-4 space-y-2 text-xs">
+                <a
+                  href="tel:+919998699090"
+                  className="flex items-center gap-2 text-white/80 transition-colors hover:text-white font-medium"
+                >
+                  <Phone className="h-3.5 w-3.5 text-[#8B1E2D] shrink-0" />
+                  <span>+91 999 869 9090</span>
+                </a>
+                <a
+                  href="mailto:info@mhplindia.com"
+                  className="flex items-center gap-2 text-white/80 transition-colors hover:text-white"
+                >
+                  <Mail className="h-3.5 w-3.5 text-[#8B1E2D] shrink-0" />
+                  <span>info@mhplindia.com</span>
+                </a>
+                <a
+                  href="mailto:mhpljd@gmail.com"
+                  className="flex items-center gap-2 text-white/80 transition-colors hover:text-white"
+                >
+                  <Mail className="h-3.5 w-3.5 text-[#8B1E2D] shrink-0" />
+                  <span>mhpljd@gmail.com</span>
+                </a>
+              </div>
 
               <div className="mt-8 flex items-center gap-3 sm:gap-4">
                 {[
@@ -176,10 +200,15 @@ export default function Footer() {
 
               <div className="flex items-center justify-center gap-1.5 text-center md:justify-end">
                 <span>Designed &amp; Developed by</span>
-                <a href="https://www.deltainfosoft.com/" className="font-medium text-[#8B1E2D]">
+                <a
+                  href="https://www.deltainfosoft.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-medium text-[#8B1E2D] hover:underline"
+                >
                   Delta Infosoft Pvt. Ltd.
+                  <ArrowUpRight className="h-3.5 w-3.5 text-[#8B1E2D]/80" aria-hidden="true" />
                 </a>
-                <ArrowUpRight className="h-3.5 w-3.5 text-[#8B1E2D]/80" aria-hidden="true" />
               </div>
             </div>
           </div>

@@ -307,7 +307,7 @@ export default function CareersPage() {
         </a>
 
         <a
-          href="mailto:careers@mhplindia.in"
+          href="mailto:rohit.mhpl@gmail.com"
           className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white/70 px-8 py-4 text-sm font-semibold text-navy backdrop-blur transition-colors hover:bg-white"
         >
           <Mail className="h-4 w-4" />
@@ -510,8 +510,8 @@ export default function CareersPage() {
                   {[
                     { icon: Briefcase, text: "Multiple Departments Hiring" },
                     { icon: MapPin, text: "Kalol • Chhatral • Boranada" },
-                    { icon: Mail, text: "hr@mhplindia.in", href: "mailto:hr@mhplindia.in" },
-                    { icon: Phone, text: "+91 98250 XXXXX" },
+                    { icon: Mail, text: "rohit.mhpl@gmail.com", href: "mailto:rohit.mhpl@gmail.com" },
+                    { icon: Phone, text: "+91 999 869 9090", href: "tel:+919998699090" },
                   ].map((item) => (
                     <div key={item.text} className="flex items-center gap-4 text-sm text-gray">
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-burgundy/10 text-burgundy">

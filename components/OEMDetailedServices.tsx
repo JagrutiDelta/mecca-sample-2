@@ -99,7 +99,7 @@ const OEM_SERVICES_DATA = [
       "Seamless raw material reconciliation and transparent cost modeling",
     ],
     idealFor: "Pharma corporations and medical device license holders requiring certified manufacturing premises.",
-    image: "/facilities/plant_cleanroom.png",
+    image: "/Cleanrrom.jpg",
   },
   {
     id: "custom-packaging",
@@ -126,7 +126,7 @@ const OEM_SERVICES_DATA = [
       "Rigorous seal integrity dye penetration tests, burst pressure testing, and accelerated aging shelf-life validation",
     ],
     idealFor: "Medical device manufacturers seeking outsourced sterile packaging or third-party validated EO gas sterilization.",
-    image: "/facilities/plant_sterilization.png",
+    image: "/ETO.png",
   },
 ];
 
