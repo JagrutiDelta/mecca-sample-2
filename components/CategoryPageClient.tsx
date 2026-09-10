@@ -16,6 +16,8 @@ import {
   Sparkles,
   Eye,
   Download,
+  Plus,
+  Check,
 } from "lucide-react";
 import { ProductItem, CATEGORIES, getProductsByCategoryId } from "@/lib/products";
 import ProductDetailModal from "@/components/ProductDetailModal";
@@ -27,7 +29,7 @@ interface CategoryPageClientProps {
 }
 
 export default function CategoryPageClient({ category }: CategoryPageClientProps) {
-  const { openQuoteModal } = useQuoteModal();
+  const { openQuoteModal, addToQuote, toggleQuoteItem, isItemInQuote } = useQuoteModal();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
 
@@ -246,15 +248,45 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
 
+                {/* Multi-Product RFQ Toggle Button */}
                 <button
                   type="button"
-                  onClick={() => openQuoteModal(product.name)}
+                  onClick={() => toggleQuoteItem(product.name)}
+                  className={`py-2.5 px-3 rounded-full text-xs font-semibold transition-all flex items-center gap-1 cursor-pointer ${
+                    isItemInQuote(product.name)
+                      ? "bg-emerald-50 text-emerald-700 border border-emerald-300 font-bold"
+                      : "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200"
+                  }`}
+                  title={
+                    isItemInQuote(product.name)
+                      ? "Remove from multi-product quote"
+                      : "Add to multi-product quote list"
+                  }
+                >
+                  {isItemInQuote(product.name) ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>In RFQ</span>
+                    </>
+                  ) : (
+                    <>
+                      <Plus className="w-3.5 h-3.5 text-slate-500" />
+                      <span>RFQ</span>
+                    </>
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    addToQuote(product.name);
+                    openQuoteModal(product.name);
+                  }}
                   className="py-2.5 px-4 rounded-full bg-burgundy text-white font-semibold text-xs hover:bg-burgundy-dark transition-colors shadow-sm flex items-center gap-1 cursor-pointer"
                 >
                   <FileText className="w-3.5 h-3.5" />
                   <span>Quote</span>
                 </button>
-
               </div>
               </>
               )}

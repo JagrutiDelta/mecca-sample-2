@@ -31,6 +31,7 @@ import {
   Waves,
   Wind,
   X,
+  Plus,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -553,7 +554,7 @@ const stats: Stat[] = [
 
 export default function ProductPortfolio() {
   const router = useRouter();
-  const { openQuoteModal, addToQuote } = useQuoteModal();
+  const { openQuoteModal, addToQuote, toggleQuoteItem, isItemInQuote } = useQuoteModal();
   const [selectedDivision, setSelectedDivision] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const pdfUrl = "/catalogues/MECCA HEALTHCARE PVT LTD Product List 2026.pdf";
@@ -936,10 +937,34 @@ export default function ProductPortfolio() {
                           </p>
                         </div>
 
-                        <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-                          <span className="text-[10px] text-slate-400 font-medium">
-                            ISO 13485 Spec
-                          </span>
+                        <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 gap-2">
+                          <button
+                            type="button"
+                            onClick={() => toggleQuoteItem(product.name)}
+                            className={`px-2.5 py-1 rounded-full text-[11px] font-semibold transition-all flex items-center gap-1 cursor-pointer ${
+                              isItemInQuote(product.name)
+                                ? "bg-emerald-50 text-emerald-700 border border-emerald-300 font-bold"
+                                : "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200"
+                            }`}
+                            title={
+                              isItemInQuote(product.name)
+                                ? "Remove from multi-product quote"
+                                : "Add to multi-product quote list"
+                            }
+                          >
+                            {isItemInQuote(product.name) ? (
+                              <>
+                                <Check className="w-3 h-3 text-emerald-600" />
+                                <span>In RFQ</span>
+                              </>
+                            ) : (
+                              <>
+                                <Plus className="w-3 h-3 text-slate-500" />
+                                <span>RFQ</span>
+                              </>
+                            )}
+                          </button>
+
                           <button
                             type="button"
                             onClick={() => handleQuote(product.name)}

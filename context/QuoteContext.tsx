@@ -95,50 +95,52 @@ export function QuoteProvider({ children }: { children: React.ReactNode }) {
       {/* Floating Multi-Product RFQ Dock */}
       <AnimatePresence>
         {selectedProducts.length > 0 && !isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 50, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 50, scale: 0.95 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-xl bg-[#091D33] border-2 border-white/20 text-white rounded-full shadow-[0_20px_60px_rgba(0,0,0,0.6)] px-4 py-3 sm:px-5 sm:py-3 flex items-center justify-between gap-3"
-          >
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-burgundy border border-white/30 flex items-center justify-center font-black text-xs sm:text-sm shrink-0 text-white shadow-md">
-                {selectedProducts.length}
-              </div>
-              <div className="min-w-0">
-                <div className="text-xs sm:text-sm font-bold text-white truncate">
-                  {selectedProducts.length === 1
-                    ? selectedProducts[0]
-                    : `${selectedProducts.length} Medical Products Selected`}
+          <div className="fixed bottom-6 inset-x-0 z-50 flex justify-center pointer-events-none px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.95 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="pointer-events-auto w-full max-w-xl bg-[#091D33] border-2 border-white/20 text-white rounded-full shadow-[0_20px_60px_rgba(0,0,0,0.6)] px-4 py-3 sm:px-5 sm:py-3 flex items-center justify-between gap-3"
+            >
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-burgundy border border-white/30 flex items-center justify-center font-black text-xs sm:text-sm shrink-0 text-white shadow-md">
+                  {selectedProducts.length}
                 </div>
-                <div className="text-[10px] sm:text-[11px] text-slate-300 truncate hidden sm:block">
-                  Ready for factory unit price &amp; RFQ documentation
+                <div className="min-w-0">
+                  <div className="text-xs sm:text-sm font-bold text-white truncate">
+                    {selectedProducts.length === 1
+                      ? selectedProducts[0]
+                      : `${selectedProducts.length} Medical Products Selected`}
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-300 truncate hidden sm:block">
+                    Ready for factory unit price &amp; RFQ documentation
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="flex items-center gap-2 shrink-0">
-              <button
-                type="button"
-                onClick={clearQuote}
-                className="p-2 rounded-full bg-white/10 hover:bg-red-500/20 text-white/80 hover:text-red-300 transition-colors cursor-pointer"
-                title="Clear RFQ list"
-                aria-label="Clear RFQ list"
-              >
-                <Trash2 className="w-4 h-4" />
-              </button>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={clearQuote}
+                  className="p-2 rounded-full bg-white/10 hover:bg-red-500/20 text-white/80 hover:text-red-300 transition-colors cursor-pointer"
+                  title="Clear RFQ list"
+                  aria-label="Clear RFQ list"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
 
-              <button
-                type="button"
-                onClick={() => setIsOpen(true)}
-                className="inline-flex items-center gap-1.5 py-2.5 px-4 sm:px-5 rounded-full bg-burgundy-gradient text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg hover:scale-102 active:scale-98 transition-all cursor-pointer"
-              >
-                <span>Request Quote</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </motion.div>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(true)}
+                  className="inline-flex items-center gap-1.5 py-2.5 px-4 sm:px-5 rounded-full bg-burgundy-gradient text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg hover:scale-102 active:scale-98 transition-all cursor-pointer"
+                >
+                  <span>Request Quote</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
 

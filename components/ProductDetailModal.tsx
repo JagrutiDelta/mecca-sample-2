@@ -13,6 +13,8 @@ import {
   Download,
   Share2,
   Eye,
+  Plus,
+  Check,
 } from "lucide-react";
 import { ProductItem } from "@/lib/products";
 import { useQuoteModal } from "@/context/QuoteContext";
@@ -27,7 +29,7 @@ export default function ProductDetailModal({
   product,
   onClose,
 }: ProductDetailModalProps) {
-  const { openQuoteModal } = useQuoteModal();
+  const { openQuoteModal, toggleQuoteItem, isItemInQuote } = useQuoteModal();
   const [activeTab, setActiveTab] = useState<"specs" | "features">("specs");
 
   useEffect(() => {
@@ -199,7 +201,7 @@ export default function ProductDetailModal({
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 pt-4 border-t border-slate-100">
+              <div className="flex flex-col sm:flex-row items-center gap-2.5 pt-4 border-t border-slate-100">
                 <button
                   type="button"
                   onClick={() => {
@@ -212,15 +214,43 @@ export default function ProductDetailModal({
                   <span>Request Unit Price &amp; RFQ</span>
                 </button>
 
+                {/* Multi-Product RFQ Toggle */}
+                <button
+                  type="button"
+                  onClick={() => toggleQuoteItem(product.name)}
+                  className={`w-full sm:w-auto py-3 px-4 rounded-full text-xs font-semibold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                    isItemInQuote(product.name)
+                      ? "bg-emerald-50 text-emerald-700 border border-emerald-300 font-bold"
+                      : "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200"
+                  }`}
+                  title={
+                    isItemInQuote(product.name)
+                      ? "Remove from multi-product quote"
+                      : "Add to multi-product quote list"
+                  }
+                >
+                  {isItemInQuote(product.name) ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span>In RFQ</span>
+                    </>
+                  ) : (
+                    <>
+                      <Plus className="w-3.5 h-3.5 text-slate-500" />
+                      <span>+ Add to RFQ</span>
+                    </>
+                  )}
+                </button>
+
                 <button
                   type="button"
                   onClick={() => {
                     onClose();
                     openQuoteModal(`OEM Custom Specs - ${product.name}`);
                   }}
-                  className="w-full sm:w-auto py-3 px-5 rounded-full bg-slate-100 hover:bg-slate-200 text-navy text-xs font-bold transition-colors cursor-pointer"
+                  className="w-full sm:w-auto py-3 px-4 rounded-full bg-slate-100 hover:bg-slate-200 text-navy text-xs font-bold transition-colors cursor-pointer"
                 >
-                  Custom OEM Specs
+                  Custom OEM
                 </button>
               </div>
             </div>
