@@ -514,8 +514,22 @@ export default function ProductsGrid() {
                         </div>
 
                         {/* Title */}
-                        {product.id === "pharmaceutical-product-list" ? (
-                          <Link href="/products/mecca-labs/pharmaceutical-product-list">
+                        {product.categoryId === "mecca-labs" ? (
+                          <Link
+                            href={
+                              product.id === "pharmaceutical-product-list"
+                                ? "/mecca-labs/pharmaceutical"
+                                : product.id === "nutraceutical-product-list-domestic"
+                                  ? "/mecca-labs/domestic"
+                                  : product.id === "nutraceuticals-product-list-export"
+                                    ? "/mecca-labs/export"
+                                    : product.id === "milk-product-list"
+                                      ? "/mecca-labs/milk"
+                                      : product.id === "cosmeceutical-product-list"
+                                        ? "/mecca-labs/cosmeceutical"
+                                        : `/products/${product.id}`
+                            }
+                          >
                             <h3 className="font-heading font-bold text-navy text-base leading-snug mb-2 group-hover:text-burgundy transition-colors line-clamp-2">
                               {product.name}
                             </h3>

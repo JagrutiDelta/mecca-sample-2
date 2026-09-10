@@ -209,8 +209,16 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
                 <Link
                   href={
                     product.id === "pharmaceutical-product-list"
-                      ? "/products/mecca-labs/pharmaceutical-product-list"
-                      : `/products/${product.id}`
+                      ? "/mecca-labs/pharmaceutical"
+                      : product.id === "nutraceutical-product-list-domestic"
+                        ? "/mecca-labs/domestic"
+                        : product.id === "nutraceuticals-product-list-export"
+                          ? "/mecca-labs/export"
+                          : product.id === "milk-product-list"
+                            ? "/mecca-labs/milk"
+                            : product.id === "cosmeceutical-product-list"
+                              ? "/mecca-labs/cosmeceutical"
+                              : `/products/${product.id}`
                   }
                 >
                   <h3 className="font-heading font-bold text-navy text-lg leading-snug mb-2 group-hover:text-burgundy transition-colors">
