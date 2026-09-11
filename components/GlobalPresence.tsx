@@ -112,7 +112,7 @@ const locations = [
     state: "Gujarat",
     capacity: "12M+ units/year",
     specs: "3 Lines, ISO Class 7",
-    image: "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlml7ygD-J6OCQVH6SpSu0JZjjKU-P1eIcOj-z2G62iM8olVjCXTf5BMZUZmZoOam8ZG_BTqUly0JfoxVnlWGZ85-YCYTCEECTnxrDToxc54KrIuECqSGdxei2sbI_kTWln3ycb=s680-w680-h510-rw",
+    image: "/kalol.png",
   },
   {
     city: "Chhatral",
@@ -126,7 +126,7 @@ const locations = [
     state: "Rajasthan",
     capacity: "8M+ units/year",
     specs: "1 Line, Class 8",
-    image: "https://images.unsplash.com/photo-1566873535350-a3f5d4a804b7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/jodhpur.png",
   },
 ];
 
