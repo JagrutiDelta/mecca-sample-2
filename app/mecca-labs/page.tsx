@@ -91,8 +91,8 @@ export default function MeccaLabsPage() {
             </span>
           </div>
 
-          {/* 5 Product Catalogue Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* 5 Product Catalogues List View */}
+          <div className="flex flex-col gap-6">
             {ALL_CATALOGUES.map((cat, idx) => (
               <CategoryCard key={cat.slug} catalogue={cat} index={idx} />
             ))}
