@@ -9,6 +9,7 @@ import TOC from "./toc";
 import SectionHeader from "./section-header";
 import ProductTable from "./product-table";
 import DownloadButton from "./download-button";
+import Container from "./container";
 import { Catalogue } from "@/lib/mecca-labs/types";
 
 interface CataloguePageLayoutProps {
@@ -30,7 +31,7 @@ export default function CataloguePageLayout({
       <Header />
 
       <div className="pt-28 pb-20 lg:pt-36 lg:pb-28">
-        <div className="mx-auto max-w-7xl container-px">
+        <Container>
           {/* 1. Breadcrumb */}
           <Breadcrumb items={breadcrumbItems} />
 
@@ -72,7 +73,7 @@ export default function CataloguePageLayout({
             pdfUrl={catalogue.pdfUrl}
             pdfFileName={catalogue.pdfFileName}
           />
-        </div>
+        </Container>
       </div>
 
       <Footer />
