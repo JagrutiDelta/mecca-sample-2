@@ -1,30 +1,19 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import UtilityBar from "@/components/UtilityBar";
-import ProductDetailClient from "@/app/products/[id]/ProductDetailClient";
-import { getProductById, getRelatedProducts } from "@/lib/products";
+import { Metadata } from "next";
+import CataloguePageLayout from "@/components/mecca-labs/catalogue-page-layout";
+import { exportCatalogue } from "@/lib/mecca-labs";
 
-export const metadata = {
-  title: "NUTRACEUTICALS PRODUCT LIST (Export) | Mecca Labs | Mecca Care",
+export const metadata: Metadata = {
+  title: "Export Nutraceutical Catalogue | High-Potency Global Supplements | Mecca Care",
   description:
-    "High-potency global export grade nutraceutical formulations adhering to international dietary supplement standards and regulatory documentation.",
+    "Explore Mecca Labs' export-grade nutraceutical portfolio featuring tablets, powders, throat sprays, hard and soft gelatin capsules, and omega-3 syrups formulated for global regulatory compliance.",
+  openGraph: {
+    title: "Export Nutraceutical Catalogue | Mecca Care",
+    description:
+      "Global export grade nutraceutical formulations adhering to international dietary supplement standards and cGMP guidelines.",
+    url: "https://www.mhplindia.in/products/mecca-labs/nutraceuticals-product-list-export",
+  },
 };
 
 export default function ExportNutraceuticalProductListPage() {
-  const product = getProductById("nutraceuticals-product-list-export")!;
-  return (
-    <main className="min-h-screen flex flex-col bg-bg font-body text-navy selection:bg-burgundy selection:text-white">
-      <UtilityBar />
-      <Header />
-
-      <div className="pt-32 pb-20 lg:pt-40 lg:pb-28">
-        <ProductDetailClient
-          product={product}
-          relatedProducts={getRelatedProducts(product.id, 3)}
-        />
-      </div>
-
-      <Footer />
-    </main>
-  );
+  return <CataloguePageLayout catalogue={exportCatalogue} />;
 }

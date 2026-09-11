@@ -3,7 +3,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UtilityBar from "@/components/UtilityBar";
 import ProductDetailClient from "@/app/products/[id]/ProductDetailClient";
+import CataloguePageLayout from "@/components/mecca-labs/catalogue-page-layout";
 import { getProductById, getRelatedProducts, PRODUCTS } from "@/lib/products";
+import { getCatalogueBySlug, ALL_CATALOGUES } from "@/lib/mecca-labs";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -11,13 +13,25 @@ interface PageProps {
 
 export async function generateStaticParams() {
   const meccaProducts = PRODUCTS.filter((p) => p.categoryId === "mecca-labs");
-  return meccaProducts.map((product) => ({
+  const productSlugs = meccaProducts.map((product) => ({
     slug: product.id,
   }));
+  const catalogueSlugs = ALL_CATALOGUES.map((cat) => ({
+    slug: cat.slug,
+  }));
+  return [...productSlugs, ...catalogueSlugs];
 }
 
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
+  const catalogue = getCatalogueBySlug(resolvedParams.slug);
+  if (catalogue) {
+    return {
+      title: `${catalogue.title} | Mecca Labs | Mecca Care`,
+      description: catalogue.description,
+    };
+  }
+
   const product = getProductById(resolvedParams.slug);
   if (product) {
     return {
@@ -30,8 +44,13 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function MeccaLabProductPage({ params }: PageProps) {
   const resolvedParams = await params;
-  const product = getProductById(resolvedParams.slug);
+  const catalogue = getCatalogueBySlug(resolvedParams.slug);
 
+  if (catalogue) {
+    return <CataloguePageLayout catalogue={catalogue} />;
+  }
+
+  const product = getProductById(resolvedParams.slug);
   if (!product) {
     notFound();
   }

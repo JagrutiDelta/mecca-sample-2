@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import UtilityBar from "@/components/UtilityBar";
@@ -17,6 +17,13 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps) {
   const resolvedParams = await params;
+  if (resolvedParams.category === "mecca-labs") {
+    return {
+      title: "Mecca Labs Product Catalogues | Mecca Care",
+      description: "WHO-GMP pharmaceutical formulations, nutraceuticals, milk products & cosmeceuticals.",
+    };
+  }
+
   const category = getCategoryById(resolvedParams.category);
   if (!category) {
     return { title: "Category Not Found | Mecca Care" };
@@ -29,6 +36,11 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function CategorySubpage({ params }: PageProps) {
   const resolvedParams = await params;
+
+  if (resolvedParams.category === "mecca-labs") {
+    redirect("/products/mecca-labs");
+  }
+
   const category = getCategoryById(resolvedParams.category);
 
   if (!category) {

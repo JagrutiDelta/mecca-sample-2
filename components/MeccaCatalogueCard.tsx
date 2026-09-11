@@ -16,7 +16,7 @@ export default function MeccaCatalogueCard({
 }: MeccaCatalogueCardProps) {
   const { toggleQuoteItem, isItemInQuote } = useQuoteModal();
 
-  // Coded catalogue page opened when clicking the product name
+  // Coded catalogue page opened when clicking the product name or View Catalogue button
   const catalogueHref =
     product.id === "pharmaceutical-product-list"
       ? "/mecca-labs/pharmaceutical"
@@ -28,10 +28,9 @@ export default function MeccaCatalogueCard({
             ? "/mecca-labs/milk"
             : product.id === "cosmeceutical-product-list"
               ? "/mecca-labs/cosmeceutical"
-              : `/products/${product.id}`;
+              : `/mecca-labs/${product.id}`;
 
-  // Existing/original product detail page opened when clicking View Details
-  const detailsHref = `/products/${product.id}`;
+  const detailsHref = catalogueHref;
 
   const openPdf = () => {
     if (product.pdf) {
@@ -138,7 +137,7 @@ export default function MeccaCatalogueCard({
                 href={detailsHref}
                 className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-navy shadow-sm transition-all hover:-translate-y-0.5 hover:border-burgundy hover:bg-burgundy hover:text-white sm:flex-none"
               >
-                <span>View Details</span>
+                <span>View Catalogue</span>
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </Link>
 

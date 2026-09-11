@@ -1,30 +1,19 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import UtilityBar from "@/components/UtilityBar";
-import ProductDetailClient from "@/app/products/[id]/ProductDetailClient";
-import { getProductById, getRelatedProducts } from "@/lib/products";
+import { Metadata } from "next";
+import CataloguePageLayout from "@/components/mecca-labs/catalogue-page-layout";
+import { domesticCatalogue } from "@/lib/mecca-labs";
 
-export const metadata = {
-  title: "NUTRACEUTICAL PRODUCT LIST (Domestic) | Mecca Labs | Mecca Care",
+export const metadata: Metadata = {
+  title: "Domestic Nutraceutical Catalogue | Dietary & Bioactive Supplements | Mecca Care",
   description:
-    "Premium domestic nutritional supplements, dietary formulations, vitamin blends, and wellness solutions registered with FSSAI.",
+    "Explore Mecca Labs' domestic FSSAI-registered nutraceutical product list featuring 26 specialized categories spanning calcium, omega-3, vitamins, protein powders, joint care, and immunity boosters.",
+  openGraph: {
+    title: "Domestic Nutraceutical Catalogue | Mecca Care",
+    description:
+      "26 specialized categories of FSSAI-registered nutritional supplements and dietary wellness formulations.",
+    url: "https://www.mhplindia.in/products/mecca-labs/nutraceutical-product-list-domestic",
+  },
 };
 
 export default function DomesticNutraceuticalProductListPage() {
-  const product = getProductById("nutraceutical-product-list-domestic")!;
-  return (
-    <main className="min-h-screen flex flex-col bg-bg font-body text-navy selection:bg-burgundy selection:text-white">
-      <UtilityBar />
-      <Header />
-
-      <div className="pt-32 pb-20 lg:pt-40 lg:pb-28">
-        <ProductDetailClient
-          product={product}
-          relatedProducts={getRelatedProducts(product.id, 3)}
-        />
-      </div>
-
-      <Footer />
-    </main>
-  );
+  return <CataloguePageLayout catalogue={domesticCatalogue} />;
 }

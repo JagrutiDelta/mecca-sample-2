@@ -21,7 +21,34 @@ export const ALL_CATALOGUES: Catalogue[] = [
 ];
 
 export function getCatalogueBySlug(slug: string): Catalogue | undefined {
-  return ALL_CATALOGUES.find((cat) => cat.slug === slug);
+  const normalized = (slug || "").toLowerCase().trim();
+  if (normalized === "pharmaceutical" || normalized === "pharmaceutical-product-list") {
+    return pharmaceuticalCatalogue;
+  }
+  if (
+    normalized === "domestic" ||
+    normalized === "nutraceutical-product-list-domestic" ||
+    normalized === "nutraceutical-domestic" ||
+    normalized === "nutraceuticals-domestic"
+  ) {
+    return domesticCatalogue;
+  }
+  if (
+    normalized === "export" ||
+    normalized === "nutraceuticals-product-list-export" ||
+    normalized === "nutraceutical-product-list-export" ||
+    normalized === "nutraceutical-export" ||
+    normalized === "nutraceuticals-export"
+  ) {
+    return exportCatalogue;
+  }
+  if (normalized === "milk" || normalized === "milk-product-list") {
+    return milkCatalogue;
+  }
+  if (normalized === "cosmeceutical" || normalized === "cosmeceutical-product-list") {
+    return cosmeceuticalCatalogue;
+  }
+  return ALL_CATALOGUES.find((cat) => cat.slug === normalized);
 }
 
 export function getTotalStats(catalogue: Catalogue) {
