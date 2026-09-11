@@ -27,142 +27,122 @@ const METHODOLOGY = [
 ];
  
 const CLIENTS = [
-  { name: "Cipla", logo: "/clients/1.png" },
-  { name: "Hetero", logo: "/clients/2.jpg" },
-  { name: "B. Braun", logo: "/clients/3.png" },
-  { name: "Hollister", logo: "/clients/4.jpg" },
-  { name: "Claris", logo: "/clients/5.jpg" },
-  { name: "Global Partner", logo: "/clients/6.png" },
+  { name: "Cipla", src: "/clients/1.png" },
+  { name: "Hetero", src: "/clients/2.jpg" },
+  { name: "B. Braun", src: "/clients/3.png" },
+  { name: "Hollister", src: "/clients/4.jpg" },
+  { name: "Claris", src: "/clients/5.jpg" },
+  { name: "Global Partner", src: "/clients/6.png" },
 ];
 
-const CLIENT_TRACK = [...CLIENTS, ...CLIENTS, ...CLIENTS];
+const MARQUEE_TRACK = [...CLIENTS, ...CLIENTS, ...CLIENTS];
  
 export default function Manufacturing() {
   return (
     <section id="manufacturing" className="section-py bg-navy-gradient text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-medical-grid bg-grid opacity-[0.04]" />
-      <div className="container-px relative">
-        <div className="max-w-2xl mb-16">
-         <div className="eyebrow mb-4 !text-accent inline-flex items-center gap-1 rounded-full border border-[#f3f4ff]/15 bg-[#dde6ff]/10 px-5 py-2 text-sm font-semibold text- [#f7f7f7] backdrop-blur-md">Manufacturing Capabilities</div>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl">
-            From raw polymer to sterile, packaged device
+      <div className="container-px">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
+          <span className="eyebrow mb-4 !text-accent">World-Class Infrastructure</span>
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight mb-6">
+            State-of-the-Art <span className="text-accent">Manufacturing</span>
           </h2>
-          <p className="mt-4 text-white/60 leading-relaxed">
-            Every stage of production runs under strict process control — engineered
-            for repeatability at millions of units of scale.
+          <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+            Our Gujarat &amp; Rajasthan facilities integrate automated injection moulding, extrusion lines,
+            and Class 100,000 cleanrooms — delivering high-precision medical devices with zero-defect tolerance.
           </p>
         </div>
  
-        {/* Process line */}
-        <div className="relative mb-20">
-          <div className="hidden md:block absolute top-7 left-0 right-0 h-px bg-white/15" />
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-8 md:gap-4">
-            {PROCESS.map((step, i) => {
-              const Icon = step.icon;
-              return (
-                <motion.div
-                  key={step.name}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="relative flex flex-col items-center text-center group"
-                >
-                  <div className="w-14 h-14 rounded-full bg-burgundy-gradient ring-4 ring-navy-900/40 flex items-center justify-center relative z-10 mb-4 shadow-lg shadow-black/20 transition-transform duration-300 group-hover:scale-105">
-                    <Icon className="w-6 h-6 text-white" strokeWidth={1.75} />
-                  </div>
-                  <div className="text-[11px] font-semibold tracking-[0.14em] text-accent/80 uppercase mb-1">
-                    Step {i + 1}
-                  </div>
-                  <div className="text-sm font-medium text-white/90 leading-snug max-w-[9rem]">
-                    {step.name}
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+        {/* Process Flow */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+          {PROCESS.map((p, idx) => {
+            const Icon = p.icon;
+            return (
+              <div
+                key={p.name}
+                className="relative bg-white/5 border border-white/10 rounded-xl p-5 text-center group hover:bg-white/10 transition-colors"
+              >
+                <span className="text-xs font-mono text-accent/80 mb-2 block">0{idx + 1}</span>
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
+                  <Icon className="w-5 h-5 text-accent" />
+                </div>
+                <h4 className="text-xs sm:text-sm font-semibold text-white">{p.name}</h4>
+              </div>
+            );
+          })}
         </div>
  
-        {/* Methodology */}
-        <div className="grid md:grid-cols-3 gap-6 mb-20">
-          {METHODOLOGY.map((m, i) => (
-            <motion.div
+        {/* Methodology Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          {METHODOLOGY.map((m) => (
+            <div
               key={m.name}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-xl2 bg-white/5 border border-white/10 backdrop-blur p-6 transition-colors duration-300 hover:bg-white/[0.08] hover:border-white/20"
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-accent/30 transition-colors"
             >
-              <div className="font-heading font-bold text-accent text-lg">{m.name}</div>
-              <p className="text-sm text-white/60 mt-2 leading-relaxed">{m.desc}</p>
-            </motion.div>
+              <h3 className="text-lg font-bold text-accent mb-2">{m.name}</h3>
+              <p className="text-sm text-gray-300 leading-relaxed">{m.desc}</p>
+            </div>
           ))}
         </div>
- 
-     
       </div>
 
-      {/* Global Clients */}
-<div className="py-16">
-  {/* Heading */}
-  <div className="mb-10 text-center">
-    <div className="mb-3 flex items-center justify-center gap-3">
-      <span className="h-px w-8 bg-primary/30"></span>
-      <span className="eyebrow mb-4 !text-accent inline-flex items-center gap-1 rounded-full border border-[#f3f4ff]/15 bg-[#dde6ff]/10 px-5 py-2 text-sm font-semibold text- [#f7f7f7] backdrop-blur-md">
-        Global Clients
-      </span>
-      <span className="h-px w-8 bg-primary/30"></span>
-    </div>
-
-    <h2 className="text-3xl font-heading font-bold text-white-900 md:text-4xl">
-      Trusted by Leading Medical Device Companies
-    </h2>
-  </div>
-
-  {/* Endless Seamless Marquee */}
-  <div className="relative overflow-hidden w-full py-4 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-    <div className="flex w-max items-center group">
-      {/* Track 1 */}
-      <div className="flex shrink-0 items-center gap-6 sm:gap-8 pr-6 sm:pr-8 animate-marquee-endless group-hover:[animation-play-state:paused] motion-reduce:[animation-play-state:paused]">
-        {CLIENT_TRACK.map((client, index) => (
-          <div
-            key={`track-1-${index}`}
-            className="flex h-20 w-36 sm:h-24 sm:w-44 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
-          >
-            <img
-              src={client.logo}
-              alt={client.name}
-              className="max-h-10 w-auto max-w-[120px] object-contain grayscale opacity-75 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
-              loading="lazy"
-            />
+      {/* Global Clients Infinite Marquee */}
+      <div className="py-16">
+        {/* Heading */}
+        <div className="mb-10 text-center">
+          <div className="mb-3 flex items-center justify-center gap-3">
+            <span className="h-px w-8 bg-primary/30"></span>
+            <span className="eyebrow mb-4 !text-accent inline-flex items-center gap-1 rounded-full border border-[#f3f4ff]/15 bg-[#dde6ff]/10 px-5 py-2 text-sm font-semibold text-[#f7f7f7] backdrop-blur-md">
+              Global Clients
+            </span>
+            <span className="h-px w-8 bg-primary/30"></span>
           </div>
-        ))}
-      </div>
 
-      {/* Track 2 (Cloned for 100% seamless infinite loop) */}
-      <div
-        className="flex shrink-0 items-center gap-6 sm:gap-8 pr-6 sm:pr-8 animate-marquee-endless group-hover:[animation-play-state:paused] motion-reduce:[animation-play-state:paused]"
-        aria-hidden="true"
-      >
-        {CLIENT_TRACK.map((client, index) => (
-          <div
-            key={`track-2-${index}`}
-            className="flex h-20 w-36 sm:h-24 sm:w-44 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
-          >
-            <img
-              src={client.logo}
-              alt={client.name}
-              className="max-h-10 w-auto max-w-[120px] object-contain grayscale opacity-75 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
-              loading="lazy"
-            />
+          <h2 className="text-3xl font-heading font-bold text-white md:text-4xl">
+            Trusted by Leading Medical Device Companies
+          </h2>
+        </div>
+
+        {/* Endless Seamless Marquee */}
+        <div className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] py-3">
+          <div className="flex w-max items-center">
+            {/* Track 1 */}
+            <div className="flex shrink-0 items-center gap-8 pr-8 animate-marquee group-hover:[animation-play-state:paused]">
+              {MARQUEE_TRACK.map((client, index) => (
+                <div
+                  key={`track1-${client.name}-${index}`}
+                  className="flex h-24 w-48 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
+                >
+                  <img
+                    src={client.src}
+                    alt={client.name}
+                    className="max-h-12 w-auto max-w-[140px] object-contain grayscale opacity-80 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Track 2 (Identical Duplicate for Perfect Continuous Loop) */}
+            <div
+              className="flex shrink-0 items-center gap-8 pr-8 animate-marquee group-hover:[animation-play-state:paused]"
+              aria-hidden="true"
+            >
+              {MARQUEE_TRACK.map((client, index) => (
+                <div
+                  key={`track2-${client.name}-${index}`}
+                  className="flex h-24 w-48 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
+                >
+                  <img
+                    src={client.src}
+                    alt={client.name}
+                    className="max-h-12 w-auto max-w-[140px] object-contain grayscale opacity-80 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-  </div>
-</div>
     </section>
   );
 }
- 

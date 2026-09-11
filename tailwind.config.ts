@@ -57,7 +57,7 @@ const config: Config = {
       animation: {
         float: "float 6s ease-in-out infinite",
         "float-delayed": "float 6s ease-in-out 2s infinite",
-        marquee: "marquee 30s linear infinite",
+        marquee: "marquee 35s linear infinite",
       },
       keyframes: {
         float: {
@@ -65,8 +65,8 @@ const config: Config = {
           "50%": { transform: "translateY(-14px)" },
         },
         marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
       },
     },
