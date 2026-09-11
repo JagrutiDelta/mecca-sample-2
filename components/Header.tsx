@@ -93,6 +93,15 @@ const PRODUCT_CATEGORIES = [
   },
 ];
 
+/* ─── Nephrology Category (Rendered Above Spotlight in Mega Menu) ─── */
+const NEPHROLOGY_CATEGORY = {
+  name: "Nephrology",
+  desc: "Hemodialysis catheters, A.V. fistula needles, transducer protectors & dialysis kits (12 products)",
+  href: "/products/nephrology",
+  icon: Droplets,
+  color: "#0284C7",
+};
+
 /* ─── Company Dropdown Data ─── */
 const COMPANY_LINKS = [
   {
@@ -266,19 +275,19 @@ export default function Header() {
                               : "-left-20 xl:-left-12 w-[900px] xl:w-[940px]"
                           }`}
                         >
-                          <div className="bg-white rounded-3xl shadow-[0_25px_80px_rgba(13,34,64,0.18)] border border-slate-200/90 overflow-hidden p-7 xl:p-8">
+                          <div className="bg-white rounded-3xl shadow-[0_25px_80px_rgba(13,34,64,0.18)] border border-slate-200/90 overflow-hidden p-6 xl:p-7">
                             {link.mega === "products" ? (
                               /* ── PRODUCTS MEGA MENU LAYOUT (Fireflies Style) ── */
-                              <div className="grid grid-cols-12 gap-8 items-stretch">
+                              <div className="grid grid-cols-12 gap-7 items-stretch">
                                 {/* LEFT SIDE: 2 Columns of Category Items (8 Items Total) */}
-                                <div className="col-span-8 grid grid-cols-2 gap-x-6 gap-y-5">
+                                <div className="col-span-8 grid grid-cols-2 gap-x-6 gap-y-4">
                                   {PRODUCT_CATEGORIES.map((cat) => {
                                     const Icon = cat.icon;
                                     return (
                                       <Link
                                         key={cat.name}
                                         href={cat.href}
-                                        className="group flex items-start gap-3.5 p-3 rounded-2xl hover:bg-[#F8FAFC] transition-all duration-150 border border-transparent hover:border-slate-200/70"
+                                        className="group flex items-start gap-3.5 p-2.5 rounded-2xl hover:bg-[#F8FAFC] transition-all duration-150 border border-transparent hover:border-slate-200/70"
                                       >
                                         {/* Icon */}
                                         <div
@@ -309,29 +318,61 @@ export default function Header() {
                                   })}
                                 </div>
 
-                                {/* RIGHT SIDE: Fireflies Spotlight Showcase Card */}
-                                <div className="col-span-4 flex flex-col">
-                                  <div className="h-full rounded-2xl bg-gradient-to-b from-[#F8FAFC] to-[#EFF4FA] border border-slate-200/80 p-6 flex flex-col justify-between relative overflow-hidden">
+                                {/* RIGHT SIDE: Nephrology Category (Above) + Fireflies Spotlight Showcase Card */}
+                                <div className="col-span-4 flex flex-col justify-between gap-3">
+                                  {/* Nephrology Category Link (Above Spotlight Area) */}
+                                  <Link
+                                    href={NEPHROLOGY_CATEGORY.href}
+                                    className="group flex items-start gap-3.5 p-2.5 rounded-2xl hover:bg-[#F8FAFC] transition-all duration-150 border border-transparent hover:border-slate-200/70"
+                                  >
+                                    {/* Icon */}
+                                    <div
+                                      className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-200 group-hover:scale-105"
+                                      style={{
+                                        backgroundColor: `${NEPHROLOGY_CATEGORY.color}12`,
+                                        border: `1px solid ${NEPHROLOGY_CATEGORY.color}25`,
+                                      }}
+                                    >
+                                      <Droplets
+                                        className="w-5 h-5 transition-colors"
+                                        style={{ color: NEPHROLOGY_CATEGORY.color }}
+                                      />
+                                    </div>
+
+                                    {/* Text */}
+                                    <div className="min-w-0">
+                                      <div className="text-[13px] font-bold text-navy group-hover:text-burgundy transition-colors flex items-center gap-1.5 leading-snug">
+                                        <span>{NEPHROLOGY_CATEGORY.name}</span>
+                                        <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-150 text-burgundy" />
+                                      </div>
+                                      <p className="text-[11px] text-gray mt-1 leading-relaxed line-clamp-2">
+                                        {NEPHROLOGY_CATEGORY.desc}
+                                      </p>
+                                    </div>
+                                  </Link>
+
+                                  {/* Compact Fireflies Spotlight Showcase Card */}
+                                  <div className="flex-1 rounded-2xl bg-gradient-to-b from-[#F8FAFC] to-[#EFF4FA] border border-slate-200/80 p-4 flex flex-col justify-between relative overflow-hidden">
                                     {/* Top Spotlight Badge & Logo */}
-                                    <div className="flex items-center justify-between mb-4">
-                                      <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-burgundy bg-burgundy/10 px-2.5 py-1 rounded-full">
+                                    <div className="flex items-center justify-between mb-2">
+                                      <span className="inline-flex items-center gap-1 text-[10.5px] font-bold uppercase tracking-wider text-burgundy bg-burgundy/10 px-2.5 py-0.5 rounded-full">
                                         <Sparkles className="w-3 h-3 text-burgundy" />
                                         Spotlight
                                       </span>
-                                      <span className="text-[11px] font-semibold text-slate-400">
+                                      <span className="text-[10.5px] font-semibold text-slate-400">
                                         ISO 13485
                                       </span>
                                     </div>
 
                                     {/* Concentric Ring Circle Frame (Fireflies Avatar Style) */}
-                                    <div className="my-2 flex items-center justify-center">
-                                      <div className="relative flex items-center justify-center p-3">
+                                    <div className="my-1 flex items-center justify-center">
+                                      <div className="relative flex items-center justify-center p-2">
                                         {/* Outer Ring */}
                                         <div className="absolute inset-0 rounded-full border border-burgundy/20 animate-pulse" />
                                         {/* Middle Ring */}
-                                        <div className="absolute inset-1.5 rounded-full border border-medblue/25" />
+                                        <div className="absolute inset-1 rounded-full border border-medblue/25" />
                                         {/* Inner Image Circle */}
-                                        <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md bg-white">
+                                        <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md bg-white">
                                           <img
                                             src="/products/hero_medical_products.png"
                                             alt="Mecca Healthcare Medical Line"
@@ -342,17 +383,17 @@ export default function Header() {
                                     </div>
 
                                     {/* Content & Story Headline */}
-                                    <div className="text-center mt-3">
-                                      <h4 className="font-heading text-sm font-bold text-navy leading-snug">
+                                    <div className="text-center mt-1">
+                                      <h4 className="font-heading text-xs font-bold text-navy leading-snug">
                                         Precision Infusion &amp; Catheter Solutions
                                       </h4>
-                                      <p className="text-[11px] text-slate-600 mt-2 leading-relaxed italic">
+                                      <p className="text-[10.5px] text-slate-600 mt-1 leading-normal italic line-clamp-1">
                                         &ldquo;100% inline leak-tested, Class 100,000 cleanroom manufactured &amp; CE marked.&rdquo;
                                       </p>
                                     </div>
 
                                     {/* Bottom CTA link */}
-                                    <div className="mt-5 pt-3 border-t border-slate-200/80 text-center">
+                                    <div className="mt-3 pt-2 border-t border-slate-200/80 text-center">
                                       <Link
                                         href="/portfolio"
                                         className="inline-flex items-center gap-1.5 text-xs font-bold text-burgundy hover:text-burgundy-dark transition-colors group"
@@ -605,7 +646,7 @@ export default function Header() {
                             className="overflow-hidden"
                           >
                             <div className="pl-3 pr-1 py-2 flex flex-col gap-1 bg-slate-50/70 rounded-xl mb-2">
-                              {PRODUCT_CATEGORIES.map((cat) => {
+                              {[...PRODUCT_CATEGORIES.slice(0, 6), NEPHROLOGY_CATEGORY, ...PRODUCT_CATEGORIES.slice(6)].map((cat) => {
                                 const Icon = cat.icon;
                                 return (
                                   <Link

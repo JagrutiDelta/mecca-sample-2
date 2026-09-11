@@ -37,6 +37,19 @@ export default function ProductDetailClient({
   const [quantity, setQuantity] = useState("10000");
   const { openQuoteModal, addToQuote, toggleQuoteItem, isItemInQuote } = useQuoteModal();
 
+  const catalogueHref =
+    product.id === "pharmaceutical-product-list"
+      ? "/mecca-labs/pharmaceutical"
+      : product.id === "nutraceutical-product-list-domestic"
+        ? "/mecca-labs/domestic"
+        : product.id === "nutraceuticals-product-list-export"
+          ? "/mecca-labs/export"
+          : product.id === "milk-product-list"
+            ? "/mecca-labs/milk"
+            : product.id === "cosmeceutical-product-list"
+              ? "/mecca-labs/cosmeceutical"
+              : null;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
@@ -179,9 +192,21 @@ export default function ProductDetailClient({
             </span>
 
             {/* Product Title */}
-            <h1 className="font-heading font-extrabold text-navy text-3xl sm:text-4xl leading-tight mb-4">
-              {product.name}
-            </h1>
+            {catalogueHref ? (
+              <Link
+                href={catalogueHref}
+                className="group/title block mb-4"
+                title={`Open coded catalogue for ${product.name}`}
+              >
+                <h1 className="font-heading font-extrabold text-navy text-3xl sm:text-4xl leading-tight group-hover/title:text-burgundy transition-colors">
+                  {product.name}
+                </h1>
+              </Link>
+            ) : (
+              <h1 className="font-heading font-extrabold text-navy text-3xl sm:text-4xl leading-tight mb-4">
+                {product.name}
+              </h1>
+            )}
 
             {/* Product Description */}
             <p className="text-gray text-sm sm:text-base leading-relaxed mb-6">

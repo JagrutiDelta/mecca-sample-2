@@ -364,7 +364,7 @@ export function FlagshipProducts() {
       <div className="pointer-events-none absolute inset-0 bg-medical-grid bg-grid opacity-30 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_35%,black,transparent)]" />
 
       <div className="container-px relative">
-        
+
         {/* ===================================================================
             SECTION HEADING — Matches Global Design System
             =================================================================== */}
@@ -393,11 +393,10 @@ export function FlagshipProducts() {
                   type="button"
                   onClick={() => goTo(idx, idx > currentIndex ? 1 : -1)}
                   suppressHydrationWarning
-                  className={`font-heading rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
-                    isActive
-                      ? "bg-burgundy text-white shadow-card scale-105"
-                      : "border border-border bg-white text-navy hover:border-burgundy/40 hover:text-burgundy"
-                  }`}
+                  className={`font-heading rounded-full px-4 py-2 text-xs font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 ${isActive
+                    ? "bg-burgundy text-white shadow-card scale-105"
+                    : "border border-border bg-white text-navy hover:border-burgundy/40 hover:text-burgundy"
+                    }`}
                 >
                   <span className={`inline-block h-2 w-2 rounded-full ${isActive ? "bg-white" : "bg-medblue/40"}`} />
                   <span>
@@ -413,7 +412,7 @@ export function FlagshipProducts() {
             MAIN ACTIVE SLIDE SHOWCASE CARD
             =================================================================== */}
         <div className="rounded-xl2 border border-border bg-white p-6 sm:p-10 lg:p-12 shadow-card relative">
-          
+
           <AnimatePresence mode="wait" initial={false} custom={direction}>
             <motion.div
               key={currentProduct.id}
@@ -442,12 +441,12 @@ export function FlagshipProducts() {
 
               {/* 1. Hero Split-Screen Showcase */}
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                
+
                 {/* Left Column: Technical Visual Frame */}
                 <div className="lg:col-span-6 relative">
                   <div className="relative rounded-xl2 border border-border bg-gradient-to-br from-white via-bg/40 to-[#EAF4FF]/40 p-8 sm:p-12 shadow-card flex items-center justify-center min-h-[380px] overflow-hidden group">
                     <div className="pointer-events-none absolute inset-0 bg-medical-grid bg-grid opacity-30" />
-                    
+
                     <div className="pointer-events-none absolute top-4 left-4 font-heading text-[10px] text-gray uppercase tracking-wider">
                       SPEC CODE: {currentProduct.id.toUpperCase()}
                     </div>
@@ -537,7 +536,7 @@ export function FlagshipProducts() {
               {/* =============================================================
                   PRODUCT-SPECIFIC INTERACTIVE & DEEP DOCUMENTATION
                   ============================================================= */}
-              
+
               {/* Product 01: MHPL LifeGuard Dial Flow Regulator Interactive Details */}
               {currentProduct.id === "dial-flow-regulator" && (
                 <div className="mt-12 space-y-10">
@@ -584,9 +583,8 @@ export function FlagshipProducts() {
                               type="button"
                               onClick={() => setActiveDialIndex(i)}
                               suppressHydrationWarning
-                              className={`transition-colors cursor-pointer ${
-                                i === activeDialIndex ? "text-[#ff91a0] font-bold" : "hover:text-white"
-                              }`}
+                              className={`transition-colors cursor-pointer ${i === activeDialIndex ? "text-[#ff91a0] font-bold" : "hover:text-white"
+                                }`}
                             >
                               {f.rate}
                             </button>
@@ -771,11 +769,10 @@ export function FlagshipProducts() {
                         type="button"
                         onClick={() => setActiveSetVariant("vented")}
                         suppressHydrationWarning
-                        className={`rounded-full px-4 py-1.5 text-xs font-heading font-bold transition-all cursor-pointer ${
-                          activeSetVariant === "vented"
-                            ? "bg-burgundy text-white shadow-xs"
-                            : "text-navy hover:text-burgundy"
-                        }`}
+                        className={`rounded-full px-4 py-1.5 text-xs font-heading font-bold transition-all cursor-pointer ${activeSetVariant === "vented"
+                          ? "bg-burgundy text-white shadow-xs"
+                          : "text-navy hover:text-burgundy"
+                          }`}
                       >
                         Vented (20 drops/ml)
                       </button>
@@ -783,11 +780,10 @@ export function FlagshipProducts() {
                         type="button"
                         onClick={() => setActiveSetVariant("non-vented")}
                         suppressHydrationWarning
-                        className={`rounded-full px-4 py-1.5 text-xs font-heading font-bold transition-all cursor-pointer ${
-                          activeSetVariant === "non-vented"
-                            ? "bg-burgundy text-white shadow-xs"
-                            : "text-navy hover:text-burgundy"
-                        }`}
+                        className={`rounded-full px-4 py-1.5 text-xs font-heading font-bold transition-all cursor-pointer ${activeSetVariant === "non-vented"
+                          ? "bg-burgundy text-white shadow-xs"
+                          : "text-navy hover:text-burgundy"
+                          }`}
                       >
                         Non-Vented (10 drops/ml)
                       </button>
@@ -841,7 +837,7 @@ export function FlagshipProducts() {
               SLIDER NAVIGATION CONTROLS IN THE BOTTOM RIGHT BELOW PRODUCT DETAIL
               ================================================================= */}
           <div className="mt-8 pt-6 border-t border-border flex flex-wrap items-center justify-between gap-4">
-            
+
             {/* Left: Product Indicators & Quick Switch */}
             <div className="flex items-center gap-2">
               {FLAGSHIP_PRODUCTS.map((p, pIdx) => (
@@ -851,11 +847,10 @@ export function FlagshipProducts() {
                   onClick={() => goTo(pIdx, pIdx > currentIndex ? 1 : -1)}
                   aria-label={`Jump to ${p.title}`}
                   suppressHydrationWarning
-                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    pIdx === currentIndex
-                      ? "w-8 bg-burgundy"
-                      : "w-2.5 bg-gray/30 hover:bg-gray/60"
-                  }`}
+                  className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${pIdx === currentIndex
+                    ? "w-8 bg-burgundy"
+                    : "w-2.5 bg-gray/30 hover:bg-gray/60"
+                    }`}
                 />
               ))}
               <span className="ml-3 font-heading text-xs font-bold text-navy hidden sm:inline-block">
@@ -868,7 +863,7 @@ export function FlagshipProducts() {
               <span className="font-heading text-xs font-bold text-gray uppercase tracking-wider">
                 {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
               </span>
-              
+
               <div className="flex items-center gap-2">
                 <button
                   type="button"
@@ -932,20 +927,18 @@ export function FlagshipProducts() {
                   }}
                   aria-label={`View full details for ${prod.title}`}
                   suppressHydrationWarning
-                  className={`group relative flex flex-col rounded-xl2 border p-4 sm:p-5 text-left transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? "border-burgundy bg-white shadow-soft ring-2 ring-burgundy/20 -translate-y-1.5"
-                      : "border-border bg-white hover:border-burgundy/40 hover:shadow-card hover:-translate-y-1"
-                  }`}
+                  className={`group relative flex flex-col rounded-xl2 border p-4 sm:p-5 text-left transition-all duration-300 cursor-pointer ${isActive
+                    ? "border-burgundy bg-white shadow-soft ring-2 ring-burgundy/20 -translate-y-1.5"
+                    : "border-border bg-white hover:border-burgundy/40 hover:shadow-card hover:-translate-y-1"
+                    }`}
                 >
                   {/* Card Header: Product # and Category Badge */}
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span className="font-heading text-xs font-bold text-burgundy">
                       0{idx + 1}
                     </span>
-                    <span className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider ${
-                      isActive ? "bg-burgundy text-white" : "bg-bg text-gray border border-border"
-                    }`}>
+                    <span className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider ${isActive ? "bg-burgundy text-white" : "bg-bg text-gray border border-border"
+                      }`}>
                       {prod.category}
                     </span>
                   </div>
@@ -957,9 +950,8 @@ export function FlagshipProducts() {
                       alt={prod.title}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className={`object-contain transition-transform duration-300 ${
-                        isActive ? "scale-105" : "group-hover:scale-105"
-                      }`}
+                      className={`object-contain transition-transform duration-300 ${isActive ? "scale-105" : "group-hover:scale-105"
+                        }`}
                     />
                     {isActive && (
                       <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full bg-burgundy px-2 py-0.5 text-[9px] font-bold text-white uppercase shadow-sm">
@@ -981,9 +973,8 @@ export function FlagshipProducts() {
                     <span className="text-medblue font-semibold truncate max-w-[140px]">
                       {prod.standard}
                     </span>
-                    <span className={`font-heading font-semibold inline-flex items-center gap-1 transition-colors ${
-                      isActive ? "text-burgundy" : "text-gray group-hover:text-burgundy"
-                    }`}>
+                    <span className={`font-heading font-semibold inline-flex items-center gap-1 transition-colors ${isActive ? "text-burgundy" : "text-gray group-hover:text-burgundy"
+                      }`}>
                       {isActive ? "Active View" : "Details →"}
                     </span>
                   </div>

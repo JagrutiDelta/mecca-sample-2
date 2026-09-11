@@ -15,14 +15,23 @@ export default function MeccaCatalogueCard({
   onQuote,
 }: MeccaCatalogueCardProps) {
   const { toggleQuoteItem, isItemInQuote } = useQuoteModal();
-  const detailsHref =
+
+  // Coded catalogue page opened when clicking the product name
+  const catalogueHref =
     product.id === "pharmaceutical-product-list"
-      ? "/products/mecca-labs/pharmaceutical-product-list"
-      : product.id === "nutraceuticals-product-list-export"
-        ? "/products/mecca-labs/nutraceuticals-product-list-export"
-        : product.id === "nutraceutical-product-list-domestic"
-          ? "/products/mecca-labs/nutraceutical-product-list-domestic"
-          : `/products/${product.id}`;
+      ? "/mecca-labs/pharmaceutical"
+      : product.id === "nutraceutical-product-list-domestic"
+        ? "/mecca-labs/domestic"
+        : product.id === "nutraceuticals-product-list-export"
+          ? "/mecca-labs/export"
+          : product.id === "milk-product-list"
+            ? "/mecca-labs/milk"
+            : product.id === "cosmeceutical-product-list"
+              ? "/mecca-labs/cosmeceutical"
+              : `/products/${product.id}`;
+
+  // Existing/original product detail page opened when clicking View Details
+  const detailsHref = `/products/${product.id}`;
 
   const openPdf = () => {
     if (product.pdf) {
@@ -81,9 +90,9 @@ export default function MeccaCatalogueCard({
             MECCA LABS
           </div>
           <Link
-            href={detailsHref}
+            href={catalogueHref}
             className="group/title mt-1 block"
-            aria-label={`Open details for ${product.name}`}
+            aria-label={`Open catalogue for ${product.name}`}
           >
             <h3 className="line-clamp-2 font-heading text-xl font-bold leading-tight text-navy transition-colors group-hover/title:text-burgundy sm:text-2xl">
               {product.name}
@@ -126,7 +135,7 @@ export default function MeccaCatalogueCard({
                 </a>
               )}
               <Link
-                href={`/products/${product.id}`}
+                href={detailsHref}
                 className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-xs font-semibold text-navy shadow-sm transition-all hover:-translate-y-0.5 hover:border-burgundy hover:bg-burgundy hover:text-white sm:flex-none"
               >
                 <span>View Details</span>

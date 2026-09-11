@@ -54,10 +54,9 @@ export default function Footer() {
   const { openQuoteModal } = useQuoteModal();
 
   return (
-    <footer className="bg-navy-gradient pt-20 pb-0 text-white/70" style={{ fontFamily: "Inter, sans-serif" }}>
-      <div className="px-4 sm:px-5 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 pb-14 md:grid-cols-2 lg:grid-cols-[1.7fr_repeat(4,minmax(0,1fr))] lg:gap-12 lg:items-start">
+    <footer className="bg-navy-gradient pt-20 md:pt-28 pb-0 text-white/70" style={{ fontFamily: "Inter, sans-serif" }}>
+      <div className="container-px">
+        <div className="grid gap-10 pb-14 md:pb-16 md:grid-cols-2 lg:grid-cols-[1.7fr_repeat(4,minmax(0,1fr))] lg:gap-12 lg:items-start">
             <div className="lg:col-span-1">
               <Link href="/" className="inline-flex items-center shrink-0" aria-label="Mecca Healthcare Home">
                 <Image
@@ -147,7 +146,7 @@ export default function Footer() {
             ))}
           </div>
 
-          <div className="grid gap-8 border-t border-white/10 py-10 md:grid-cols-2">
+          <div className="grid gap-8 md:gap-12 border-t border-white/10 py-10 md:py-12 md:grid-cols-2">
             <div>
               <h4 className="mb-3 text-sm font-semibold text-white">Manufacturing Units</h4>
               <div className="flex flex-wrap gap-3 text-sm">
@@ -192,8 +191,8 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="border-t border-white/10 px-4 sm:px-6 lg:px-0">
-            <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 py-5 text-sm text-white/70 md:flex-row">
+          <div className="border-t border-white/10">
+            <div className="flex flex-col items-center justify-between gap-3 py-5 md:py-6 text-sm text-white/70 md:flex-row">
               <p className="text-center md:text-left">
                 © 2026 Mecca Healthcare Pvt. Ltd. All Rights Reserved.
               </p>
@@ -213,7 +212,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
-    </footer>
-  );
-}
+      </footer>
+    );
+  }
