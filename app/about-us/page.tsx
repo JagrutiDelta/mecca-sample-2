@@ -100,9 +100,30 @@ const CERTS = [
 ];
 
 const LOCATIONS = [
-  { name: "Kalol, Gujarat", area: "GIDC, Gandhinagar" },
-  { name: "Chattral, Gujarat", area: "GIDC, Mehsana" },
-  { name: "Boranada, Rajasthan", area: "RIICO Industrial Area, Jodhpur" },
+  {
+    id: "kalol",
+    unit: "Unit 1",
+    name: "Kalol, Gujarat",
+    area: "GIDC, Gandhinagar",
+    address: "99-102, G.I.D.C., Kalol, Gandhinagar, Gujarat 382725, India",
+    phone: "+91 2764 221020",
+  },
+  {
+    id: "chattral",
+    unit: "Unit 2",
+    name: "Chattral, Gujarat",
+    area: "GIDC, Mehsana",
+    address: "L-1202, GIDC, Chattral, Mehsana, Gujarat 382729, India",
+    phone: "+91 7990 571693",
+  },
+  {
+    id: "boranada",
+    unit: "Unit 3",
+    name: "Boranada, Rajasthan",
+    area: "RIICO Industrial Area, Jodhpur",
+    address: "F-252, Phase 3, RIICO, Boranada, Rajasthan 342012, India",
+    phone: "+91 7665 761999",
+  },
 ];
 
 const REGIONS = ["CIS Countries", "Middle East", "South East Asia", "Africa", "Latin America"];
@@ -373,6 +394,8 @@ function JourneyCard({
 
 export default function AboutPage() {
   const { openQuoteModal } = useQuoteModal();
+  const [activeLocationIndex, setActiveLocationIndex] = useState(0);
+  const activeLocation = LOCATIONS[activeLocationIndex] || LOCATIONS[0];
 
   return (
     
@@ -1684,71 +1707,127 @@ export default function AboutPage() {
 
     <div className="grid lg:grid-cols-2 gap-10 items-center">
 
-     <div className="h-[420px] overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
-  <iframe
-    title="Mecca Healthcare Manufacturing Locations"
-    src={`https://www.google.com/maps/embed/v1/search?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=medical+device+manufacturing+India&center=22.9734,78.6569&zoom=5`}
-    width="100%"
-    height="100%"
-    style={{ border: 0 }}
-    loading="lazy"
-    allowFullScreen
-    referrerPolicy="strict-origin-when-cross-origin"
-  />
-</div>
+      {/* INTERACTIVE GOOGLE MAP */}
+      <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm flex flex-col h-[480px]">
+        {/* Map Header Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border bg-slate-50/90 px-5 py-3.5 text-xs">
+          <div className="flex items-center gap-2 text-navy font-semibold">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-burgundy/10 px-2.5 py-1 text-xs font-bold text-burgundy">
+              <MapPin className="h-3.5 w-3.5 text-burgundy" />
+              {activeLocation.unit}
+            </span>
+            <span className="text-sm font-bold text-navy">{activeLocation.name}</span>
+            <span className="hidden sm:inline text-gray font-normal">• {activeLocation.area}</span>
+          </div>
 
-
-      {/* MANUFACTURING LOCATIONS */}
-      <div>
-
-        <div className="space-y-4">
-
-          {LOCATIONS.map((l, i) => (
-            <motion.div
-              key={l.name}
-              initial={{ opacity: 0, x: 16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.1
-              }}
-              className="group flex items-start gap-4 rounded-xl border border-border bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:border-burgundy/30 hover:shadow-[0_12px_30px_rgba(13,34,64,0.08)]"
-            >
-
-              <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-navy/5 transition-colors group-hover:bg-burgundy/10">
-                <Factory className="h-4 w-4 text-navy group-hover:text-burgundy" />
-              </div>
-
-              <div>
-                <div className="font-heading font-semibold text-navy">
-                  {l.name}
-                </div>
-
-                <div className="mt-0.5 text-xs text-gray">
-                  {l.area}
-                </div>
-              </div>
-
-            </motion.div>
-          ))}
-
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+              activeLocation.address
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-burgundy transition-colors hover:text-burgundy-dark hover:underline"
+          >
+            <span>Open in Google Maps</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </a>
         </div>
 
+        {/* Responsive Map Frame */}
+        <div className="relative flex-1 w-full bg-slate-100">
+          <iframe
+            key={activeLocation.id}
+            title={`Google Map - ${activeLocation.name}`}
+            src={`https://www.google.com/maps?q=${encodeURIComponent(
+              activeLocation.address
+            )}&output=embed`}
+            className="h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </div>
+
+      {/* MANUFACTURING LOCATIONS (CLICKABLE) */}
+      <div>
+        <div className="space-y-3.5">
+          {LOCATIONS.map((l, i) => {
+            const isSelected = activeLocationIndex === i;
+            return (
+              <motion.button
+                key={l.id}
+                type="button"
+                onClick={() => setActiveLocationIndex(i)}
+                initial={{ opacity: 0, x: 16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: i * 0.1,
+                }}
+                className={`w-full text-left flex items-center justify-between gap-4 rounded-xl border p-4 transition-all duration-300 cursor-pointer ${
+                  isSelected
+                    ? "border-burgundy bg-burgundy/[0.04] shadow-[0_8px_24px_rgba(139,30,45,0.12)] ring-1 ring-burgundy/30 -translate-y-0.5"
+                    : "border-border bg-white hover:border-burgundy/40 hover:-translate-y-0.5 hover:shadow-md"
+                }`}
+              >
+                <div className="flex items-center gap-3.5">
+                  <div
+                    className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl transition-all duration-300 ${
+                      isSelected
+                        ? "bg-burgundy text-white shadow-sm"
+                        : "bg-navy/5 text-navy"
+                    }`}
+                  >
+                    <Factory className="h-5 w-5" />
+                  </div>
+
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className={`font-heading font-semibold text-sm sm:text-base transition-colors ${
+                          isSelected ? "text-burgundy font-bold" : "text-navy"
+                        }`}
+                      >
+                        {l.name}
+                      </span>
+                      <span className="text-[11px] font-semibold text-gray/70 bg-slate-100 px-2 py-0.5 rounded-md">
+                        {l.unit}
+                      </span>
+                    </div>
+
+                    <div className="mt-0.5 text-xs text-gray">
+                      {l.area}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  {isSelected ? (
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-burgundy px-3 py-1 text-xs font-bold text-white shadow-xs">
+                      <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+                      Active Map
+                    </span>
+                  ) : (
+                    <span className="text-xs font-semibold text-gray/60 hover:text-burgundy">
+                      View Map →
+                    </span>
+                  )}
+                </div>
+              </motion.button>
+            );
+          })}
+        </div>
 
         {/* PRODUCTION STAT */}
         <div className="mt-8 rounded-xl2 bg-navy-gradient p-6 text-center text-white">
-
           <div className="font-heading text-4xl font-extrabold">
             30M+
           </div>
-
           <div className="mt-1 text-sm text-white/70">
             Pieces manufactured annually
           </div>
-
         </div>
-
       </div>
 
     </div>
