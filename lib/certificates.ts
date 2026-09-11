@@ -1,0 +1,133 @@
+export interface CertificateItem {
+  id: string;
+  code: string;
+  title: string;
+  issuer: string;
+  authority: string;
+  category: "Quality Management" | "International & CE" | "Statutory & Government";
+  badge: string;
+  standard: string;
+  desc: string;
+  image: string;
+  featured?: boolean;
+}
+
+export const ALL_CERTIFICATES: CertificateItem[] = [
+  {
+    id: "iso-13485",
+    code: "ISO 13485:2016",
+    title: "Medical Devices Quality Management System",
+    issuer: "QSA International UK",
+    authority: "Accredited Global Registrar",
+    category: "Quality Management",
+    badge: "Medical Device QMS",
+    standard: "EN ISO 13485:2016",
+    desc: "Certified for the design, development, manufacture and distribution of sterile medical devices including infusion sets, blood transfusion sets, catheters, and flow regulators.",
+    image: "/certificates/QSA 13485- MECCA INDUSTRIES-1.webp",
+    featured: true,
+  },
+  {
+    id: "iso-9001",
+    code: "ISO 9001:2015",
+    title: "Quality Management Systems Certification",
+    issuer: "QSA International UK",
+    authority: "International Quality Standards",
+    category: "Quality Management",
+    badge: "QMS Certification",
+    standard: "ISO 9001:2015",
+    desc: "Comprehensive quality assurance standard governing manufacturing processes, continuous improvement, and strict traceability across all operational units.",
+    image: "/certificates/ISO 9001-2015-1.webp",
+    featured: true,
+  },
+  {
+    id: "who-gmp",
+    code: "WHO-GMP",
+    title: "Good Manufacturing Practices Certificate",
+    issuer: "Food & Drugs Control Administration (FDCA)",
+    authority: "Statutory Healthcare Authority",
+    category: "Quality Management",
+    badge: "WHO Verified",
+    standard: "World Health Organization GMP",
+    desc: "Official WHO-GMP compliance certificate validating Class 10,000 / Class 100,000 cleanroom manufacturing, sterilization integrity, and contamination control.",
+    image: "/certificates/GMP Certificate- 16-18.webp",
+    featured: true,
+  },
+  {
+    id: "ce-mark-p1",
+    code: "CE Mark",
+    title: "European Conformity Certification",
+    issuer: "European Conformity / QSA Assessment",
+    authority: "EU Directive 93/42/EEC",
+    category: "International & CE",
+    badge: "CE Certified",
+    standard: "Council Directive 93/42/EEC",
+    desc: "CE Mark compliance attestation verifying European health, safety, and environmental protection standards for sterile single-use disposable medical devices.",
+    image: "/certificates/QSA Cert-MECCA INDUSTRIES-CE-1.webp",
+    featured: true,
+  },
+  {
+    id: "ce-mark-p2",
+    code: "CE Annex Scope",
+    title: "CE Certified Product Scope Schedule",
+    issuer: "European Conformity / QSA Assessment",
+    authority: "Product Schedule Annex",
+    category: "International & CE",
+    badge: "Device Schedule",
+    standard: "Annex V / Sterile Classification",
+    desc: "Detailed European product certification annex encompassing IV Infusion Sets, Dial Flow Regulators, Extension Sets, and Blood Administration Sets.",
+    image: "/certificates/QSA Cert-MECCA INDUSTRIES-CE-2.webp",
+    featured: false,
+  },
+  {
+    id: "mfg-licence",
+    code: "Form 28",
+    title: "Drug & Medical Device Manufacturing Licence",
+    issuer: "Licensing Authority, FDCA Gujarat",
+    authority: "Central Drugs Standard Control Org (CDSCO)",
+    category: "Statutory & Government",
+    badge: "Statutory Licence",
+    standard: "Drugs & Cosmetics Act",
+    desc: "Official statutory manufacturing licence for commercial production and domestic/export supply of sterile disposable medical devices.",
+    image: "/certificates/licence.webp",
+    featured: false,
+  },
+  {
+    id: "market-standing",
+    code: "Market Standing",
+    title: "Market Standing Certificate",
+    issuer: "Food & Drugs Control Administration, Gujarat",
+    authority: "State Regulatory Authority",
+    category: "Statutory & Government",
+    badge: "Continuous Supply",
+    standard: "Statutory Clearance",
+    desc: "Official governmental confirmation of continuous active commercial manufacturing and flawless market supply without any product failure or recall.",
+    image: "/certificates/Market Standing Certificate.webp",
+    featured: false,
+  },
+  {
+    id: "non-conviction",
+    code: "Non-Conviction",
+    title: "Non-Conviction & Good Standing Certificate",
+    issuer: "Food & Drugs Control Administration, Gujarat",
+    authority: "State Regulatory Authority",
+    category: "Statutory & Government",
+    badge: "Regulatory Clean Record",
+    standard: "Drugs & Cosmetics Rules",
+    desc: "Certifies an unblemished regulatory record, full adherence to all national statutory healthcare guidelines, and complete compliance across operations.",
+    image: "/certificates/Non Conviction Certificate.webp",
+    featured: false,
+  },
+  {
+    id: "performance-cert",
+    code: "Performance QA",
+    title: "Performance & Quality Verification Certificate",
+    issuer: "Institutional Health & Hospital Authority",
+    authority: "Hospital Services Procurement",
+    category: "Statutory & Government",
+    badge: "Institutional Trust",
+    standard: "Govt Institutional Audit",
+    desc: "Endorsement validating exemplary product efficacy, batch-to-batch consistency, and clinical reliability delivered to major hospitals and healthcare networks.",
+    image: "/certificates/Performance Certificate.webp",
+    featured: false,
+  },
+];
