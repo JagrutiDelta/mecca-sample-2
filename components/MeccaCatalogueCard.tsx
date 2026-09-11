@@ -145,11 +145,10 @@ export default function MeccaCatalogueCard({
               <button
                 type="button"
                 onClick={() => toggleQuoteItem(product.name)}
-                className={`inline-flex flex-1 items-center justify-center gap-1 rounded-full px-3.5 py-2 text-xs font-semibold transition-all cursor-pointer sm:flex-none ${
-                  isItemInQuote(product.name)
+                className={`inline-flex flex-1 items-center justify-center gap-1 rounded-full px-3.5 py-2 text-xs font-semibold transition-all cursor-pointer sm:flex-none ${isItemInQuote(product.name)
                     ? "bg-emerald-50 text-emerald-700 border border-emerald-300 font-bold"
                     : "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200"
-                }`}
+                  }`}
                 title={
                   isItemInQuote(product.name)
                     ? "Remove from multi-product quote"

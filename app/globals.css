@@ -58,6 +58,20 @@ textarea:focus-visible {
   animation: marquee 25s linear infinite;
 }
 
+@keyframes marquee-endless {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee-endless {
+  animation: marquee-endless 35s linear infinite;
+  will-change: transform;
+}
+
 @layer components {
   .container-px {
     @apply px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 max-w-[1536px] mx-auto w-full;

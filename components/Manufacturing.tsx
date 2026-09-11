@@ -26,14 +26,16 @@ const METHODOLOGY = [
   { name: "Total Quality Control", desc: "In-line inspection at every stage of production." },
 ];
  
-const CLIENTS = 
-[ "/clients/1.png",
-  "/clients/2.jpg", 
-  "/clients/3.png", 
-  "/clients/4.jpg",
-  "/clients/5.jpg",
-  "/clients/6.png",
+const CLIENTS = [
+  { name: "Cipla", logo: "/clients/1.png" },
+  { name: "Hetero", logo: "/clients/2.jpg" },
+  { name: "B. Braun", logo: "/clients/3.png" },
+  { name: "Hollister", logo: "/clients/4.jpg" },
+  { name: "Claris", logo: "/clients/5.jpg" },
+  { name: "Global Partner", logo: "/clients/6.png" },
 ];
+
+const CLIENT_TRACK = [...CLIENTS, ...CLIENTS, ...CLIENTS];
  
 export default function Manufacturing() {
   return (
@@ -118,30 +120,45 @@ export default function Manufacturing() {
     </h2>
   </div>
 
-  {/* Marquee */}
-  <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-    <div className="flex w-max min-w-max items-center gap-8 motion-safe:animate-marquee hover:[animation-play-state:paused]">
+  {/* Endless Seamless Marquee */}
+  <div className="relative overflow-hidden w-full py-4 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+    <div className="flex w-max items-center group">
+      {/* Track 1 */}
+      <div className="flex shrink-0 items-center gap-6 sm:gap-8 pr-6 sm:pr-8 animate-marquee-endless group-hover:[animation-play-state:paused] motion-reduce:[animation-play-state:paused]">
+        {CLIENT_TRACK.map((client, index) => (
+          <div
+            key={`track-1-${index}`}
+            className="flex h-20 w-36 sm:h-24 sm:w-44 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
+          >
+            <img
+              src={client.logo}
+              alt={client.name}
+              className="max-h-10 w-auto max-w-[120px] object-contain grayscale opacity-75 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
 
-      {[...CLIENTS, ...CLIENTS].map((logo, index) => (
-        <div
-          key={index}
-          className="flex h-24 w-44 shrink-0 items-center justify-center rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg"
-        >
-          {/* Image Logo */}
-          <img
-            src={logo}
-            alt="Client Logo"
-            className="max-h-10 w-auto object-contain grayscale opacity-70 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
-          />
-
-          {/* OR if using text instead of images */}
-
-          {/* <span className="text-lg font-semibold text-gray-500">
-              {logo}
-          </span> */}
-        </div>
-      ))}
-
+      {/* Track 2 (Cloned for 100% seamless infinite loop) */}
+      <div
+        className="flex shrink-0 items-center gap-6 sm:gap-8 pr-6 sm:pr-8 animate-marquee-endless group-hover:[animation-play-state:paused] motion-reduce:[animation-play-state:paused]"
+        aria-hidden="true"
+      >
+        {CLIENT_TRACK.map((client, index) => (
+          <div
+            key={`track-2-${index}`}
+            className="flex h-20 w-36 sm:h-24 sm:w-44 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl"
+          >
+            <img
+              src={client.logo}
+              alt={client.name}
+              className="max-h-10 w-auto max-w-[120px] object-contain grayscale opacity-75 transition-all duration-300 hover:grayscale-0 hover:opacity-100"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </div>
