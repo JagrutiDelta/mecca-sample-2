@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { QuoteProvider } from "@/context/QuoteContext";
+import CookieConsent from "@/components/CookieConsent";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -59,7 +60,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`} suppressHydrationWarning>
       <body className="font-body antialiased" suppressHydrationWarning>
-        <QuoteProvider>{children}</QuoteProvider>
+        <QuoteProvider>
+          {children}
+          <CookieConsent />
+        </QuoteProvider>
       </body>
     </html>
   );
