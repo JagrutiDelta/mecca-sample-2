@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import UtilityBar from "@/components/UtilityBar";
 import Breadcrumb from "@/components/mecca-labs/breadcrumb";
 import CategoryCard from "@/components/mecca-labs/category-card";
+import Container from "@/components/Container";
 import { ALL_CATALOGUES } from "@/lib/mecca-labs";
 import { ShieldCheck, Award, Microscope, FlaskConical, Sparkles, Download, CheckCircle2 } from "lucide-react";
 
@@ -28,16 +29,16 @@ export default function MeccaLabsPage() {
       <Header />
 
       <div className="pt-28 pb-20 lg:pt-36 lg:pb-28">
-        <div className="mx-auto max-w-7xl container-px">
+        <Container>
           {/* Breadcrumb */}
           <Breadcrumb items={breadcrumbs} />
 
           {/* Landing Hero */}
-          <section className="relative overflow-hidden rounded-xl2 border border-border bg-white p-6 sm:p-10 lg:p-14 shadow-card mb-14">
+          <section className="relative w-full overflow-hidden rounded-xl2 border border-border bg-white p-6 sm:p-10 lg:p-14 shadow-card mb-14">
             <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-burgundy/5 blur-3xl" />
             <div className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-medblue/5 blur-3xl" />
 
-            <div className="max-w-3xl">
+            <div className="max-w-3xl lg:max-w-4xl">
               <div className="flex flex-wrap items-center gap-2 mb-4">
                 <span className="eyebrow">FORMULATION SCIENCE & HEALTHCARE</span>
                 <span className="h-1.5 w-1.5 rounded-full bg-burgundy/40" />
@@ -129,7 +130,7 @@ export default function MeccaLabsPage() {
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </div>
 
       <Footer />

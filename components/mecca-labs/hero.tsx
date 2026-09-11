@@ -20,12 +20,12 @@ export default function Hero({ catalogue }: HeroProps) {
   };
 
   return (
-    <section className="relative overflow-hidden rounded-xl2 border border-border bg-white p-6 sm:p-10 lg:p-14 shadow-card">
+    <section className="relative w-full overflow-hidden rounded-xl2 border border-border bg-white p-6 sm:p-10 lg:p-14 shadow-card">
       {/* Background decoration */}
       <div className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-burgundy/5 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-medblue/5 blur-3xl" />
 
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 items-center">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 xl:gap-16 items-center">
         {/* Left: Text & Actions */}
         <div className="lg:col-span-7 flex flex-col justify-center">
           <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -45,7 +45,7 @@ export default function Hero({ catalogue }: HeroProps) {
             {catalogue.subtitle}
           </p>
 
-          <p className="mt-3 text-sm text-gray leading-relaxed max-w-2xl">
+          <p className="mt-3 text-sm text-gray leading-relaxed max-w-2xl xl:max-w-3xl">
             {catalogue.description}
           </p>
 
@@ -97,15 +97,15 @@ export default function Hero({ catalogue }: HeroProps) {
         </div>
 
         {/* Right: Visual Container */}
-        <div className="lg:col-span-5 flex justify-center">
-          <div className="relative w-full max-w-sm sm:max-w-md aspect-square rounded-2xl border border-border bg-gradient-to-br from-bg via-white to-accent/20 p-4 sm:p-6 shadow-soft flex items-center justify-center">
+        <div className="lg:col-span-5 flex justify-center w-full">
+          <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-md xl:max-w-lg aspect-square rounded-2xl border border-border bg-gradient-to-br from-bg via-white to-accent/20 p-4 sm:p-6 shadow-soft flex items-center justify-center">
             <div className="relative h-full w-full overflow-hidden rounded-xl bg-white shadow-sm flex items-center justify-center">
               <Image
                 src={catalogue.heroImage}
                 alt={catalogue.title}
                 fill
                 priority
-                sizes="(max-width: 768px) 100vw, 40vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 45vw, 500px"
                 className="object-contain p-4 transition-transform duration-500 hover:scale-105"
               />
             </div>
