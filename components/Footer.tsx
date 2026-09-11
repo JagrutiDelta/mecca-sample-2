@@ -41,8 +41,9 @@ const COLUMNS = [
     title: "Resources",
     links: [
       { name: "Product Catalogue", href: "/downloads" },
-      { name: "Request a Quote", href: "#quote" },
       { name: "Certifications", href: "/certifications" },
+      { name: "Privacy Policy", href: "/privacy-policy" },
+      { name: "Terms & Conditions", href: "/terms" },
       { name: "Downloads", href: "/downloads#resources" },
     ],
   },
@@ -186,8 +187,9 @@ export default function Footer() {
 
             <div className="flex flex-wrap items-center justify-center gap-4 md:justify-end">
               <LanguageTranslator variant="utility" direction="up" />
-              <Link href="/privacy_policy" className="transition-colors hover:text-white">Privacy Policy</Link>
-              <Link href="/terms" className="transition-colors hover:text-white">Terms</Link>
+              <Link href="/privacy-policy" className="transition-colors hover:text-white">Privacy Policy</Link>
+              <span className="text-white/20">|</span>
+              <Link href="/terms" className="transition-colors hover:text-white">Terms &amp; Conditions</Link>
             </div>
           </div>
 
