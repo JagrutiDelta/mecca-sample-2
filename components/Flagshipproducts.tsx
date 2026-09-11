@@ -369,173 +369,171 @@ export function FlagshipProducts() {
       <div className="container-px relative">
 
         {/* ===================================================================
-            SECTION HEADING — Premium Architectural Style
+            SECTION HEADING — Clean, Authoritative Luxury Healthcare
             =================================================================== */}
-        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-14">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-burgundy/20 bg-burgundy/[0.06] px-5 py-2 text-xs sm:text-sm font-bold tracking-wide uppercase text-burgundy shadow-sm backdrop-blur-md mb-4"
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 rounded-full border border-burgundy/20 bg-burgundy/[0.06] px-5 py-2 text-xs sm:text-sm font-bold tracking-wide uppercase text-burgundy shadow-xs backdrop-blur-md mb-4"
           >
-            <Sparkles className="h-4 w-4 text-burgundy animate-pulse" />
-            <span>Clinical Engineering &amp; Innovation</span>
+            <Sparkles className="h-4 w-4 text-burgundy" />
+            <span>Clinical Innovations &amp; Engineering</span>
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-heading font-extrabold text-navy text-3xl sm:text-4xl md:text-5xl lg:text-5xl tracking-tight leading-[1.15]"
-          >
-            Our Flagship{" "}
-            <span className="relative inline-block">
-              <span className="bg-gradient-to-r from-burgundy via-[#a82234] to-navy bg-clip-text text-transparent">
-                Products
-              </span>
-              <svg
-                className="absolute left-0 -bottom-1.5 w-full overflow-visible"
-                height="8"
-                viewBox="0 0 200 8"
-                fill="none"
-              >
-                <motion.path
-                  d="M1 5 Q 50 1 100 5 T 199 5"
-                  stroke="#ff91a0"
-                  strokeWidth="3.5"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  whileInView={{ pathLength: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.25 }}
-                />
-              </svg>
-            </span>
-          </motion.h2>
-
-          <motion.p
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-5 text-slate-600 leading-relaxed text-base sm:text-lg max-w-2xl mx-auto font-normal"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="font-heading font-extrabold text-navy text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight"
           >
-            Explore our clinically certified medical devices, engineered for precise infusion regulation, sterile vascular safety, and zero-compromise clinical performance.
+            Our Flagship Products
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-4 text-slate-600 leading-relaxed text-base sm:text-lg max-w-2xl mx-auto font-normal"
+          >
+            Clinically certified medical devices engineered for infusion precision, vascular safety, and uncompromised healthcare outcomes.
           </motion.p>
         </div>
 
         {/* ===================================================================
-            MODERN PRODUCT SLIDER SELECTOR TABS & CONTROLS
+            8-PRODUCT VISUAL SELECTOR DECK (NO UGLY SCROLLBAR)
             =================================================================== */}
-        <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Pills Container */}
-          <div className="w-full md:w-auto overflow-x-auto pb-2 md:pb-0 scrollbar-none">
-            <div className="inline-flex items-center gap-2 p-1.5 rounded-2xl bg-slate-100/90 border border-slate-200/80 backdrop-blur-md shadow-inner min-w-max">
-              {FLAGSHIP_PRODUCTS.map((prod, idx) => {
-                const isActive = idx === currentIndex;
-                return (
-                  <button
-                    key={prod.id}
-                    type="button"
-                    onClick={() => goTo(idx, idx > currentIndex ? 1 : -1)}
-                    suppressHydrationWarning
-                    className={`font-heading rounded-xl px-4 py-2.5 text-xs font-semibold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
-                      isActive
-                        ? "bg-gradient-to-r from-burgundy to-[#9d2433] text-white shadow-md shadow-burgundy/25 scale-[1.02]"
-                        : "text-slate-600 hover:text-navy hover:bg-white/80"
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5 mb-10">
+          {FLAGSHIP_PRODUCTS.map((prod, idx) => {
+            const isActive = idx === currentIndex;
+            return (
+              <button
+                key={prod.id}
+                type="button"
+                onClick={() => goTo(idx, idx > currentIndex ? 1 : -1)}
+                className={`group relative flex flex-col items-center justify-between p-3 rounded-2xl border text-center transition-all duration-300 cursor-pointer ${
+                  isActive
+                    ? "bg-[#091D33] text-white border-[#091D33] shadow-lg shadow-navy/25 ring-2 ring-burgundy -translate-y-1"
+                    : "bg-white text-slate-700 border-slate-200/90 hover:border-burgundy/40 hover:bg-slate-50/80 hover:-translate-y-0.5"
+                }`}
+              >
+                {/* Active Indicator Dot */}
+                <div className="w-full flex items-center justify-between mb-1">
+                  <span className={`text-[10px] font-bold ${isActive ? "text-burgundy-light font-mono" : "text-slate-400"}`}>
+                    0{idx + 1}
+                  </span>
+                  <span
+                    className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                      isActive ? "bg-burgundy ring-2 ring-burgundy/40" : "bg-transparent"
+                    }`}
+                  />
+                </div>
+
+                {/* Product Thumbnail */}
+                <div
+                  className={`relative h-12 w-12 rounded-xl my-1 flex items-center justify-center p-1 transition-colors ${
+                    isActive ? "bg-white/10" : "bg-slate-100 group-hover:bg-burgundy/5"
+                  }`}
+                >
+                  <Image
+                    src={prod.image}
+                    alt={prod.title}
+                    width={42}
+                    height={42}
+                    className="object-contain h-full w-full"
+                  />
+                </div>
+
+                {/* Title & Category */}
+                <div className="w-full mt-1">
+                  <span
+                    className={`block text-[11px] font-bold leading-tight line-clamp-1 ${
+                      isActive ? "text-white" : "text-navy group-hover:text-burgundy"
                     }`}
                   >
-                    <span
-                      className={`inline-block h-2 w-2 rounded-full transition-colors ${
-                        isActive ? "bg-white shadow-[0_0_8px_white]" : "bg-slate-300"
-                      }`}
-                    />
-                    <span>
-                      0{idx + 1} • {prod.category}
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Slider Prev / Next Controls */}
-          <div className="flex items-center gap-2 self-end md:self-auto shrink-0">
-            <span className="text-xs font-bold text-slate-400 mr-2 uppercase tracking-wider">
-              {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-            </span>
-            <button
-              type="button"
-              onClick={handlePrev}
-              aria-label="Previous product"
-              className="h-9 w-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-navy shadow-sm transition-all hover:bg-slate-50 hover:border-burgundy hover:text-burgundy cursor-pointer active:scale-95"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              type="button"
-              onClick={handleNext}
-              aria-label="Next product"
-              className="h-9 w-9 rounded-full border border-slate-200 bg-white flex items-center justify-center text-navy shadow-sm transition-all hover:bg-slate-50 hover:border-burgundy hover:text-burgundy cursor-pointer active:scale-95"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
+                    {prod.title
+                      .replace("MHPL LifeGuard ", "")
+                      .replace(" & Closed Valves", "")
+                      .replace(" IV Infusion Set", "")
+                      .replace(" Infusion Set", "")}
+                  </span>
+                  <span
+                    className={`block text-[9px] uppercase tracking-wider font-semibold mt-0.5 truncate ${
+                      isActive ? "text-slate-300" : "text-slate-400"
+                    }`}
+                  >
+                    {prod.category}
+                  </span>
+                </div>
+              </button>
+            );
+          })}
         </div>
 
         {/* ===================================================================
-            MAIN ACTIVE SLIDE SHOWCASE CARD
+            MAIN ACTIVE SLIDE SHOWCASE HERO CARD
             =================================================================== */}
-        <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-10 lg:p-12 shadow-[0_20px_60px_-15px_rgba(15,39,68,0.08)] relative">
+        <div className="rounded-3xl border border-slate-200/90 bg-white p-6 sm:p-10 lg:p-12 shadow-[0_20px_50px_rgba(15,34,64,0.06)] relative overflow-hidden">
 
           <AnimatePresence mode="wait" initial={false} custom={direction}>
             <motion.div
               key={currentProduct.id}
               custom={direction}
-              initial={{ opacity: 0, x: direction * 28 }}
+              initial={{ opacity: 0, x: direction * 24 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -28 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, x: direction * -24 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               {/* Slide Top Metadata Bar */}
-              <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-border mb-8">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-slate-100 mb-8">
                 <div className="flex items-center gap-3">
-                  <span className="font-heading text-xs font-bold uppercase tracking-wider text-burgundy">
-                    FLAGSHIP PRODUCT {String(currentIndex + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-burgundy/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-burgundy">
+                    Product 0{currentIndex + 1} of 0{total}
                   </span>
-                  <span className="text-gray/40">•</span>
-                  <span className="font-heading text-xs font-semibold text-gray uppercase">
+                  <span className="text-slate-300">•</span>
+                  <span className="font-heading text-xs font-bold text-navy uppercase tracking-wider">
                     {currentProduct.category}
                   </span>
                 </div>
-                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-navy bg-bg border border-border px-3.5 py-1 rounded-full">
-                  <FileCheck className="h-3.5 w-3.5 text-burgundy" />
-                  STANDARD: {currentProduct.standard}
-                </span>
+
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 bg-slate-50 border border-slate-200/90 px-3.5 py-1.5 rounded-full">
+                    <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                    <span>Certified Standard: {currentProduct.standard}</span>
+                  </span>
+                </div>
               </div>
 
-              {/* 1. Hero Split-Screen Showcase */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Hero Split-Screen Showcase */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
 
-                {/* Left Column: Technical Visual Frame */}
+                {/* Left Column: Visual Product Stage */}
                 <div className="lg:col-span-6 relative">
-                  <div className="relative rounded-xl2 border border-border bg-gradient-to-br from-white via-bg/40 to-[#EAF4FF]/40 p-8 sm:p-12 shadow-card flex items-center justify-center min-h-[380px] overflow-hidden group">
-                    <div className="pointer-events-none absolute inset-0 bg-medical-grid bg-grid opacity-30" />
+                  <div className="relative rounded-3xl bg-gradient-to-br from-[#F8FAFC] via-white to-[#EEF5FC]/60 p-8 sm:p-12 border border-slate-200/80 flex items-center justify-center min-h-[420px] shadow-sm overflow-hidden group">
+                    {/* Background Halo Lighting */}
+                    <div className="pointer-events-none absolute -top-12 -left-12 w-64 h-64 rounded-full bg-burgundy/[0.06] blur-3xl" />
+                    <div className="pointer-events-none absolute -bottom-12 -right-12 w-64 h-64 rounded-full bg-medblue/[0.08] blur-3xl" />
+                    <div className="pointer-events-none absolute inset-0 bg-medical-grid bg-grid opacity-20" />
 
-                    <div className="pointer-events-none absolute top-4 left-4 font-heading text-[10px] text-gray uppercase tracking-wider">
-                      SPEC CODE: {currentProduct.id.toUpperCase()}
+                    {/* Top Floating Badge */}
+                    <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 rounded-full bg-white/90 backdrop-blur-md px-3.5 py-1 text-xs font-semibold text-navy shadow-xs border border-slate-200">
+                      <FileCheck className="h-3.5 w-3.5 text-burgundy" />
+                      <span>Single-Use Sterile Device</span>
                     </div>
-                    <div className="pointer-events-none absolute bottom-4 right-4 font-heading text-[10px] text-gray uppercase tracking-wider">
-                      MECCA CLINICAL SERIES
+
+                    <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-md px-3 py-1 text-xs font-bold text-navy shadow-xs border border-slate-200">
+                      <span>ISO 13485</span>
                     </div>
 
                     {/* Product Visual */}
                     <motion.div
-                      animate={{ y: [0, -6, 0] }}
-                      transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                      className="relative aspect-square w-full max-w-[320px] drop-shadow-[0_20px_30px_rgba(15,39,68,0.18)]"
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                      className="relative aspect-square w-full max-w-[340px] drop-shadow-[0_20px_35px_rgba(15,39,68,0.18)]"
                     >
                       <Image
                         src={currentProduct.image}
@@ -547,52 +545,61 @@ export function FlagshipProducts() {
                       />
                     </motion.div>
 
-                    <div className="absolute bottom-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-navy shadow-sm border border-border">
-                      <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
-                      <span>{currentProduct.standard}</span>
+                    {/* Bottom Floating Bar */}
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                      <span className="text-[11px] font-semibold text-slate-500 bg-white/90 backdrop-blur-sm px-3.5 py-1 rounded-full border border-slate-200/80 shadow-xs">
+                        {currentProduct.category}
+                      </span>
+                      <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50/90 backdrop-blur-sm px-3.5 py-1 rounded-full border border-emerald-200/80 shadow-xs flex items-center gap-1">
+                        <Check className="h-3 w-3 text-emerald-600" />
+                        Class 8 Cleanroom Validated
+                      </span>
                     </div>
                   </div>
                 </div>
 
                 {/* Right Column: Technical Narrative & Metrics */}
-                <div className="lg:col-span-6 space-y-5">
+                <div className="lg:col-span-6 space-y-6">
                   <div>
-                    <span className="eyebrow inline-flex items-center gap-1 rounded-full border border-[#ff91a0]/15 bg-[#9e3744]/10 px-3.5 py-1 text-xs font-semibold text-burgundy backdrop-blur-md">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-burgundy/10 px-3.5 py-1 text-xs font-bold text-burgundy uppercase tracking-wider mb-2.5">
+                      <Sparkles className="h-3.5 w-3.5 text-burgundy" />
                       {currentProduct.badge}
                     </span>
-                    <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-navy mt-2.5 leading-tight">
+                    <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-extrabold text-navy leading-tight">
                       {currentProduct.title}
                     </h3>
-                    <p className="mt-2 font-heading text-base font-semibold text-medblue">
+                    <p className="mt-2 text-base font-semibold text-medblue leading-snug">
                       {currentProduct.tagline}
                     </p>
                   </div>
 
-                  <p className="text-sm text-gray leading-relaxed">
+                  <p className="text-sm text-slate-600 leading-relaxed font-normal">
                     {currentProduct.description}
                   </p>
 
                   {/* 4 Performance Metric Blocks */}
                   <div className="grid grid-cols-2 gap-3 pt-1">
                     {currentProduct.metrics.map((m, mIdx) => (
-                      <div key={mIdx} className="rounded-xl border border-border bg-bg/50 p-3.5">
-                        <div className="font-heading text-xs font-bold uppercase text-burgundy tracking-wider">
+                      <div
+                        key={mIdx}
+                        className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-4 transition-colors hover:bg-white hover:border-burgundy/30 hover:shadow-xs"
+                      >
+                        <div className="font-heading text-xs font-bold uppercase text-burgundy tracking-wide">
                           {m.title}
                         </div>
-                        <p className="text-xs text-gray mt-1 leading-snug">
+                        <p className="text-xs text-slate-600 mt-1 leading-snug">
                           {m.desc}
                         </p>
                       </div>
                     ))}
                   </div>
 
-                  {/* Action Buttons */}
+                  {/* Action Buttons & Prev/Next */}
                   <div className="flex flex-wrap items-center gap-3 pt-2">
                     <button
                       type="button"
                       onClick={() => openQuoteModal(currentProduct.title)}
-                      suppressHydrationWarning
-                      className="font-heading inline-flex items-center justify-center gap-2 rounded-full bg-burgundy px-6 py-3 text-sm font-semibold text-white shadow-card transition-all duration-300 hover:bg-burgundy-dark hover:shadow-soft active:scale-95 cursor-pointer"
+                      className="font-heading inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-burgundy to-[#9d2433] px-7 py-3.5 text-sm font-semibold text-white shadow-md shadow-burgundy/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:scale-95 cursor-pointer"
                     >
                       <span>Request Technical Quotation</span>
                       <ArrowRight className="h-4 w-4" />
@@ -601,11 +608,31 @@ export function FlagshipProducts() {
                       href={currentProduct.cataloguePdf}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="font-heading inline-flex items-center justify-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold text-navy shadow-card hover:border-burgundy hover:text-burgundy transition-colors"
+                      className="font-heading inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3.5 text-sm font-semibold text-navy shadow-xs hover:border-burgundy hover:text-burgundy transition-all"
                     >
                       <Download className="h-4 w-4" />
                       <span>Download PDF</span>
                     </a>
+
+                    {/* Quick Prev / Next Controls */}
+                    <div className="flex items-center gap-2 ml-auto">
+                      <button
+                        type="button"
+                        onClick={handlePrev}
+                        aria-label="Previous product"
+                        className="h-10 w-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-navy shadow-xs hover:bg-burgundy hover:text-white hover:border-burgundy transition-all cursor-pointer"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleNext}
+                        aria-label="Next product"
+                        className="h-10 w-10 rounded-full border border-slate-200 bg-white flex items-center justify-center text-navy shadow-xs hover:bg-burgundy hover:text-white hover:border-burgundy transition-all cursor-pointer"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
