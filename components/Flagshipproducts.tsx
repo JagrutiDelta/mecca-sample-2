@@ -129,9 +129,9 @@ const FLAGSHIP_PRODUCTS: FlagshipProduct[] = [
     tagline: "Calibrated 5 to 250 ml/h progressive dial for controlled intravenous delivery.",
     description:
       "Flow Regulators bridge the safety gap between active electronic pumps and inaccurate roller clamps. The MHPL LifeGuard sustains an accurate and constant fluid flow rate across prolonged delivery, eliminating the 50%+ flow rate decay and tubing relaxation drift typical of manual clamps.",
-    image: "/Infusion/image1.png",
+    image: "/Flagship/1.png",
     standard: "ISO 8536-13:2016",
-    cataloguePdf: "/catalogues/lifeguard-dial-flow-regulators.pdf",
+    cataloguePdf: "/catalogues/Flagship-product-1.pdf",
     metrics: [
       { title: "ACCURATE FLOW", desc: "Assures linear rate sustained over hours of delivery" },
       { title: "CONSTANT DELIVERY", desc: "Eliminates tubing relaxation creep and flow decay" },
@@ -155,9 +155,9 @@ const FLAGSHIP_PRODUCTS: FlagshipProduct[] = [
     tagline: "Aseptic vascular access eliminating needlestick injuries with minimal dead space.",
     description:
       "Engineered for sterile IV drug delivery, Mecca's Needle Free Connector preserves a hermetically sealed fluid pathway. Accompanied by integrated Y-Port Valves and Tube End Valves, it provides high-velocity flow with superior silicone durability tested to 100+ daily actuations.",
-    image: "/Infusion/image2.png",
+    image: "/Flagship/2.png",
     standard: "ISO 10993 Compliant",
-    cataloguePdf: "/catalogues/catalogue-nfc-drug-delivery-range.pdf",
+    cataloguePdf: "/catalogues/Flagship-products.pdf",
     metrics: [
       { title: "350 ml/min", desc: "Flow rate tested under 1m water head", value: "350" },
       { title: "0.09 ml", desc: "Ultra-low priming volume & minimal dead space", value: "0.09" },
@@ -181,9 +181,9 @@ const FLAGSHIP_PRODUCTS: FlagshipProduct[] = [
     tagline: "Protects UV-sensitive oncology drugs from photodegradation with Yellow & Brown polymers.",
     description:
       "Prepared from lightproof and photosensitive polymer materials in specialized Yellow and Brown coloration. Obtainable with or without an integrated Dial Flow Controller (5 to 250 ml/h), safeguarding light-sensitive chemotherapy, antiviral, and parenteral nutrition compounds.",
-    image: "/Infusion/image7.png",
+    image: "/Flagship/3.png",
     standard: "ISO 8536-4 / ETO Sterile",
-    cataloguePdf: "/catalogues/lifeguard-dial-flow-regulators.pdf",
+    cataloguePdf: "/catalogues/Flagship-products.pdf",
     metrics: [
       { title: "UV/LIGHT BLOCKING", desc: "Brown & Yellow polymer protects sensitive molecules" },
       { title: "DIAL INTEGRATION", desc: "Available with Dial Regulator 5 to 250 ml/hr" },
@@ -207,9 +207,9 @@ const FLAGSHIP_PRODUCTS: FlagshipProduct[] = [
     tagline: "Prevents air embolism automatically and stops fluid spills during line preparation.",
     description:
       "Developed in technical collaboration with ACME UK Inc. Ltd, London. The Air-Stop membrane automatically maintains a constant fluid level when the IV bottle empties, preventing air from entering the patient's line. The Prime-Stop auto-fill prevents spills on bedding, floors, and nurses' hands.",
-    image: "/Infusion/image4.png",
+    image: "/Flagship/4.png",
     standard: "ACME UK Collaboration",
-    cataloguePdf: "/catalogues/catalogue-nfc-drug-delivery-range.pdf",
+    cataloguePdf: "/catalogues/Flagship-products.pdf",
     metrics: [
       { title: "AIR-STOP BARRIER", desc: "Prevents air embolism when the IV container drains completely" },
       { title: "PRIME-STOP FILL", desc: "Auto-priming with zero dripping on hands and bedding" },
@@ -233,9 +233,9 @@ const FLAGSHIP_PRODUCTS: FlagshipProduct[] = [
     tagline: "Sub-micron filtration lines engineered for high-risk neonatal, ICU, and blood infusions.",
     description:
       "Precision standard bore extension lines fitted with integrated 0.2 micron bacterial retention filters or 1.2 micron particulate filters. Engineered with female luer lock, slide clamp, latex-free Y-site, and rotating male luer adaptor for high-pressure ICU and infusion pump stability.",
-    image: "/Infusion/image6.png",
+    image: "/Flagship/5.png",
     standard: "ISO 8536-4 / ISO 594",
-    cataloguePdf: "/catalogues/lifeguard-dial-flow-regulators.pdf",
+    cataloguePdf: "/catalogues/Flagship-products.pdf",
     metrics: [
       { title: "0.2µm FILTER", desc: "Sterilizing-grade barrier trapping bacteria & endotoxins" },
       { title: "1.2µm FILTER", desc: "Specialized particulate filter for lipid/TPN infusions" },
@@ -259,9 +259,9 @@ const FLAGSHIP_PRODUCTS: FlagshipProduct[] = [
     tagline: "Integrated graduated dial flow regulator with 20 drops/ml adult & 60 drops/ml micro-drip chambers.",
     description:
       "Dedicated infusion sets incorporating the precision Dial Flow Regulator directly into the administration line. Available in both 20 drops/ml (macro adult) and 60 drops/ml (micro-drip pediatric) configurations, complete with sharp piercing spike and pinch clamp.",
-    image: "/Infusion/image5.png",
+    image: "/Flagship/6.png",
     standard: "ISO 8536-4 & ISO 8536-13",
-    cataloguePdf: "/catalogues/lifeguard-dial-flow-regulators.pdf",
+    cataloguePdf: "/catalogues/Flagship-products.pdf",
     metrics: [
       { title: "DUAL DRIP SCALES", desc: "20 drops/ml (adult) or 60 drops/ml (micro-drip)" },
       { title: "SHARP SPIKE", desc: "Pierces plastic bottles and bags without coring" },
@@ -285,9 +285,9 @@ const FLAGSHIP_PRODUCTS: FlagshipProduct[] = [
     tagline: "Prevents retrograde backflow during active infusion pump and multi-line drug administration.",
     description:
       "Equipped with a one-way back check valve designed to eliminate backflow into primary bags during pump infusions, multi-bottle administration, or parallel piggyback therapy. Manufactured with ISO 8536-4 compliant spikes and ISO 594 compliant connections.",
-    image: "/Infusion/image3.png",
+    image: "/Flagship/7.png",
     standard: "ISO 8536-4 / ISO 594",
-    cataloguePdf: "/catalogues/catalogue-nfc-drug-delivery-range.pdf",
+    cataloguePdf: "/catalogues/Flagship-products.pdf",
     metrics: [
       { title: "ONE-WAY VALVE", desc: "Eliminates retrograde medication contamination" },
       { title: "PUMP READY", desc: "Engineered for electronic volumetric infusion pumps" },
@@ -311,9 +311,9 @@ const FLAGSHIP_PRODUCTS: FlagshipProduct[] = [
     tagline: "100% PVC/DEHP-Free, 45 psi pressure-rated giving set for Taxol/Paclitaxel infusion.",
     description:
       "Paclitaxel and taxane solvents extract toxic plasticizers from standard PVC sets. Mecca's specialized Paclitaxel set is 100% DEHP-Free, withstands 45 psi (3.1 bar) working pressure, curtails nursing time with fast self-priming, and features bacterial retention certified for over 96 hours continuous flow.",
-    image: "/Infusion/image9.png",
+    image: "/Flagship/8.png",
     standard: "45 psi (3.1 bar) Rated",
-    cataloguePdf: "/catalogues/lifeguard-dial-flow-regulators.pdf",
+    cataloguePdf: "/catalogues/Flagship-products.pdf",
     metrics: [
       { title: "45 PSI RATING", desc: "Withstands minimum 45 psi (3.1 bar) pump pressure" },
       { title: "DEHP-FREE", desc: "Zero plasticizer leaching with active chemotherapy solvents" },
