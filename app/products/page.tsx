@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import ProductsHero from "@/components/ProductsHero";
 import ProductsGrid from "@/components/ProductsGrid";
-import OEMServices from "@/components/OEMServices";
-import Certifications from "@/components/Certifications";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 
@@ -23,8 +21,6 @@ export default function ProductsPage() {
       <Header />
       <ProductsHero />
       <ProductsGrid />
-      <OEMServices />
-      <Certifications />
       <FinalCTA />
       <Footer />
     </main>

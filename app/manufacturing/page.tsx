@@ -277,6 +277,158 @@ const CLIENT_PARTNERS = [
 ];
 
 /* -------------------------------------------------------------------------- */
+/*                        JOURNEY CARD COMPONENT                              */
+/* -------------------------------------------------------------------------- */
+
+function ManufacturingJourneyCard({
+  step,
+  year,
+  title,
+  description,
+  align = "left",
+}: {
+  step: number;
+  year: string;
+  title: string;
+  description: string;
+  align?: "left" | "right";
+}) {
+  const stepNumber = String(step).padStart(2, "0");
+
+  return (
+    <div className="group relative w-full max-w-[360px] overflow-hidden rounded-[18px] bg-white shadow-[0_10px_35px_rgba(15,39,64,0.08)] border border-slate-100 hover:shadow-[0_15px_40px_rgba(139,30,45,0.12)] transition-all duration-300">
+      {/* LEFT STEP PANEL */}
+      <div className="absolute inset-y-0 left-0 w-[72px] bg-[#F7F7F7]">
+        {/* Circle with Step Number */}
+        <div className="absolute left-[8px] top-1/2 flex h-[56px] w-[56px] -translate-y-1/2 items-center justify-center rounded-full border border-burgundy bg-white shadow-xs">
+          <div className="flex h-[46px] w-[46px] items-center justify-center rounded-full bg-burgundy">
+            <span className="text-[19px] font-extrabold text-white">
+              {stepNumber}
+            </span>
+          </div>
+        </div>
+
+        {/* Vertical Line */}
+        <div className="absolute left-[36px] top-[32px] bottom-[32px] w-px bg-burgundy" />
+
+        {/* Top Dot */}
+        <div className="absolute left-[32px] top-[26px] h-[8px] w-[8px] rounded-full bg-burgundy" />
+
+        {/* Bottom Dot */}
+        <div className="absolute bottom-[26px] left-[32px] h-[8px] w-[8px] rounded-full bg-burgundy" />
+      </div>
+
+      {/* MAIN CONTENT */}
+      <div className="relative ml-[72px] min-h-[245px] px-5 pb-8 pt-5">
+        {/* YEAR BADGE */}
+        <div className="absolute right-3 top-3 flex h-[33px] items-center gap-2 rounded-[10px] bg-[#FAF1F2] px-2.5">
+          <svg
+            className="h-4 w-4 text-burgundy"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <rect x="3" y="4" width="18" height="17" rx="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          <div className="h-4 w-px bg-burgundy/30" />
+          <span className="text-xs font-extrabold text-burgundy">
+            {year}
+          </span>
+        </div>
+
+        {/* CONTENT */}
+        <div className="pt-[36px]">
+          {/* Accent line */}
+          <div className="mb-3 h-[3px] w-[35px] bg-burgundy" />
+
+          {/* YEAR */}
+          <h3 className="font-heading text-[34px] sm:text-[37px] font-extrabold leading-none tracking-[-0.04em] text-navy">
+            {year}
+          </h3>
+
+          {/* Dots */}
+          <div className="mt-2.5 flex items-center gap-2">
+            <span className="h-[4px] w-[4px] rounded-full bg-slate-300" />
+            <span className="h-[4px] w-[4px] rounded-full bg-slate-300" />
+            <span className="h-[4px] w-[4px] rounded-full bg-slate-300" />
+            <span className="h-[4px] w-[4px] rounded-full bg-slate-300" />
+            <span className="h-[7px] w-[7px] rounded-full bg-burgundy" />
+          </div>
+
+          {/* Title */}
+          {title && (
+            <h4 className="font-heading text-[13px] font-bold text-navy mt-3 leading-snug">
+              {title}
+            </h4>
+          )}
+
+          {/* Description */}
+          <p className="mt-1.5 max-w-[240px] text-[11px] sm:text-[12px] leading-[1.6] text-slate-500">
+            {description}
+          </p>
+
+          {/* Dot Grid */}
+          <div className="mt-4 grid w-[80px] grid-cols-8 gap-[5px] opacity-60">
+            {Array.from({ length: 32 }).map((_, index) => (
+              <span
+                key={index}
+                className="h-[3px] w-[3px] rounded-full bg-[#C8CDD2]"
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* WATERMARK */}
+        <div className="pointer-events-none absolute bottom-6 right-[-22px] hidden opacity-[0.07] sm:block">
+          <div className="relative h-[100px] w-[100px]">
+            <div className="absolute inset-0 rounded-full border-[11px] border-burgundy" />
+            <div className="absolute inset-[19px] rounded-full border-[7px] border-burgundy" />
+            <svg
+              className="absolute left-[30px] top-[30px]"
+              width="40"
+              height="40"
+              viewBox="0 0 100 100"
+              fill="none"
+            >
+              <path
+                d="M20 50L41 71L80 28"
+                stroke="currentColor"
+                className="text-burgundy"
+                strokeWidth="11"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <div className="absolute bottom-[-23px] left-[25px] h-[35px] w-[14px] rotate-[18deg] bg-burgundy" />
+            <div className="absolute bottom-[-23px] right-[25px] h-[35px] w-[14px] -rotate-[18deg] bg-burgundy" />
+          </div>
+        </div>
+      </div>
+
+      {/* BOTTOM NAVY BAR */}
+      <div className="absolute bottom-0 left-0 h-[14px] w-[75%] bg-[#062B49]" />
+
+      {/* BOTTOM BURGUNDY BAR WITH ANGLE */}
+      <div
+        className="
+          absolute
+          bottom-0
+          right-0
+          h-[14px]
+          w-[25%]
+          bg-burgundy
+          [clip-path:polygon(25%_0,100%_0,100%_100%,0_100%)]
+        "
+      />
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /*                              PAGE COMPONENT                                */
 /* -------------------------------------------------------------------------- */
 
@@ -771,7 +923,7 @@ export default function ManufacturingPage() {
       {/* -------------------------------------------------------------------- */}
       {/* 6. HISTORICAL MILESTONES TIMELINE                                   */}
       {/* -------------------------------------------------------------------- */}
-      <section className="py-24 bg-white relative">
+      <section className="py-24 bg-[#FAFAFA] border-b border-slate-200/80 relative overflow-hidden">
         <div className="container-px">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <div className="eyebrow mb-3 !text-[#8B1E2D] inline-flex items-center gap-1 rounded-full border border-burgundy/20 bg-burgundy/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
@@ -782,44 +934,142 @@ export default function ManufacturingPage() {
               45+ Years Manufacturing Journey
             </h2>
             <p className="mt-4 text-slate-600 text-base md:text-lg leading-relaxed">
-              From engineering metal aircraft rivets in 1972 to manufacturing millions of sterile IV sets & medical devices daily.
+              From engineering metal aircraft rivets in 1972 to manufacturing millions of sterile IV sets &amp; medical devices daily.
             </p>
           </div>
 
-          <div className="relative max-w-4xl mx-auto">
-            {/* Center Vertical Line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#8B1E2D] via-slate-300 to-transparent -translate-x-1/2" />
+          <div className="relative max-w-5xl mx-auto">
+            {/* Center Timeline Line */}
+            <div
+              className="
+                absolute left-5 top-0 h-full w-px
+                bg-gradient-to-b
+                from-transparent
+                via-burgundy/30
+                to-transparent
+                md:left-1/2
+                md:-translate-x-1/2
+              "
+            />
 
-            <div className="space-y-8 md:space-y-12">
-              {MILESTONES.map((m, i) => {
-                const isEven = i % 2 === 0;
+            <div className="space-y-10 md:space-y-14">
+              {MILESTONES.map((item, index) => {
+                const isRight = index % 2 !== 0;
+
                 return (
-                  <div
-                    key={m.year + i}
-                    className={`relative flex flex-col md:flex-row items-center ${
-                      isEven ? "md:flex-row-reverse" : ""
-                    }`}
+                  <motion.div
+                    key={item.year + index}
+                    initial={{
+                      opacity: 0,
+                      y: 30,
+                      x: isRight ? 20 : -20,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                      x: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.2,
+                    }}
+                    transition={{
+                      duration: 0.6,
+                      delay: (index % 4) * 0.08,
+                    }}
+                    className="
+                      relative
+                      grid
+                      grid-cols-[40px_1fr]
+                      gap-5
+                      md:grid-cols-[1fr_56px_1fr]
+                      md:gap-0
+                    "
                   >
-                    {/* Content Card */}
-                    <div className="w-full md:w-1/2 md:px-8">
-                      <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition-colors shadow-sm">
-                        <div className="inline-block px-3 py-1 rounded-full bg-burgundy-gradient text-white font-heading font-bold text-xs mb-3 shadow">
-                          {m.year}
-                        </div>
-                        <h3 className="font-heading font-bold text-lg text-slate-900 mb-1">
-                          {m.title}
-                        </h3>
-                        <p className="text-xs text-slate-600 leading-relaxed">
-                          {m.desc}
-                        </p>
+                    {/* Mobile Timeline Marker */}
+                    <div className="relative z-10 flex justify-center md:hidden">
+                      <div
+                        className="
+                          mt-7
+                          flex h-4 w-4
+                          items-center justify-center
+                          rounded-full
+                          border-4
+                          border-white
+                          bg-burgundy
+                          shadow-[0_0_0_4px_rgba(139,30,45,0.08)]
+                        "
+                      />
+                    </div>
+
+                    {/* LEFT CARD */}
+                    <div
+                      className={`
+                        hidden
+                        md:flex
+                        ${!isRight ? "justify-end pr-8" : "justify-start"}
+                      `}
+                    >
+                      {!isRight && (
+                        <ManufacturingJourneyCard
+                          step={index + 1}
+                          year={item.year}
+                          title={item.title}
+                          description={item.desc}
+                          align="left"
+                        />
+                      )}
+                    </div>
+
+                    {/* CENTER MARKER */}
+                    <div className="relative hidden md:flex items-start justify-center">
+                      <div
+                        className="
+                          relative z-20
+                          mt-7
+                          flex h-7 w-7
+                          items-center justify-center
+                          rounded-full
+                          border-[5px]
+                          border-white
+                          bg-burgundy
+                          shadow-[0_0_0_1px_rgba(139,30,45,0.2)]
+                        "
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-white" />
                       </div>
                     </div>
 
-                    {/* Timeline Node Dot */}
-                    <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white border-2 border-[#8B1E2D] items-center justify-center shadow-md">
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#8B1E2D]" />
+                    {/* RIGHT CARD */}
+                    <div
+                      className={`
+                        hidden
+                        md:flex
+                        ${isRight ? "justify-start pl-8" : "justify-end"}
+                      `}
+                    >
+                      {isRight && (
+                        <ManufacturingJourneyCard
+                          step={index + 1}
+                          year={item.year}
+                          title={item.title}
+                          description={item.desc}
+                          align="right"
+                        />
+                      )}
                     </div>
-                  </div>
+
+                    {/* MOBILE CARD */}
+                    <div className="md:hidden">
+                      <ManufacturingJourneyCard
+                        step={index + 1}
+                        year={item.year}
+                        title={item.title}
+                        description={item.desc}
+                        align="left"
+                      />
+                    </div>
+                  </motion.div>
                 );
               })}
             </div>

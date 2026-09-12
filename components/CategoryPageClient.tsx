@@ -6,8 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronRight,
   ShieldCheck,
-  Search,
-  Filter,
   ArrowUpRight,
   CheckCircle2,
   FileText,
@@ -19,7 +17,7 @@ import {
   Plus,
   Check,
 } from "lucide-react";
-import { ProductItem, CATEGORIES, getProductsByCategoryId } from "@/lib/products";
+import { ProductItem, getProductsByCategoryId } from "@/lib/products";
 import ProductDetailModal from "@/components/ProductDetailModal";
 import MeccaCatalogueCard from "@/components/MeccaCatalogueCard";
 import { useQuoteModal } from "@/context/QuoteContext";
@@ -30,18 +28,10 @@ interface CategoryPageClientProps {
 
 export default function CategoryPageClient({ category }: CategoryPageClientProps) {
   const { openQuoteModal, addToQuote, toggleQuoteItem, isItemInQuote } = useQuoteModal();
-  const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
 
   const categoryProducts = getProductsByCategoryId(category.id);
-
-  const filteredProducts = categoryProducts.filter((item) => {
-    return (
-      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.badge.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-  });
+  const filteredProducts = categoryProducts;
 
   return (
     <div className="container-px">
@@ -98,42 +88,6 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
               <span>ISO 13485 &amp; CE Certified</span>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Filter Tabs & Search Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-border">
-        {/* Category Tabs Navigation */}
-        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
-          <Filter className="w-4 h-4 text-gray mr-1 shrink-0 hidden sm:block" />
-          {CATEGORIES.map((cat) => {
-            const isActive = cat.id === category.id;
-            return (
-              <Link
-                key={cat.id}
-                href={cat.id === "all" ? "/products" : `/products/${cat.id}`}
-                className={`px-4 py-2 text-xs font-medium rounded-full whitespace-nowrap transition-all ${
-                  isActive
-                    ? "bg-burgundy text-white shadow-md font-semibold"
-                    : "bg-white text-navy border border-border hover:bg-slate-50 hover:text-burgundy"
-                }`}
-              >
-                {cat.label}
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* Live Search */}
-        <div className="relative min-w-[260px]">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={`Search in ${category.label}...`}
-            className="w-full pl-10 pr-4 py-2.5 bg-white border border-border rounded-full text-xs text-navy placeholder:text-gray/50 focus:outline-none focus:border-burgundy focus:ring-2 focus:ring-burgundy/10 transition-all shadow-sm"
-          />
         </div>
       </div>
 
@@ -306,15 +260,15 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
       {/* Empty State */}
       {filteredProducts.length === 0 && (
         <div className="text-center py-16 bg-white rounded-2xl border border-border p-8 mb-16">
-          <Search className="w-10 h-10 text-slate-300 mx-auto mb-3" />
+          <Building2 className="w-10 h-10 text-slate-300 mx-auto mb-3" />
           <h4 className="font-heading font-bold text-navy text-lg">No medical products found in this category</h4>
-          <p className="text-gray text-xs mt-1">Try clearing your search query.</p>
-          <button
-            onClick={() => setSearchQuery("")}
-            className="mt-4 px-5 py-2 rounded-full bg-burgundy text-white text-xs font-semibold"
+          <p className="text-gray text-xs mt-1">Explore our full medical disposables catalog.</p>
+          <Link
+            href="/products"
+            className="inline-block mt-4 px-5 py-2 rounded-full bg-burgundy text-white text-xs font-semibold hover:bg-burgundy-dark transition-colors"
           >
-            Clear Search
-          </button>
+            Browse All Products
+          </Link>
         </div>
       )}
 

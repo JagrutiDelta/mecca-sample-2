@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -30,6 +30,7 @@ import {
   Building2,
   Check,
   Plus,
+  ArrowRight,
 } from "lucide-react";
 import ProductDetailModal from "./ProductDetailModal";
 import MeccaCatalogueCard from "./MeccaCatalogueCard";
@@ -37,7 +38,7 @@ import { CATEGORIES, PRODUCTS, ProductItem } from "@/lib/products";
 import { useQuoteModal } from "@/context/QuoteContext";
 
 // Icon mapping for categories
-const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
+const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
   all: Layers,
   infusion: Droplets,
   anesthesia: Wind,
@@ -48,6 +49,66 @@ const CATEGORY_ICONS: Record<string, React.ComponentType<{ className?: string }>
   nephrology: Droplets,
   surgical: Scissors,
   "mecca-labs": Microscope,
+};
+
+const CATEGORY_META: Record<
+  string,
+  { desc: string; color: string; bg: string; border: string }
+> = {
+  infusion: {
+    desc: "Clinical grade gravity administration sets, precision flow meters, and sterile vascular delivery systems.",
+    color: "#2563EB",
+    bg: "bg-blue-50/80",
+    border: "border-blue-200/80",
+  },
+  anesthesia: {
+    desc: "Endotracheal intubation, oxygen delivery devices, nebulization systems, and airway management.",
+    color: "#DC2626",
+    bg: "bg-red-50/80",
+    border: "border-red-200/80",
+  },
+  urology: {
+    desc: "Foley balloon catheters, closed system urine meters, TURP surgical sets, and drainage systems.",
+    color: "#D97706",
+    bg: "bg-amber-50/80",
+    border: "border-amber-200/80",
+  },
+  gynecology: {
+    desc: "Sterile obstetric umbilical cord clamps and specialized neonatal vascular access catheters.",
+    color: "#DB2777",
+    bg: "bg-pink-50/80",
+    border: "border-pink-200/80",
+  },
+  gastroenterology: {
+    desc: "Enteral nutrition, pediatric feeding tubes, and sterile infant mucus aspiration systems.",
+    color: "#7C3AED",
+    bg: "bg-purple-50/80",
+    border: "border-purple-200/80",
+  },
+  cardiology: {
+    desc: "High-pressure rated monitoring lines and specialized cardio-thoracic vascular disposables.",
+    color: "#E11D48",
+    bg: "bg-rose-50/80",
+    border: "border-rose-200/80",
+  },
+  nephrology: {
+    desc: "Hemodialysis catheters, A.V. fistula needles, and transducer protectors for clinical renal care.",
+    color: "#0284C7",
+    bg: "bg-sky-50/80",
+    border: "border-sky-200/80",
+  },
+  surgical: {
+    desc: "Closed wound suction vac systems, corrugated drainage sheets, and surgical accessories.",
+    color: "#059669",
+    bg: "bg-emerald-50/80",
+    border: "border-emerald-200/80",
+  },
+  "mecca-labs": {
+    desc: "WHO-GMP audited pharmaceutical dossiers, export nutraceuticals, and specialized formulations.",
+    color: "#8B1E2D",
+    bg: "bg-[#F8EDEF]",
+    border: "border-burgundy/20",
+  },
 };
 
 const QUICK_FILTERS = [
@@ -64,7 +125,6 @@ export default function ProductsGrid() {
     addToQuote,
     toggleQuoteItem,
     isItemInQuote,
-    selectedProducts,
   } = useQuoteModal();
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -72,6 +132,22 @@ export default function ProductsGrid() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+
+  // Sync with URL query parameter on initial load (e.g. /products?category=urology)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const catParam = params.get("category") || params.get("cat");
+      if (catParam) {
+        const found = CATEGORIES.find(
+          (c) => c.id.toLowerCase() === catParam.toLowerCase()
+        );
+        if (found) {
+          setActiveCategory(found.id);
+        }
+      }
+    }
+  }, []);
 
   const totalProducts = PRODUCTS.length;
   const categoryCount = CATEGORIES.filter((cat) => cat.id !== "all").length;
@@ -103,7 +179,157 @@ export default function ProductsGrid() {
     });
   }, [activeCategory, searchQuery, selectedStandard]);
 
+  // Grouped departments when in "all" mode with no search
+  const departmentSections = useMemo(() => {
+    const departments = CATEGORIES.filter((c) => c.id !== "all");
+    return departments
+      .map((cat) => {
+        const items = PRODUCTS.filter((p) => {
+          const matchCat = p.categoryId === cat.id;
+          const matchStandard =
+            selectedStandard === "all" ||
+            p.badge.toLowerCase().includes(selectedStandard) ||
+            p.specs.some((s) => s.value.toLowerCase().includes(selectedStandard));
+          return matchCat && matchStandard;
+        });
+        return {
+          category: cat,
+          items,
+        };
+      })
+      .filter((dept) => dept.items.length > 0);
+  }, [selectedStandard]);
+
   const currentCategoryMeta = CATEGORIES.find((c) => c.id === activeCategory);
+
+  // Render an individual product card (used in both sectioned and filtered views)
+  const renderProductCard = (product: ProductItem) => {
+    const isMeccaLabs = product.categoryId === "mecca-labs";
+
+    if (isMeccaLabs) {
+      return (
+        <div key={product.id} className="sm:col-span-2 xl:col-span-3">
+          <MeccaCatalogueCard
+            product={product}
+            onQuote={() => {
+              addToQuote(product.name);
+              openQuoteModal(product.name);
+            }}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div
+        key={product.id}
+        className="relative flex flex-col justify-between overflow-hidden transition-all bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 shadow-[0_8px_30px_rgba(13,34,64,0.05)] hover:shadow-[0_20px_50px_rgba(13,34,64,0.12)] hover:-translate-y-1 group"
+      >
+        <div>
+          {/* Device Image Box with Zoom Effect */}
+          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100/70 border border-slate-200/70 aspect-[4/3] mb-4 p-4 flex items-center justify-center">
+            <Link href={`/products/${product.id}`} className="block h-full w-full">
+              <img
+                src={product.image}
+                alt={product.name}
+                onError={(e) => {
+                  e.currentTarget.src = "/products/hero_medical_products.png";
+                }}
+                className="w-full h-full object-contain group-hover:scale-108 transition-transform duration-500"
+              />
+            </Link>
+
+            {/* Clinical Badge */}
+            <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-200/80 text-[10px] font-bold text-burgundy shadow-xs">
+              {product.badge}
+            </div>
+          </div>
+
+          {/* Category Label */}
+          <div className="text-[11px] font-bold text-burgundy uppercase tracking-wider mb-1">
+            {product.category}
+          </div>
+
+          {/* Title */}
+          <Link href={`/products/${product.id}`}>
+            <h3 className="font-heading font-bold text-navy text-base leading-snug mb-2 group-hover:text-burgundy transition-colors line-clamp-2">
+              {product.name}
+            </h3>
+          </Link>
+
+          {/* Description */}
+          <p className="text-slate-500 text-xs line-clamp-2 leading-relaxed mb-4">
+            {product.desc}
+          </p>
+
+          {/* Key Specs Pills Grid */}
+          <div className="space-y-1 bg-slate-50/90 rounded-xl p-3 border border-slate-100 mb-5 text-[11px]">
+            {product.specs.slice(0, 2).map((spec) => (
+              <div key={spec.label} className="flex items-center justify-between">
+                <span className="text-slate-400">{spec.label}:</span>
+                <span className="font-semibold text-navy truncate max-w-[150px]">
+                  {spec.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Card Bottom CTA Actions */}
+        <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
+          <button
+            type="button"
+            onClick={() => setSelectedProduct(product)}
+            className="flex-1 py-2.5 px-3 rounded-full bg-[#EEF4FA] text-navy font-semibold text-xs border border-[#D5E3F5] hover:bg-navy hover:text-white transition-colors flex items-center justify-center gap-1 cursor-pointer"
+          >
+            <span>Specs</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </button>
+
+          {/* Multi-Product RFQ Toggle Button */}
+          <button
+            type="button"
+            onClick={() => toggleQuoteItem(product.name)}
+            className={`py-2.5 px-3 rounded-full text-xs font-semibold transition-all flex items-center gap-1 cursor-pointer ${
+              isItemInQuote(product.name)
+                ? "bg-emerald-50 text-emerald-700 border border-emerald-300 font-bold"
+                : "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200"
+            }`}
+            title={
+              isItemInQuote(product.name)
+                ? "Remove from multi-product quote"
+                : "Add to multi-product quote list"
+            }
+          >
+            {isItemInQuote(product.name) ? (
+              <>
+                <Check className="w-3.5 h-3.5 text-emerald-600" />
+                <span>In RFQ</span>
+              </>
+            ) : (
+              <>
+                <Plus className="w-3.5 h-3.5 text-slate-500" />
+                <span>RFQ</span>
+              </>
+            )}
+          </button>
+
+          {/* Direct Instant Quote Button */}
+          <button
+            type="button"
+            onClick={() => {
+              addToQuote(product.name);
+              openQuoteModal(product.name);
+            }}
+            className="py-2.5 px-4 rounded-full bg-burgundy text-white font-semibold text-xs hover:bg-burgundy-dark transition-colors shadow-xs flex items-center gap-1 cursor-pointer"
+          >
+            <FileText className="w-3.5 h-3.5" />
+            <span>Quote</span>
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <section id="catalog" className="py-12 lg:py-20 bg-[#F8FAFC] min-h-screen">
@@ -190,10 +416,55 @@ export default function ProductsGrid() {
             </div>
           </div>
 
+          {/* PRIMARY CATEGORY FILTER TABS (Infusion, Urology, Anesthesia, etc.) */}
+          <div className="pt-4 mt-4 border-t border-slate-100">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider shrink-0 mr-1 hidden sm:inline-flex items-center gap-1">
+                <Filter className="w-3.5 h-3.5" />
+                Specialty:
+              </span>
+              {CATEGORIES.map((cat) => {
+                const Icon = CATEGORY_ICONS[cat.id] || Layers;
+                const isSelected = activeCategory === cat.id;
+                const count =
+                  cat.id === "all"
+                    ? PRODUCTS.length
+                    : PRODUCTS.filter((p) => p.categoryId === cat.id).length;
+
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => {
+                      setActiveCategory(cat.id);
+                      setSelectedStandard("all");
+                    }}
+                    className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
+                      isSelected
+                        ? "bg-burgundy text-white shadow-sm ring-2 ring-burgundy/20"
+                        : "bg-slate-100/90 text-navy hover:bg-slate-200/90 hover:text-burgundy"
+                    }`}
+                  >
+                    <Icon className={`w-3.5 h-3.5 ${isSelected ? "text-white" : "text-slate-500"}`} />
+                    <span>{cat.label}</span>
+                    <span
+                      className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                        isSelected
+                          ? "bg-white/25 text-white"
+                          : "bg-white text-slate-600 border border-slate-200/60"
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Quick Standard Filter Badges */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pt-4 mt-4 border-t border-slate-100">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pt-3 mt-3 border-t border-slate-100 text-[11px]">
             <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider shrink-0 mr-1">
-              Quick Filter:
+              Compliance Standard:
             </span>
             {QUICK_FILTERS.map((qf) => {
               const isSelected = selectedStandard === qf.id;
@@ -433,196 +704,145 @@ export default function ProductsGrid() {
                   }}
                   className="ml-auto text-xs text-slate-500 hover:text-burgundy font-semibold underline cursor-pointer"
                 >
-                  Clear All
+                  Show All Departments
                 </button>
               </div>
             )}
 
-            {/* ════ VIEW 1: MODERN CLINICAL CARD GRID ════ */}
-            {viewMode === "grid" && (
-              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                <AnimatePresence mode="popLayout">
-                  {filteredProducts.map((product) => (
-                    <motion.div
-                      key={product.id}
-                      layout
-                      initial={{ opacity: 0, scale: 0.96 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.96 }}
-                      transition={{ duration: 0.22 }}
-                      className={`relative flex flex-col justify-between overflow-hidden transition-all ${
-                        product.categoryId === "mecca-labs"
-                          ? "sm:col-span-2 xl:col-span-3"
-                          : "bg-white rounded-3xl border border-slate-200/90 p-5 sm:p-6 shadow-[0_8px_30px_rgba(13,34,64,0.05)] hover:shadow-[0_20px_50px_rgba(13,34,64,0.12)] hover:-translate-y-1"
-                      }`}
+            {/* Single Selected Category Department Banner */}
+            {activeCategory !== "all" && currentCategoryMeta && (
+              <div className="mb-8 p-6 rounded-3xl bg-white border border-slate-200/90 shadow-sm relative overflow-hidden">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-burgundy/10 text-burgundy">
+                        <ShieldCheck className="w-3.5 h-3.5" />
+                        Selected Range
+                      </span>
+                      <span className="text-xs text-slate-400 font-medium">
+                        {filteredProducts.length} certified items
+                      </span>
+                    </div>
+                    <h3 className="font-heading font-black text-navy text-2xl">
+                      {currentCategoryMeta.label}
+                    </h3>
+                    <p className="text-slate-500 text-xs mt-1 max-w-xl">
+                      {CATEGORY_META[activeCategory]?.desc ||
+                        "Clinical grade medical disposables manufactured under ISO 13485 cleanroom standards."}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-3 shrink-0">
+                    <Link
+                      href={`/products/${activeCategory}`}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-slate-200 text-xs font-semibold text-navy hover:bg-slate-50 transition-colors"
                     >
-                      {product.categoryId === "mecca-labs" && (
-                        <MeccaCatalogueCard
-                          product={product}
-                          onQuote={() => {
-                            addToQuote(product.name);
-                            openQuoteModal(product.name);
-                          }}
-                        />
-                      )}
-                      {product.categoryId !== "mecca-labs" && (
-                      <>
-                      {/* Card Content */}
-                      <div>
-                        {/* Device Image Box with Zoom Effect */}
-                        <div className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100/70 border border-slate-200/70 aspect-[4/3] mb-4 p-4 flex items-center justify-center">
-                          {product.categoryId === "mecca-labs" && product.pdf ? (
-                            <iframe
-                              src={`${product.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
-                              title={`${product.name} PDF preview`}
-                              className="h-full w-full rounded-lg border-0 bg-white"
-                            />
-                          ) : (
-                            <img
-                              src={product.image}
-                              alt={product.name}
-                              onError={(e) => {
-                                e.currentTarget.src = "/products/hero_medical_products.png";
-                              }}
-                              className="w-full h-full object-contain group-hover:scale-108 transition-transform duration-500"
-                            />
-                          )}
-                          {/* Clinical Badge */}
-                          <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-slate-200/80 text-[10px] font-bold text-burgundy shadow-xs">
-                            {product.badge}
-                          </div>
-
-                          {product.categoryId === "mecca-labs" && product.pdf && (
-                            <div className="absolute inset-0 z-10 flex items-center justify-center bg-navy/0 transition-colors duration-300 group-hover:bg-navy/40">
-                              <button
-                                type="button"
-                                onClick={(event) => {
-                                  event.preventDefault();
-                                  event.stopPropagation();
-                                  window.open(product.pdf, "_blank", "noopener,noreferrer");
-                                }}
-                                className="inline-flex translate-y-2 items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-navy opacity-0 shadow-md transition-all duration-300 hover:bg-slate-50 group-hover:translate-y-0 group-hover:opacity-100"
-                                aria-label={`View PDF for ${product.name}`}
-                              >
-                                <Eye className="h-3.5 w-3.5" />
-                                View PDF
-                              </button>
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Category Label */}
-                        <div className="text-[11px] font-bold text-burgundy uppercase tracking-wider mb-1">
-                          {product.category}
-                        </div>
-
-                        {/* Title */}
-                        {product.categoryId === "mecca-labs" ? (
-                          <Link
-                            href={
-                              product.id === "pharmaceutical-product-list"
-                                ? "/mecca-labs/pharmaceutical"
-                                : product.id === "nutraceutical-product-list-domestic"
-                                  ? "/mecca-labs/domestic"
-                                  : product.id === "nutraceuticals-product-list-export"
-                                    ? "/mecca-labs/export"
-                                    : product.id === "milk-product-list"
-                                      ? "/mecca-labs/milk"
-                                      : product.id === "cosmeceutical-product-list"
-                                        ? "/mecca-labs/cosmeceutical"
-                                        : `/products/${product.id}`
-                            }
-                          >
-                            <h3 className="font-heading font-bold text-navy text-base leading-snug mb-2 group-hover:text-burgundy transition-colors line-clamp-2">
-                              {product.name}
-                            </h3>
-                          </Link>
-                        ) : (
-                          <h3 className="font-heading font-bold text-navy text-base leading-snug mb-2 group-hover:text-burgundy transition-colors line-clamp-2">
-                            {product.name}
-                          </h3>
-                        )}
-
-                        {/* Description */}
-                        <p className="text-slate-500 text-xs line-clamp-2 leading-relaxed mb-4">
-                          {product.desc}
-                        </p>
-
-                        {/* Key Specs Pills Grid */}
-                        <div className="space-y-1 bg-slate-50/90 rounded-xl p-3 border border-slate-100 mb-5 text-[11px]">
-                          {product.specs.slice(0, 2).map((spec) => (
-                            <div key={spec.label} className="flex items-center justify-between">
-                              <span className="text-slate-400">{spec.label}:</span>
-                              <span className="font-semibold text-navy truncate max-w-[150px]">
-                                {spec.value}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-
-                      </div>
-
-                      {/* Card Bottom CTA Actions */}
-                      <div className="flex items-center gap-2 pt-3 border-t border-slate-100">
-                        <button
-                          type="button"
-                          onClick={() => setSelectedProduct(product)}
-                          className="flex-1 py-2.5 px-3 rounded-full bg-[#EEF4FA] text-navy font-semibold text-xs border border-[#D5E3F5] hover:bg-navy hover:text-white transition-colors flex items-center justify-center gap-1 cursor-pointer"
-                        >
-                          <span>Specs</span>
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </button>
-
-                        {/* Multi-Product RFQ Toggle Button */}
-                        <button
-                          type="button"
-                          onClick={() => toggleQuoteItem(product.name)}
-                          className={`py-2.5 px-3 rounded-full text-xs font-semibold transition-all flex items-center gap-1 cursor-pointer ${
-                            isItemInQuote(product.name)
-                              ? "bg-emerald-50 text-emerald-700 border border-emerald-300 font-bold"
-                              : "bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200"
-                          }`}
-                          title={
-                            isItemInQuote(product.name)
-                              ? "Remove from multi-product quote"
-                              : "Add to multi-product quote list"
-                          }
-                        >
-                          {isItemInQuote(product.name) ? (
-                            <>
-                              <Check className="w-3.5 h-3.5 text-emerald-600" />
-                              <span>In RFQ</span>
-                            </>
-                          ) : (
-                            <>
-                              <Plus className="w-3.5 h-3.5 text-slate-500" />
-                              <span>RFQ</span>
-                            </>
-                          )}
-                        </button>
-
-                        {/* Direct Instant Quote Button */}
-                        <button
-                          type="button"
-                          onClick={() => {
-                            addToQuote(product.name);
-                            openQuoteModal(product.name);
-                          }}
-                          className="py-2.5 px-4 rounded-full bg-burgundy text-white font-semibold text-xs hover:bg-burgundy-dark transition-colors shadow-xs flex items-center gap-1 cursor-pointer"
-                        >
-                          <FileText className="w-3.5 h-3.5" />
-                          <span>Quote</span>
-                        </button>
-                      </div>
-                      </>
-                      )}
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
+                      <span>Category Page</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => setActiveCategory("all")}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-burgundy text-white text-xs font-semibold hover:bg-burgundy-dark transition-colors cursor-pointer shadow-xs"
+                    >
+                      <span>View All Categories</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
 
-            {/* ════ VIEW 2: DENSE CLINICAL TABLE LIST VIEW ════ */}
+            {/* ═════════════════════════════════════════════════════════════════════
+                VIEW MODE: GRID
+               ═════════════════════════════════════════════════════════════════════ */}
+            {viewMode === "grid" && (
+              <>
+                {/* CASE A: ALL CATEGORIES (Grouped by department sections: Infusion, Urology, Anesthesia, etc.) */}
+                {activeCategory === "all" && searchQuery === "" ? (
+                  <div className="space-y-12">
+                    {departmentSections.map(({ category: cat, items }) => {
+                      const Icon = CATEGORY_ICONS[cat.id] || Layers;
+                      const meta = CATEGORY_META[cat.id];
+
+                      return (
+                        <section
+                          key={cat.id}
+                          id={`section-${cat.id}`}
+                          className="pt-2 scroll-mt-28"
+                        >
+                          {/* Department Section Header Banner */}
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-5 mb-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
+                            <div className="flex items-center gap-3.5">
+                              <div
+                                className={`w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 ${
+                                  meta?.bg || "bg-slate-100"
+                                } border ${meta?.border || "border-slate-200"}`}
+                              >
+                                <Icon
+                                  className="w-5 h-5"
+                                  style={{ color: meta?.color || "#8B1E2D" }}
+                                />
+                              </div>
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  <h3 className="font-heading font-black text-navy text-lg sm:text-xl">
+                                    {cat.label}
+                                  </h3>
+                                  <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
+                                    {items.length} Products
+                                  </span>
+                                </div>
+                                <p className="text-slate-500 text-xs mt-0.5 line-clamp-1">
+                                  {meta?.desc}
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Section Header Action Buttons */}
+                            <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setActiveCategory(cat.id);
+                                  setSelectedStandard("all");
+                                }}
+                                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-burgundy hover:text-white text-navy text-xs font-semibold transition-colors cursor-pointer"
+                              >
+                                <span>Filter Only {cat.label.split(" ")[0]}</span>
+                                <ArrowRight className="w-3.5 h-3.5" />
+                              </button>
+                              <Link
+                                href={`/products/${cat.id}`}
+                                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-slate-200 text-slate-600 hover:text-navy hover:border-slate-300 text-xs font-medium transition-colors"
+                              >
+                                <span>Dedicated Page</span>
+                                <ArrowUpRight className="w-3.5 h-3.5" />
+                              </Link>
+                            </div>
+                          </div>
+
+                          {/* Department Products Grid */}
+                          <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                            {items.map((product) => renderProductCard(product))}
+                          </div>
+                        </section>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  /* CASE B: Filtered or Single Category View */
+                  <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                    <AnimatePresence mode="popLayout">
+                      {filteredProducts.map((product) => renderProductCard(product))}
+                    </AnimatePresence>
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* ═════════════════════════════════════════════════════════════════════
+                VIEW MODE: LIST (Dense Clinical Table View)
+               ═════════════════════════════════════════════════════════════════════ */}
             {viewMode === "list" && (
               <div className="bg-white rounded-3xl border border-slate-200/90 shadow-[0_8px_30px_rgba(13,34,64,0.05)] overflow-hidden">
                 <div className="overflow-x-auto">

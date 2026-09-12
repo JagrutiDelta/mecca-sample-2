@@ -7,7 +7,6 @@ import ProductCategories from "@/components/ProductCategories";
 import WhyChoose from "@/components/WhyChoose";
 import Manufacturing from "@/components/Manufacturing";
 import OEMServices from "@/components/OEMServices";
-import Certifications from "@/components/Certifications";
 import GlobalPresence from "@/components/GlobalPresence";
 import Testimonials from "@/components/Testimonials";
 import News from "@/components/News";
@@ -28,7 +27,6 @@ export default function Home() {
       <WhyChoose />
       <Manufacturing />
       <OEMServices />
-      <Certifications />
       <GlobalPresence />
       <Testimonials />
       <VideoShowcase />
