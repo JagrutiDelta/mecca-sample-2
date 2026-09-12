@@ -38,9 +38,19 @@ export default function MeccaCatalogueCard({
     }
   };
 
+  const MECCA_LABS_COVERS: Record<string, string> = {
+    "pharmaceutical-product-list": "/MeccaLabs/pharmaceutical-hero.png",
+    "nutraceutical-product-list-domestic": "/MeccaLabs/domestic-hero.png",
+    "nutraceuticals-product-list-export": "/MeccaLabs/export-hero.png",
+    "milk-product-list": "/MeccaLabs/milk-hero.png",
+    "cosmeceutical-product-list": "/MeccaLabs/cosmeceutical-hero.png",
+  };
+
+  const coverImage = MECCA_LABS_COVERS[product.id];
+
   return (
-    <article className="w-full rounded-2xl border border-slate-200 bg-white p-4 shadow-[0_8px_28px_rgba(13,34,64,0.05)] sm:p-5">
-      <div className="flex flex-col gap-5 md:flex-row md:gap-6">
+    <article className="overflow-hidden rounded-2xl border border-border bg-white p-5 shadow-card transition-all duration-300 hover:border-burgundy/40 hover:shadow-soft md:p-6">
+      <div className="flex flex-col gap-6 md:flex-row md:items-stretch">
         <div
           role="button"
           tabIndex={0}
@@ -52,10 +62,29 @@ export default function MeccaCatalogueCard({
             }
           }}
           suppressHydrationWarning
-          className="group relative h-[250px] w-full shrink-0 cursor-pointer overflow-hidden rounded-xl border border-slate-200/80 bg-slate-100 text-left shadow-md transition-all duration-300 hover:shadow-xl md:h-[270px] md:w-[200px] lg:h-[290px] lg:w-[220px]"
+          className="group relative h-[250px] w-full shrink-0 cursor-pointer overflow-hidden rounded-xl border border-slate-200/80 bg-slate-900 text-left shadow-md transition-all duration-300 hover:shadow-xl md:h-[270px] md:w-[200px] lg:h-[290px] lg:w-[220px]"
           aria-label={`View PDF for ${product.name}`}
+          title={`Click to open ${product.name} PDF`}
         >
-          {product.pdf ? (
+          {coverImage ? (
+            <div className="relative h-full w-full overflow-hidden">
+              {/* eslint-disable-next-js/no-img-element */}
+              <img
+                src={coverImage}
+                alt={product.name}
+                className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/95 via-navy/40 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3 text-white">
+                <span className="text-[9px] font-mono font-bold uppercase tracking-wider text-rose-300 block mb-0.5">
+                  Official Publication
+                </span>
+                <p className="text-xs font-bold leading-snug line-clamp-2 text-white">
+                  {product.name}
+                </p>
+              </div>
+            </div>
+          ) : product.pdf ? (
             <iframe
               src={`${product.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
               title={`${product.name} PDF preview`}
@@ -66,7 +95,14 @@ export default function MeccaCatalogueCard({
               PDF unavailable
             </div>
           )}
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-navy/0 transition-colors duration-300 group-hover:bg-navy/40">
+
+          {/* Floating Top Badge on thumbnail */}
+          <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2.5 py-1 rounded-full border border-border text-[10px] font-bold text-burgundy shadow-xs flex items-center gap-1.5 z-10">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span>PDF Catalogue</span>
+          </div>
+
+          <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-navy/0 transition-colors duration-300 group-hover:bg-navy/40">
             <span className="inline-flex translate-y-2 items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-bold text-navy opacity-0 shadow-xl transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
               <Eye className="h-3.5 w-3.5 text-burgundy" />
               <span>Open PDF</span>
